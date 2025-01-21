@@ -1,4 +1,6 @@
 import { MainLayout } from "@/Layout/MainLayout"
+import { AsEmployee } from "@/Pages/Authentication/AsEmployee"
+import { AsHr } from "@/Pages/Authentication/AsHr"
 import { SignIn } from "@/Pages/Authentication/SignIn"
 import { SignUp } from "@/Pages/Authentication/SignUp"
 import { Home } from "@/Pages/Home/Home"
@@ -15,6 +17,16 @@ export const Root = () => {
                     path: '/',
                     element:<Home/>
                 },
+                
+                {
+                    path: '/asEmployee',
+                    element:<AsEmployee/>
+                },
+                {
+                    path: '/asHr',
+                    element:<AsHr/>
+                },
+
                 {
                     path: "/signIn",
                     element:<SignIn/>

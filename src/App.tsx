@@ -4,9 +4,9 @@ import { Root } from './Router/Root'
 function App() {
 
   return (
-    <>
+    <div className=''>
     <Root/>
-    </>
+    </div>
   )
 }
 

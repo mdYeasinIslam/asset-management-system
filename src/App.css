@@ -1,0 +1,51 @@
+.active{
+color: #ffffff;
+ background-color: #1F2937;
+ 
+}
+
+
+.navbar-light{
+  background-color: #ffffff;
+}
+.navbar-dark{
+  background-color: #1F2937;
+}
+.site-bg-ligh{
+  background-color:#F9FAFB ;
+}
+.site-bg-dark{
+  background-color:#111827 ;
+}
+.btn-bg-light{
+  background-color:#3B82F6 ;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+}
+.btn-bg-dark{
+  background-color:#2563EB ;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+}
+.card-bg-light{
+  background-color:#ffffff ;
+}
+.card-bg-dark{
+  background-color:#1E293B ;
+}
+
+/* text-content */
+.navIcon-light{
+  color: #6B7280;
+}
+.navIcon-dark{
+  color: #9CA3AF;
+}
+ .active >button ,.active> p{
+  color: white;
+  background-color: #3B82F6;
+}
+
+
+
+
