@@ -1,5 +1,10 @@
-.active{
+nav>ul>.active{
 color: #ffffff;
+ background-color: #1F2937;
+ 
+}
+div>ul>.active{
+  color: #ffffff;
  background-color: #1F2937;
  
 }

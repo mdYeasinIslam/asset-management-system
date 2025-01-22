@@ -1,34 +1,45 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useAuth } from "@/hook/useAuth"
 import { useForm, SubmitHandler } from "react-hook-form"
+import toast from "react-hot-toast"
 
 type Inputs = {
     exampleRequired: string
     email: string 
     password: string 
     name: string 
-    birth: string
+  birth: string
+    photoURL : string
 
 }
 export const AsEmployee = () => {
-     const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Inputs>()
+      const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
+    const {signUpAuth,updateUserAuth} = useAuth()
     const onSubmit: SubmitHandler<Inputs> = (data,e) => {
         const name = data.name;
         const email = data.email;
         const password = data.password;
         const birth = data.birth
-        const profile = {name,birth,email,password}
-        console.log(profile)
-        e?.target.reset()
+        const profile = {displayName:name}
+      console.log(profile)
+      signUpAuth(email, password)
+        .then(res => {
+          console.log(res);
+          updateUserAuth(profile)
+            .then(() => {
+              toast.success('Your are successfully join as a HR manager')
+              e?.target.reset()
+          })
+        }).catch(e => {
+         console.log(e)
+        toast.error(e.message)
+        })
     }
 
   return (
-      <section className="mt-10">
-          <div className="container mx-auto grid grid-cols-2 items-center justify-center gap-5"> 
+      <section className="mt-10 px-5">
+          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
               <figure>
                   <img src="/images/auth/authentication1.png" alt="" className="rounded-xl"/>
               </figure>
