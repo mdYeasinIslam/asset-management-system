@@ -2,7 +2,6 @@ import { MainLayout } from "@/Layout/MainLayout"
 import { AsEmployee } from "@/Pages/Authentication/AsEmployee"
 import { AsHr } from "@/Pages/Authentication/AsHr"
 import { SignIn } from "@/Pages/Authentication/SignIn"
-import { SignUp } from "@/Pages/Authentication/SignUp"
 import { Home } from "@/Pages/Home/Home"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -17,7 +16,6 @@ export const Root = () => {
                     path: '/',
                     element:<Home/>
                 },
-                
                 {
                     path: '/asEmployee',
                     element:<AsEmployee/>
@@ -30,10 +28,6 @@ export const Root = () => {
                 {
                     path: "/signIn",
                     element:<SignIn/>
-                },
-                {
-                    path: "/signUp",
-                    element:<SignUp/>
                 },
             ]
         }

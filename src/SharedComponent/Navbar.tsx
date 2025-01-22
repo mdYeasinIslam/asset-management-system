@@ -1,15 +1,17 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/hook/useAuth"
+import { useUsersData } from "@/hook/useUsersData"
 import { AlignJustify, X } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 import { Link, NavLink } from "react-router-dom"
 
 export const Navbar = () => {
-  // const user = { email: 'hasan@gmail.com' }
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
-  console.log(user)
+    const [usersData] = useUsersData()
+
   const signOut = () => {
     signOutAuth()
       .then(() => {
@@ -21,39 +23,125 @@ export const Navbar = () => {
   }
   return (
    <div className="fixed z-10 w-full  ">
-      <div className="container  mx-auto flex justify-between items-center py-3 px-1 md:px-4 navbar-light bg-opacity-30 ">
+      <div className="container mx-auto  md:flex md:justify-between md:items-center py-3  md:px-4 navbar-light bg-opacity-30">
              
-             <div className="flex items-center gap-2 relative">
-                  <div onClick={() => setOpen(!open)} className=" flex md:hidden">
-                    {
-                    open?<AlignJustify /> : <X />
-                    }
+        <div className="flex justify-between items-center gap-2 relative">  
+                     <div className="flex items-center gap-2 pl-1">
+                        <div onClick={() => setOpen(!open)} className=" flex md:hidden w-full">
+                        {
+                        open?<AlignJustify /> : <X />
+                        }
+                        </div>
+                        <div className="w-full">
+                          <Link to={'/'} className='flex items-center gap-2'>
+                                        <img className="w-10 rounded-xl" src="/defaultLogo2.png" alt="" />
+                                        <p className="font-medium text-xl w-full">AssetPulse</p>
+                          </Link>
+                        </div>
+                       
                     </div>
-                    
-                  <Link to={'/'} className='flex items-center gap-2'>
-                      <img className="w-10 rounded-xl" src="/defaultLogo2.png" alt="" />
-                    <span>AssetPulse</span>
-                </Link>
-          
-                      <ul className={`absolute  md:hidden w-[35vh] h-[30vh] flex flex-col gap-2 duration-1000 ease-linear bg-white font-medium uppercase text-[0.9rem] px-5  pt-3 ${open?'-left-[400px] top-14':'left-0 top-14'}`}>
-                          <NavLink className='px-2 rounded-sm' to={'/'}> <li>Home</li></NavLink>
-                          <NavLink className='px-2 rounded-sm' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
-                          <NavLink className='px-2 rounded-sm' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+                    <nav className=" w-full ">
+            
+                      <ul className={`absolute md:hidden w-[50vw] h-[50vh] flex flex-col  duration-1000 ease-linear bg-white font-medium uppercase text-[0.9rem]   pt-3 ${open?'-left-[400px] top-12':'left-0 top-12'}`}>
+                        {
+                          !user ?
+                          <>
+                              <NavLink className='px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
+                              <NavLink className='px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
+                              <NavLink className='px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+                            </>
+                            :
+                            <>
+                              {
+                                usersData?.role ==='Employee' ? 
+                                  <>
+                                      <NavLink className='px-2 py-1 rounded' to={'/EHome'}> <li>Employee Home</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/myAssets'}> <li>My Assets</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/myTeam'}> <li>My Team</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/requestForAsset'}> <li>Request for an Asset</li></NavLink>
+                                    
+                                  </>
+                                    :
+                                  <>
+                                    <NavLink className='px-2 py-1 rounded' to={'/assetList'}> <li>Asset List</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/addAsset'}> <li>Add Asset</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/allRequest'}> <li>All Request</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/employeeList'}> <li>My Employee List</li></NavLink>
+                                  </>
+                              }
+                              
+                            </>
+                    }
+                    </ul>
+                    <ul className="flex md:hidden md:gap-4 justify-end  items-center font-medium uppercase text-[0.9rem] pr-2">
+                        {
+                          user?.email ?
+                             <>
+                            <NavLink className='px-2 py-1 rounded-sm' to={'/profile'}>
+                              <Avatar>
+                                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                <AvatarFallback>CN</AvatarFallback>
+                              </Avatar>
+                            </NavLink>
+                            <Button  onClick={signOut} variant="outline">Log out</Button>
+                            </>
+                            :
+                            <>
+                          <NavLink className="rounded-full" to={'/signIn'}><Button>Log In</Button></NavLink>
+                            </>
+                        }
                       </ul>
-               </div>
+                    </nav>
           
-            <nav className={`hidden md:flex gap-5`}>
-              <ul className={` flex gap-4 justify-end items-center font-medium uppercase text-[0.9rem]`}>
-                  <NavLink className='px-2 py-1 rounded-sm' to={'/'}> <li>Home</li></NavLink>
-                  <NavLink className='px-2 py-1 rounded-sm' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
-                  <NavLink className='px-2 py-1 rounded-sm' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+        </div>
+          
+        <nav className={`hidden md:flex gap-5`}>
+          
+              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] lg:text-[0.9rem]`}>
+                {
+                  !user ?
+                  <>
+                     <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
+                      <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
+                      <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+                    </>
+                    :
+                    <>
+                      {
+                        user.email && usersData.role =='Employee' ? 
+                          <>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/eHome'}> <li>Employee Home</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/myAssets'}> <li>My Assets</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/myTeam'}> <li>My Team</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/requestForAsset'}> <li>Request for an Asset</li></NavLink>
+                            
+                          </>
+                            :
+                          <>
+                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hrHome'}> <li>HR_Home</li></NavLink>
+                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/assetList'}> <li>Asset List</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/addAsset'}> <li>Add Asset</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/allRequest'}> <li>All Request</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employeeList'}> <li>My Employee List</li></NavLink>
+                          </>
+                      }
+                      
+                    </>
+                    }
+                  
               </ul>
                
-              <ul className="flex gap-4 justify-end items-center font-medium uppercase text-[0.9rem]">
+              <ul className="flex gap-1 md:gap-1 justify-end items-center font-medium uppercase text-[0.9rem]">
                 {
                   user?.email ?
-                    <>
-                  <Button  variant="outline">Log out</Button>
+                <>
+                  <NavLink className='md:px-2 md:py-1 rounded-sm' to={'/profile'}>
+                   <Avatar>
+                      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </NavLink>
+                  <Button  onClick={signOut} variant="outline">Log out</Button>
                     </>
                     :
                     <>

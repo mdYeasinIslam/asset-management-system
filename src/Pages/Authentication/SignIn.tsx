@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input"
 import { useAuth } from "@/hook/useAuth"
 import { useForm, SubmitHandler } from "react-hook-form"
 import toast from "react-hot-toast"
+import { useLocation, useNavigate } from "react-router-dom"
 
 type Inputs = {
     exampleRequired: string
@@ -12,15 +13,22 @@ type Inputs = {
 }
 export const SignIn = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
-  const {signInAuth} = useAuth()
+  const { signInAuth } = useAuth()
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location.state?.pathname || '/'
+
+
     const onSubmit: SubmitHandler<Inputs> = (data,e) => {
       
         const email = data.email;
         const password = data.password;
       signInAuth(email, password)
         .then(res => {
+          navigate(from, { replace:true})
           toast.success(`${res.user.displayName}- You are successfully Join`)
           e?.target.reset()
+
         }).catch(e=> {
           console.log(e)
           toast.error(e.message)
@@ -44,7 +52,7 @@ export const SignIn = () => {
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                 <Button className="w-full" type="submit">Join as a Employee</Button>
+                 <Button className="w-full" type="submit">Log In</Button>
             </form>
           </div>
         
