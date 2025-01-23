@@ -28,7 +28,7 @@ const SwiperBanner = () => {
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 60000000,
+                    delay: 6000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -43,9 +43,6 @@ const SwiperBanner = () => {
                     <div className="flex flex-col-reverse md:grid  md:grid-cols-2 max-w-7xl mx-auto md:w-[90%]   gap-5">
                         <div className="col-span-1 space-y-7 flex flex-col justify-center">
                             <motion.h1
-                                // animate={{ y: [0, 15, 0] }}
-                                // transition={{ duration: 3, repeat: Infinity }}
-
                                 className="text-xl md:text-3xl xl:text-5xl font-medium leading-tight">Effortless Asset Management at Your   <motion.span animate={{ color: ['#3c65f5'] }}>Fingertips.</motion.span></motion.h1>
                            
                             <p className=" xl:w-4/5 text-gray-600 text-xl">Streamline your asset tracking and management process with ease. Monitor, organize, and optimize all your assets in one intuitive platform, designed for efficiency and precision.</p>
@@ -61,7 +58,7 @@ const SwiperBanner = () => {
                                     transition={{ duration: 10, repeat: Infinity }}
                                     src="/images/Banner/hr.jpg" className=" rounded-b-3xl rounded-btl-3xl border-t-8 border-r-8 border-[#3c65f5]" alt="" />
                                 <motion.img
-                                    animate={{ x: [180, 200, 180] }}
+                                    animate={{ y: [0, 20, 0] }}
                                     transition={{ duration: 10, repeat: Infinity }}
                                     src="/images/Banner/hr2.jpg" className="relative -top-10 rounded-t-3xl rounded-br-3xl border-l-8 border-b-8 border-[#3c65f5]" alt="" />
                             </figure>
@@ -78,7 +75,7 @@ const SwiperBanner = () => {
                                     transition={{ duration: 10, repeat: Infinity }}
                                     src="/images/Banner/employee.jpg" className="rounded-t-3xl rounded-br-3xl border-t-8 border-r-8 border-[#3c65f5]" alt="" />
                                 <motion.img
-                                    animate={{ x: [180, 200, 180] }}
+                                    animate={{ y: [0, 20, 0] }}
                                     transition={{ duration: 10, repeat: Infinity }}
                                     src="/images/Banner/employee2.jpg" className="relative -top-10 rounded-t-3xl rounded-br-3xl border-l-8 border-b-8 border-[#3c65f5]" alt="" />
                             </figure>
