@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAuth } from "@/hook/useAuth"
+import { useAxiosSecure } from "@/hook/useAxiosSecure"
 import { useForm, SubmitHandler } from "react-hook-form"
 import toast from "react-hot-toast"
-import { useLocation, useNavigate } from "react-router-dom"
+import {useLocation, useNavigate } from "react-router-dom"
 
 type Inputs = {
     exampleRequired: string
@@ -14,6 +15,8 @@ type Inputs = {
 export const SignIn = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
   const { signInAuth } = useAuth()
+  const axiosSecure = useAxiosSecure()
+
   const location = useLocation()
   const navigate = useNavigate()
   const from = location.state?.pathname || '/'
@@ -24,10 +27,27 @@ export const SignIn = () => {
         const email = data.email;
         const password = data.password;
       signInAuth(email, password)
-        .then(res => {
-          navigate(from, { replace:true})
-          toast.success(`${res.user.displayName}- You are successfully Join`)
-          e?.target.reset()
+        .then(async(res) => {
+          const response = await axiosSecure.get(`/users?email=${res?.user?.email}`)
+          toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
+            e?.target.reset()
+          if (response?.data?.role == 'Employee') {
+            if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+              return navigate('/employee/eHome')
+            }
+            else {
+              return navigate(from,{replace:true})
+            }
+          }
+          if (response?.data?.role == 'Admin' ) {
+            if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+              return navigate('/hr/hrHome')
+            }
+            return navigate(from,{replace:true})
+          }
+          else {
+            navigate(from, {replace:true})
+          }
 
         }).catch(e=> {
           console.log(e)

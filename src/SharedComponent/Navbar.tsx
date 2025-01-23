@@ -5,16 +5,17 @@ import { useUsersData } from "@/hook/useUsersData"
 import { AlignJustify, X } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 
 export const Navbar = () => {
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
     const [usersData] = useUsersData()
-
+    const navigate = useNavigate()
   const signOut = () => {
     signOutAuth()
       .then(() => {
+        navigate('/signIn');
       toast.success('Your are successfully loged out')
       }).catch((e) => {
         console.log(e)
@@ -55,14 +56,15 @@ export const Navbar = () => {
                               {
                                 usersData?.role ==='Employee' ? 
                                   <>
-                                      <NavLink className='px-2 py-1 rounded' to={'/EHome'}> <li>Employee Home</li></NavLink>
-                                      <NavLink className='px-2 py-1 rounded' to={'/myAssets'}> <li>My Assets</li></NavLink>
-                                      <NavLink className='px-2 py-1 rounded' to={'/myTeam'}> <li>My Team</li></NavLink>
-                                      <NavLink className='px-2 py-1 rounded' to={'/requestForAsset'}> <li>Request for an Asset</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/employee/eHome'}> <li>Employee Home</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/employee/myAssets'}> <li>My Assets</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/employee/myTeam'}> <li>My Team</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/employee/requestForAsset'}> <li>Request for an Asset</li></NavLink>
                                     
                                   </>
                                     :
-                                  <>
+                        <>
+                                       <NavLink className='px-2 py-1 rounded' to={'/hrHome'}> <li>HR Home</li></NavLink>
                                     <NavLink className='px-2 py-1 rounded' to={'/assetList'}> <li>Asset List</li></NavLink>
                                       <NavLink className='px-2 py-1 rounded' to={'/addAsset'}> <li>Add Asset</li></NavLink>
                                       <NavLink className='px-2 py-1 rounded' to={'/allRequest'}> <li>All Request</li></NavLink>
@@ -110,19 +112,19 @@ export const Navbar = () => {
                       {
                         user.email && usersData.role =='Employee' ? 
                           <>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/eHome'}> <li>Employee Home</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/myAssets'}> <li>My Assets</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/myTeam'}> <li>My Team</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/requestForAsset'}> <li>Request for an Asset</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/eHome'}> <li>Employee Home</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/myAssets'}> <li>My Assets</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/myTeam'}> <li>My Team</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/requestForAsset'}> <li>Request for an Asset</li></NavLink>
                             
                           </>
                             :
                           <>
-                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hrHome'}> <li>HR_Home</li></NavLink>
-                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/assetList'}> <li>Asset List</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/addAsset'}> <li>Add Asset</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/allRequest'}> <li>All Request</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employeeList'}> <li>My Employee List</li></NavLink>
+                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/hrHome'}> <li>HR_Home</li></NavLink>
+                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/assetList'}> <li>Asset List</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/addAsset'}> <li>Add Asset</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/allRequest'}> <li>All Request</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/employeeList'}> <li>My Employee List</li></NavLink>
                           </>
                       }
                       
