@@ -28,7 +28,7 @@ const SwiperBanner = () => {
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 6000,
+                    delay: 60000000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -40,57 +40,45 @@ const SwiperBanner = () => {
                 className="mySwiper"
             >
                 <SwiperSlide className=''>
-                    <div className="flex flex-col-reverse md:grid  md:grid-cols-2 max-w-7xl mx-auto md:w-[90%]   gap-5">
-                        <div className="col-span-1 space-y-7 flex flex-col justify-center">
-                            <motion.h1
-                                className="text-xl md:text-3xl xl:text-5xl font-medium leading-tight">Effortless Asset Management at Your   <motion.span animate={{ color: ['#3c65f5'] }}>Fingertips.</motion.span></motion.h1>
-                           
-                            <p className=" xl:w-4/5 text-gray-600 text-xl">Streamline your asset tracking and management process with ease. Monitor, organize, and optimize all your assets in one intuitive platform, designed for efficiency and precision.</p>
-                            <div>
-                           <Link to='/asEmployee'>  <Button className="w-full text-xl">Join as HR_Manager</Button></Link>
-                            </div>
+                   
+                    <div className="relative h-full max-w-7xl mx-auto w-full  gap-5  md:px-0">
+                    
+                        <img className='absolute z-[-1]  brightness-50  w-full h-full bg-transparent' src="/images/Banner/banner1.jpg" alt="" />
+                    <div className="lg:w-2/3 mx-auto h-full space-y-7 flex flex-col justify-center items-center text-center px-0  text-white">
+                        <motion.h1
+                        className="text-2xl md:text-3xl xl:text-5xl font-medium leading-tight text-center ">
+                       Effortless Asset Management at Your   <motion.span animate={{ color: ['#3c65f5'] }}>Fingertips.</motion.span>
+                        </motion.h1>
+                        <p className="xl:w-4/5 text-white md:text-xl text-center  ">
+                        Streamline your asset tracking and management process with ease. Monitor, organize, and optimize all your assets in one intuitive platform, designed for efficiency and precision.
+                        </p>
+                         <div>
+                           <Link to='/asEmployee'>  <Button className="w-full md:text-xl">Join as HR_Manager</Button></Link>
                         </div>
-                        <div className='h-full'>
-                            <figure className="w-1/2 lg:w-2/3">
-                                <motion.img
-                                    
-                                    animate={{ y: [10, 30, 10] }}
-                                    transition={{ duration: 10, repeat: Infinity }}
-                                    src="/images/Banner/hr.jpg" className=" rounded-b-3xl rounded-btl-3xl border-t-8 border-r-8 border-[#3c65f5]" alt="" />
-                                <motion.img
-                                    animate={{ y: [0, 20, 0] }}
-                                    transition={{ duration: 10, repeat: Infinity }}
-                                    src="/images/Banner/hr2.jpg" className="relative -top-10 rounded-t-3xl rounded-br-3xl border-l-8 border-b-8 border-[#3c65f5]" alt="" />
-                            </figure>
-                        </div>
+                    </div>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <div className="flex flex-col md:grid grid-cols-2 max-w-7xl mx-auto md:w-[90%]   gap-5 ">
-                        
-                        <div className='h-full'>
-                            <figure className="w-1/2 lg:w-2/3">
-                                <motion.img
-                                    animate={{ y: [10, 30, 10] }}
-                                    transition={{ duration: 10, repeat: Infinity }}
-                                    src="/images/Banner/employee.jpg" className="rounded-t-3xl rounded-br-3xl border-t-8 border-r-8 border-[#3c65f5]" alt="" />
-                                <motion.img
-                                    animate={{ y: [0, 20, 0] }}
-                                    transition={{ duration: 10, repeat: Infinity }}
-                                    src="/images/Banner/employee2.jpg" className="relative -top-10 rounded-t-3xl rounded-br-3xl border-l-8 border-b-8 border-[#3c65f5]" alt="" />
-                            </figure>
+                    <div className="relative h-full max-w-7xl mx-auto w-full  gap-5 md:px-0">
+                    
+                        <img className='absolute z-[-1]  brightness-50  w-full h-full bg-transparent' src="/images/Banner/banner2.jpg" alt="" />
+                    <div className="lg:w-2/3 mx-auto h-full space-y-7 flex flex-col justify-center items-center text-center px-0 text-white  ">
+                        <motion.h1
+                        className="text-2xl md:text-3xl xl:text-5xl font-medium leading-tight text-center">
+                        Simplify Asset Management Today{" "}
+                        <motion.span animate={{ color: ["#3c65f5"] }}>
+                            Empower Your Asset Strategy
+                        </motion.span>
+                        </motion.h1>
+                        <p className="xl:w-4/5 text-white md:text-xl text-center  ">
+                        Take control of your assets with our user-friendly platform. Track, manage, and analyze your resources effortlessly to maximize productivity and minimize downtime.
+                        </p>
+                        <div className="flex justify-center md:justify-start">
+                        <Link to="/asHr">
+                            <Button className="w-full md:w-auto text-xl">Join as Employee</Button>
+                        </Link>
                         </div>
-                        <div className="col-span-1 space-y-7 flex flex-col justify-center">
-                            <motion.h1
-                                className="text-xl md:text-3xl xl:text-5xl font-medium leading-tight">
-                               Simplify Asset Management Today <motion.span animate={{ color: ['#3c65f5'] }}>Empower Your Asset Strategy</motion.span></motion.h1>
-                           
-                            <p className=" xl:w-4/5 text-gray-600 text-xl">Take control of your assets with our user-friendly platform. Track, manage, and analyze your resources effortlessly to maximize productivity and minimize downtime.</p>
-                            <div>
-                            <Link to='/asHr'> <Button className="w-full text-xl">Join as Employee</Button></Link>
-                            </div>
-                                
-                        </div>
+                    </div>
                     </div>
                 </SwiperSlide>
                 <div className="autoplay-progress" slot="container-end">

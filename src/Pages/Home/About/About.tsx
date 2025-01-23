@@ -2,7 +2,7 @@
 const About= () => {
   return (
     <section className="bg-gray-100 py-16 px-6 md:px-12 lg:px-20 mt-10">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-5 lg:gap-10 items-center text-center md:text-left">
      
         <div>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
@@ -22,12 +22,11 @@ const About= () => {
           </p>
         </div>
 
-        {/* Right Column: Image */}
-        <div className="flex justify-center md:justify-end">
+        <div className="w-full flex lg:justify-end">
           <img
             src="/images/about/about.jpg"
             alt="About Us Illustration"
-            className="rounded-lg shadow-lg w-full md:w-4/5 lg:w-3/4"
+            className="rounded-lg shadow-lg w-full  lg:w-3/4"
           />
         </div>
       </div>

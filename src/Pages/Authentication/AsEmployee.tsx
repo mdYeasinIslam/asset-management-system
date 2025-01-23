@@ -68,7 +68,7 @@ export const AsEmployee = () => {
     }
 
   return (
-      <section className="mt-10 px-5">
+      <section className="my-10 px-5">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
               <figure>
                   <img src="/images/auth/authentication1.png" alt="" className="rounded-xl"/>

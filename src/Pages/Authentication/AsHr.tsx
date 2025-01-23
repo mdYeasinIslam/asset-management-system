@@ -94,10 +94,10 @@ export const AsHr = () => {
     }
 
   return (
-      <section className="mt-10 px-5">
+      <section className="my-10 px-5">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
               <figure>
-                  <img src="/images/auth/authentication1.png" alt="" className="rounded-xl"/>
+                  <img src="/images/auth/hrSignUp.jpg" alt="" className="rounded-xl"/>
               </figure>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
                    <h1 className="font-medium text-2xl text-center font-serif">Join or create account as a HR Manager</h1>

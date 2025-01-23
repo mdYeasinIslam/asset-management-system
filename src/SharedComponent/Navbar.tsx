@@ -99,7 +99,7 @@ export const Navbar = () => {
           
         <nav className={`hidden md:flex gap-5`}>
           
-              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] lg:text-[0.9rem]`}>
+              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] lg:text-xl`}>
                 {
                   !user ?
                   <>

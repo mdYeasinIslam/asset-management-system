@@ -17,6 +17,7 @@ import { HrHome } from "@/Pages/HR_Manager/HrHome"
 import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { PrivateRoot } from "./PrivateRoot"
 
 export const Root = () => {
     const routes = createBrowserRouter([
@@ -45,7 +46,7 @@ export const Root = () => {
         },
         {
             path: '/employee',
-            element: <EmployeeLayout />,
+            element: <PrivateRoot><EmployeeLayout /></PrivateRoot>,
             children: [
                 {
                     path: '/employee',
@@ -74,7 +75,7 @@ export const Root = () => {
         },
         {
             path: "/hr",
-            element: <HrLayout />,
+            element: <PrivateRoot><HrLayout /></PrivateRoot>,
             children: [
                 {
                     path: '/hr',
