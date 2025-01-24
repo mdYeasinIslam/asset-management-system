@@ -41,10 +41,10 @@ const SwiperBanner = () => {
             >
                 <SwiperSlide className=''>
                    
-                    <div className="relative h-full max-w-7xl mx-auto w-full  gap-5  md:px-0">
+                    <div className="relative h-full mx-auto w-full  gap-5 ">
                     
-                        <img className='absolute z-[-1]  brightness-50  w-full h-full bg-transparent' src="/images/Banner/banner1.jpg" alt="" />
-                    <div className="lg:w-2/3 mx-auto h-full space-y-7 flex flex-col justify-center items-center text-center px-0  text-white">
+                        <img className='absolute z-[-1]  brightness-50  w-[100vh] h-full bg-transparent' src="/images/Banner/banner1.jpg" alt="" />
+                    <div className=" mx-auto h-full space-y-7 flex flex-col justify-center items-center text-center px-0  text-white">
                         <motion.h1
                         className="text-2xl md:text-3xl xl:text-5xl font-medium leading-tight text-center ">
                        Effortless Asset Management at Your   <motion.span animate={{ color: ['#3c65f5'] }}>Fingertips.</motion.span>

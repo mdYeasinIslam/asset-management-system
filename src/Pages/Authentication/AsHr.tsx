@@ -70,7 +70,7 @@ export const AsHr = () => {
           HR_photo:profilePhotoURL,
           date_of_birth: birth,
           companyName, 
-          complany_logo: companyLogoURL,
+          company_logo: companyLogoURL,
           package: selectPackage,
           role:'Admin'
         }

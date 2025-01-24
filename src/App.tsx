@@ -4,11 +4,11 @@ import { Toaster } from 'react-hot-toast'
 function App() {
 
   return (
-    <div className=''>
+    <>
       <Root />
        <Toaster />
 
-    </div>
+    </>
   )
 }
 

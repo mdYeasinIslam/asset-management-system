@@ -10,7 +10,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 export const Navbar = () => {
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
-    const [usersData] = useUsersData()
+  const [usersData] = useUsersData()
     const navigate = useNavigate()
   const signOut = () => {
     signOutAuth()
@@ -99,10 +99,10 @@ export const Navbar = () => {
           
         <nav className={`hidden md:flex gap-5`}>
           
-              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] lg:text-xl`}>
+              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] lg:text-[0.9rem] `}>
                 {
                   !user ?
-                  <>
+                     <>
                      <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
                       <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
                       <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>

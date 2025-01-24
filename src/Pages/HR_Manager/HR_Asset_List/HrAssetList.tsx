@@ -1,6 +1,9 @@
+import { DisplayAssets } from "./DispalyAssets"
 
 export const HrAssetList = () => {
   return (
-    <div>HrAssetList</div>
+    <div>
+      <DisplayAssets/>
+    </div>
   )
 }
