@@ -19,3 +19,16 @@ export type UserTypeForDashboard = {
       role:string
       email:string
 }
+
+export type AssetType = {
+      _id:string
+       name:string,
+          type:string,
+          quantity :number,
+          hr_name:string,
+          hr_email:string,
+          companyName:string,
+          companyLogo:string,
+          date:string,
+          status:string
+}

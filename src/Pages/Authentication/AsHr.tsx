@@ -112,7 +112,7 @@ export const AsHr = () => {
 
                   <div className="flex flex-col gap-1 ">
                         <label htmlFor="date"> Date of birth :</label>
-                      <Input id="data" {...register('birth')} type="date" placeholder="Your date of birth" required />
+                      <Input id="date" {...register('birth')} type="date" placeholder="Your date of birth" required />
                    </div>
           
                   <div className="flex flex-col gap-1 ">

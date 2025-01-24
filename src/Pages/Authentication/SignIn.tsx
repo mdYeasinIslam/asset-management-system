@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useAuth } from "@/hook/useAuth"
 import { useAxiosSecure } from "@/hook/useAxiosSecure"
-import { useForm, SubmitHandler, Message } from "react-hook-form"
+import { useForm, SubmitHandler } from "react-hook-form"
 import toast from "react-hot-toast"
 import {useLocation, useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc";

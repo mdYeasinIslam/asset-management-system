@@ -24,6 +24,7 @@ type Inputs = {
 
 }
 import moment from 'moment'
+
 export const AddAsset = () => {
   const axiosSecure = useAxiosSecure()
   const [usersData] = useUsersData()
@@ -41,7 +42,17 @@ export const AddAsset = () => {
         const hr_email = usersData?.userInfo[0]?.email
         const companyLogo = usersData?.userInfo[0]?.company_logo
        const currentDate =moment().format('DD-MM-YYYY')
-        const product = { name, type, quantity, hr_name, hr_email, companyName, companyLogo,date:currentDate,status }
+        const product = {
+          name,
+          type,
+          quantity,
+          hr_name,
+          hr_email,
+          companyName,
+          companyLogo,
+          date: currentDate,
+          status
+        }
         
       const res = await axiosSecure.post('/assets', product)
         

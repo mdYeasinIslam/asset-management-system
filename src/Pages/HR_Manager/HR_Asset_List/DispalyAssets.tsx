@@ -11,18 +11,8 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table"
-import {  ChevronDown, MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
 import {
   Table,
@@ -34,52 +24,13 @@ import {
 } from "@/components/ui/table"
 import { useState } from "react"
 import { useAllAssets } from "@/hook/useAllAssets"
+import { Skeleton } from "@/components/ui/skeleton"
+import ActionCell from "./ ActionCell"
+import { SelectTrigger,Select, SelectContent, SelectItem } from "@/components/ui/select"
 
-// const data: Payment[] = [
-//   {
-//     id: "m5gr84i9",
-//     name:'laptop',
-//     date:'24-01-2025',
-//     type:'Electronics',
-//     quantity:1,
-//     status: "success"
-//   },
-//   {
-//     id: "3u1reuv4",
-//     name:'laptop',
-//     date:'24-01-2025',
-//     type:'Electronics',
-//     quantity:1,
-//     status: "success"
-//   },
-//   {
-//     id: "derv1ws0",
-//     name:'laptop',
-//     date:'24-01-2025',
-//     type:'Electronics',
-//     quantity:1,
-//     status: "processing"
-//   },
-//   {
-//     id: "5kma53ae",
-//     name:'Table',
-//     date:'24-01-2025',
-//     type:'Furniture',
-//     quantity:1,
-//     status: "success"
-//   },
-//   {
-//     id: "bhqecj4p",
-//     name:'laptop',
-//     date:'24-01-2025',
-//     type:'Electronics',
-//     quantity:1,
-//     status: "failed",
-//   },
-// ]
 
 export type Payment = {
-    id: string
+    _id: string
     name: string
     type: string
     date: string
@@ -97,7 +48,9 @@ export const columns: ColumnDef<Payment>[] = [
     {
     accessorKey: "type",
     header: "Product Type",
-    cell: ({ row }) => <div className="">{row.getValue("type")}</div>,
+        cell: ({ row }) => {
+          return  <div className="">{row.getValue("type")}</div>
+        },
     },
 
    {
@@ -113,38 +66,29 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => {
       const quantity = parseInt(row.getValue("quantity"))
       return <div className="text-center font-medium">{quantity}</div>
+      },
+      filterFn: (row, columnId, filterValue) => {
+      const quantity = Number(row.getValue(columnId)); // Convert quantity to number
+      if (filterValue === "available") {
+        return quantity > 0;
+      }
+      if (filterValue === "outOfStock") {
+        return quantity === 0;
+      }
+      return true; // Default: Show all
+      },
+       enableSorting: true, // Enable sorting
+    sortingFn: (a, b) => {
+      // Custom sorting function for string quantity
+      const aQuantity = Number(a.original.quantity) || 0;
+      const bQuantity = Number(b.original.quantity) || 0;
+      return aQuantity - bQuantity;
     },
   },
   {
     id: "actions",
      header: () => <div className="text-right">Actions</div>,
-    cell: ({ row }) => {
-      const payment = row.original
-        return (
-          <div className="text-right"> 
-            <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="h-8 w-8 p-0">
-                <span className="sr-only">Open menu</span>
-                <MoreHorizontal />
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                <DropdownMenuItem
-                onClick={() => navigator.clipboard.writeText(payment.id)}
-                >
-                Copy payment ID
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>View customer</DropdownMenuItem>
-                <DropdownMenuItem>View payment details</DropdownMenuItem>
-            </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        
-      )
-    },
+      cell: ({ row }) => <ActionCell row={row} />,
   },
 ]
 
@@ -156,8 +100,7 @@ export function DisplayAssets() {
   const [columnVisibility, setColumnVisibility] =
     useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
-    const [assetsData] = useAllAssets()
-    console.log(assetsData)
+    const [assetsData,isPending] = useAllAssets()
   const table = useReactTable({
     data:assetsData,
     columns,
@@ -176,53 +119,133 @@ export function DisplayAssets() {
       rowSelection,
     },
   })
+    
+    // Filter section ----------------------------------------------------------------------------------------------------------------------
+    const [selectedType, setSelectedType] = useState<string | undefined>(undefined);
+    const handleFilterChange = (type: string | undefined) => {
+        setSelectedType(type);
+        table.getColumn("type")?.setFilterValue(type ?? ""); 
+    };
 
+    const clearFilter = () => {
+        handleFilterChange(undefined);
+    };
+    const types = [...new Set(table.getRowModel().rows.map((row) => row.original.type))];
+    
+    const handleQuantityFilter = (filterStatus:"available" | "outOfStock") => {
+        if (filterStatus == 'available') {
+            table.getColumn('quantity')?.setFilterValue(filterStatus)
+        }
+        if (filterStatus == 'outOfStock') {
+            table.getColumn('quantity')?.setFilterValue(filterStatus)
+        }
+    }
+  const handleSort = (direction: "asc" | "desc") => {
+    table.setSorting([{ id: "quantity", desc: direction === "desc" }]);
+  };
   return (
     <div className="container mx-auto w-full">
-      <div className="flex items-center py-4">
+      <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Search by name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
-        />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
-      <div className="rounded-md border">
+              />
+              <div className="flex gap-4">         
+                <div>
+                <Select
+                        onValueChange={(value) => handleFilterChange(value)}
+                        // value={selectedType ??''}
+                    >
+                        <SelectTrigger className="max-w-xs">
+                        <span>{selectedType || "Filter by Type"}</span>
+                        </SelectTrigger>
+                        <SelectContent>
+                                {types.map((type, idx) => (
+                            <SelectItem className="bg-white hover:bg-primary hover:text-white" key={idx} value={type}>
+                                {type}
+                            </SelectItem>
+                        ))}
+                    {selectedType &&<Button onClick={clearFilter} className="bg-white text-black hover:bg-primary hover:text-white w-full">Show all</Button>} 
+                        </SelectContent>
+                    </Select>    
+                    </div>    
+                    {/* --------------------filter by stock------------------------- */}
+                <div>
+                <Select
+                        onValueChange={(value) => handleFilterChange(value)}
+                        // value={selectedType ??''}
+                    >
+                        <SelectTrigger className="max-w-lg md:max-w-xs">
+                        <span> Filter by Stock</span>
+                        </SelectTrigger>
+                            <SelectContent>
+                                <div className="flex flex-col gap-2">
+                                    
+                                <Button onClick={()=>handleQuantityFilter('available')} className="bg-white text-black hover:bg-primary hover:text-white w-full">Available</Button>
+                                <Button onClick={()=>handleQuantityFilter('outOfStock')} className="bg-white text-black hover:bg-primary hover:text-white w-full">Out of stock</Button>
+                                <Button onClick={() => table.getColumn("quantity")?.setFilterValue("")}  className="bg-white text-black hover:bg-primary hover:text-white w-full">Show all</Button>
+                                </div>
+                                
+                        </SelectContent>
+                    </Select>    
+                </div>    
+                    {/* -----------sorting by quantity---------------------------- */}
+                <div>
+                <Select
+                        onValueChange={(value) => handleFilterChange(value)}
+                    >
+                        <SelectTrigger className="max-w-xs">
+                        <span> "Sorting"</span>
+                        </SelectTrigger>
+                            <SelectContent>
+                                <div className="flex flex-col gap-2">
+                                    
+                                    <Button
+                                        onClick={() => handleSort("asc")}
+                                        variant="outline"
+                                        className="capitalize"
+                                    >
+                                        Sort by Quantity (Ascending)
+                                    </Button>
+                                    <Button
+                                        onClick={() => handleSort("desc")}
+                                        variant="outline"
+                                        className="capitalize"
+                                    >
+                                        Sort by Quantity (Descending)
+                                    </Button>
+                                </div>
+                                
+                        </SelectContent>
+                    </Select>    
+                </div>    
+            </div>
+              </div>
+          <div className="rounded-md border">
+        {
+        isPending ?
+            <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
+                <Skeleton className="h-10 w-1/2 rounded-xl  bg-gray-700" />
+                <div className="space-y-2 w-full flex flex-col items-center">
+                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
+                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
+                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
+                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
+                </div>
+          </div>
+         :
+
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead key={header.id} className="text-black font-medium ">
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -264,6 +287,7 @@ export function DisplayAssets() {
             )}
           </TableBody>
         </Table>
+         }
       </div>
     
     </div>
