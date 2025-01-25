@@ -25,11 +25,11 @@ export const SignIn = () => {
 
     const onSubmit: SubmitHandler<Inputs> = (data,e) => {
       
-        const email = data.email;
+      const email = data.email.toLowerCase();
         const password = data.password;
       signInAuth(email, password)
         .then(async(res) => {
-          const response = await axiosSecure.get(`/users?email=${res?.user?.email}`)
+          const response = await axiosSecure.get(`/users?email=${email}`)
           toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
             e?.target.reset()
           if (response?.data?.role == 'Employee') {

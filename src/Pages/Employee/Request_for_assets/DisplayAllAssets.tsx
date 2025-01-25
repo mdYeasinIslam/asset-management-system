@@ -19,7 +19,7 @@ export const DisplayAllAssets = ({assets}:Prop) => {
      <Card className="">
       <CardHeader>
               <CardTitle>{assets?.name}</CardTitle>
-      </CardHeader>
+      </CardHeader> 
       <CardContent>
               <p className="font-medium  font-sans">Type : {assets?.type}</p>
              <div className="flex gap-1 items-center"><span className="font-medium ">Availability :</span>{

@@ -6,7 +6,7 @@ import auth from "@/firebase/firebase.init"
 import { useAxiosPublic } from "@/hook/useAxiosPublic"
 
 export const ContextProvider = ({ children }: ChildrenType) => {
-    const [user, setUser] = useState<User | null>(null)
+    const [user, setUser] = useState<User | null | undefined>(null)
     const [loading,setLoading] = useState(true)
     const axiosPublic = useAxiosPublic();
 
@@ -41,11 +41,12 @@ export const ContextProvider = ({ children }: ChildrenType) => {
                 const email= {email:userInfo.email}
                 axiosPublic.post('/jwt', email)
                     .then(res => {
-                        localStorage.setItem('token',res.data)
+                        localStorage.setItem('token', res.data)
+                          setLoading(false)
                 })
             }
             else {
-                localStorage.removeItem('token')
+        localStorage.removeItem('token')
             }
             setUser(userInfo)
             setLoading(false)

@@ -100,7 +100,8 @@ export function DisplayAssets() {
   const [columnVisibility, setColumnVisibility] =
     useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
-    const [assetsData,isPending] = useAllAssets()
+  const [assetsData, isPending] = useAllAssets()
+  
   const table = useReactTable({
     data:assetsData,
     columns,

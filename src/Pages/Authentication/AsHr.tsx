@@ -40,7 +40,7 @@ export const AsHr = () => {
       
       try {
         const name = data.name;
-        const email = data.email;
+        const email = data.email?.toLowerCase();
         const password = data.password;
         const birth = data.birth
         const companyName = data.companyName;
@@ -62,7 +62,7 @@ export const AsHr = () => {
       ])
       const companyLogoURL = res.data?.data.display_url;
       const profilePhotoURL = res2.data?.data.display_url;
-      console.log(res,profilePhotoURL)
+   
         const profile = { displayName: name, photoURL:profilePhotoURL }
         const userInfo = {
           HR_Name: name,
@@ -76,18 +76,20 @@ export const AsHr = () => {
         }
         const signInOperation= await signUpAuth(email, password)
         if (signInOperation) {
-          await  updateUserAuth(profile)
+          await updateUserAuth(profile)
           const response = await axiosPublic.post('/users', userInfo);
           console.log(response)
           if (response) {
-            navigate('/hrHome')
+            navigate('/hr/hrHome')
             toast.success('Your are successfully join as a HR manager')
             e?.target.reset()
           }
         }
        
-      } catch (error) {
+      } catch (error:any) {
         console.log(error)
+        toast.error(error)
+        
       }
       
         
@@ -151,7 +153,7 @@ export const AsHr = () => {
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                 <Button className="w-full" type="submit">Join as a Employee</Button>
+                 <Button className="w-full" type="submit">Join as a Hr_manager</Button>
             </form>
           </div>
         

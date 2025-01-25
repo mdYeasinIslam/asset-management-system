@@ -1,6 +1,6 @@
 import { User, UserCredential } from "firebase/auth"
 export type ContextType = {
-      user: User | null
+      user: User | null | undefined
       loading:boolean
       signUpAuth: (email: string, password: string) => Promise<UserCredential>
       signInAuth: (email: string, password: string) => Promise<UserCredential>

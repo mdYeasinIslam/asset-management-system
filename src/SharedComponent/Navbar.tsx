@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/hook/useAuth"
+import { useIsAdmin } from "@/hook/useIsAdmin"
 import { useUsersData } from "@/hook/useUsersData"
 import { AlignJustify, X } from "lucide-react"
 import { useState } from "react"
@@ -10,7 +11,9 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 export const Navbar = () => {
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
-  const [usersData] = useUsersData()
+  const [, isPending] = useUsersData()
+  const [isAdmin] = useIsAdmin()
+  const userPhoto = user?.photoURL as string | undefined
     const navigate = useNavigate()
   const signOut = () => {
     signOutAuth()
@@ -22,10 +25,13 @@ export const Navbar = () => {
         toast.error(e.message)
     })
   }
+  if (isPending) {
+    return <div>loading............</div>
+  }
   return (
    <div className="fixed z-10 w-full  ">
       <div className="container mx-auto  md:flex md:justify-between md:items-center py-3  md:px-4 navbar-light bg-opacity-30">
-             
+      
         <div className="flex justify-between items-center gap-2 relative">  
                      <div className="flex items-center gap-2 pl-1">
                         <div onClick={() => setOpen(!open)} className=" flex md:hidden w-full">
@@ -54,7 +60,7 @@ export const Navbar = () => {
                             :
                             <>
                               {
-                                usersData?.role ==='Employee' ? 
+                                !isAdmin ? 
                                   <>
                                       <NavLink className='px-2 py-1 rounded' to={'/employee/eHome'}> <li>Employee Home</li></NavLink>
                                       <NavLink className='px-2 py-1 rounded' to={'/employee/myAssets'}> <li>My Assets</li></NavLink>
@@ -81,7 +87,7 @@ export const Navbar = () => {
                              <>
                             <NavLink className='px-2 py-1 rounded-sm' to={'/profile'}>
                               <Avatar>
-                                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                                <AvatarImage src={userPhoto} alt={user?.email} />
                                 <AvatarFallback>CN</AvatarFallback>
                               </Avatar>
                             </NavLink>
@@ -108,9 +114,9 @@ export const Navbar = () => {
                       <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
                     </>
                     :
-                    <>
+                <>
                       {
-                        user.email && usersData.role =='Employee' ? 
+                        user?.email && !isAdmin ? 
                           <>
                               <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/eHome'}> <li>Employee Home</li></NavLink>
                               <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/myAssets'}> <li>My Assets</li></NavLink>
@@ -127,21 +133,19 @@ export const Navbar = () => {
                               <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/employeeList'}> <li>My Employee List</li></NavLink>
                           </>
                       }
-                      
                     </>
                     }
-                  
               </ul>
                
               <ul className="flex gap-1 md:gap-1 justify-end items-center font-medium uppercase text-[0.9rem]">
                 {
                   user?.email ?
                 <>
-                  <NavLink className='md:px-2 md:py-1 rounded-sm' to={'/profile'}>
-                   <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
+                  <NavLink className='px-2 py-1 rounded-sm' to={'/profile'}>
+                      <Avatar>
+                        <AvatarImage title={user?.email} src={userPhoto} alt={user?.email} />
+                        <AvatarFallback>CN</AvatarFallback>
+                      </Avatar>
                   </NavLink>
                   <Button  onClick={signOut} variant="outline">Log out</Button>
                     </>
@@ -152,6 +156,7 @@ export const Navbar = () => {
                 }
               </ul>
             </nav>
+                 
         </div>
     </div>
   )

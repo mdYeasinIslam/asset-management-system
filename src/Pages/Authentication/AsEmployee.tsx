@@ -25,36 +25,35 @@ export const AsEmployee = () => {
   const { signUpAuth, updateUserAuth } = useAuth()
   const navigate = useNavigate()
     const onSubmit: SubmitHandler<Inputs> = async(data,e) => {
+      
+      try {
         const name = data.name;
-        const email = data.email;
+        const email = data.email.toLowerCase();
         const password = data.password;
         const birth = data.birth
-     
-      try {
-           const photoURL = { image: data.photoURL[0] };
+        const photoURL = {image: data.photoURL[0] };
         
-      const res= await axios.post(img_hosting_api,photoURL, {
-        headers: {
-          'content-type':'multipart/form-data'
-          }
-      })
+        const res= await axios.post(img_hosting_api,photoURL, {
+          headers: {
+            'content-type':'multipart/form-data'
+            }
+        })
         const profile = {
-          displayName: name,
-          photoURL: res.data.data?.display_url
-      }
-        console.log(profile)
-          const userInfo = {
-          Employee_Name: name,
-           email,
-          Employee_photo:photoURL,
-          date_of_birth: birth,
-          role:'Employee'
+            displayName: name,
+            photoURL: res.data.data?.display_url
         }
-        const signInOperation= await signUpAuth(email, password)
+        const userInfo = {
+          Employee_Name: name,
+            email,
+            Employee_photo:res.data?.data?.display_url,
+            date_of_birth: birth,
+            role:'Employee'
+          }
+        const signInOperation = await signUpAuth(email, password)
+        console.log(signInOperation)
         if (signInOperation) {
-          await  updateUserAuth(profile)
+          await  updateUserAuth(profile)  
           const response = await axiosPublic.post('/users', userInfo);
-          console.log(response)
           if (response) {
             navigate('/employee/eHome')
             toast.success('Your are successfully join as a Employee')

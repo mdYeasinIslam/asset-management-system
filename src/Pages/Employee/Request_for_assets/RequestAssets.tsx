@@ -3,26 +3,43 @@ import { DisplayAllAssets } from "./DisplayAllAssets";
 import { AssetType } from "@/Type/Types";
 import { Input } from "@/components/ui/input";
 import { CommonHeading } from "@/SharedComponent/CommonHeading";
-import { useAxiosPublic } from "@/hook/useAxiosPublic";
-import { useState } from "react";
+import {  useState } from "react";
 
 import { SelectTrigger,Select, SelectContent } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
+import { useAxiosSecure } from "@/hook/useAxiosSecure";
 
 export const RequestAssets = () => {
-  const axiosPublic =useAxiosPublic()
-  const [assetsData] = useAllAssets() 
+  const axiosSecure=useAxiosSecure()
+  const [assetsData] = useAllAssets('public') 
   const [data, setData] = useState([])
-  const [error,setError] =useState('')
+  const [error, setError] = useState('')
+  const [value, setValue] = useState('')
+
   //filter  functionality ------------------------
   const filterAssets = async (assetName?: string,status?:string | string) => {
-    console.log(assetName)
     try {
       setError('')
-       const response = await axiosPublic.get(`/assets?name=${assetName}&availabilty=${status}`)
-      console.log(response.data)
-    if (response.data) {
-        setData(response.data)
+      if (assetName) {
+        const response = await axiosSecure.get(`/assets?name=${assetName}&availabilty=${status}&public=public`)
+       console.log(response.data)
+       if (response.data) {
+           setData(response.data)
+         }
+      }
+      else if (status) { 
+        setValue(status)
+        const response = await axiosSecure.get(`/assets?name=${assetName}&availabilty=${status}`)
+       console.log(response.data)
+       if (response.data) {
+           setData(response.data)
+         }
+      }
+      else {
+        setError('')
+        setValue('')
+
+        setData(assetsData)
       }
     } catch (error:any) {
       console.log(error?.response?.data?.message)
@@ -30,7 +47,6 @@ export const RequestAssets = () => {
     }
    
   }
- 
   const content = <div className="flex flex-col items-center">
     <h1 className="text-2xl uppercase font-medium leading-tight">Store house of Assets</h1>
     <p className="text-gray-800">Find assets as your choice and neccesity. And use them carefully ,may be you need to return it to the company.</p>
@@ -50,13 +66,13 @@ export const RequestAssets = () => {
               <Select
                     >
                         <SelectTrigger className="max-w-lg md:max-w-xs">
-                        <span> Filter by Stock</span>
+              <span> {value ? <>{value}</>:'Filter by Stock'}</span>
                         </SelectTrigger>
                             <SelectContent>
                                 <div className="flex flex-col gap-2">
                                     
-                                <Button onClick={()=>filterAssets('','available')} className="bg-white text-black hover:bg-primary hover:text-white w-full">Available</Button>
-                                <Button onClick={()=>filterAssets('','outOfStock')} className="bg-white text-black hover:bg-primary hover:text-white w-full">Out of stock</Button>
+                                <Button onClick={()=>filterAssets('','available')} className={`bg-white text-black hover:bg-primary hover:text-white w-full ${value=='available'?'bg-primary text-white':''}`}>Available</Button>
+                                <Button onClick={()=>filterAssets('','outOfStock')} className={`bg-white text-black hover:bg-primary hover:text-white w-full ${value=='outOfStock'?'bg-primary text-white':''}`}>Out of stock</Button>
                                 <Button onClick={()=>filterAssets('','')}  className="bg-white text-black hover:bg-primary hover:text-white w-full">Show all</Button>
                                 </div>
                                 
@@ -64,8 +80,6 @@ export const RequestAssets = () => {
               </Select>    
           </div>    
       </div>
-
-     
         {
           error?.length ?
             <div className="text-3xl font-semibold ">
