@@ -28,7 +28,7 @@ const SwiperBanner = () => {
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 60000000,
+                    delay: 6000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -53,7 +53,7 @@ const SwiperBanner = () => {
                         Streamline your asset tracking and management process with ease. Monitor, organize, and optimize all your assets in one intuitive platform, designed for efficiency and precision.
                         </p>
                          <div>
-                           <Link to='/asEmployee'>  <Button className="w-full md:text-xl">Join as HR_Manager</Button></Link>
+                           <Link to='/asHr'>  <Button className="w-full md:text-xl">Join as HR_Manager</Button></Link>
                         </div>
                     </div>
                     </div>
@@ -74,7 +74,7 @@ const SwiperBanner = () => {
                         Take control of your assets with our user-friendly platform. Track, manage, and analyze your resources effortlessly to maximize productivity and minimize downtime.
                         </p>
                         <div className="flex justify-center md:justify-start">
-                        <Link to="/asHr">
+                        <Link to="/asEmployee">
                             <Button className="w-full md:w-auto text-xl">Join as Employee</Button>
                         </Link>
                         </div>

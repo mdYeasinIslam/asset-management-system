@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { useAxiosSecure } from "./useAxiosSecure"
 import { useAuth } from "./useAuth"
-
+ 
 export const useAllAssets = () => {
     const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
@@ -10,7 +10,7 @@ export const useAllAssets = () => {
         queryKey: ['assets', user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/assets?email=${user?.email}`)
+            const res = await axiosSecure.get(`/assets`)
             return res.data
         },
     })  

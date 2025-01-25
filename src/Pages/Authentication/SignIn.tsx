@@ -60,26 +60,26 @@ export const SignIn = () => {
   const google = async () => {
      googleAuth()
         .then(async(res) => {
-          const response = await axiosSecure.get(`/users?email=${res?.user?.email}`)
-          toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
-          
-          if (response?.data?.role == 'Employee') {
-            if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-              return navigate('/employee/eHome')
-            }
-            else {
-              return navigate(from,{replace:true})
-            }
-          }
-          if (response?.data?.role == 'Admin' ) {
-            if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-              return navigate('/hr/hrHome')
-            }
-            return navigate(from,{replace:true})
-          }
-          else {
-            navigate(from, {replace:true})
-          }
+          // const response = await axiosSecure.get(`/users?email=${res?.user?.email}`)
+          toast.success(`${res.user.displayName}- You are successfully Join as normal user.If your want to be a proper user, please register as Employee or HR_manager`)
+          return navigate('/employee/eHome')
+          // if (response?.data?.role == 'Employee') {
+          //   if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+          //     return navigate('/employee/eHome')
+          //   }
+          //   else {
+          //     return navigate(from,{replace:true})
+          //   }
+          // }
+          // if (response?.data?.role == 'Admin' ) {
+          //   if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+          //     return navigate('/hr/hrHome')
+          //   }
+          //   return navigate(from,{replace:true})
+          // }
+          // else {
+          //   navigate(from, {replace:true})
+          // }
 
         }).catch(e=> {
           console.log(e)
