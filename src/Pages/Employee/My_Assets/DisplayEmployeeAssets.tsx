@@ -22,24 +22,24 @@ import {
 } from "@/components/ui/table"
 import { useState } from "react"
 import { Skeleton } from "@/components/ui/skeleton"
-import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset"
 import { Badge } from "@/components/ui/badge"
-import { RequestAction } from "./RequestAction"
+import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset"
+import { useAuth } from "@/hook/useAuth"
+import { ActionBtton } from "./ActionButton"
 
 
-export type Payment = {
-
+export type AssetsType = {
   assetName: string
   assetType: string,
   notes: string,
   requesterName: string,
   requesterEmail: string,
   requestDate: string,
+  updateDate?: string,
   status:string
 
 }
-
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<AssetsType>[] = [
  
     {
     accessorKey: "assetName",
@@ -55,25 +55,20 @@ export const columns: ColumnDef<Payment>[] = [
         },
     },
 
-   {
-    accessorKey: "requesterEmail",
-    header: "Requester Email",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("requesterEmail")}</div>
-    ),
-  },
-   {
-    accessorKey: "requesterName",
-    header: "Requester Name",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("requesterName")}</div>
-    ),
-  },
+  
+   
    {
     accessorKey: "requestDate",
-    header: "Request Date",
+    header: "Requeste Date",
     cell: ({ row }) => (
       <div className="capitalize">{row.getValue("requestDate")}</div>
+    ),
+  },
+   {
+    accessorKey: "updateDate",
+    header: "Update Date",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("updateDate") ? row.getValue("updateDate"):"No Updation"}</div>
     ),
   },
    {
@@ -98,21 +93,27 @@ export const columns: ColumnDef<Payment>[] = [
   {
     id: "actions",
      header: () => <div className="text-right">Actions</div>,
-    cell: ({ row }) => <RequestAction row={row} />,
+      cell: ({ row }) => {
+          return <>
+          <ActionBtton row={row} />
+          </>
+      },
       
   },
 ]
 
-export function AllRequest() {
+export function DisplayEmployeeAssets() {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
     []
   )
+    
   const [columnVisibility, setColumnVisibility] =
     useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = useState({})
-  const [requestedAssets,isPending] = useAllRequestedAsset()
-
+    const [rowSelection, setRowSelection] = useState({})
+    const { user } = useAuth()
+    const email =user?.email as string
+  const [requestedAssets,isPending] = useAllRequestedAsset(email)
   const table = useReactTable({
     data:requestedAssets,
     columns,

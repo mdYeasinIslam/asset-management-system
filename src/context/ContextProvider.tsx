@@ -43,7 +43,9 @@ export const ContextProvider = ({ children }: ChildrenType) => {
                     .then(res => {
                         localStorage.setItem('token', res.data)
                           setLoading(false)
-                })
+                    }).catch(e => {
+                         console.log(e)
+                     })
             }
             else {
         localStorage.removeItem('token')

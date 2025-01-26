@@ -12,15 +12,15 @@ import { GitPullRequestClosed } from "lucide-react"
 import { useAxiosSecure } from "@/hook/useAxiosSecure"
 import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset"
 import toast from "react-hot-toast"
+import moment from "moment"
 
 export const RequestAction = ({row}:{row:any}) => {
   const [, , refetch] = useAllRequestedAsset();
   const axiosSecure = useAxiosSecure()
   const disable=`${row.original?.status}`
   const handleAction =async (value:string | string) => {
-    console.log(value)
-    console.log(row.original?._id)
-    const res = await axiosSecure.patch(`/employee/assetRequest/${row.original?._id}`,{value})
+    const updateDate =moment().format('DD-MM-YYYY')
+    const res = await axiosSecure.put(`/employee/assetRequest/${row.original?._id}`,{value,updateDate})
     console.log(res)
     if (res.data?.update.acknowledged) {
       toast.success(`Request is ${res.data?.value}`)
@@ -31,7 +31,7 @@ export const RequestAction = ({row}:{row:any}) => {
     <div className="text-right">
        <DropdownMenu>
       <DropdownMenuTrigger asChild>
-          <Button variant="action"  disabled={disable=='reject' && true}>
+          <Button variant="action"  disabled={disable=='rejected' && true}>
           <GitPullRequestClosed className="text-red-800"/>
           </Button>
       </DropdownMenuTrigger>

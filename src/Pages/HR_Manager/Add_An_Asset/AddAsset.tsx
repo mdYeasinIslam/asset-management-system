@@ -55,7 +55,10 @@ export const AddAsset = () => {
         }
         
       const res = await axiosSecure.post('/assets', product)
-        
+        console.log()
+        if (res.data.message) {
+         return toast.error(res.data.message)
+        }
         if (res.data?.acknowledged) {
           toast.success('Your asset is successfully saved on database')
         e?.target?.reset()

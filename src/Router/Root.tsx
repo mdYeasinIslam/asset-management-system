@@ -18,6 +18,8 @@ import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { PrivateRoot } from "./PrivateRoot"
+import ProfilePage from "@/SharedComponent/Profile"
+import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/PackageChange"
 
 export const Root = () => {
     const routes = createBrowserRouter([
@@ -41,6 +43,10 @@ export const Root = () => {
                 {
                     path: "/signIn",
                     element:<SignIn/>
+                },
+                {
+                    path: "/profile",
+                    element:<PrivateRoot><ProfilePage/></PrivateRoot>
                 },
             ]
         },
@@ -106,8 +112,12 @@ export const Root = () => {
                 },
                 {
                     path: '/hr/addEmployee',
-                    element:<AddEmployee/>
+                    element: <AddEmployee />
                 },
+                {
+                    path: '/hr/addEmployee/packageChange/:id',
+                    element:<PackageChange/>
+                }
 
             ]
         }

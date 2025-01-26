@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
 import { useAuth } from "@/hook/useAuth"
 import { useIsAdmin } from "@/hook/useIsAdmin"
 import { useUsersData } from "@/hook/useUsersData"
@@ -26,7 +27,13 @@ export const Navbar = () => {
     })
   }
   if (isPending) {
-    return <div>loading............</div>
+    return  <div className=" flex flex-col items-center justify-center gap-1 space-y-5 mt-10">
+                <Skeleton className="h-4 w-2/3 bg-gray-700" />
+                <Skeleton className="h-4 w-2/3 bg-gray-700" />
+                <Skeleton className="h-4 w-2/3 bg-gray-700" />
+                <Skeleton className="h-4 w-2/3 bg-gray-700" />
+               
+          </div>
   }
   return (
    <div className="fixed z-10 w-full  ">
@@ -68,13 +75,14 @@ export const Navbar = () => {
                                       <NavLink className='px-2 py-1 rounded' to={'/employee/requestForAsset'}> <li>Request for an Asset</li></NavLink>
                                     
                                   </>
-                                    :
+                                    : 
                         <>
-                                       <NavLink className='px-2 py-1 rounded' to={'/hrHome'}> <li>HR Home</li></NavLink>
-                                    <NavLink className='px-2 py-1 rounded' to={'/assetList'}> <li>Asset List</li></NavLink>
-                                      <NavLink className='px-2 py-1 rounded' to={'/addAsset'}> <li>Add Asset</li></NavLink>
-                                      <NavLink className='px-2 py-1 rounded' to={'/allRequest'}> <li>All Request</li></NavLink>
-                                      <NavLink className='px-2 py-1 rounded' to={'/employeeList'}> <li>My Employee List</li></NavLink>
+                                       <NavLink className='px-2 py-1 rounded' to={'/hr/hrHome'}> <li>HR Home</li></NavLink>
+                                    <NavLink className='px-2 py-1 rounded' to={'/hr/assetList'}> <li>Asset List</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/hr/addAsset'}> <li>Add Asset</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/hr/allRequest'}> <li>All Request</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/hr/employeeList'}> <li>My Employee List</li></NavLink>
+                                      <NavLink className='px-2 py-1 rounded' to={'/hr/addEmployee'}> <li>Add Employee </li></NavLink>
                                   </>
                               }
                               
@@ -85,12 +93,12 @@ export const Navbar = () => {
                         {
                           user?.email ?
                              <>
-                            <NavLink className='px-2 py-1 rounded-sm' to={'/profile'}>
+                            <Link className='px-2 py-1 rounded-sm' to={'/profile'}>
                               <Avatar>
                                 <AvatarImage src={userPhoto} alt={user?.email} />
                                 <AvatarFallback>CN</AvatarFallback>
                               </Avatar>
-                            </NavLink>
+                            </Link>
                             <Button  onClick={signOut} variant="outline">Log out</Button>
                             </>
                             :
@@ -131,6 +139,7 @@ export const Navbar = () => {
                               <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/addAsset'}> <li>Add Asset</li></NavLink>
                               <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/allRequest'}> <li>All Request</li></NavLink>
                               <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/employeeList'}> <li>My Employee List</li></NavLink>
+                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/addEmployee'}> <li>Add Employee</li></NavLink>
                           </>
                       }
                     </>
@@ -141,12 +150,12 @@ export const Navbar = () => {
                 {
                   user?.email ?
                 <>
-                  <NavLink className='px-2 py-1 rounded-sm' to={'/profile'}>
+                  <Link className='px-2 py-1 rounded-sm' to={'/profile'}>
                       <Avatar>
                         <AvatarImage title={user?.email} src={userPhoto} alt={user?.email} />
                         <AvatarFallback>CN</AvatarFallback>
                       </Avatar>
-                  </NavLink>
+                  </Link>
                   <Button  onClick={signOut} variant="outline">Log out</Button>
                     </>
                     :

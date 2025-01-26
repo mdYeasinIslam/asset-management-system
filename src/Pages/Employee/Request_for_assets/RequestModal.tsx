@@ -25,11 +25,13 @@ type Prop = {
 export const RequestModal = ({ assetInfo }: Prop) => {
     const [usersData] = useUsersData()
     const axiosSecure=useAxiosSecure()
-     const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
+    const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
+    // console.log(assetInfo)
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         const notes = data.notes;
         const currentDate = moment().format('DD-MM-YYYY');
         const Info = usersData?.userInfo;
+        
         const requestInfo = {
             requesterName:Info[0]?.Employee_Name,
             requesterEmail:Info[0]?.email,
@@ -38,16 +40,21 @@ export const RequestModal = ({ assetInfo }: Prop) => {
             requestDate: currentDate,
             assetId: assetInfo._id,
             assetName: assetInfo.name,
-            assetType:assetInfo?.type,
+            assetType: assetInfo?.type,
+            assetStatus:assetInfo?.status,
             notes,
             status:'pending'
         }
         console.log(requestInfo)
-        const response = await axiosSecure.post('/employee/assetRequest',requestInfo)
+        const response = await axiosSecure.post(`/employee/assetRequest?email=${Info[0]?.email}`,requestInfo)
         console.log(response)
+        if (response.data?.success == false) {
+            toast.error(response.data?.message)
+        }
         if (response.data?.acknowledged) {
            toast.success('your request for this asset is send to the HR') 
         }
+        
         }
   return (
       <div>
@@ -62,22 +69,15 @@ export const RequestModal = ({ assetInfo }: Prop) => {
                 </Label>
                 <Input id="notes"  {...register('notes')} type="text" className="border-2" />
             </div>
-            {/* <div className="flex flex-col  gap-2">
-                <Label htmlFor="username" className="text-left">
-                Quantity :
-                </Label>
-                <Input id="username" defaultValue={assetInfo?.quantity} {...register('quantity')} type="number" className="border-2" />
-                        
-            </div> */}
                 
-                    {errors.exampleRequired && <span>This field is required</span>}
-                    <DialogFooter>
-                        <Button type="submit">Request for asset</Button>
-                        <DialogClose asChild>
-                            <Button  type="button" className="bg-gray-500"> Close </Button>
-                        </DialogClose>
-                        
-                    </DialogFooter>
+            {errors.exampleRequired && <span>This field is required</span>}
+            <DialogFooter>
+                <Button type="submit">Request for asset</Button>
+                <DialogClose asChild>
+                    <Button  type="button" className="bg-gray-500"> Close </Button>
+                </DialogClose>
+                
+            </DialogFooter>
         </form>
       </DialogContent>
     </div>

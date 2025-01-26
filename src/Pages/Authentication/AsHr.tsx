@@ -78,7 +78,7 @@ export const AsHr = () => {
         if (signInOperation) {
           await updateUserAuth(profile)
           const response = await axiosPublic.post('/users', userInfo);
-          console.log(response)
+          console.log(response) 
           if (response) {
             navigate('/hr/hrHome')
             toast.success('Your are successfully join as a HR manager')
@@ -142,9 +142,9 @@ export const AsHr = () => {
                         <SelectContent {...register('package')}>
                             <SelectGroup>
                             <SelectLabel>Get package</SelectLabel>
-                            <SelectItem value="5_members">5 Members for $5</SelectItem>
-                            <SelectItem value="10_members">10 Members for $8</SelectItem>
-                            <SelectItem value="20_members">20 Members for $15</SelectItem>
+                            <SelectItem value="5_members for $5">5 Members for $5</SelectItem>
+                            <SelectItem value="10_members for $5">10 Members for $8</SelectItem>
+                            <SelectItem value="20_members for $5">20 Members for $15</SelectItem>
                             </SelectGroup>
                         </SelectContent>
                  </Select>
