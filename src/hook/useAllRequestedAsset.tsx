@@ -4,12 +4,12 @@ import { useAxiosSecure } from "./useAxiosSecure"
 export const useAllRequestedAsset = () => {
     const axiosSecure = useAxiosSecure()
 
-    const { data:requestedAssets } = useQuery({
+    const { data:requestedAssets,isPending,refetch } = useQuery({
         queryKey: ['requestedAssets'],
         queryFn: async () => {
             const res = await axiosSecure.get('/employee/assetRequest')
             return res.data;
         }
     })
-  return [requestedAssets]
+  return [requestedAssets,isPending,refetch]
 }
