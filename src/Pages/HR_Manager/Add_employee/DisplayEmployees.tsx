@@ -1,10 +1,7 @@
 import { Skeleton } from '@/components/ui/skeleton';
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 interface User {
-//   id: number;
-//   name: string;
-    //     image: string;
 _id:string
 Employee_Name: string,
 Employee_photo:string 

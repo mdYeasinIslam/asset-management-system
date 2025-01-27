@@ -31,7 +31,7 @@ export const Packages = () => {
             Select a package that best suits the size of your team and start optimizing your asset management today.
                 </p>
              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {packages.map((pkg) => <DisplayPackege key={pkg.id} pkg={pkg} /> )}
+                  {packages?.map((pkg) => <DisplayPackege key={pkg.id} pkg={pkg} /> )}
               </div>
       </div>
           

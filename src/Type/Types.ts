@@ -32,3 +32,19 @@ export type AssetType = {
           date:string,
           status:string
 }
+export type AssetRequestType = {
+      assetId: string;
+  assetName: string;
+  assetStatus: string;
+  assetType: string;
+  companyName: string;
+  company_logo: string;
+  notes: string;
+  requestDate: string;
+  requesterBirth: string;
+  requesterEmail: string;
+  requesterName: string;
+  requesterRole: string;
+  status: string;
+  updateDate: string;
+}

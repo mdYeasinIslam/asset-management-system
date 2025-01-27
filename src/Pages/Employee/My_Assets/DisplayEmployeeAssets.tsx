@@ -54,6 +54,13 @@ export const columns: ColumnDef<AssetsType>[] = [
           return  <div className="">{row.getValue("assetType")}</div>
         },
     },
+    {
+    accessorKey: "assetStatus",
+    header: "Asset Status",
+        cell: ({ row }) => {
+          return  <div className="">{row.getValue("assetStatus")}</div>
+        },
+    },
 
   
    

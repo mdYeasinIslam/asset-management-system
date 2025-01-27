@@ -13,14 +13,16 @@ import { useAxiosSecure } from "@/hook/useAxiosSecure"
 import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset"
 import { useAuth } from "@/hook/useAuth"
 import toast from "react-hot-toast"
+import { PrintPage } from "./PrintPage"
+import { pdf } from "@react-pdf/renderer"
 
 export const ActionBtton = ({ row }: { row: any }) => {
     const { user } = useAuth()
     const email=user?.email as string
   const [, , refetch] = useAllRequestedAsset(email);
   const axiosSecure = useAxiosSecure()
-    const disable = `${row.original?.status}`
-console.log(row.original)
+  const disable = row.original?.status;
+  console.log(row.original)
     const handleDelete = async(id:string) => {
         console.log(id)
         const res = await axiosSecure.delete(`/employee/assetRequest/${id}`)
@@ -30,11 +32,31 @@ console.log(row.original)
             refetch()
         }
     }
+  const handleReturn = async(id:string) => {
+    console.log(id)
+    const res= await axiosSecure.patch(`/employee/assetRequest/${id}`,{value:'Returned'})
+    console.log(res)
+    if (res.data?.acknowledged) {
+            toast.success('Request is successfully deleted')
+            refetch()
+      }
+  }
+  const handlePrint = async () => {
+      const assetData = row.original
+    const blob = await pdf(<PrintPage assetData={assetData} />).toBlob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "asset-details.pdf";
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="text-right">
        <DropdownMenu>
       <DropdownMenuTrigger asChild>
-          <Button variant="action"  disabled={disable=='reject' && true}>
+          <Button variant="action">
           <GitPullRequestClosed className="text-red-800"/>
           </Button>
       </DropdownMenuTrigger>
@@ -52,18 +74,28 @@ console.log(row.original)
             </>
         }
         {
+            disable =='rejected' &&
+            <>
+            <DropdownMenuCheckboxItem
+            onClick={()=>handleDelete(row.original?._id)}
+             >
+                     Cancel
+            </DropdownMenuCheckboxItem>
+            </>
+        }
+        {
             disable =='approved' &&
             <>
             {
-                row.orginal?.assetStatus=='Returnable' ?
+                row.original?.assetStatus=='Returnable' ?
                 <>
                  <DropdownMenuCheckboxItem
-                // onClick={()=>handleAction('approved')}
+                onClick={handlePrint}
                 >
                         Print
                 </DropdownMenuCheckboxItem>
                  <DropdownMenuCheckboxItem
-                // onClick={()=>handleAction('approved')}
+                onClick={()=>handleReturn(row.original?._id)}
                 >
                         Return
                 </DropdownMenuCheckboxItem>
@@ -71,7 +103,7 @@ console.log(row.original)
                 :
                 <>
                  <DropdownMenuCheckboxItem
-                // onClick={()=>handleAction('approved')}
+               onClick={handlePrint}
                 >
                         Print
                 </DropdownMenuCheckboxItem>
@@ -81,16 +113,6 @@ console.log(row.original)
             </>
           
         }
-        {/* <DropdownMenuCheckboxItem
-            // onClick={()=>handleAction('approved')}
-        >
-          Approved
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-            //  onClick={()=>handleAction('rejected')}
-        >
-          Rejected
-        </DropdownMenuCheckboxItem> */}
       </DropdownMenuContent>
     </DropdownMenu>
     </div>
