@@ -33,6 +33,7 @@ export type AssetType = {
           status:string
 }
 export type AssetRequestType = {
+_id:string
       assetId: string;
   assetName: string;
   assetStatus: string;

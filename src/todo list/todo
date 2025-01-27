@@ -1,4 +1,3 @@
-In hr assets list page:
- 1. hr can not add existing assets  : complete
-
+asHr and asEmployee page:
+  same user data should not save double time in db
  

@@ -3,7 +3,6 @@ import { AssetRequestType } from "@/Type/Types"
 export const DisplayPendingRequest = ({ request }: { request: AssetRequestType }) => {
   return (
    <div
-            key={request.assetId}
             className="bg-white shadow-md rounded-lg p-4 flex flex-col"
           >
             <div className="flex items-center space-x-4 mb-4">

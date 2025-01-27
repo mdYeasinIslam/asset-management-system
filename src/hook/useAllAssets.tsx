@@ -5,7 +5,7 @@ import { useAuth } from "./useAuth"
 export const useAllAssets = (value?:string) => {
     const axiosSecure = useAxiosSecure()
     const {user} = useAuth()
-       const { data: assetsData=[],isPending ,refetch} = useQuery({
+       const { data: assetsData=[],isPending ,refetch,isLoading} = useQuery({
         queryKey: ['assets', user?.email],
         enabled: !!user?.email && !!localStorage.getItem('token'),
            queryFn: async () => {
@@ -20,5 +20,5 @@ export const useAllAssets = (value?:string) => {
           
         },
     })  
-    return [assetsData,isPending,refetch]
+    return [assetsData,isPending,refetch,isLoading]
 }
