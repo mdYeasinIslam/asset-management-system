@@ -14,12 +14,12 @@ import { AddEmployee } from "@/Pages/HR_Manager/Add_employee/AddEmployee"
 import { AllRequest } from "@/Pages/HR_Manager/All_Request/AllRequest"
 import { HrAssetList } from "@/Pages/HR_Manager/HR_Asset_List/HrAssetList"
 import { HrHome } from "@/Pages/HR_Manager/HrHome"
-import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { PrivateRoot } from "./PrivateRoot"
 import ProfilePage from "@/SharedComponent/Profile"
 import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/PackageChange"
+import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 
 export const Root = () => {
     const routes = createBrowserRouter([

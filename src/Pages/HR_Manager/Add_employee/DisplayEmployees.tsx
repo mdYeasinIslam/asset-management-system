@@ -1,15 +1,25 @@
 import { Skeleton } from '@/components/ui/skeleton';
+import { useAxiosSecure } from '@/hook/useAxiosSecure';
+import { useUsersData } from '@/hook/useUsersData';
+import { HrDataType } from '@/Type/Types';
 import { ChangeEvent, useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface User {
 _id:string
 Employee_Name: string,
-Employee_photo:string 
+  Employee_photo: string 
+  date_of_birth: string, 
+  email: string,
+  role: string,
 }
 
 const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolean}) => {
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
-
+  const[usersData]=useUsersData()
+  const axiosSecure = useAxiosSecure()
+  const hrData = usersData?.userInfo[0] as HrDataType
+  
   // Handle selecting/deselecting all checkboxes
   const handleSelectAll = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
@@ -29,11 +39,41 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
   };
 
   // Log data for selected rows
-  const getSelectedData = () => {
-    const selectedData = userInfo.filter((user) => selectedRows.includes(user._id));
-    console.log('Selected Rows:', selectedData);
-  };
+  const handleSingleEmployee = async(user?:User) => {
+    
+    const info = {
+      hrName: hrData?.HR_Name,
+      hrEmail: hrData?.email,
+      employee_Name: user?.Employee_Name,
+      employee_photo: user?.Employee_photo,
+      role: user?.role,
+      email: user?.email,
+      employeeId: user?._id
+    }
+    const res = await axiosSecure.post('/hr/addEmployee',info)
+   
+    if (res.data?.status == false) {
+      return toast.error(`${res.data?.message}`)
+    }
+    if (res.data?.acknowledged) {
+      toast.success(`${user?.Employee_Name} is successfully add as Employee to you company`)
+    }
 
+  };
+  const getSelectedData =async () => {
+    const selectedData = userInfo.filter((user) => selectedRows.includes(user._id));
+   
+    const actualEmployeeData = selectedData?.map(data => ({ ...data, hrName: hrData?.HR_Name, hrEmail: hrData?.email}))
+    
+    const res = await axiosSecure.post('/hr/addEmployee/array', actualEmployeeData)
+   
+    if (res.data?.acknowledged) {
+    return  toast.success('Members are add to the team')
+    }
+    if (res.data?.status == false) {
+    return  toast.error(res.data?.message)
+    }
+  };
   return (
     <div className="p-4">
       <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-md">
@@ -87,7 +127,7 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
                     <td className="px-4 py-2">
                         <button
                         className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                        onClick={() => console.log('Add to :', user)}
+                        onClick={() => handleSingleEmployee(user)}
                         >
                         Add to them
                         </button>
@@ -103,7 +143,7 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
         className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
         onClick={getSelectedData}
       >
-        Get Selected Data
+        Add selected member
       </button>
     </div>
   );

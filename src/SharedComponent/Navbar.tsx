@@ -113,33 +113,33 @@ export const Navbar = () => {
           
         <nav className={`hidden md:flex gap-5`}>
           
-              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] lg:text-[0.9rem] `}>
+              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] md:text-[9px] lg:text-[0.7rem] xl:text-[0.9rem] `}>
                 {
                   !user ?
                      <>
-                     <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
-                      <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
-                      <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+                     <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
+                      <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
+                      <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
                     </>
                     :
                 <>
                       {
                         user?.email && !isAdmin ? 
                           <>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/eHome'}> <li>Employee Home</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/myAssets'}> <li>My Assets</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/myTeam'}> <li>My Team</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/employee/requestForAsset'}> <li>Request for an Asset</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/employee/eHome'}> <li>Employee Home</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/employee/myAssets'}> <li>My Assets</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/employee/myTeam'}> <li>My Team</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/employee/requestForAsset'}> <li>Request for an Asset</li></NavLink>
                             
                           </>
                             :
                           <>
-                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/hrHome'}> <li>HR_Home</li></NavLink>
-                            <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/assetList'}> <li>Asset List</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/addAsset'}> <li>Add Asset</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/allRequest'}> <li>All Request</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/employeeList'}> <li>My Employee List</li></NavLink>
-                              <NavLink className='px-2 md:px-1 lg:px-2 py-1 rounded' to={'/hr/addEmployee'}> <li>Add Employee</li></NavLink>
+                            <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/hr/hrHome'}> <li>HR_Home</li></NavLink>
+                            <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/hr/assetList'}> <li>Asset List</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/hr/addAsset'}> <li>Add Asset</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/hr/allRequest'}> <li>All Request</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/hr/employeeList'}> <li>My Employee List</li></NavLink>
+                              <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/hr/addEmployee'}> <li>Add Employee</li></NavLink>
                           </>
                       }
                     </>

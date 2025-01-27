@@ -18,7 +18,6 @@ import { useUsersData } from "@/hook/useUsersData"
 export const RequestAction = ({row}:{row:any}) => {
   const [, , refetch] = useAllRequestedAsset();
   const [usersData] = useUsersData()
-  console.log(usersData.userInfo[0])
   const axiosSecure = useAxiosSecure()
   const disable=`${row.original?.status}`
   const handleAction =async (value:string | string) => {
@@ -33,7 +32,6 @@ export const RequestAction = ({row}:{row:any}) => {
       companyLogo
     }
     const res = await axiosSecure.put(`/employee/assetRequest/${row.original?._id}`,doc)
-    console.log(res)
     if (res.data?.update.acknowledged) {
       toast.success(`Request is ${res.data?.value}`)
       refetch()

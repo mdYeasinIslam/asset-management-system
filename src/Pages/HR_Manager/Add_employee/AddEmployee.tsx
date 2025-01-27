@@ -18,7 +18,7 @@ export const AddEmployee = () => {
                 </div>
           </div>
   }
-  // console.log(usersData?.employee)
+  
   const userInfo = usersData?.employee
   
   const content = <div className="flex flex-col items-center">

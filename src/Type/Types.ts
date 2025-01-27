@@ -49,3 +49,15 @@ _id:string
   status: string;
   updateDate: string;
 }
+
+export type HrDataType = {
+HR_Name:string
+HR_photo:string
+companyName:string
+company_logo: string
+date_of_birth:string
+email: string
+package: string
+role:string
+_id:string
+}
