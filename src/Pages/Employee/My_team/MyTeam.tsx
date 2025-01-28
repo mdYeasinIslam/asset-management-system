@@ -10,7 +10,7 @@ export const MyTeam = () => {
   }
   return (
   
-       <div className="p-4">
+       <div className="container mx-atuo">
       <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-md">
         <thead>
           <tr className="bg-gray-100">

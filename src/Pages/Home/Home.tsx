@@ -1,3 +1,4 @@
+import Footer from "@/SharedComponent/Footer"
 import About from "./About/About"
 import SwiperBanner from "./Banner/SwiperBanner"
 import { Packages } from "./Packages/Packages"
@@ -7,7 +8,8 @@ export const Home = () => {
     <div className="container mx-auto">
       <SwiperBanner />
       <About />
-      <Packages/>
+      <Packages />
+      <Footer/>
     </div>
   )
 }

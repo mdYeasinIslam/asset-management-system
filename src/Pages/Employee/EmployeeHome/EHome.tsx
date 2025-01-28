@@ -8,6 +8,7 @@ import { AssetRequestType } from "@/Type/Types"
 import { CommonHeading } from "@/SharedComponent/CommonHeading"
 import { EventSecton } from "./EventSection/EventSection"
 import Calendar from "./EventSection/Calendar"
+import Footer from "@/SharedComponent/Footer"
 
 export const EHome = () => {
    const {user} =useAuth()
@@ -61,7 +62,7 @@ export const EHome = () => {
       <EventSecton />
       <Calendar/>
       </div>
-     
+     <Footer/>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { TopRequests } from "./HomeSections/TopRequests"
 import PieChart from "./HomeSections/PieChart"
 import { EventSecton } from "../Employee/EmployeeHome/EventSection/EventSection"
 import NoticeSection from "./HomeSections/NoticeSection"
+import Footer from "@/SharedComponent/Footer"
 
 export const HrHome = () => {
   const [requestedAssets, isPending,] = useAllRequestedAsset()
@@ -30,7 +31,8 @@ export const HrHome = () => {
       <TopRequests requestedAssets={requestedAssets} />
       <PieChart requestedAssets={requestedAssets} />
       <EventSecton />
-      <NoticeSection/>
+      <NoticeSection />
+      <Footer/>
     </div>
   )
 }
