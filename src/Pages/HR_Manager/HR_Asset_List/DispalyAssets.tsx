@@ -65,7 +65,7 @@ export const columns: ColumnDef<AssetType>[] = [
     header: () => <div className="text-center">Quantity</div>,
     cell: ({ row }) => {
       const quantity = parseInt(row.getValue("quantity"))
-      return <div className="text-center font-medium">`${quantity}`</div>
+      return <div className="text-center font-medium">{`${quantity}`}</div>
       },
       filterFn: (row, columnId, filterValue) => {
       const quantity = Number(row.getValue(columnId)); // Convert quantity to number

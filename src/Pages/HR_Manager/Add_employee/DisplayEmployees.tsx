@@ -44,8 +44,8 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
     const info = {
       hrName: hrData?.HR_Name,
       hrEmail: hrData?.email,
-      employee_Name: user?.Employee_Name,
-      employee_photo: user?.Employee_photo,
+      Employee_Name: user?.Employee_Name,
+      Employee_photo: user?.Employee_photo,
       role: user?.role,
       email: user?.email,
       employeeId: user?._id

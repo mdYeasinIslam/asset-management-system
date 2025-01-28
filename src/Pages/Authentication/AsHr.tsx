@@ -109,7 +109,7 @@ export const AsHr = () => {
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
                         <label htmlFor="picture1">Upload Your Photo:</label>
-                        <Input id="picture1" {...register('img_url')} type="file" required />
+                        <Input id="picture1" {...register('img_url')} type="file"  />
                    </div>
 
                   <div className="flex flex-col gap-1 ">
@@ -124,7 +124,7 @@ export const AsHr = () => {
                  
                    <div className="grid w-full max-w-sm items-center gap-1.5">
                         <label htmlFor="picture">Upload complany logo image:</label>
-                        <Input id="picture" {...register('companyLogo')} type="file" required />
+                        <Input id="picture" {...register('companyLogo')} type="file"  />
                    </div>
 
                   <div className="flex flex-col gap-1 ">

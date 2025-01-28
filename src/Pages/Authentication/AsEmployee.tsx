@@ -86,7 +86,7 @@ export const AsEmployee = () => {
                   </div>
                   <div className="grid w-full max-w-sm items-center gap-1.5">
                         <label htmlFor="picture1">Upload Your Photo:</label>
-                        <Input id="picture1" {...register('photoURL')} type="file" required />
+                        <Input id="picture1" {...register('photoURL')} type="file" />
                    </div>
           
                 <div className="flex flex-col gap-1 ">
