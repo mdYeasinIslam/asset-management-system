@@ -19,7 +19,7 @@ export const Navbar = () => {
   const signOut = () => { 
     signOutAuth()
       .then(() => {
-        navigate('/signIn');
+        navigate('/');
       toast.success('Your are successfully loged out')
       }).catch((e) => {
         console.log(e)
