@@ -38,12 +38,13 @@ export const PackageChange = () => {
                 20 Members for $15
             </Button>
             <div className="flex w-full justify-between gap-2">
-
-              <Button 
-                onClick={() => handlePurchase(20)} 
-                className={`w-full bg-green-800 hover:bg-green-700 text-white  ${select =='20'&& "bg-secondary"}`}>
-                Pay
-            </Button>
+                <Link to={`/hr/payment`} className="w-full">
+                    <Button 
+                      onClick={() => handlePurchase(20)} 
+                      className={`w-full bg-green-800 hover:bg-green-700 text-white  ${select =='20'&& "bg-secondary"}`}>
+                      Pay
+                  </Button>
+                </Link>
 
               <Link to='/hr/addEmployee' className="w-full">
               <Button

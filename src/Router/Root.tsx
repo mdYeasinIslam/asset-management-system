@@ -20,6 +20,7 @@ import { PrivateRoot } from "./PrivateRoot"
 import ProfilePage from "@/SharedComponent/Profile"
 import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/PackageChange"
 import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
+import { Payment } from "@/Pages/HR_Manager/PaymentMethod/Payment"
 
 export const Root = () => {
     const routes = createBrowserRouter([
@@ -117,6 +118,10 @@ export const Root = () => {
                 {
                     path: '/hr/addEmployee/packageChange/:id',
                     element:<PackageChange/>
+                },
+                {
+                    path: '/hr/payment',
+                    element:<Payment/>
                 }
 
             ]
