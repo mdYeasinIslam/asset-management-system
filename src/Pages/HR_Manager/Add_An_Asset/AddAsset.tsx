@@ -27,7 +27,7 @@ import moment from 'moment'
 
 export const AddAsset = () => {
   const axiosSecure = useAxiosSecure()
-  const [usersData] = useUsersData()
+  const [usersData,isPending] = useUsersData()
   const { register, handleSubmit, setValue, formState: { errors }, } = useForm<Inputs>()
 
    
@@ -55,7 +55,7 @@ export const AddAsset = () => {
         }
         
       const res = await axiosSecure.post('/assets', product)
-        console.log()
+        
         if (res.data.message) {
          return toast.error(res.data.message)
         }
@@ -69,7 +69,9 @@ export const AddAsset = () => {
       
       
     }
-
+  if (isPending) {
+      return <div>loading.........</div>
+    }
   return (
       <section className="my-10 px-5">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 

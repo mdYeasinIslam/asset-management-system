@@ -112,7 +112,7 @@ export function AllRequest() {
     useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = useState({})
   const [requestedAssets,isPending] = useAllRequestedAsset()
-  console.log(requestedAssets)
+ 
   const table = useReactTable({
     data:requestedAssets,
     columns,

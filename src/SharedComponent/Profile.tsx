@@ -20,8 +20,8 @@ const name = user?.displayName as string |undefined
 
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const name = e.currentTarget?.name
-    console.log(name)
+    // const name = e.currentTarget?.name
+    
   };
 
   return (

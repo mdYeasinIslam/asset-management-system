@@ -15,7 +15,7 @@ import { useState } from "react";
 
 const ActionCell = ({ row }: { row: any }) => {
           const axiosSecure = useAxiosSecure()
-          const [, , refetch] = useAllAssets()
+          const [,isPending , refetch] = useAllAssets()
           const [open,setOpen]  = useState(false)
           const handleDelete = async(id: any) => {
                 toast(() =>(
@@ -25,7 +25,7 @@ const ActionCell = ({ row }: { row: any }) => {
                     <Button
                         onClick={async() => {
                          const response = await axiosSecure.delete(`/assets/${id}`)
-                        console.log(response)
+                        
                         if (response.data?.acknowledged) {
                             toast.success('The user is deleted')
                             toast.dismiss()
@@ -42,6 +42,9 @@ const ActionCell = ({ row }: { row: any }) => {
           }
           const modalOpen = (value:boolean) => {
             setOpen(value)
+          }
+         if (isPending) {
+            return <div>loading.......</div>
           }
         return (
           <div className="text-right"> 

@@ -13,10 +13,10 @@ export const Navbar = () => {
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
   const [, isPending] = useUsersData()
-  const [isAdmin] = useIsAdmin()
+  const [isAdmin,,isLoading] = useIsAdmin()
   const userPhoto = user?.photoURL as string | undefined
     const navigate = useNavigate()
-  const signOut = () => {
+  const signOut = () => { 
     signOutAuth()
       .then(() => {
         navigate('/signIn');
@@ -26,7 +26,7 @@ export const Navbar = () => {
         toast.error(e.message)
     })
   }
-  if (isPending) {
+  if (isPending || isLoading) {
     return  <div className=" flex flex-col items-center justify-center gap-1 space-y-5 mt-10">
                 <Skeleton className="h-4 w-2/3 bg-gray-700" />
                 <Skeleton className="h-4 w-2/3 bg-gray-700" />

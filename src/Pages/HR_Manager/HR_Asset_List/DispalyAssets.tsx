@@ -29,7 +29,7 @@ import ActionCell from "./ ActionCell"
 import { SelectTrigger,Select, SelectContent, SelectItem } from "@/components/ui/select"
 
 
-export type Payment = {
+export type AssetType = {
     _id: string
     name: string
     type: string
@@ -37,7 +37,7 @@ export type Payment = {
     quantity: number
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<AssetType>[] = [
  
     {
     accessorKey: "name",
@@ -65,7 +65,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: () => <div className="text-center">Quantity</div>,
     cell: ({ row }) => {
       const quantity = parseInt(row.getValue("quantity"))
-      return <div className="text-center font-medium">{quantity}</div>
+      return <div className="text-center font-medium">`${quantity}`</div>
       },
       filterFn: (row, columnId, filterValue) => {
       const quantity = Number(row.getValue(columnId)); // Convert quantity to number
@@ -144,6 +144,9 @@ export function DisplayAssets() {
   const handleSort = (direction: "asc" | "desc") => {
     table.setSorting([{ id: "quantity", desc: direction === "desc" }]);
   };
+  if (isPending) {
+    return <div>loading........</div>
+  }
   return (
     <div className="container mx-auto w-full">
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">

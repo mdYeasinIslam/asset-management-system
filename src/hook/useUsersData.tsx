@@ -8,10 +8,11 @@ export const useUsersData = () => {
         
        const { data: usersData=[],isLoading:isPending,refetch} = useQuery({
         queryKey: ['usersData', user?.email],
-        enabled: !!user?.email ,
-           queryFn: async () => {
-                   const res = await axiosSecure.get(`/users?email=${user?.email}`)
-                   return res.data
+        enabled: !!user?.email && !!localStorage.getItem('token'),
+        queryFn: async () => {
+            
+            const res = await axiosSecure.get(`/users?email=${user?.email}`)
+            return res.data
                
         },
     })  

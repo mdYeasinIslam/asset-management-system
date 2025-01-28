@@ -44,7 +44,7 @@ export const EHome = () => {
         <CommonHeading content={contentPending} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             {
-            pendingRequest.map((asset : AssetRequestType) => <DisplayPendingRequest request={asset} />)
+            pendingRequest.map((asset : AssetRequestType) => <DisplayPendingRequest key={asset._id} request={asset} />)
           }
           </div>
       </div>
@@ -52,7 +52,7 @@ export const EHome = () => {
         <CommonHeading content={contentMonthly} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
             {
-            requestedAssets.map((asset : AssetRequestType) => <DisplayPendingRequest request={asset} />)
+            requestedAssets.map((asset : AssetRequestType) => <DisplayPendingRequest key={asset._id} request={asset} />)
           }
           </div>
       </div>

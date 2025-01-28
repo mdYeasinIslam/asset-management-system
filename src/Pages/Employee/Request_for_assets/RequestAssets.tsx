@@ -11,7 +11,7 @@ import { useAxiosSecure } from "@/hook/useAxiosSecure";
 
 export const RequestAssets = () => {
   const axiosSecure=useAxiosSecure()
-  const [assetsData] = useAllAssets('public') 
+  const [assetsData,isPending] = useAllAssets('public') 
   const [data, setData] = useState([])
   const [error, setError] = useState('')
   const [value, setValue] = useState('')
@@ -22,7 +22,7 @@ export const RequestAssets = () => {
       setError('')
       if (assetName) {
         const response = await axiosSecure.get(`/assets?name=${assetName}&availabilty=${status}&public=public`)
-       console.log(response.data)
+       
        if (response.data) {
            setData(response.data)
          }
@@ -30,7 +30,7 @@ export const RequestAssets = () => {
       else if (status) { 
         setValue(status)
         const response = await axiosSecure.get(`/assets?name=${assetName}&availabilty=${status}`)
-       console.log(response.data)
+       
        if (response.data) {
            setData(response.data)
          }
@@ -46,6 +46,10 @@ export const RequestAssets = () => {
       setError(error?.response?.data?.message)
     }
    
+  }
+
+  if (isPending) {
+    return <div>loading.......</div>
   }
   const content = <div className="flex flex-col items-center">
     <h1 className="text-2xl uppercase font-medium leading-tight">Store house of Assets</h1>

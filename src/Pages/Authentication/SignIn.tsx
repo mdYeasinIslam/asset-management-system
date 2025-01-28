@@ -28,27 +28,29 @@ export const SignIn = () => {
       const email = data.email.toLowerCase();
         const password = data.password;
       signInAuth(email, password)
-        .then(async(res) => {
-          const response = await axiosSecure.get(`/users?email=${email}`)
-          toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
-            e?.target.reset()
-          if (response?.data?.role == 'Employee') {
-            if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-              return navigate('/employee/eHome')
+        .then(async (res) => {
+          // if (localStorage.getItem('token')) {
+            const response = await axiosSecure.get(`/users?email=${res.user?.email}`)
+            toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
+              e?.target.reset()
+            if (response?.data?.role == 'Employee') {
+              if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+                return navigate('/employee/eHome')
+              }
+              else {
+                return navigate(from,{replace:true})
+              }
             }
-            else {
+            if (response?.data?.role == 'Admin' ) {
+              if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+                return navigate('/hr/hrHome')
+              }
               return navigate(from,{replace:true})
             }
-          }
-          if (response?.data?.role == 'Admin' ) {
-            if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-              return navigate('/hr/hrHome')
+            else {
+              navigate(from, {replace:true})
             }
-            return navigate(from,{replace:true})
-          }
-          else {
-            navigate(from, {replace:true})
-          }
+          // }
 
         }).catch(e=> {
           console.log(e)

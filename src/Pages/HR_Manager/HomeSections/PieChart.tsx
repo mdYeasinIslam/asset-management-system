@@ -9,7 +9,7 @@ const PieChart = ({ requestedAssets }: { requestedAssets: AssetRequestType[] }) 
   // Calculate counts of returnable and non-returnable items
   const returnableCount = requestedAssets.filter(item => item.assetStatus === "Returnable").length;
   const nonReturnableCount = requestedAssets.filter(item => item.assetStatus === "Non-returnable").length;
-   console.log(returnableCount,nonReturnableCount)
+  
   // Chart data
   const chartData = {
     labels: ["Returnable", "Non-returnable"],

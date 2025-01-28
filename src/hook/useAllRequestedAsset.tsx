@@ -15,7 +15,7 @@ export const useAllRequestedAsset = (email?: string) => {
                 return res.data;   
             }
               
-            } catch (error) {
+            } catch (error) { 
               console.log(error)  
             }
            

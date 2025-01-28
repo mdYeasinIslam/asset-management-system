@@ -25,6 +25,7 @@ export const AddEmployee = () => {
     <h1 className="text-2xl  font-medium leading-tight">Available Employees</h1>
     <p className="text-gray-800">Find employee as your choice and neccesity.</p>
   </div>
+  
   return (
     <div className="container mx-auto">
       <Packages />

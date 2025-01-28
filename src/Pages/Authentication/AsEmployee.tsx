@@ -16,8 +16,8 @@ type Inputs = {
     photoURL : string
 
 }
-const img_hosting_key = import.meta.env.VITE_imgbb_apiKey
-const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
+const img_hosting_key ='7489d1929f652c6b41444e884a6a6180'
+const img_hosting_api =`https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
 export const AsEmployee = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
@@ -31,26 +31,32 @@ export const AsEmployee = () => {
         const email = data.email.toLowerCase();
         const password = data.password;
         const birth = data.birth
-        const photoURL = {image: data.photoURL[0] };
+        // const photoURL = { image: data.photoURL[0] };
         
-        const res= await axios.post(img_hosting_api,photoURL, {
+         const photoURL = new FormData();
+        photoURL.append('image', data.photoURL[0]);
+        // console.log(photoURLData)
+        const res= await axios.post(img_hosting_api,photoURL,{
           headers: {
             'content-type':'multipart/form-data'
             }
         })
+      //  console.log(res)
         const profile = {
             displayName: name,
             photoURL: res.data.data?.display_url
+            // photoURL: photoURLData 
         }
         const userInfo = {
           Employee_Name: name,
             email,
+            // Employee_photo:photoURLData,
             Employee_photo:res.data?.data?.display_url,
             date_of_birth: birth,
             role:'Employee'
           }
         const signInOperation = await signUpAuth(email, password)
-        console.log(signInOperation)
+       console.log(signInOperation)
         if (signInOperation) {
           await  updateUserAuth(profile)  
           const response = await axiosPublic.post('/users', userInfo);

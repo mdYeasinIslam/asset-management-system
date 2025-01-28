@@ -5,12 +5,12 @@ import toast from "react-hot-toast"
 
 export const DeleteEmployee = ({ row }: { row: any }) => {
     const axiosSecure = useAxiosSecure()
-    const [employeeData, ,refetch]=useEmployeeList()
-    console.log(employeeData)
+    const [, ,refetch]=useEmployeeList()
+    
     const handleDelete = async (id: string) => {
-        console.log(id)
+        
         const res =await axiosSecure.delete(`/hr/addEmployee/${id}`)
-        console.log(res)
+        
         if (res.data?.acknowledged) {
             toast.success('Employee is successfully deleted')
         }

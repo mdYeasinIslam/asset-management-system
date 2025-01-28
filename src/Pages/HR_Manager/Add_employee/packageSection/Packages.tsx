@@ -4,8 +4,11 @@ import { useUsersData } from "@/hook/useUsersData"
 import { Link } from "react-router-dom"
 
 export const Packages = () => {
-    const [usersData] = useUsersData()
-    const selectedPackge = usersData.userInfo[0].package
+    const [usersData,isPending] = useUsersData()
+  const selectedPackge = usersData.userInfo[0].package
+  if (isPending) {
+    return <div>loading.............</div>
+  }
   return (
     <div className=" bg-gray-100 py-9">
       <div className="flex justify-center">

@@ -14,7 +14,7 @@ export const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
       <CommonHeading content={ contentPending} />
        <div className={`grid grid-cols-1 md:grid-cols-2  gap-2 ${assetData.length>2 && 'lg:grid-cols-3 xl:grid-cols-4'}`}>
       {
-        limitedItems?.map(asset=><LimitedItemDisplay asset={asset} />)
+        limitedItems?.map(asset=><LimitedItemDisplay key={asset._id} asset={asset} />)
       }
     </div>
     </div>

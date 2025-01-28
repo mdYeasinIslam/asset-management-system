@@ -17,7 +17,7 @@ import { useUsersData } from "@/hook/useUsersData"
 
 export const RequestAction = ({row}:{row:any}) => {
   const [, , refetch] = useAllRequestedAsset();
-  const [usersData] = useUsersData()
+  const [usersData,isPending] = useUsersData()
   const axiosSecure = useAxiosSecure()
   const disable=`${row.original?.status}`
   const handleAction =async (value:string | string) => {
@@ -36,6 +36,9 @@ export const RequestAction = ({row}:{row:any}) => {
       toast.success(`Request is ${res.data?.value}`)
       refetch()
     }
+  }
+  if (isPending) {
+    return <div>loading.............</div>
   }
   return (
     <div className="text-right">

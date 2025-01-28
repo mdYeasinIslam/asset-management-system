@@ -4,7 +4,7 @@ import { AssetRequestType } from "@/Type/Types"
 
 export const MonthlyRequests = ({ requestedAssets }: { requestedAssets: AssetRequestType[] }) => {
 
-    console.log(requestedAssets)
+    
   return (
     <Card className="bg-gray-100 text-center p-1 md:p-2 rounded-xl duration-500 transition-transform hover:scale-95  shadow-md hover:shadow-lg  ">
         <CardHeader>

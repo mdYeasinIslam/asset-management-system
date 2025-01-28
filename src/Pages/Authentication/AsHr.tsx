@@ -28,7 +28,7 @@ type Inputs = {
     package: string;
 
 }
-const img_hosting_key = import.meta.env.VITE_imgbb_apiKey
+const img_hosting_key = '7489d1929f652c6b41444e884a6a6180'
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 
 export const AsHr = () => {
@@ -78,7 +78,7 @@ export const AsHr = () => {
         if (signInOperation) {
           await updateUserAuth(profile)
           const response = await axiosPublic.post('/users', userInfo);
-          console.log(response) 
+          
           if (response) {
             navigate('/hr/hrHome')
             toast.success('Your are successfully join as a HR manager')

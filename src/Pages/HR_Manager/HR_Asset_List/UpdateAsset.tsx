@@ -39,7 +39,7 @@ type Prop = {
 }
 const UpdateAsset = ({ assetInfo, setOpen,refetch }: Prop) => {
     const axiosSecure = useAxiosSecure()
-    console.log(assetInfo)
+    
     const { register, handleSubmit, setValue, formState: { errors }, } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = async (data, e) => {
         e?.preventDefault()
@@ -57,7 +57,7 @@ const UpdateAsset = ({ assetInfo, setOpen,refetch }: Prop) => {
           status
         }
         const response = await axiosSecure.put( `/assets/${assetInfo._id}`, updateInfo)
-        console.log(response)
+        
         if (response.data) {
             toast.success('Asset is successfully updated. Please close the modal')
             refetch()

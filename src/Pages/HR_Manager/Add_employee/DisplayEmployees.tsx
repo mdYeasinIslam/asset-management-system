@@ -74,6 +74,9 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
     return  toast.error(res.data?.message)
     }
   };
+  if (isPending) {
+    return <div>loading.......</div>
+  }
   return (
     <div className="p-4">
       <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-md">

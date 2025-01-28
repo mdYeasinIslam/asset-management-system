@@ -30,7 +30,7 @@ export const TopRequests = ({ requestedAssets }: { requestedAssets: AssetRequest
 
     setDuplicates(uniqueDuplicateItems);
   }, []);
-    console.log(duplicates)
+   
     const contentPending = <div className="flex flex-col items-center">
     <h1 className="text-3xl uppercase font-semibold leading-tight">Top Most Request</h1>
   </div>

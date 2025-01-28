@@ -22,20 +22,20 @@ export const ActionBtton = ({ row }: { row: any }) => {
   const [, , refetch] = useAllRequestedAsset(email);
   const axiosSecure = useAxiosSecure()
   const disable = row.original?.status;
-  console.log(row.original)
+  
     const handleDelete = async(id:string) => {
-        console.log(id)
+        
         const res = await axiosSecure.delete(`/employee/assetRequest/${id}`)
-        console.log(res)
+        
         if (res.data?.acknowledged) {
             toast.success('Request is successfully deleted')
             refetch()
         }
     }
   const handleReturn = async(id:string) => {
-    console.log(id)
+  
     const res= await axiosSecure.patch(`/employee/assetRequest/${id}`,{value:'Returned'})
-    console.log(res)
+  
     if (res.data?.acknowledged) {
             toast.success('Request is successfully deleted')
             refetch()

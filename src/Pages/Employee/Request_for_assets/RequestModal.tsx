@@ -23,10 +23,10 @@ type Prop = {
     assetInfo:AssetType
 } 
 export const RequestModal = ({ assetInfo }: Prop) => {
-    const [usersData] = useUsersData()
+    const [usersData,isPending] = useUsersData()
     const axiosSecure=useAxiosSecure()
     const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
-    // console.log(assetInfo)
+    
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         const notes = data.notes;
         const currentDate = moment().format('DD-MM-YYYY');
@@ -45,9 +45,9 @@ export const RequestModal = ({ assetInfo }: Prop) => {
             notes,
             status:'pending'
         }
-        console.log(requestInfo)
+       
         const response = await axiosSecure.post(`/employee/assetRequest?email=${Info[0]?.email}`,requestInfo)
-        console.log(response)
+        
         if (response.data?.success == false) {
             toast.error(response.data?.message)
         }
@@ -55,7 +55,10 @@ export const RequestModal = ({ assetInfo }: Prop) => {
            toast.success('your request for this asset is send to the HR') 
         }
         
-        }
+    }
+    if (isPending) {
+        return <div>loading.......</div>
+    }
   return (
       <div>
         <DialogContent className="w-full p-5">
