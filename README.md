@@ -54,6 +54,77 @@ above kind of think a company can handle easily by using this web application
 | `clsx` | `^2.1.1` | Conditional classNames in React |
 
 
+## 🚀 Running the Project Locally  
+
+Follow these steps to set up and run the project on your local machine.  
+
+### **Prerequisites**  
+Ensure you have the following installed:  
+- **Node.js** (Latest LTS version recommended) → [Download Node.js](https://nodejs.org/)  
+- **npm** (Comes with Node.js) or **yarn**  
+- **Git** (Optional, for cloning the repo)  
+
+### **1️⃣ Clone the Repository**  
+```sh
+git clone <repository-url>
+cd <project-folder>
+```
+
+### **2️⃣ Install Dependencies**  
+Using **npm**:  
+```sh
+npm install
+```
+
+### **3️⃣ Setup Environment Variables**  
+Create a `.env` file in the root directory and add your Firebase credentials:  
+```env
+VITE_API_KEY=your_api_key
+VITE_AUTH_DOMAIN=your_auth_domain
+VITE_PROJECT_ID=your_project_id
+VITE_STORAGE_BUCKET=your_storage_bucket
+VITE_MESSAGING_SENDER_ID=your_messaging_sender_id
+VITE_APP_ID=your_app_id
+
+VITE_imgbb_apiKey='imgbb api key'
+
+VITE_Payment_apikey= ' stripe publishable key'
+```
+
+Make sure you replace `your_api_key` and other values with your actual Firebase config.  
+
+### **4️⃣ Start the Development Server**  
+Using **npm**:  
+```sh
+npm run dev
+```
+
+This will start the development server, usually on **http://localhost:5173/** (default Vite port).  
+
+### **5️⃣ Build the Project (For Production)**  
+To create an optimized production build:  
+```sh
+npm run build
+```
+
+The output will be in the `dist` folder.  
+
+### **6️⃣ Firebase Configuration (Optional - If Using Firebase Hosting)**  
+If you want to deploy using Firebase, login and initialize Firebase:  
+```sh
+firebase login
+firebase init
+```
+Then deploy:  
+```sh
+firebase deploy
+```
+If you want to deploy in netlify, login netlify and deploy dist folder
+---
+
+This will ensure **anyone** can easily set up and run your project! 🚀🔥  
+Let me know if you need modifications. 😊
+
 # site link:
 live site (client) : https://asset-pulse-system.netlify.app/
 
