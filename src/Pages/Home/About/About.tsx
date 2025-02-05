@@ -6,7 +6,7 @@ const About= () => {
      
         <div>
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6">
-            About Our Asset Management System
+            About Our Asset Management
           </h2>
           <p className="text-gray-600 text-lg leading-relaxed mb-6">
             Our platform is designed to simplify asset tracking, improve

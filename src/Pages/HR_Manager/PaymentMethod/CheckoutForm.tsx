@@ -19,6 +19,7 @@ export const CheckoutForm = () => {
         }
         // const res = await fetch('/create-intent', { method: 'POST' })
         // const { client_secret: clientSecret } = await res.json()
+        
         const { client_secret: clientSecret }: any = 'sk_test_dummy_client_secret_for_testing';
         if (!clientSecret) {
             throw new Error('clientSecret is missing');
@@ -34,6 +35,7 @@ export const CheckoutForm = () => {
             setErrorMessage(error.message)
         } else {
             console.log('payment successfully')
+            console.log(elements)
         }
     }
   return (

@@ -69,9 +69,9 @@ export const EventSecton = () => {
                 <p className="text-gray-700 text-sm mb-3">
                   {event.description}
                 </p>
-                <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                {/* <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
                   View Details
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

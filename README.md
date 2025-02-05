@@ -17,10 +17,6 @@ above kind of think a company can handle easily by using this web application
     (swiper, chart.js, lucid-react, react-hot-toast, react icons etc...)
 
 # site link:
-live site (client) : https://coruscating-lebkuchen-a1fe95.netlify.app/hr/employeeList
+live site (client) : https://asset-pulse-system.netlify.app/
 
 live site (server) : https://y-pi-pied.vercel.app/
-
-git repo (client) : https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-mdYeasinIslam
-
-git repo (server): https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-mdYeasinIslam/tree/main

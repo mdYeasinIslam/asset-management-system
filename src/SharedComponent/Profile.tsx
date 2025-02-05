@@ -13,14 +13,25 @@ import {
 } from "@/components/ui/dialog"
 import { Label } from '@/components/ui/label';
 import { FormEvent } from 'react';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 const ProfilePage = () => {
-  const { user} = useAuth()
+  const { user,updateUserAuth,setLoading} = useAuth()
 const name = user?.displayName as string |undefined
   const email = user?.email as string | undefined
-
+  const navigate=useNavigate()
   const handleSubmit = (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // const name = e.currentTarget?.name
+    const name = e.currentTarget?.userName.value;
+    console.log(name)
+    const profile = { displayName: name }
+    updateUserAuth(profile)
+      .then(() => {
+        setLoading(false)
+        toast.success('Updation successfull')
+        navigate('/profile')
+      })
+      .catch(e => toast.error(e.message))
     
   };
 
@@ -63,14 +74,11 @@ const name = user?.displayName as string |undefined
               />
             </div>
             <Dialog>
-
               <DialogTrigger asChild>
-
-            <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
-              Update
-            </Button>
+                <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+                  Update
+                </Button>
               </DialogTrigger>
-          
              <DialogContent className="w-full p-5">
             <DialogHeader>
             <DialogTitle>Edit Asset Information</DialogTitle>
@@ -80,16 +88,16 @@ const name = user?.displayName as string |undefined
                     <Label htmlFor="notes" className="text-left">
                     Your Name :
                     </Label>
-                    <Input id="notes" name='name' defaultValue={name} type="text"  className="border-2" />
+                    <input id="notes" name='userName' defaultValue={name} type="text"  className="border-2" />
                 </div>
-                <div className="flex flex-col  gap-2">
+                {/* <div className="flex flex-col  gap-2">
                     <Label htmlFor="notes" className="text-left">
                   Your Email :
                     </Label>
-                    <Input id="notes" name='email' type="email" defaultValue={email} className="border-2" />
-                </div>
+                    <input id="notes" name='email' type="email" defaultValue={email} className="border-2" />
+                </div> */}
                 <DialogFooter>
-                    <Button type="submit">Request for asset</Button>
+                    <Button type="submit">Update Profile</Button>
                     <DialogClose asChild>
                         <Button  type="button" className="bg-gray-500"> Close </Button>
                     </DialogClose>

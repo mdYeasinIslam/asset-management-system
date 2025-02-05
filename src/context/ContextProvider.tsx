@@ -59,6 +59,7 @@ export const ContextProvider = ({ children }: ChildrenType) => {
     const info = {
         user,
         loading,
+        setLoading,
         signUpAuth,
         signInAuth,
         signOutAuth,

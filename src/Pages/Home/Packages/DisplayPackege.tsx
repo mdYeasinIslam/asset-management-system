@@ -1,7 +1,6 @@
 import {
   Card,
     CardContent,
-    CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -28,11 +27,11 @@ export const DisplayPackege = ({pkg}:PkgType) => {
               </p>
               <p className="text-gray-600 ">{pkg.description}</p>
         </CardContent>
-          <CardFooter className='flex justify-center'>
+          {/* <CardFooter className='flex justify-center'>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
                 Get Started
               </button>
-        </CardFooter>
+        </CardFooter> */}
     </Card>
   )
 }
