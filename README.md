@@ -1,8 +1,6 @@
 # Project Name:  AssetPulse
 ![Asset-management-system](https://i.ibb.co.com/9HHvRFBZ/asset-Pulse.png)
-<p align="center">
-  <img src="https://i.ibb.co.com/9HHvRFBZ/asset-Pulse.png" alt="My Portfolio" width="600"/>
-</p>
+
 # Project Purpose: 
 This project is build for managing company assets.
 A company provides a number of assets to the employee and company HR_manager need to manage these assets such as :
