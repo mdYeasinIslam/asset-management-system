@@ -21,6 +21,7 @@ import ProfilePage from "@/SharedComponent/Profile"
 import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/PackageChange"
 import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 import { Payment } from "@/Pages/HR_Manager/PaymentMethod/Payment"
+import AboutPage from "@/Pages/AboutPage/AboutPage"
 
 export const Root = () => {
     const routes = createBrowserRouter([
@@ -32,6 +33,12 @@ export const Root = () => {
                     path: '/',
                     element:<Home/>
                 },
+                
+                {
+                    path: '/about',
+                    element:<AboutPage/>
+                },
+
                 {
                     path: '/asEmployee',
                     element:<AsEmployee/>

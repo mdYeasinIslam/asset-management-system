@@ -91,8 +91,8 @@ export const SignIn = () => {
   return (
       <section className="mt-10 px-5">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
-              <figure>
-                  <img src="/images/auth/login.jpg" alt="" className="rounded-xl"/>
+              <figure className="w-2/3 mx-auto">
+                  <img src="/images/auth/login.jpg" alt="" className="w-full rounded-xl"/>
         </figure>
         <div className="space-y-3">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
