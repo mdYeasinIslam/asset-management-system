@@ -29,7 +29,7 @@ export const AddEmployee = () => {
   return (
     <div className="container mx-auto">
       <Packages />
-      <div className="max-w-4xl mx-auto pb-10">
+      <div className="max-w-4xl mx-auto pb-10 dark:text-white">
         <CommonHeading content={content} />
         <DisplayEmployees userInfo={userInfo} isPending={isPending}/>
       </div>

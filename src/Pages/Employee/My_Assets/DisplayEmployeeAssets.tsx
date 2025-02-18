@@ -140,7 +140,7 @@ export function DisplayEmployeeAssets() {
     },
   })
   return (
-    <div className="container mx-auto w-full">
+    <div className="container mx-auto w-full h-full lg:h-[100vh] dark:text-white">
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
             <Input
               placeholder="Search by name..."
@@ -171,7 +171,7 @@ export function DisplayEmployeeAssets() {
                   <TableRow key={headerGroup.id}>
                     {headerGroup.headers.map((header) => {
                       return (
-                        <TableHead key={header.id} className="text-black font-medium ">
+                        <TableHead key={header.id} className="text-black dark:text-white font-medium ">
                           {header.isPlaceholder
                             ? null
                             : flexRender(

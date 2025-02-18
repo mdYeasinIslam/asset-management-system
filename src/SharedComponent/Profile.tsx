@@ -36,7 +36,7 @@ const name = user?.displayName as string |undefined
   };
 
   return (
-    <div className="container mx-auto min-h-screen bg-gray-100">
+    <div className="container mx-auto min-h-screen bg-gray-100 dark:bg-slate-700">
       {/* Header Section */}
       <div
         className="bg-cover bg-center h-48 flex items-center justify-center brightness-75"
@@ -70,7 +70,7 @@ const name = user?.displayName as string |undefined
                 type="email"
                 defaultValue={email}
                 readOnly
-                className="w-full bg-gray-100 cursor-not-allowed"
+                className="w-full bg-gray-100 dark:bg-slate-900 cursor-not-allowed"
               />
             </div>
             <Dialog>

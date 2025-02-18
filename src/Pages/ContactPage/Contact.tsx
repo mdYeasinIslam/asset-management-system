@@ -23,7 +23,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="container mx-auto min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+    <div className="container mx-auto min-h-screen bg-slate-100 dark:text-white dark:bg-[#2a3341]">
       {/* Hero Section */}
       <div className="relative bg-slate-900 text-white py-20">
         <div className="container mx-auto px-4 relative text-center">
@@ -39,39 +39,39 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h2 className="text-2xl font-bold mb-6 text-slate-900">Get in Touch</h2>
+            <div className="bg-white dark:bg-[#2a3341]   rounded-2xl p-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Get in Touch</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-slate-100 p-3 rounded-lg">
                     <Building2 className="h-6 w-6 text-slate-700"/>
                   </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">Main Office</h3>
-                    <p className="text-slate-600">123 Asset Street, Financial District</p>
-                    <p className="text-slate-600">Mirpur,Dhaka</p>
+                  <div >
+                    <h3 className="font-semibold text-slate-900 dark:text-white">Main Office</h3>
+                    <p className="text-slate-600 dark:text-slate-300">123 Asset Street, Financial District</p>
+                    <p className="text-slate-600 dark:text-slate-300">Mirpur,Dhaka</p>
                   </div>
                 </div>
  
                 <div className="flex items-start space-x-4">
                   <div className="bg-slate-100 p-3 rounded-lg">
-                    <Phone className="h-6 w-6 text-slate-700" />
+                    <Phone className="h-6 w-6 text-slate-700 " />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Phone</h3>
-                    <p className="text-slate-600">+888 018726863556</p>
-                    <p className="text-slate-600">+1 (555) 987-6543</p>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">Phone</h3>
+                    <p className="text-slate-600  dark:text-slate-300">+888 018726863556</p>
+                    <p className="text-slate-600 dark:text-slate-300">+1 (555) 987-6543</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
                   <div className="bg-slate-100 p-3 rounded-lg">
-                    <Mail className="h-6 w-6 text-slate-700" />
+                    <Mail className="h-6 w-6 text-slate-700 " />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Email</h3>
-                    <p className="text-slate-600">info@assetmanagement.com</p>
-                    <p className="text-slate-600">support@assetmanagement.com</p>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">Email</h3>
+                    <p className="text-slate-600 dark:text-slate-300">info@assetmanagement.com</p>
+                    <p className="text-slate-600 dark:text-slate-300">support@assetmanagement.com</p>
                   </div>
                 </div>
 
@@ -80,17 +80,17 @@ export default function Contact() {
                     <Clock className="h-6 w-6 text-slate-700" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Business Hours</h3>
-                    <p className="text-slate-600">Monday - Friday: 9:00 AM - 6:00 PM</p>
-                    <p className="text-slate-600">Saturday - Sunday: Closed</p>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">Business Hours</h3>
+                    <p className="text-slate-600 dark:text-slate-300">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p className="text-slate-600 dark:text-slate-300">Saturday - Sunday: Closed</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h2 className="text-2xl font-bold mb-6 text-slate-900">Connect With Us</h2>
+            <div className="bg-white dark:bg-[#1f2835] rounded-2xl p-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Connect With Us</h2>
               <div className="flex space-x-4">
                 <a href="https://www.linkedin.com/in/mohammad-yeasin-islam/" target="_blank">    
                 <Button variant="outline" size="icon" className="rounded-full">
@@ -113,12 +113,12 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-slate-900">Send Us a Message</h2>
+          <div className="bg-white dark:bg-[#1f2835] rounded-2xl p-8 shadow-lg">
+            <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium text-slate-900">
+                  <label htmlFor="name" className="text-sm font-medium text-slate-900 dark:text-slate-200">
                     Full Name
                   </label>
                   <Input
@@ -130,7 +130,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium text-slate-900">
+                  <label htmlFor="email" className="text-sm font-medium text-slate-900 dark:text-slate-200">
                     Email Address
                   </label>
                   <Input
@@ -144,7 +144,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-sm font-medium text-slate-900">
+                <label htmlFor="subject" className="text-sm font-medium text-slate-900 dark:text-slate-200">
                   Subject
                 </label>
                 <Input
@@ -156,7 +156,7 @@ export default function Contact() {
                 />
               </div>
               <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium text-slate-900">
+                <label htmlFor="message" className="text-sm font-medium text-slate-900 dark:text-slate-200">
                   Message
                 </label>
                 <Textarea
@@ -186,23 +186,23 @@ export default function Contact() {
 
         {/* Department Cards */}
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <h3 className="text-lg font-semibold mb-2 text-slate-900">Investment Advisory</h3>
-            <p className="text-slate-600 mb-4">Get expert advice on investment strategies and portfolio management</p>
+          <div className="bg-white dark:bg-[#1f2835] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-200">Investment Advisory</h3>
+            <p className="text-slate-600 dark:text-slate-300 mb-4">Get expert advice on investment strategies and portfolio management</p>
             {/* <Button variant="outline" className="w-full">
               Contact Department
             </Button> */}
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <h3 className="text-lg font-semibold mb-2 text-slate-900">Client Relations</h3>
-            <p className="text-slate-600 mb-4">Dedicated support for all your account-related inquiries</p>
+          <div className="bg-white dark:bg-[#1f2835] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-200">Client Relations</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-4">Dedicated support for all your account-related inquiries</p>
             {/* <Button variant="outline" className="w-full">
               Contact Department
             </Button> */}
           </div>
-          <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-            <h3 className="text-lg font-semibold mb-2 text-slate-900">Technical Support</h3>
-            <p className="text-slate-600 mb-4">24/7 technical assistance for platform-related issues</p>
+          <div className="bg-white dark:bg-[#1f2835] rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+            <h3 className="text-lg font-semibold mb-2 text-slate-900 dark:text-slate-200">Technical Support</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-4">24/7 technical assistance for platform-related issues</p>
             {/* <Button variant="outline" className="w-full">
               Contact Department
             </Button> */}

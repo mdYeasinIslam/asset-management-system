@@ -33,24 +33,24 @@ const notices: Notice[] = [
 
 const NoticeSection: React.FC = () => {
   return (
-    <div className="bg-gray-100 p-6 rounded-lg shadow-md max-w-4xl mx-auto my-10">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+    <div className="bg-gray-100 dark:bg-slate-700 p-6 rounded-lg shadow-md max-w-4xl mx-auto my-10">
+      <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
         Company Notices
       </h2>
       {notices.length === 0 ? (
-        <p className="text-gray-600 text-center">No notices to display.</p>
+        <p className="text-gray-600 dark:text-white text-center">No notices to display.</p>
       ) : (
         <ul className="space-y-4">
           {notices.map((notice) => (
             <li
               key={notice.id}
-              className="bg-white p-4 rounded-lg shadow-sm border border-gray-200"
+              className="bg-white dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-gray-200"
             >
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
                 {notice.title}
               </h3>
-              <p className="text-gray-600 mt-1">{notice.description}</p>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-gray-600 dark:text-white mt-1">{notice.description}</p>
+              <p className="text-sm text-gray-500 dark:text-white mt-2">
                 Posted on: {new Date(notice.date).toLocaleDateString()}
               </p>
             </li>

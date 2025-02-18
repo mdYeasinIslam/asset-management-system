@@ -45,7 +45,7 @@ export const RequestAction = ({row}:{row:any}) => {
        <DropdownMenu>
       <DropdownMenuTrigger asChild>
           <Button variant="action"  disabled={disable=='rejected' && true}>
-          <GitPullRequestClosed className="text-red-800"/>
+          <GitPullRequestClosed className="text-black dark:text-white"/>
           </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" >

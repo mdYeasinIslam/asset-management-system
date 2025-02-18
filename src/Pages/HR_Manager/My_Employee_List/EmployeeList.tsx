@@ -18,7 +18,7 @@ export const EmployeeList = () => {
              </div>
   }
   return (
-    <div className="my-10">
+    <div className="py-10 h-full lg:h-[100vh]">
       
       <EmployeeListDisplay employeeInfo={employeeData} isPending={isPending} />
     </div>

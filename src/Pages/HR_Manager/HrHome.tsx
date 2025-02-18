@@ -25,7 +25,7 @@ export const HrHome = () => {
             </div>
   }
   return (
-    <div className="container mx-auto my-10 space-y-16">
+    <div className="container mx-auto pt-10 space-y-16 dark:text-white">
       <PendingSection pendingRequest={pendingRequest} />
       <LimitedStockItem assetData={assetsData} />
       <TopRequests requestedAssets={requestedAssets} />

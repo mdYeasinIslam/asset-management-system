@@ -96,7 +96,7 @@ export const AsHr = () => {
     }
 
   return (
-      <section className="my-10 px-5">
+      <section className="py-10 px-5 dark:text-white">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
               <figure>
           <img src="/images/auth/asHrSignUp2.jpg" alt="" className="rounded-xl" />

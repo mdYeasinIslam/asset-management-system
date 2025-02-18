@@ -57,20 +57,20 @@ const Calendar: React.FC = () => {
   const hasEvent = (day: number) =>
     events.some((event) => event.date === formatDateString(day));
 const contentCalendar = <div className="flex flex-col items-center">
-     <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+     <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
           Calendar
         </h1>
 
   </div>
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-md">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-700 rounded-xl">
+      <div className="bg-white dark:bg-slate-900  rounded-lg shadow-lg p-4 w-full max-w-md">
             
               
                         <CommonHeading content={contentCalendar} />
         <div className="flex items-center justify-between mb-4">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+            className="bg-blue-500 text-white  px-4 py-2 rounded-lg hover:bg-blue-600"
             onClick={() => changeMonth(-1)}
           >
             Prev
@@ -94,7 +94,7 @@ const contentCalendar = <div className="flex flex-col items-center">
           {daysOfWeek.map((day) => (
             <div
               key={day}
-              className="text-center font-semibold text-gray-700"
+              className="text-center font-semibold text-gray-700 dark:text-white"
             >
               {day}
             </div>
@@ -106,7 +106,7 @@ const contentCalendar = <div className="flex flex-col items-center">
           {days.map((day, index) => (
             <div
               key={index}
-              className={`h-12 flex items-center justify-center rounded-lg border ${
+              className={`h-12 flex items-center dark:text-black justify-center rounded-lg border ${
                 day
                   ? isToday(day)
                     ? "bg-green-200 border-green-400 font-bold"

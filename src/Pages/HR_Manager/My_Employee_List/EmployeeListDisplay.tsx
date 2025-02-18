@@ -88,7 +88,7 @@ export function EmployeeListDisplay({employeeInfo,isPending}:{employeeInfo:Emplo
     <h1 className="text-2xl uppercase font-medium leading-tight">Your Employees List</h1>
   </div>
   return (
-    <div className="max-w-4xl mx-auto w-full space-y-5">
+    <div className="max-w-4xl mx-auto w-full space-y-5 dark:text-white">
       <CommonHeading content={contentPending} />
           <div className="rounded-md border">
         {
@@ -110,7 +110,7 @@ export function EmployeeListDisplay({employeeInfo,isPending}:{employeeInfo:Emplo
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-black font-medium ">
+                    <TableHead key={header.id} className="text-black dark:text-white font-medium ">
                       {header.isPlaceholder
                         ? null
                         : flexRender(

@@ -4,7 +4,7 @@ import { useAuth } from "@/hook/useAuth"
 import { useAxiosSecure } from "@/hook/useAxiosSecure"
 import { useForm, SubmitHandler } from "react-hook-form"
 import toast from "react-hot-toast"
-import {useLocation, useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { FcGoogle } from "react-icons/fc";
 
 type Inputs = {
@@ -21,33 +21,36 @@ export const SignIn = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const from = location.state?.pathname || '/'
-
-
+  const fromHr = location.state?.pathNanme || '/hr/hrHome'
+  const fromEmployee =location.state?.pathNanme || '/employee/eHome'
     const onSubmit: SubmitHandler<Inputs> = (data,e) => {
       
       const email = data.email.toLowerCase();
         const password = data.password;
       signInAuth(email, password)
         .then(async (res) => {
-          // if (localStorage.getItem('token')) {
+          if (!res?.user) {
+            return;
+          }
             const response = await axiosSecure.get(`/users?email=${res.user?.email}`)
             toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
               e?.target.reset()
-            if (response?.data?.role == 'Employee') {
-              if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-                return navigate('/employee/eHome')
-              }
-              else {
-                return navigate(from,{replace:true})
-              }
-            }
-            if (response?.data?.role == 'Admin' ) {
-              if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-                return navigate('/hr/hrHome')
-              }
-              return navigate(from,{replace:true})
+          if (response?.data?.role == 'Employee') {
+              // if (from == '/' || from == '/signIn' || from == '/asEmployee' || from == 'asHr') {
+              //   return navigate('/employee/eHome')
+              // }
+              return navigate(fromEmployee,{replace:true})
             }
             else {
+               navigate(from,{replace:true})
+            }
+          if (response?.data?.role == 'Admin') {
+            // if (from == '/' || from == '/signIn' || from == '/asEmployee' || from == 'asHr') {
+            //     navigate('/hr/hrHome')
+            //   }
+              return navigate(fromHr,{replace:true})
+            }
+          else {
               navigate(from, {replace:true})
             }
           // }
@@ -59,6 +62,7 @@ export const SignIn = () => {
       
         e?.target.reset()
     }
+
   const google = async () => {
      googleAuth()
         .then(async(res) => {
@@ -89,13 +93,13 @@ export const SignIn = () => {
         })      
     }
   return (
-      <section className="mt-10 px-5">
+      <section className="mt-10 px-5 h-full lg:h-[100vh]">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
               <figure className="w-2/3 mx-auto">
                   <img src="/images/auth/login.jpg" alt="" className="w-full rounded-xl"/>
         </figure>
         <div className="space-y-3">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 dark:text-white">
                    <h1 className="font-medium text-2xl text-center font-serif">Please Log In your account</h1>
                   <Input {...register('email')} type="email" placeholder="Email" required />
                   <Input {...register('password')} type="password" placeholder="Password" required />
@@ -104,7 +108,7 @@ export const SignIn = () => {
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                 <Button variant={"dark"} className="w-full" type="submit">Log In</Button>
+                 <Button variant="dark" className="w-full" type="submit">Log In</Button>
           </form>
           
                  <button onClick={google} className="w-full bg-[#1F2937] text-white font-medium flex justify-center items-center  rounded-md py-1 "><FcGoogle className="w-8 h-8"/> <span>Log In with Google</span> </button>

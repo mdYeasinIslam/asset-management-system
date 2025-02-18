@@ -101,7 +101,7 @@ export const Navbar = () => {
                              <button
                                   onClick={() => setDark(!dark)}
                                   title="dark"
-                                  className="p- rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                                  className="p- rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
                                 >
                                   {dark ? (
                                     <Sun className="w-5 h-5 text-black" />
@@ -115,13 +115,13 @@ export const Navbar = () => {
                                 <AvatarFallback>CN</AvatarFallback>
                               </Avatar>
                             </Link>
-                            <Button onClick={signOut} variant="outline">Log out</Button>
+                            <Button onClick={signOut} variant="dark">Log out</Button>
                             </>
                             :
                             <>
                               <button
                                   onClick={() => setDark(!dark)}
-                                  className="p- rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                                  className="p- rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
                                 >
                                   {dark ? (
                                     <Sun className="w-5 h-5 text-black" />
@@ -180,7 +180,7 @@ export const Navbar = () => {
                 <>
                      <button
                         onClick={() => setDark(!dark)}
-                        className="p- rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                        className="p-1 rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
                       >
                         {dark ? (
                           <Sun className="w-5 h-5 text-black" />
@@ -194,14 +194,14 @@ export const Navbar = () => {
                         <AvatarFallback>CN</AvatarFallback>
                       </Avatar>
                   </Link>
-                  <Button  onClick={signOut} variant="outline">Log out</Button>
+                  <Button  onClick={signOut} variant="dark">Log out</Button>
                     </>
                     :
                     <>
                      <button
                         onClick={() => setDark(!dark)}
                         title={dark?'dark':'light'}
-                        className="p-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                        className="p-1 rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
                       >
                         {dark ? (
                           <Sun className="w-5 h-5 text-black" />
@@ -209,7 +209,7 @@ export const Navbar = () => {
                           <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
                         )}
                     </button>
-                   <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
+                   <NavLink className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></NavLink>
                     </>
                 }
               </ul>

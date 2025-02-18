@@ -36,7 +36,7 @@ export const EHome = () => {
  
 
   return (
-    <div className="container mx-auto space-y-10 mt-10">
+    <div className="container mx-auto space-y-10 mt-10 dark:text-white">
       <div className="flex px-1 gap-2 items-center justify-center ">
         <MyPendingRequest requestedAssets={ requestedAssets} />
         <MonthlyRequests requestedAssets={ requestedAssets}/>
@@ -57,7 +57,7 @@ export const EHome = () => {
           }
           </div>
       </div>
-      <div className="grid lg:grid-cols-2">
+      <div className="grid lg:grid-cols-2 gap-2">
         
       <EventSecton />
       <Calendar/>

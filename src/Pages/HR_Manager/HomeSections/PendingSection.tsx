@@ -3,7 +3,7 @@ import { DisplayPendingRequest } from "../../../SharedComponent/DisplayPendingRe
 import { CommonHeading } from "@/SharedComponent/CommonHeading"
 
 export const PendingSection = ({pendingRequest}:{pendingRequest:AssetRequestType[]}) => {
-     const contentPending = <div className="flex flex-col items-center">
+     const contentPending = <div className="flex flex-col items-center ">
     <h1 className="text-2xl uppercase font-medium leading-tight">Pending Asset Requests</h1>
     <p className="text-gray-800">Find assets as your choice and neccesity. And use them carefully ,may be you need to return it to the company.</p>
   </div>

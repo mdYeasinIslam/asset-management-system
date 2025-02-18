@@ -10,10 +10,10 @@ export const MyTeam = () => {
   }
   return (
   
-       <div className="max-w-5xl mx-auto my-10">
+       <div className="max-w-5xl mx-auto py-10 dark:text-white h-full lg:h-[100vh]">
       <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-md">
         <thead>
-          <tr className="bg-gray-100">
+          <tr className="bg-gray-100 dark:bg-slate-900 dark:text-white">
             <th className="px-4 py-2 text-left">Member Image</th>
             <th className="px-4 py-2 text-left">Member Name</th>
             <th className="px-4 py-2 text-left">Role</th>

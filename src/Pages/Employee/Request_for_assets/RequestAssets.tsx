@@ -51,12 +51,12 @@ export const RequestAssets = () => {
   if (isPending) {
     return <div>loading.......</div>
   }
-  const content = <div className="flex flex-col items-center">
+  const content = <div className="flex flex-col items-center dark:text-white">
     <h1 className="text-2xl uppercase font-medium leading-tight">Store house of Assets</h1>
-    <p className="text-gray-800">Find assets as your choice and neccesity. And use them carefully ,may be you need to return it to the company.</p>
+    <p className="text-gray-800 dark:text-white">Find assets as your choice and neccesity. And use them carefully ,may be you need to return it to the company.</p>
   </div>
   return (
-    <section className="container mx-auto space-y-10 my-10">
+    <section className="container mx-auto space-y-10 py-10 dark:text-white">
       <CommonHeading content={content} />
       <div className="flex flex-col md:flex-row gap-2">
       {/* search section */}

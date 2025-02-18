@@ -57,7 +57,7 @@ export const ActionBtton = ({ row }: { row: any }) => {
        <DropdownMenu>
       <DropdownMenuTrigger asChild>
           <Button variant="action">
-          <GitPullRequestClosed className="text-red-800"/>
+          <GitPullRequestClosed className="text-black dark:text-white"/>
           </Button>
       </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" >

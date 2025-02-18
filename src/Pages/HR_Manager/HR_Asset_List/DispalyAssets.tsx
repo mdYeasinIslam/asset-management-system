@@ -148,7 +148,7 @@ export function DisplayAssets() {
     return <div>loading........</div>
   }
   return (
-    <div className="container mx-auto w-full">
+    <div className="container dark:text-white mx-auto w-full">
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
         <Input
           placeholder="Search by name..."
@@ -249,7 +249,7 @@ export function DisplayAssets() {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id} className="text-black font-medium ">
+                    <TableHead key={header.id} className="text-black dark:text-white font-medium ">
                       {header.isPlaceholder
                         ? null
                         : flexRender(

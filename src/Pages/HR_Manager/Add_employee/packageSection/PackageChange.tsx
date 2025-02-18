@@ -13,7 +13,7 @@ export const PackageChange = () => {
         }
     };
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 dark:bg-slate-800">
       <div className="flex justify-center mt-8">
         <Card className="w-full max-w-md shadow-lg">
           <CardContent>

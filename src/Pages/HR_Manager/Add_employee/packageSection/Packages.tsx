@@ -10,7 +10,7 @@ export const Packages = () => {
     return <div>loading.............</div>
   }
   return (
-    <div className=" bg-gray-100 py-9">
+    <div className=" bg-gray-100 dark:bg-slate-900 py-9">
       <div className="flex justify-center">
         <Card className="w-full max-w-md shadow-lg">
           <CardContent>
@@ -19,7 +19,7 @@ export const Packages = () => {
             
             }
             <div className="mb-4">
-              <p className="text-gray-600">Employee Count: <span className="font-bold">{selectedPackge?.split(' ')[0]}</span></p>
+              <p className="text-gray-600 dark:text-white">Employee Count: <span className="font-bold">{selectedPackge?.split(' ')[0]}</span></p>
             </div>
             <Link to={`/hr/addEmployee/packageChange/${10}`}>
                 <Button

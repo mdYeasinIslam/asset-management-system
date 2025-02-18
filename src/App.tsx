@@ -7,7 +7,7 @@ function App() {
   return (
     <div className={` ${dark?'bg-[#1F2937] dark':''}`}>
       <Root />
-       <Toaster />
+      <Toaster />
 
     </div>
   )

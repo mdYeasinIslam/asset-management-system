@@ -73,7 +73,7 @@ export const AddAsset = () => {
       return <div>loading.........</div>
     }
   return (
-      <section className="my-10 px-5">
+      <section className="py-10 px-5 dark:text-white h-full lg:h-[100vh]">
           <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5"> 
               <figure className="flex justify-center items-center">
                   <img src="/images/addAsset/addAsset.jpg" alt="" className="rounded-xl w-3/4"/>

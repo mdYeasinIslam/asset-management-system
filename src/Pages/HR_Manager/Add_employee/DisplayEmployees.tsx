@@ -81,7 +81,7 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
     <div className="p-4">
       <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-md">
         <thead>
-          <tr className="bg-gray-100">
+          <tr className="bg-gray-100 dark:bg-slate-900">
             <th className="px-4 py-2 text-left">
               <input
                 type="checkbox"

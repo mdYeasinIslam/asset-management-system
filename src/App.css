@@ -2,7 +2,6 @@ nav>ul>.active{
 color: #ffffff;
  /* background-color: #12325e; */
  background-color: #1F2937;
- 
 }
 div>ul>.active{
   color: #ffffff;
@@ -10,6 +9,16 @@ div>ul>.active{
  
 }
 
+.dark nav>ul>.active{
+color: #0c0b0b;
+ /* background-color: #12325e; */
+ background-color: #f1f1f1;
+}
+.dark div>ul>.active{
+  color: #000000;
+ background-color: #f4f5f7;
+ 
+}
 
 .navbar-light{
   background-color: #ffffff;
