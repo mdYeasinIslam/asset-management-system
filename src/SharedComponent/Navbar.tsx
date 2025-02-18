@@ -12,8 +12,10 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 export const Navbar = () => {
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
-  const [, isPending] = useUsersData()
+  const [usersData, isPending] = useUsersData()
   const [isAdmin,,isLoading] = useIsAdmin()
+  console.log(usersData.role)
+  const role = usersData?.role
   const userPhoto = user?.photoURL as string | undefined
     const navigate = useNavigate()
   const signOut = () => { 
@@ -47,7 +49,7 @@ export const Navbar = () => {
                         }
                         </div>
                         <div className="w-full">
-                          <Link to={'/'} className='flex items-center gap-2'>
+                          <Link to={`/${role !== undefined?`${role=='Admin'? 'hr/hrHome': 'employee/eHome'}`:'/'}`} className='flex items-center gap-2'>
                                         <img className="w-10 rounded-xl" src="/defaultLogo2.png" alt="" />
                                         <p className="font-medium text-xl w-full">AssetPulse</p>
                           </Link>
@@ -110,7 +112,7 @@ export const Navbar = () => {
                     </nav>
           
         </div>
-          
+          {/* tablet and larger */}
         <nav className={`hidden md:flex gap-5`}>
           
               <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] md:text-[9px] lg:text-[0.7rem] xl:text-[0.9rem] `}>
