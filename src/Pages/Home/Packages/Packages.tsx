@@ -1,5 +1,5 @@
+import { useAuth } from "@/hook/useAuth";
 import { DisplayPackege } from "./DisplayPackege";
-
   const packages = [
     {
       id: 1,
@@ -21,13 +21,15 @@ import { DisplayPackege } from "./DisplayPackege";
     },
   ];
 export const Packages = () => {
+  const {dark} = useAuth()
+
   return (
-    <section className="bg-white py-16 px-6 md:px-12 lg:px-20">
+    <section className={`py-16 mt-4 px-6 md:px-12 lg:px-20 ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
       <div className="container mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-8">
+            <h2 className={`text-3xl lg:text-4xl font-bold text-gray-800 mb-8 dark:text-white`}>
             Choose the Perfect Package for Your Team
             </h2>
-            <p className="text-gray-600 text-lg mb-12">
+            <p className="text-gray-600 dark:text-white text-lg mb-12">
             Select a package that best suits the size of your team and start optimizing your asset management today.
                 </p>
              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

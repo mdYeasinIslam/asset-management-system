@@ -2,6 +2,8 @@ import { User, UserCredential } from "firebase/auth"
 export type ContextType = {
       user: User | null | undefined
       loading: boolean
+      dark: boolean
+      setDark: React.Dispatch<React.SetStateAction<boolean>>
       setLoading: React.Dispatch<React.SetStateAction<boolean>>
       signUpAuth: (email: string, password: string) => Promise<UserCredential>
       signInAuth: (email: string, password: string) => Promise<UserCredential>

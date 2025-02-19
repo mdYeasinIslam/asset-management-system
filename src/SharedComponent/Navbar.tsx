@@ -4,13 +4,13 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useAuth } from "@/hook/useAuth"
 import { useIsAdmin } from "@/hook/useIsAdmin"
 import { useUsersData } from "@/hook/useUsersData"
-import { AlignJustify, X } from "lucide-react"
+import { AlignJustify, Moon, Sun, X } from "lucide-react"
 import { useState } from "react"
 import toast from "react-hot-toast"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 
 export const Navbar = () => {
-  const {user,signOutAuth} = useAuth()
+  const {user,signOutAuth,dark,setDark} = useAuth()
   const [open, setOpen] = useState(true)
   const [usersData, isPending] = useUsersData()
   const [isAdmin, , isLoading] = useIsAdmin()
@@ -38,10 +38,11 @@ export const Navbar = () => {
           </div>
   }
   return (
-   <div className="fixed z-10 w-full  ">
-      <div className="container mx-auto  md:flex md:justify-between md:items-center py-3  md:px-4 navbar-light bg-opacity-30">
+   <div className={`fixed z-10 w-full`}>
+      <div className={`container mx-auto  md:flex md:justify-between md:items-center py-3  md:px-4  ${dark?'bg-[#1F2937] text-white ':'navbar-light bg-opacity-30 '}`}>
       
-        <div className="flex justify-between items-center gap-2 relative">  
+        <div className="flex justify-between items-center gap-2 relative"> 
+                    {/* menu and nav icon for small device  */}
                      <div className="flex items-center gap-2 pl-1">
                         <div onClick={() => setOpen(!open)} className=" flex md:hidden w-full">
                         {
@@ -66,7 +67,7 @@ export const Navbar = () => {
                               <NavLink className='px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
                               <NavLink className='px-2 py-1 rounded' to={'/contact'}> <li>Contact</li></NavLink>
                               <NavLink className='px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
-                              <NavLink className='px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+                              <NavLink className='px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR_Manager</li></NavLink>
                             </>
                             :
                             <>
@@ -97,18 +98,39 @@ export const Navbar = () => {
                         {
                           user?.email ?
                              <>
+                             <button
+                                  onClick={() => setDark(!dark)}
+                                  title="dark"
+                                  className="p- rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                                >
+                                  {dark ? (
+                                    <Sun className="w-5 h-5 text-black" />
+                                  ) : (
+                                    <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
+                                  )}
+                              </button>
                             <Link className='px-2 py-1 rounded-sm' to={'/profile'}>
                               <Avatar>
                                 <AvatarImage src={userPhoto} alt={user?.email} />
                                 <AvatarFallback>CN</AvatarFallback>
                               </Avatar>
                             </Link>
-                            <Button  onClick={signOut} variant="outline">Log out</Button>
+                            <Button onClick={signOut} variant="outline">Log out</Button>
                             </>
                             :
                             <>
-                         <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
-                    </>
+                              <button
+                                  onClick={() => setDark(!dark)}
+                                  className="p- rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                                >
+                                  {dark ? (
+                                    <Sun className="w-5 h-5 text-black" />
+                                  ) : (
+                                    <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
+                                  )}
+                                </button>
+                              <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
+                           </>
                         }
                       </ul>
                     </nav>
@@ -125,7 +147,7 @@ export const Navbar = () => {
                   <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
                    <NavLink className='px-2 py-1 rounded' to={'/contact'}> <li>Contact</li></NavLink>
                       <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
-                      <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
+                      <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR_Manager</li></NavLink>
                     </>
                     :
                 <>
@@ -156,6 +178,16 @@ export const Navbar = () => {
                 {
                   user?.email ?
                 <>
+                     <button
+                        onClick={() => setDark(!dark)}
+                        className="p- rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                      >
+                        {dark ? (
+                          <Sun className="w-5 h-5 text-black" />
+                        ) : (
+                          <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
+                        )}
+                    </button>
                   <Link className='px-2 py-1 rounded-sm' to={'/profile'}>
                       <Avatar>
                         <AvatarImage title={user?.email} src={userPhoto} alt={user?.email} />
@@ -166,7 +198,18 @@ export const Navbar = () => {
                     </>
                     :
                     <>
-                  <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
+                     <button
+                        onClick={() => setDark(!dark)}
+                        title={dark?'dark':'light'}
+                        className="p-1 rounded-full bg-gray-200 dark:bg-gray-800 hover:bg-slate-400 transition-all"
+                      >
+                        {dark ? (
+                          <Sun className="w-5 h-5 text-black" />
+                        ) : (
+                          <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
+                        )}
+                    </button>
+                   <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
                     </>
                 }
               </ul>
