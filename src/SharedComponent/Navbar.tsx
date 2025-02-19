@@ -13,10 +13,10 @@ export const Navbar = () => {
   const {user,signOutAuth,dark,setDark} = useAuth()
   const [open, setOpen] = useState(true)
   const [usersData, isPending] = useUsersData()
-  const [isAdmin, , isLoading] = useIsAdmin()
+  const [isAdmin,, isLoading] = useIsAdmin()
   const role = usersData?.role
   const userPhoto = user?.photoURL as string | undefined
-
+console.log(isAdmin,isPending,role)
     const navigate = useNavigate()
   const signOut = () => { 
     signOutAuth()

@@ -15,7 +15,7 @@ import { AllRequest } from "@/Pages/HR_Manager/All_Request/AllRequest"
 import { HrAssetList } from "@/Pages/HR_Manager/HR_Asset_List/HrAssetList"
 import { HrHome } from "@/Pages/HR_Manager/HrHome"
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom"
 import { PrivateRoot } from "./PrivateRoot"
 import ProfilePage from "@/SharedComponent/Profile"
 import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/PackageChange"
@@ -25,8 +25,7 @@ import AboutPage from "@/Pages/AboutPage/AboutPage"
 import Contact from "@/Pages/ContactPage/Contact"
 import ErrorPage from "@/SharedComponent/ErrorPage"
 
-export const Root = () => {
-    const routes = createBrowserRouter([
+   export const routes = createBrowserRouter([
         {
             path: "/",
             element: <MainLayout />,
@@ -143,7 +142,4 @@ export const Root = () => {
             ]
         }
     ])
-  return (
-   <RouterProvider router={routes}></RouterProvider>
-  )
-}
+  

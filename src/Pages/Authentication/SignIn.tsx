@@ -17,7 +17,6 @@ export const SignIn = () => {
   const { register, handleSubmit, formState: { errors }, } = useForm<Inputs>()
   const { signInAuth,googleAuth } = useAuth()
   const axiosSecure = useAxiosSecure()
-
   const location = useLocation()
   const navigate = useNavigate()
   const from = location.state?.pathname || '/'
@@ -29,13 +28,13 @@ export const SignIn = () => {
         const password = data.password;
       signInAuth(email, password)
         .then(async (res) => {
-          if (!res?.user) {
-            return;
-          }
-            const response = await axiosSecure.get(`/users?email=${res.user?.email}`)
+          
+          const response = await axiosSecure.get(`/users?email=${res.user?.email}`)
+          console.log(response)
             toast.success(`${res.user.displayName}- You are successfully Join as ${response.data?.role}`)
               e?.target.reset()
           if (response?.data?.role == 'Employee') {
+            
               // if (from == '/' || from == '/signIn' || from == '/asEmployee' || from == 'asHr') {
               //   return navigate('/employee/eHome')
               // }
@@ -45,10 +44,12 @@ export const SignIn = () => {
                navigate(from,{replace:true})
             }
           if (response?.data?.role == 'Admin') {
+           
             // if (from == '/' || from == '/signIn' || from == '/asEmployee' || from == 'asHr') {
-            //     navigate('/hr/hrHome')
+            //    return navigate('/hr/hrHome')
             //   }
               return navigate(fromHr,{replace:true})
+              // return navigate('/')
             }
           else {
               navigate(from, {replace:true})
@@ -62,7 +63,9 @@ export const SignIn = () => {
       
         e?.target.reset()
     }
-
+  // if (redirect) {
+  //   window.location.reload();
+  //   }
   const google = async () => {
      googleAuth()
         .then(async(res) => {
