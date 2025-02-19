@@ -41,13 +41,13 @@ export const columns: ColumnDef<AssetType>[] = [
  
     {
     accessorKey: "name",
-    header: "Product Name",
+    header: "Asset Name",
     cell: ({ row }) => <div className="lowercase">{row.getValue("name")}</div>,
     },
   
     {
     accessorKey: "type",
-    header: "Product Type",
+    header: "Asset Type",
         cell: ({ row }) => {
           return  <div className="">{row.getValue("type")}</div>
         },

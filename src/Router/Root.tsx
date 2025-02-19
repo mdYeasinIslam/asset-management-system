@@ -22,6 +22,7 @@ import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/Pa
 import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 import { Payment } from "@/Pages/HR_Manager/PaymentMethod/Payment"
 import AboutPage from "@/Pages/AboutPage/AboutPage"
+import Contact from "@/Pages/ContactPage/Contact"
 
 export const Root = () => {
     const routes = createBrowserRouter([
@@ -37,6 +38,10 @@ export const Root = () => {
                 {
                     path: '/about',
                     element:<AboutPage/>
+                },
+                {
+                    path: '/contact',
+                    element:<Contact/>
                 },
 
                 {

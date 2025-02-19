@@ -104,10 +104,10 @@ export const SignIn = () => {
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                 <Button className="w-full" type="submit">Log In</Button>
+                 <Button variant={"dark"} className="w-full" type="submit">Log In</Button>
           </form>
           
-                 <button onClick={google} className="w-full bg-primary text-white font-medium flex justify-center items-center  rounded-md py-1 "><FcGoogle className="w-8 h-8"/> <span>Log In with Google</span> </button>
+                 <button onClick={google} className="w-full bg-[#1F2937] text-white font-medium flex justify-center items-center  rounded-md py-1 "><FcGoogle className="w-8 h-8"/> <span>Log In with Google</span> </button>
         </div>
               
           </div>

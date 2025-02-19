@@ -106,7 +106,7 @@ export const AsEmployee = () => {
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                 <Button className="w-full" type="submit">Join as a Employee</Button>
+                 <Button variant='dark' className="w-full" type="submit">Join as a Employee</Button>
             </form>
           </div>
         

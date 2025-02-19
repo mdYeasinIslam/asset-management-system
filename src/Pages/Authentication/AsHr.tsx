@@ -153,7 +153,7 @@ export const AsHr = () => {
                 {/* errors will return when field validation fails  */}
                 {errors.exampleRequired && <span>This field is required</span>}
 
-                 <Button className="w-full" type="submit">Join as a Hr_manager</Button>
+                 <Button variant='dark' className="w-full" type="submit">Join as a Hr_manager</Button>
             </form>
           </div>
         

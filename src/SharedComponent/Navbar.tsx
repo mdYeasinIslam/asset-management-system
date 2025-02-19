@@ -13,9 +13,10 @@ export const Navbar = () => {
   const {user,signOutAuth} = useAuth()
   const [open, setOpen] = useState(true)
   const [usersData, isPending] = useUsersData()
-  const [isAdmin,,isLoading] = useIsAdmin()
-  console.log(usersData.role)
+  const [isAdmin, , isLoading] = useIsAdmin()
+  
   const role = usersData?.role
+
   const userPhoto = user?.photoURL as string | undefined
     const navigate = useNavigate()
   const signOut = () => { 
@@ -64,6 +65,7 @@ export const Navbar = () => {
                           <>
                               <NavLink className='px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
                               <NavLink className='px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
+                              <NavLink className='px-2 py-1 rounded' to={'/contact'}> <li>Contact</li></NavLink>
                               <NavLink className='px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
                               <NavLink className='px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
                             </>
@@ -121,7 +123,8 @@ export const Navbar = () => {
                   !user ?
                      <>
                      <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
-                     <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
+                  <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
+                   <NavLink className='px-2 py-1 rounded' to={'/contact'}> <li>Contact</li></NavLink>
                       <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
                       <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR Manager</li></NavLink>
                     </>
@@ -164,7 +167,7 @@ export const Navbar = () => {
                     </>
                     :
                     <>
-                  <NavLink className="rounded-full" to={'/signIn'}><Button>Log In</Button></NavLink>
+                  <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
                     </>
                 }
               </ul>

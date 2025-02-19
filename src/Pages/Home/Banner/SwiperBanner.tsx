@@ -53,7 +53,7 @@ const SwiperBanner = () => {
                         Streamline your asset tracking and management process with ease. Monitor, organize, and optimize all your assets in one intuitive platform, designed for efficiency and precision.
                         </p>
                          <div>
-                           <Link to='/asHr'>  <Button className="w-full md:text-xl">Join as HR_Manager</Button></Link>
+                           <Link to='/asHr'>  <Button  className="w-full md:text-xl">Join as HR_Manager</Button></Link>
                         </div>
                     </div>
                     </div>
