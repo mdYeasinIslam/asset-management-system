@@ -44,22 +44,22 @@ export default function Contact() {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="bg-slate-100 p-3 rounded-lg">
-                    <Building2 className="h-6 w-6 text-slate-700" />
+                    <Building2 className="h-6 w-6 text-slate-700"/>
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900">Main Office</h3>
                     <p className="text-slate-600">123 Asset Street, Financial District</p>
-                    <p className="text-slate-600">New York, NY 10004</p>
+                    <p className="text-slate-600">Mirpur,Dhaka</p>
                   </div>
                 </div>
-
+ 
                 <div className="flex items-start space-x-4">
                   <div className="bg-slate-100 p-3 rounded-lg">
                     <Phone className="h-6 w-6 text-slate-700" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-900">Phone</h3>
-                    <p className="text-slate-600">+1 (555) 123-4567</p>
+                    <p className="text-slate-600">+888 018726863556</p>
                     <p className="text-slate-600">+1 (555) 987-6543</p>
                   </div>
                 </div>
@@ -92,15 +92,22 @@ export default function Contact() {
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h2 className="text-2xl font-bold mb-6 text-slate-900">Connect With Us</h2>
               <div className="flex space-x-4">
+                <a href="https://www.linkedin.com/in/mohammad-yeasin-islam/" target="_blank">    
                 <Button variant="outline" size="icon" className="rounded-full">
                   <Linkedin className="h-5 w-5" />
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
+                </a>
+                <a href="https://x.com/hyeasinislam" target="_blank">
+                    <Button variant="outline" size="icon" className="rounded-full">
                   <Twitter className="h-5 w-5" />
                 </Button>
-                <Button variant="outline" size="icon" className="rounded-full">
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100011183114419" target="_blank">
+                     <Button variant="outline" size="icon" className="rounded-full">
                   <Facebook className="h-5 w-5" />
                 </Button>
+                </a>
+               
               </div>
             </div>
           </div>

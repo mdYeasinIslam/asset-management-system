@@ -36,10 +36,10 @@ const name = user?.displayName as string |undefined
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="container mx-auto min-h-screen bg-gray-100">
       {/* Header Section */}
       <div
-        className="bg-cover bg-center h-48 flex items-center justify-center"
+        className="bg-cover bg-center h-48 flex items-center justify-center brightness-75"
         style={{
           backgroundImage: 'url(/images/about/about.jpg)',
         }}

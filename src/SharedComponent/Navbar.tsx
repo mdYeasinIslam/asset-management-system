@@ -14,10 +14,9 @@ export const Navbar = () => {
   const [open, setOpen] = useState(true)
   const [usersData, isPending] = useUsersData()
   const [isAdmin, , isLoading] = useIsAdmin()
-  
   const role = usersData?.role
-
   const userPhoto = user?.photoURL as string | undefined
+
     const navigate = useNavigate()
   const signOut = () => { 
     signOutAuth()
@@ -50,16 +49,16 @@ export const Navbar = () => {
                         }
                         </div>
                         <div className="w-full">
-                          <Link to={`/${role !== undefined?`${role=='Admin'? 'hr/hrHome': 'employee/eHome'}`:'/'}`} className='flex items-center gap-2'>
+                          <Link to={`${role !== undefined?`${role=='Admin'? '/hr/hrHome': '/employee/eHome'}`:'/'}`} className='flex items-center gap-2'>
                                         <img className="w-10 rounded-xl" src="/defaultLogo2.png" alt="" />
                                         <p className="font-medium text-xl w-full">AssetPulse</p>
                           </Link>
                         </div>
                        
                     </div>
-                    <nav className=" w-full ">
+                    <nav className=" w-full " onClick={()=>setOpen(true)}>
             
-                      <ul className={`absolute md:hidden w-[50vw] h-[50vh] flex flex-col  duration-1000 ease-linear bg-white font-medium uppercase text-[0.9rem]   pt-3 ${open?'-left-[400px] top-12':'left-0 top-12'}`}>
+                      <ul className={`absolute md:hidden w-[50vw] h-[80vh] flex flex-col  duration-1000 ease-linear bg-white font-medium uppercase text-[0.9rem]   pt-3 ${open?'-left-[400px] top-12':'left-0 top-12'}`}>
                         {
                           !user ?
                           <>
@@ -108,8 +107,8 @@ export const Navbar = () => {
                             </>
                             :
                             <>
-                          <NavLink className="rounded-full" to={'/signIn'}><Button>Log In</Button></NavLink>
-                            </>
+                         <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
+                    </>
                         }
                       </ul>
                     </nav>

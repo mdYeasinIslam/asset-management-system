@@ -23,12 +23,14 @@ import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 import { Payment } from "@/Pages/HR_Manager/PaymentMethod/Payment"
 import AboutPage from "@/Pages/AboutPage/AboutPage"
 import Contact from "@/Pages/ContactPage/Contact"
+import ErrorPage from "@/SharedComponent/ErrorPage"
 
 export const Root = () => {
     const routes = createBrowserRouter([
         {
             path: "/",
             element: <MainLayout />,
+            errorElement:<ErrorPage/>,
             children: [
                 {
                     path: '/',
@@ -66,6 +68,7 @@ export const Root = () => {
         {
             path: '/employee',
             element: <PrivateRoot><EmployeeLayout /></PrivateRoot>,
+            errorElement:<ErrorPage/>,
             children: [
                 {
                     path: '/employee',
@@ -95,6 +98,7 @@ export const Root = () => {
         {
             path: "/hr",
             element: <PrivateRoot><HrLayout /></PrivateRoot>,
+            errorElement:<ErrorPage/>,
             children: [
                 {
                     path: '/hr',
