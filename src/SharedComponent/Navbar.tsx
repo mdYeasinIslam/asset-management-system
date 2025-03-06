@@ -39,8 +39,7 @@ console.log(isAdmin,isPending,role)
   }
   return (
    <div className={`fixed z-10 w-full`}>
-      <div className={`container mx-auto  md:flex md:justify-between md:items-center py-3  md:px-4  ${dark?'bg-[#1F2937] text-white ':'navbar-light bg-opacity-30 '}`}>
-      
+      <div className={`container mx-auto  md:flex md:justify-between md:items-center py-3  md:px-4  ${dark?'bg-[#1F2937] text-white ':'navbar-light bg-opacity-30'}`}>
         <div className="flex justify-between items-center gap-2 relative"> 
                     {/* menu and nav icon for small device  */}
                      <div className="flex items-center gap-2 pl-1">
@@ -59,7 +58,7 @@ console.log(isAdmin,isPending,role)
                     </div>
                     <nav className=" w-full " onClick={()=>setOpen(true)}>
             
-                      <ul className={`absolute md:hidden w-[50vw] h-[80vh] flex flex-col  duration-1000 ease-linear bg-white font-medium uppercase text-[0.9rem]   pt-3 ${open?'-left-[400px] top-12':'left-0 top-12'}`}>
+                      <ul className={`absolute md:hidden w-[50vw] h-[80vh] flex flex-col  duration-1000 ease-linear bg-white  font-medium uppercase text-[0.9rem]   pt-3 ${open?'-left-[400px] top-12':'left-0 top-12'}`}>
                         {
                           !user ?
                           <>
@@ -118,7 +117,7 @@ console.log(isAdmin,isPending,role)
                             <Button onClick={signOut} variant="dark">Log out</Button>
                             </>
                             :
-                            <>
+                            <div className=" flex items-center gap-4">
                               <button
                                   onClick={() => setDark(!dark)}
                                   className="p- rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
@@ -130,7 +129,7 @@ console.log(isAdmin,isPending,role)
                                   )}
                                 </button>
                               <Link className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></Link>
-                           </>
+                           </div>
                         }
                       </ul>
                     </nav>
@@ -139,12 +138,12 @@ console.log(isAdmin,isPending,role)
           {/* tablet and larger */}
         <nav className={`hidden md:flex gap-5`}>
           
-              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] md:text-[9px] lg:text-[0.7rem] xl:text-[0.9rem] `}>
+              <ul className={` flex gap-1 lg:gap-4 justify-end items-center font-medium uppercase text-[0.7rem] md:text-[11px] lg:text-[0.7rem] xl:text-[0.9rem] `}>
                 {
                   !user ?
                      <>
                      <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/'}> <li>Home</li></NavLink>
-                  <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
+                    <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/about'}> <li>About</li></NavLink>
                    <NavLink className='px-2 py-1 rounded' to={'/contact'}> <li>Contact</li></NavLink>
                       <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asEmployee'}> <li>Join as Employee</li></NavLink>
                       <NavLink className='px-2 md:px-0.5 lg:px-2 py-1 rounded' to={'/asHr'}> <li>Join as HR_Manager</li></NavLink>
@@ -197,7 +196,7 @@ console.log(isAdmin,isPending,role)
                   <Button  onClick={signOut} variant="dark">Log out</Button>
                     </>
                     :
-                    <>
+                    <div className="flex items-center gap-x-3">
                      <button
                         onClick={() => setDark(!dark)}
                         title={dark?'dark':'light'}
@@ -210,7 +209,7 @@ console.log(isAdmin,isPending,role)
                         )}
                     </button>
                    <NavLink className="rounded-full" to={'/signIn'}><Button className=" " variant='dark' >Log In</Button></NavLink>
-                    </>
+                    </div>
                 }
               </ul>
             </nav>

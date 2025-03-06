@@ -1,48 +1,37 @@
-
 .swiper {
   width: 100%;
   height: 600px;
- 
 }
 
-@media screen and (max-width:800px) {
-  .swiper{
-    width: 100%;
-    height:500px
+@media screen and (max-width: 1024px) {
+  .swiper {
+    height: 500px;
   }
 }
-@media screen and (max-width:425px) {
-  .swiper{
-    width: 100%;
-    height:500px
+@media screen and (max-width: 768px) {
+  .swiper {
+    height: 400px;
   }
 }
-@media screen and (max-width:375px) {
-  .swiper{
-    width: 100%;
-    height: 200px
+@media screen and (max-width: 480px) {
+  .swiper {
+    height: 300px;
   }
 }
-@media screen and (max-width:320px) {
-  .swiper{
-    width: 100%;
-    height:175px
+@media screen and (max-width: 320px) {
+  .swiper {
+    height: 250px;
   }
 }
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
-  /* background: #F9FAFB; */
-
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .swiper-slide img {
-  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -54,23 +43,25 @@
   bottom: 16px;
   z-index: 10;
   width: 48px;
-  height: 48px; 
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   color: var(--swiper-theme-color);
 }
-@media screen and (max-width:425px) {
-  .autoplay-progress{
-      width: 28px;
+
+@media screen and (max-width: 425px) {
+  .autoplay-progress {
+    width: 28px;
   }
 }
+
 .autoplay-progress svg {
   --progress: 0;
   position: absolute;
   left: 0;
-  top: 0px;
+  top: 0;
   z-index: 10;
   width: 100%;
   height: 100%;

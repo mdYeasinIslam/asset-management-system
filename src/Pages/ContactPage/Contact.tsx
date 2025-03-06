@@ -23,7 +23,7 @@ export default function Contact() {
   }
 
   return (
-    <div className="container mx-auto min-h-screen bg-slate-100 dark:text-white dark:bg-[#2a3341]">
+    <div className="container mx-auto px-1 min-h-screen bg-slate-100 dark:text-white dark:bg-[#2a3341]">
       {/* Hero Section */}
       <div className="relative bg-slate-900 text-white py-20">
         <div className="container mx-auto px-4 relative text-center">
@@ -35,14 +35,14 @@ export default function Contact() {
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-2 md:px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white dark:bg-[#2a3341]   rounded-2xl p-8 shadow-lg">
-              <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Get in Touch</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+            <div className="bg-white dark:bg-[#2a3341]   rounded-2xl md:p-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white uppercase">Get in Touch</h2>
+              <div className="md:grid md:grid-cols-2 lg:grid-cols-1 items-center space-y-6">
+                <div className="flex items-center space-x-4">
                   <div className="bg-slate-100 p-3 rounded-lg">
                     <Building2 className="h-6 w-6 text-slate-700"/>
                   </div>
@@ -89,8 +89,8 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="bg-white dark:bg-[#1f2835] rounded-2xl p-8 shadow-lg">
-              <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Connect With Us</h2>
+            <div className="bg-white dark:bg-[#1f2835] rounded-2xl py-8 px-8 shadow-lg">
+              <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white uppercase">Connect With Us</h2>
               <div className="flex space-x-4">
                 <a href="https://www.linkedin.com/in/mohammad-yeasin-islam/" target="_blank">    
                 <Button variant="outline" size="icon" className="rounded-full">
@@ -113,8 +113,8 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-[#1f2835] rounded-2xl p-8 shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Send Us a Message</h2>
+          <div className="bg-white dark:bg-[#1f2835] rounded-2xl py-8 px-2 shadow-lg">
+            <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-white text-center uppercase">Send Us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">

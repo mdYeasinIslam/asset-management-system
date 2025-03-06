@@ -1,11 +1,12 @@
-import { Navbar } from "@/SharedComponent/Navbar"
+// import { Navbar } from "@/SharedComponent/Navbar"
+import { SecondNavbar } from "@/SharedComponent/SecondNavbar"
 import { Outlet } from "react-router-dom"
 
 export const EmployeeLayout = () => {
   return (
     <div>
       <div className="pb-16">
-        <Navbar />
+        <SecondNavbar />
       </div>
       <Outlet/>
     </div>
