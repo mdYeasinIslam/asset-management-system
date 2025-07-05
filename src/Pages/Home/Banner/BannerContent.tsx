@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import "./swiperStyle.css";
-import bannerImg1 from '../../../../public/images/Banner/banner1.jpg'
  
 const BannerContent = () => {
      const progressCircle = useRef<SVGSVGElement>(null);

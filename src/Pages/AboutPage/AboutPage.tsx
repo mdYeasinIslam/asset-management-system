@@ -2,7 +2,7 @@
 const AboutPage = () => {
   return (
     <div className=" ">
-      <div className="container mx-auto bg-white dark:bg-[#2a3341] dark:text-white shadow-lg py-6 px-2 md:p-6">
+      <div className="container mx-auto  dark:bg-[#2a3341] dark:text-white py-6 px-2 md:p-6">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">About Asset Management System</h1>
         <p className="text-gray-600 dark:text-white leading-relaxed mb-4">
           The <span className="font-semibold">Asset Management System</span> is a web application designed to help companies efficiently track, allocate, and manage their assets. This system simplifies the process of distributing company assets to employees, tracking asset usage, and retrieving returnable items.

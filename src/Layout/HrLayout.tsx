@@ -1,5 +1,4 @@
 import { DashboardSidebar } from "@/SharedComponent/DasboardEmployee";
-import { SecondNavbar } from "@/SharedComponent/SecondNavbar";
 import { Outlet } from "react-router-dom";
 
 export const HrLayout = () => {

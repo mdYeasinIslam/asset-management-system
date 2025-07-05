@@ -8,6 +8,7 @@ import {  useState } from "react";
 import { SelectTrigger,Select, SelectContent } from "@/components/ui/select"
 import { Button } from "@/components/ui/button";
 import { useAxiosSecure } from "@/hook/useAxiosSecure";
+import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
 
 export const RequestAssets = () => {
   const axiosSecure=useAxiosSecure()
@@ -57,6 +58,7 @@ export const RequestAssets = () => {
   </div>
   return (
     <section className="container mx-auto space-y-10 py-10 dark:text-white">
+      <HrPagesHeading page="Request for Asset :"/>
       <CommonHeading content={content} />
       <div className="flex flex-col md:flex-row gap-2">
       {/* search section */}

@@ -3,7 +3,7 @@ import { useAuth } from "@/hook/useAuth";
 const About = () => {
     const {dark} = useAuth()
   return (
-    <section className={`py-16 px-6 md:px-12 lg:px-20 mt-10 ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
+    <section className={`py-16 px-6 md:px-12 lg:px-20  ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-5 lg:gap-10 items-center text-center md:text-left">
      
         <div>

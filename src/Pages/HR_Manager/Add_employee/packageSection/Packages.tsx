@@ -10,7 +10,7 @@ export const Packages = () => {
     return <div>loading.............</div>
   }
   return (
-    <div className=" bg-gray-100 dark:bg-slate-900 py-9">
+    <div className=" bg-gray-100 dark:bg-slate-800 py-9">
       <div className="flex justify-center">
         <Card className="w-full max-w-md shadow-lg">
           <CardContent>

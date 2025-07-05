@@ -26,120 +26,138 @@ import Contact from "@/Pages/ContactPage/Contact"
 import ErrorPage from "@/SharedComponent/ErrorPage"
 
    export const routes = createBrowserRouter([
-        {
-            path: "/",
-            element: <MainLayout />,
-            errorElement:<ErrorPage/>,
-            children: [
-                {
-                    path: '/',
-                    element:<Home/>
-                },
-                
-                {
-                    path: '/about',
-                    element:<AboutPage/>
-                },
-                {
-                    path: '/contact',
-                    element:<Contact/>
-                },
+     {
+       path: "/",
+       element: <MainLayout />,
+       errorElement: <ErrorPage />,
+       children: [
+         {
+           path: "/",
+           element: <Home />,
+         },
 
-                {
-                    path: '/asEmployee',
-                    element:<AsEmployee/>
-                },
-                {
-                    path: '/asHr',
-                    element:<AsHr/>
-                },
+         {
+           path: "/about",
+           element: <AboutPage />,
+         },
+         {
+           path: "/contact",
+           element: <Contact />,
+         },
 
-                {
-                    path: "/signIn",
-                    element:<SignIn/>
-                },
-                {
-                    path: "/profile",
-                    element:<PrivateRoot><ProfilePage/></PrivateRoot>
-                },
-            ]
-        },
-        {
-            path: '/employee',
-            element: <PrivateRoot><EmployeeLayout /></PrivateRoot>,
-            errorElement:<ErrorPage/>,
-            children: [
-                {
-                    path: '/employee',
-                    element:<EHome/>
-                },
-                
-                {
-                    path: '/employee/eHome',
-                    element:<EHome/>
-                },
-                {
-                    path:'/employee/myAssets',
-                    element:<MyAssets/>
-                },
-                
-                {
-                    path:'/employee/myTeam',
-                    element:<MyTeam/>
-                },
-                {
-                    path:'/employee/requestForAsset',
-                    element:<RequestAssets/>
-                },
+         {
+           path: "/asEmployee",
+           element: <AsEmployee />,
+         },
+         {
+           path: "/asHr",
+           element: <AsHr />,
+         },
 
-            ]
-        },
-        {
-            path: "/hr",
-            element: <PrivateRoot><HrLayout /></PrivateRoot>,
-            errorElement:<ErrorPage/>,
-            children: [
-                {
-                    path: '/hr',
-                    element:<HrHome/>
-                },
-                {
-                    path: '/hr/hrHome',
-                    element:<HrHome/>
-                },
-                
-                {
-                    path: '/hr/assetList',
-                    element:<HrAssetList/>
-                },
-                {
-                    path: '/hr/addAsset',
-                    element:<AddAsset/>
-                },
-                
-                {
-                    path: '/hr/employeeList',
-                    element:<EmployeeList/>
-                },
+         {
+           path: "/signIn",
+           element: <SignIn />,
+         },
+        //  {
+        //    path: "/profile",
+        //    element: (
+        //      <PrivateRoot>
+        //        <ProfilePage />
+        //      </PrivateRoot>
+        //    ),
+        //  },
+       ],
+     },
+     {
+       path: "/employee",
+       element: (
+         <PrivateRoot>
+           <EmployeeLayout />
+         </PrivateRoot>
+       ),
+       errorElement: <ErrorPage />,
+       children: [
+         {
+           path: "/employee",
+           element: <EHome />,
+         },
 
-                {
-                    path: '/hr/allRequest',
-                    element:<AllRequest/>
-                },
-                {
-                    path: '/hr/addEmployee',
-                    element: <AddEmployee />
-                },
-                {
-                    path: '/hr/addEmployee/packageChange/:id',
-                    element:<PackageChange/>
-                },
-                {
-                    path: '/hr/payment',
-                    element:<Payment/>
-                }
+         {
+           path: "/employee/eHome",
+           element: <EHome />,
+         },
+         {
+           path: "/employee/myAssets",
+           element: <MyAssets />,
+         },
 
-            ]
-        }
-    ])
+         {
+           path: "/employee/myTeam",
+           element: <MyTeam />,
+         },
+         {
+           path: "/employee/requestForAsset",
+           element: <RequestAssets />,
+         },
+       ],
+     },
+     {
+       path: "/hr",
+       element: (
+         <PrivateRoot>
+           <HrLayout />
+         </PrivateRoot>
+       ),
+       errorElement: <ErrorPage />,
+       children: [
+         {
+           path: "/hr",
+           element: <HrHome />,
+         },
+         {
+           path: "/hr/hrHome",
+           element: <HrHome />,
+         },
+
+         {
+           path: "/hr/assetList",
+           element: <HrAssetList />,
+         },
+         {
+           path: "/hr/addAsset",
+           element: <AddAsset />,
+         },
+
+         {
+           path: "/hr/employeeList",
+           element: <EmployeeList />,
+         },
+
+         {
+           path: "/hr/allRequest",
+           element: <AllRequest />,
+         },
+         {
+           path: "/hr/addEmployee",
+           element: <AddEmployee />,
+         },
+         {
+           path: "/hr/addEmployee/packageChange/:id",
+           element: <PackageChange />,
+         },
+         {
+           path: "/hr/payment",
+           element: <Payment />,
+         },
+       ],
+     },
+     {
+       path: "/profile",
+       element: (
+         <PrivateRoot>
+           <ProfilePage />
+         </PrivateRoot>
+       ),
+     }
+   ]);
   

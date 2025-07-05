@@ -2,6 +2,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset"
 import { useAuth } from "@/hook/useAuth"
 import { DisplayEmployeeAssets } from "./DisplayEmployeeAssets"
+import HrPagesHeading from "@/SharedComponent/HrPagesHeading"
 
 export const MyAssets = () => {
   const { user } = useAuth()
@@ -16,7 +17,8 @@ export const MyAssets = () => {
              </div>
   }
   return (
-    <div>
+    <div className="h-screen">
+      <HrPagesHeading page="My Assets"/>
       <DisplayEmployeeAssets />
     </div>
   )

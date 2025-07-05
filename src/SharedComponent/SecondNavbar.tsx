@@ -57,7 +57,7 @@ export const SecondNavbar = () => {
   };
 
   // Determine Navigation Menu
-  const navItems = useMemo(() => {
+  const navItems = useMemo(() => { 
     if (!user) return paths.guest;
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);

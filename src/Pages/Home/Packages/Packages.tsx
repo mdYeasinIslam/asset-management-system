@@ -24,7 +24,7 @@ export const Packages = () => {
   const {dark} = useAuth()
 
   return (
-    <section className={`py-16 mt-4 px-6 md:px-12 lg:px-20 ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
+    <section className={`py-16 px-6 md:px-12 lg:px-20 ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
       <div className="container mx-auto text-center">
             <h2 className={`text-3xl lg:text-4xl font-bold text-gray-800 mb-8 dark:text-white`}>
             Choose the Perfect Package for Your Team

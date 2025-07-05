@@ -8,7 +8,7 @@ import { TopRequests } from "./HomeSections/TopRequests";
 import PieChart from "./HomeSections/PieChart";
 import { EventSecton } from "../Employee/EmployeeHome/EventSection/EventSection";
 import NoticeSection from "./HomeSections/NoticeSection";
-import Footer from "@/SharedComponent/Footer";
+import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
 
 export const HrHome = () => {
   const [requestedAssets, isPending] = useAllRequestedAsset();
@@ -27,15 +27,17 @@ export const HrHome = () => {
       </div>
     );
   }
+  console.log(assetsData);
   return (
     <div className=" pt-10 space-y-16 dark:text-white">
+      <HrPagesHeading page="Asset Overview" />
       <PendingSection pendingRequest={pendingRequest} />
-      <LimitedStockItem assetData={assetsData} />
+      {assetsData?.length > 0&& <LimitedStockItem assetData={assetsData} />}
       <TopRequests requestedAssets={requestedAssets} />
       <PieChart requestedAssets={requestedAssets} />
       <EventSecton />
       <NoticeSection />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

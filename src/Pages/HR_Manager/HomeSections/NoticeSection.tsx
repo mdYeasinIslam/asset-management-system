@@ -33,7 +33,7 @@ const notices: Notice[] = [
 
 const NoticeSection: React.FC = () => {
   return (
-    <div className="bg-gray-100 dark:bg-slate-700 p-6 rounded-lg shadow-md max-w-4xl mx-auto my-10">
+    <div className=" dark:bg-slate-700 p-6 rounded-lg shadow-md max-w-4xl mx-auto my-10">
       <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
         Company Notices
       </h2>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { FaGithub, FaLinkedin, FaSquareFacebook } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -7,8 +9,8 @@ const Footer = () => {
         <div>
           <h3 className="text-xl font-semibold mb-4">About Us</h3>
           <p className="text-gray-400">
-            We are a team dedicated to providing quality services and solutions to our clients. 
-            Contact us for more information.
+            We are a team dedicated to providing quality services and solutions
+            to our clients. Contact us for more information.
           </p>
         </div>
 
@@ -17,24 +19,34 @@ const Footer = () => {
           <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-2">
             <li>
-              <a href="#home" className="text-gray-400 hover:text-white">
+              <Link to="/" className="text-gray-400 hover:text-white">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#services" className="text-gray-400 hover:text-white">
+              <Link to="/about" className="text-gray-400 hover:text-white">
+                About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="text-gray-400 hover:text-white">
+                Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/asEmployee" className="text-gray-400 hover:text-white">
                 As Employee
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="text-gray-400 hover:text-white">
+              <Link to="/asHr" className="text-gray-400 hover:text-white">
                 As Hr
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#blog" className="text-gray-400 hover:text-white">
+              <Link to="/signIn" className="text-gray-400 hover:text-white">
                 Sign in
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -42,24 +54,29 @@ const Footer = () => {
         {/* Contact Section */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Contact</h3>
-          <p className="text-gray-400">
-            Email: yeasin@gamil.com
-          </p>
-          <p className="text-gray-400">
-            Phone: +123-456-7890
-          </p>
+          <p className="text-gray-400">Email: hyeasinislam@gamil.com</p>
+          <p className="text-gray-400">Phone: 01764078605</p>
           <div className="flex justify-center md:justify-start space-x-4 mt-4">
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-facebook-f"></i>
-              Facebook
+            <a
+              href="https://www.facebook.com/mohammad.yeasin.895788/"
+              className="flex items-center gap-1 text-gray-400 hover:text-white"
+            >
+              <FaSquareFacebook />
+              <span>Facebook</span>
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-twitter"></i>
-              Twitter
+            <a
+              href="https://github.com/mdYeasinIslam"
+              className="flex items-center gap-1 text-gray-400 hover:text-white"
+            >
+              <FaGithub />
+              <span>Github</span>
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-linkedin"></i>
-              LinkedIn
+            <a
+              href="https://www.linkedin.com/in/mohammad-yeasin-islam"
+              className="flex items-center gap-1 text-gray-400 hover:text-white"
+            >
+              <FaLinkedin />
+              <span>LinkedIn</span>
             </a>
           </div>
         </div>

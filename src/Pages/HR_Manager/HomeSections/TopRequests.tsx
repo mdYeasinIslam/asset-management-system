@@ -35,7 +35,7 @@ export const TopRequests = ({ requestedAssets }: { requestedAssets: AssetRequest
     <h1 className="text-3xl uppercase font-semibold leading-tight">Top Most Request</h1>
   </div>
     return (
-      <div className="space-y-5">
+      <div className="space-y-5 px-5">
             <CommonHeading content={contentPending} />
         <div className={`grid grid-cols-1 md:grid-cols-2  gap-2 ${duplicates?.length>2 && 'lg:grid-cols-3 xl:grid-cols-4'}`}>
             {
