@@ -62,13 +62,13 @@ export const RequestModal = ({ assetInfo }: Prop) => {
   return (
       <div>
         <DialogContent className="w-full p-5">
-            <DialogHeader>
+            <DialogHeader> 
             <DialogTitle>Edit Asset Information</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 py-4 ">
             <div className="flex flex-col  gap-2">
                 <Label htmlFor="notes" className="text-left">
-                Additional Note :
+                Additional Note : 
                 </Label>
                 <Input id="notes"  {...register('notes')} type="text" className="border-2" />
             </div>

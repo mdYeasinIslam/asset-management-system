@@ -148,7 +148,7 @@ export function DisplayAssets() {
     return <div>loading........</div>
   }
   return (
-    <div className="container dark:text-white mx-auto w-full">
+    <div className=" dark:text-white  w-full">
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
         <Input
           placeholder="Search by name..."

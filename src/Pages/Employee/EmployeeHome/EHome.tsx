@@ -73,7 +73,7 @@ export const EHome = () => {
           ))}
         </div>
       </div>
-      <div className="grid lg:grid-cols-2 gap-2">
+      <div className="grid xl:grid-cols-2 gap-2">
         <EventSecton />
         <Calendar />
       </div>

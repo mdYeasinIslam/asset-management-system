@@ -1,14 +1,17 @@
-// import { Navbar } from "@/SharedComponent/Navbar"
-import { SecondNavbar } from "@/SharedComponent/SecondNavbar"
-import { Outlet } from "react-router-dom"
+import { DashboardSidebar } from "@/SharedComponent/DasboardEmployee";
+import { SecondNavbar } from "@/SharedComponent/SecondNavbar";
+import { Outlet } from "react-router-dom";
 
 export const HrLayout = () => {
   return (
-      <div>
-           <div className=" pb-16">
-        <SecondNavbar />
+    <div className="grid lg:grid-cols-12 xl:grid-cols-12 lg:gap-5 xl:gap-10">
+      <div className="pb-16 lg:col-span-3 xl:col-span-2">
+        {/* <SecondNavbar /> */}
+        <DashboardSidebar />
       </div>
-          <Outlet/>
+      <div className="lg:col-span-9 xl:col-span-10 ">
+        <Outlet />
+      </div>
     </div>
-  )
-}
+  );
+};

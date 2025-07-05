@@ -109,7 +109,7 @@ export const AsHr = () => {
         </div>
       )}
       <section
-        className={`py-10 px-5 dark:text-white ${loading && "opacity-50"}`}
+        className={`py-10  px-5 dark:text-white ${loading && "opacity-50"}`}
       >
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5">
           <figure>

@@ -2,7 +2,7 @@ import { DisplayAssets } from "./DispalyAssets"
 
 export const HrAssetList = () => {
   return (
-    <div>
+    <div className="">
       <DisplayAssets/>
     </div>
   )
