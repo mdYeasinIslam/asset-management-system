@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import "./swiperStyle.css";
-
+import bannerImg1 from '../../../../public/images/Banner/banner1.jpg'
+ 
 const BannerContent = () => {
      const progressCircle = useRef<SVGSVGElement>(null);
   const progressContent = useRef<HTMLSpanElement>(null);
@@ -21,7 +22,7 @@ const BannerContent = () => {
   };
 
     return (
-    <section className="bg-[#F9FAFB] dark:bg-[#111827] dark:text-white">
+      <section className="bg-[#F9FAFB] dark:bg-[#111827] dark:text-white">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -41,6 +42,7 @@ const BannerContent = () => {
               <img
                 className="absolute inset-0 z-[-1] w-full h-full object-cover brightness-[40%]"
                 src="/images/Banner/banner1.jpg"
+                // src="https://t4.ftcdn.net/jpg/05/54/46/89/360_F_554468927_iwU3VYIjsaeopAb0WPYxVf21TloEhTEj.jpg"
                 alt="Asset Management"
               />
               <motion.h1
@@ -49,9 +51,9 @@ const BannerContent = () => {
                 transition={{ duration: 0.8 }}
                 className="text-2xl md:text-3xl xl:text-5xl font-medium leading-tight text-white uppercase"
               >
-                Effortless Asset Management <br /> {" "}
+                Effortless Asset Management <br />{" "}
                 <motion.span animate={{ color: ["#3c65f5"] }}>
-                at Your Fingertips.
+                  at Your Fingertips.
                 </motion.span>
               </motion.h1>
               <p className="xl:w-4/5 md:text-xl text-white">
@@ -60,7 +62,9 @@ const BannerContent = () => {
                 platform.
               </p>
               <Link to="/asHr">
-                <Button className="w-full md:w-auto text-xl" variant='banner'>Join as HR Manager</Button>
+                <Button className="w-full md:w-auto text-xl" variant="banner">
+                  Join as HR Manager
+                </Button>
               </Link>
             </article>
           </SwiperSlide>
@@ -89,7 +93,9 @@ const BannerContent = () => {
                 Track, manage, and analyze your resources effortlessly.
               </p>
               <Link to="/asEmployee">
-                <Button className="w-full md:w-auto text-xl" variant='banner'>Join as Employee</Button>
+                <Button className="w-full md:w-auto text-xl" variant="banner">
+                  Join as Employee
+                </Button>
               </Link>
             </article>
           </SwiperSlide>
@@ -102,7 +108,7 @@ const BannerContent = () => {
             <span ref={progressContent}></span>
           </div>
         </Swiper>
-    </section>
+      </section>
     );
 };
 

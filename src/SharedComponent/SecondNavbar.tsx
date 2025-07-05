@@ -114,8 +114,8 @@ export const SecondNavbar = () => {
             ))}
           </ul>
 
-          {/* Dark Mode & User Actions */}
         </nav>
+          {/* Dark Mode & User Actions */}
           <div className="flex items-center gap-1 md:gap-2">
             <button
               onClick={() => setDark(!dark)}
