@@ -4,13 +4,13 @@ const steps = [
     {
         icon: <MapPin className="w-8 h-8 text-orange-600" />,
         bg: "bg-orange-100",
-        title: "Choose Your Destination",
-        desc: "Select the country you wish to apply to.",
+        title: "Choose Assets",
+        desc: "Select the assets you wish to get to.",
     },
     {
         icon: <FileText className="w-8 h-8 text-blue-600" />,
         bg: "bg-blue-100",
-        title: "Fill Out Application",
+        title: "Add Assets for Company",
         desc: "Enter your personal information and upload required documents.",
     },
     {
