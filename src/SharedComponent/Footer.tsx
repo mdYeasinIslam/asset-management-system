@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaSquareFacebook } from "react-icons/fa6";
 
 const Footer = () => {
+  const path = useLocation()
+  console.log(path.pathname)
+  if (path?.pathname === "/asEmployee" || path?.pathname === "/asHr") {
+    return;
+  }
   return (
     <footer className="bg-gray-900 w-full  text-white py-8 pl-3 ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">

@@ -1,7 +1,7 @@
 
 const AboutPage = () => {
   return (
-    <div className="dark:h-screen   dark:bg-[#2a3341]">
+    <div className="dark:h-screen dark:bg-[#2a3341]">
       <div className="container mx-auto dark:text-white py-6 px-2 md:p-6">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
           About Asset Management System

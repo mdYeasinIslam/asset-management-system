@@ -1,4 +1,3 @@
-import Footer from "@/SharedComponent/Footer"
 import About from "./About/About"
 import { Packages } from "./Packages/Packages"
 import BannerContent from "./Banner/BannerContent"
@@ -12,7 +11,6 @@ export const Home = () => {
       <HowItWorks/>
       <Packages />
       <WhyCooseUs/>
-      <Footer />
     </div>
   );
 }
