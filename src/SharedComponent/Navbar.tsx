@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hook/useAuth";
 import { useIsAdmin } from "@/hook/useIsAdmin";
 import { useUsersData } from "@/hook/useUsersData";
