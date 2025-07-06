@@ -2,12 +2,16 @@ import Footer from "@/SharedComponent/Footer"
 import About from "./About/About"
 import { Packages } from "./Packages/Packages"
 import BannerContent from "./Banner/BannerContent"
+import WhyCooseUs from "@/SharedComponent/WhyCooseUs"
+import HowItWorks from "@/SharedComponent/HowItWorks"
 export const Home = () => {
   return (
-    <div className="container mx-auto">
+    <div className="">
       <BannerContent />
       <About />
+      <HowItWorks/>
       <Packages />
+      <WhyCooseUs/>
       <Footer />
     </div>
   );

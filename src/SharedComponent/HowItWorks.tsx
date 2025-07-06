@@ -1,0 +1,55 @@
+import { MapPin, FileText, CreditCard } from "lucide-react";
+
+const steps = [
+    {
+        icon: <MapPin className="w-8 h-8 text-orange-600" />,
+        bg: "bg-orange-100",
+        title: "Choose Your Destination",
+        desc: "Select the country you wish to apply to.",
+    },
+    {
+        icon: <FileText className="w-8 h-8 text-blue-600" />,
+        bg: "bg-blue-100",
+        title: "Fill Out Application",
+        desc: "Enter your personal information and upload required documents.",
+    },
+    {
+        icon: <CreditCard className="w-8 h-8 text-green-600" />,
+        bg: "bg-green-100",
+        title: "Confirm & Pay",
+        desc:
+            "Submit the form and follow offline payment instructions via bank or Cashplus.",
+    },
+];
+
+export default function HowItWorks() {
+    return (
+      <section className="py-16 px-4 bg-gray-50 dark:bg-[#2a3341]">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center dark:text-white text-blue-600 mb-16">
+            How It Works
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {steps.map((step, idx) => (
+              <div
+                key={idx}
+                className="bg-white  dark:bg-[#1b2330] rounded-2xl py-5 px-1 xl:p-8 shadow-sm border border-gray-100 text-center"
+              >
+                <div
+                  className={`w-16 h-16 ${step.bg} rounded-full flex items-center justify-center mx-auto mb-6`}
+                >
+                  {step.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 dark:text-white leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+}

@@ -99,7 +99,7 @@ export const SignIn = () => {
       });
   };
   return (
-    <section className=" lg:h-[90vh]">
+    <section className=" lg:h-screen">
       <div className="container mx-auto h-full lg:flex flex-col lg:flex-row items-center md:gap-10 px-5">
         <figure className="flex-1 flex justify-center items-center  mt-10 lg:mt-0 ">
           <img

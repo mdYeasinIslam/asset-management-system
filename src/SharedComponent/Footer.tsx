@@ -3,8 +3,8 @@ import { FaGithub, FaLinkedin, FaSquareFacebook } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8 px-3">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+    <footer className="bg-gray-900 w-full  text-white py-8 pl-3 ">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
         {/* About Section */}
         <div>
           <h3 className="text-xl font-semibold mb-4">About Us</h3>
@@ -56,27 +56,26 @@ const Footer = () => {
           <h3 className="text-xl font-semibold mb-4">Contact</h3>
           <p className="text-gray-400">Email: hyeasinislam@gamil.com</p>
           <p className="text-gray-400">Phone: 01764078605</p>
-          <div className="flex justify-center md:justify-start space-x-4 mt-4">
+          <div className="flex md:justify-between lg:justify-start gap-10 lg:gap-5 mt-4">
             <a
               href="https://www.facebook.com/mohammad.yeasin.895788/"
               className="flex items-center gap-1 text-gray-400 hover:text-white"
             >
-              <FaSquareFacebook />
-              <span>Facebook</span>
+              <FaSquareFacebook className="w-10 h-10 "/>
             </a>
             <a
               href="https://github.com/mdYeasinIslam"
               className="flex items-center gap-1 text-gray-400 hover:text-white"
             >
-              <FaGithub />
-              <span>Github</span>
+              <FaGithub className="w-10 h-10 "/>
+            
             </a>
             <a
               href="https://www.linkedin.com/in/mohammad-yeasin-islam"
               className="flex items-center gap-1 text-gray-400 hover:text-white"
             >
-              <FaLinkedin />
-              <span>LinkedIn</span>
+              <FaLinkedin className="w-10 h-10 "/>
+              
             </a>
           </div>
         </div>
