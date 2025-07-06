@@ -109,19 +109,24 @@ export const AsHr = () => {
         </div>
       )}
       <section
-        className={`py-10  px-5 dark:text-white ${loading && "opacity-50"}`}
+        className={`pb-10 lg:pt-10  px-5 dark:text-white ${loading && "opacity-50"}`}
       >
         <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5">
-          <figure>
+          <figure className="flex-1 flex justify-center items-center  mt-10 lg:mt-0 ">
             <img
               src="/images/auth/asHrSignUp2.jpg"
               alt=""
-              className="rounded-xl"
+              className="rounded-xl hidden lg:flex"
+            />
+            <img
+              src="/defaultLogo2.png"
+              className="flex lg:hidden w-20 h-20 bg-white rounded-xl"
+              alt=""
             />
           </figure>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-            <h1 className="font-medium text-2xl text-center font-serif">
-              Join or create account as a HR Manager
+            <h1 className="font-semibold text-4xl text-center font-serif">
+              Create account as a HR Manager
             </h1>
             <div className="flex flex-col gap-1 ">
               <label htmlFor="name">Your Name :</label>

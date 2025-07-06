@@ -14,10 +14,14 @@ color: #0c0b0b; */
  /* background-color: #12325e; */
  /* background-color: #f1f1f1;
 } */
-.dark div>ul>.active  ,nav>.active{
+.dark nav>ul>.active  ,nav>.active{
   color: #000000;
  background-color: #f4f5f7;
  
+}
+.dark nav>ul>a:hover {
+  color: black;
+  background-color: white;
 }
 
 .navbar-light{

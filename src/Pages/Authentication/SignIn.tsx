@@ -99,14 +99,17 @@ export const SignIn = () => {
       });
   };
   return (
-    <section className=" h-screen">
-      <div className="container mx-auto h-full flex flex-col md:flex-row items-center md:gap-10 px-5">
-        <figure className="flex-1">
+    <section className=" lg:h-[90vh]">
+      <div className="container mx-auto h-full lg:flex flex-col lg:flex-row items-center md:gap-10 px-5">
+        <figure className="flex-1 flex justify-center items-center  mt-10 lg:mt-0 ">
           <img
             src="/images/auth/loginImg.jpg"
             alt="login img"
-            className="rounded-xl"
+            className="rounded-xl hidden lg:flex"
           />
+          <img src="/defaultLogo2.png"
+            className="flex lg:hidden w-20 h-20 bg-white rounded-xl"
+            alt="" />
         </figure>
         <div className="w-full flex-1 space-y-3 md:flex flex-col justify-center  ">
           <h1 className="dark:text-white md:my-5 text-2xl md:text-4xl font-semibold text-center font-serif">

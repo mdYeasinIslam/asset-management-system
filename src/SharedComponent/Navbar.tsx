@@ -8,6 +8,7 @@ import { AlignJustify, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 export const Navbar = () => {
   const { user, signOutAuth, dark, setDark } = useAuth();
@@ -30,14 +31,7 @@ export const Navbar = () => {
       });
   };
   if (isPending || isLoading) {
-    return (
-      <div className=" flex flex-col items-center justify-center gap-1 space-y-5 mt-10">
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-      </div>
-    );
+    return <Loader/>
   }
   return (
     <div className={`fixed z-10 w-full`}>
