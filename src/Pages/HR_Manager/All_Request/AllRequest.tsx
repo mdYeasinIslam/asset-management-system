@@ -25,6 +25,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset"
 import { Badge } from "@/components/ui/badge"
 import { RequestAction } from "./RequestAction"
+import HrPagesHeading from "@/SharedComponent/HrPagesHeading"
 
 
 export type Payment = {
@@ -132,82 +133,85 @@ export function AllRequest() {
     },
   })
   return (
-    <div className="container mx-auto w-full dark:text-white">
+    <div className="w-full dark:bg-[#1F2937] dark:text-white lg:px-5 ">
+      <HrPagesHeading page="All Request" />
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
-            <Input
-              placeholder="Search by name..."
-              value={(table.getColumn("assetName")?.getFilterValue() as string) ?? ""}
-              onChange={(event) =>
-                table.getColumn("assetName")?.setFilterValue(event.target.value)
-              }
-              className="max-w-sm"
-                  />
-           </div>
-        <div className="rounded-md border">
-            {
-            isPending ?
-                <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
-                    <Skeleton className="h-10 w-1/2 rounded-xl  bg-gray-700" />
-                    <div className="space-y-2 w-full flex flex-col items-center">
-                        <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                        <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                        <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                        <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                    </div>
-              </div>
-            :
-
-            <Table>
-              <TableHeader>
-                {table.getHeaderGroups().map((headerGroup) => (
-                  <TableRow key={headerGroup.id}>
-                    {headerGroup.headers.map((header) => {
-                      return (
-                        <TableHead key={header.id} className="text-black dark:text-white font-medium ">
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                        </TableHead>
-                      )
-                    })}
+        <Input
+          placeholder="Search by name..."
+          value={
+            (table.getColumn("assetName")?.getFilterValue() as string) ?? ""
+          }
+          onChange={(event) =>
+            table.getColumn("assetName")?.setFilterValue(event.target.value)
+          }
+          className="max-w-sm"
+        />
+      </div>
+      <div className="rounded-md border ">
+        {isPending ? (
+          <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
+            <Skeleton className="h-10 w-1/2 rounded-xl  bg-gray-700" />
+            <div className="space-y-2 w-full flex flex-col items-center">
+              <Skeleton className="h-4 w-1/2 bg-gray-700" />
+              <Skeleton className="h-4 w-1/2 bg-gray-700" />
+              <Skeleton className="h-4 w-1/2 bg-gray-700" />
+              <Skeleton className="h-4 w-1/2 bg-gray-700" />
+            </div>
+          </div>
+        ) : (
+          <Table className="overflow-scroll ">
+            <TableHeader>
+              {table.getHeaderGroups().map((headerGroup) => (
+                <TableRow key={headerGroup.id}>
+                  {headerGroup.headers.map((header) => {
+                    return (
+                      <TableHead
+                        key={header.id}
+                        className="text-black dark:text-white font-medium "
+                      >
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </TableHead>
+                    );
+                  })}
+                </TableRow>
+              ))}
+            </TableHeader>
+            <TableBody>
+              {table.getRowModel().rows?.length ? (
+                table.getRowModel().rows.map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
                   </TableRow>
-                ))}
-              </TableHeader>
-              <TableBody>
-                {table.getRowModel().rows?.length ? (
-                  table.getRowModel().rows.map((row) => (
-                    <TableRow
-                      key={row.id}
-                      data-state={row.getIsSelected() && "selected"}
-                    >
-                      {row.getVisibleCells().map((cell) => (
-                        <TableCell key={cell.id}>
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  ))
-                ) : (
-                  <TableRow>
-                    <TableCell
-                      colSpan={columns.length}
-                      className="h-24 text-center"
-                    >
-                      No results.
-                    </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-            }
-       </div>
-    
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell
+                    colSpan={columns.length}
+                    className="h-24 text-center"
+                  >
+                    No results.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        )}
+      </div>
     </div>
-  )
+  );
 }

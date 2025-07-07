@@ -8,6 +8,7 @@ import { AssetRequestType } from "@/Type/Types";
 import { CommonHeading } from "@/SharedComponent/CommonHeading";
 import { EventSecton } from "./EventSection/EventSection";
 import Calendar from "./EventSection/Calendar";
+import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
 
 export const EHome = () => {
   const { user } = useAuth();
@@ -52,6 +53,7 @@ export const EHome = () => {
 
   return (
     <div className="  space-y-10 mt-10 dark:text-white">
+      <HrPagesHeading page=" Overview"/>
       <div className=" flex gap-2 items-center justify-center ">
         <MyPendingRequest requestedAssets={requestedAssets} />
         <MonthlyRequests requestedAssets={requestedAssets} />
