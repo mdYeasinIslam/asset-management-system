@@ -77,7 +77,7 @@ export const DashboardSidebar = () => {
   return (
     <>
       {/* Mobile Menu Toggle */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
+      <div className="lg:hidden  fixed top-4 left-4 z-50">
         <button
           onClick={() => setOpen(!open)}
           className={`p-2 rounded-lg ${

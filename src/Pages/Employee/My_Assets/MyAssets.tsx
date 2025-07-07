@@ -17,7 +17,7 @@ export const MyAssets = () => {
              </div>
   }
   return (
-    <div className="h-screen">
+    <div className="">
       <HrPagesHeading page="My Assets"/>
       <DisplayEmployeeAssets />
     </div>

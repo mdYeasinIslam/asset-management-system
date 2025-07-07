@@ -56,18 +56,17 @@ const Calendar: React.FC = () => {
 
   const hasEvent = (day: number) =>
     events.some((event) => event.date === formatDateString(day));
-const contentCalendar = <div className="flex flex-col items-center">
-     <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
-          Calendar
-        </h1>
-
-  </div>
+  const contentCalendar = (
+    <div className="flex flex-col items-center">
+      <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-6">
+        Calendar
+      </h1>
+    </div>
+  );
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-700 rounded-xl">
+    <div className=" flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-700 rounded-xl">
       <div className="bg-white dark:bg-slate-900  rounded-lg shadow-lg p-4 w-full max-w-md">
-            
-              
-                        <CommonHeading content={contentCalendar} />
+        <CommonHeading content={contentCalendar} />
         <div className="flex items-center justify-between mb-4">
           <button
             className="bg-blue-500 text-white  px-4 py-2 rounded-lg hover:bg-blue-600"
@@ -120,9 +119,7 @@ const contentCalendar = <div className="flex flex-col items-center">
                 <div className="text-sm">
                   {day}
                   {hasEvent(day) && (
-                    <span className="block text-xs text-blue-500">
-                      Event
-                    </span>
+                    <span className="block text-xs text-blue-500">Event</span>
                   )}
                 </div>
               )}

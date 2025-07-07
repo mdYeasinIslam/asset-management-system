@@ -4,7 +4,11 @@ import { FaGithub, FaLinkedin, FaSquareFacebook } from "react-icons/fa6";
 const Footer = () => {
   const path = useLocation()
   console.log(path.pathname)
-  if (path?.pathname === "/asEmployee" || path?.pathname === "/asHr") {
+  if (
+    path?.pathname === "/asEmployee" ||
+    path?.pathname === "/asHr" ||
+    path?.pathname === "/signIn"
+  ) {
     return;
   }
   return (
