@@ -85,7 +85,7 @@ export const SecondNavbar = () => {
             {open ? <X /> : <AlignJustify />}
           </button>
           <Link
-            className="flex items-center"
+            className="flex items-center gap-1"
             to={
               role ? (role === "Admin" ? "/hr/hrHome" : "/employee/eHome") : "/"
             }
