@@ -112,13 +112,13 @@ export const SignIn = () => {
       });
   };
   return (
-    <section className="h-[90vh] lg:h-screen bg-[#FBF9F5]">
-      <div className="container mx-auto h-full grid grid-cols-1 lg:grid-cols-2 items-start ">
-        <div className="h-full flex-1 flex justify-center  items-center   ">
+    <section className=" bg-[#FBF9F5]">
+      <div className="max-w-6xl mx-auto  h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
+        <div className="  flex justify-center  items-center   ">
           <img
             src="/images/auth/sign-in.jpg"
             alt="login img"
-            className=" h-[80vh] lg:h-full hidden lg:flex object-cover object-center brightness-75"
+            className=" h-[600px] hidden lg:block object-cover object-center brightness-75"
           />
           <div className="flex flex-col items-center">
             <img
@@ -131,8 +131,8 @@ export const SignIn = () => {
             </h1>
           </div>
         </div>
-        <div className=" max-w-xl lg:max-w-full w-full mx-auto  space-y-3 md:flex flex-col px-3   lg:justify-center  h-full">
-          <div className="flex flex-col items-center">
+        <div className=" max-w-xl  w-full mx-auto  space-y-3 md:flex flex-col px-3   lg:justify-center  h-full">
+          <div className="flex  items-center justify-center">
             <img
               src="/logo-icon.png"
               className="lg:flex hidden w-20 h-full bg-white rounded-xl"
@@ -142,9 +142,10 @@ export const SignIn = () => {
               AssetPulse
             </h1>
           </div>
-          <h1 className="dark:text-white  text-2xl md:text-4xl font-semibold text-center font-serif">
-            Please Sign In your account
+          <h1 className="dark:text-white  text-2xl md:text-4xl font-semibold font-serif">
+            Log in
           </h1>
+          <p className="">Welcome back! Please enter your details.</p>
           <div className="max-w-xl w-full mx-auto flex items-center gap-2">
             <Button
               variant={"outline"}
@@ -166,7 +167,7 @@ export const SignIn = () => {
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-3 dark:text-white max-w-xl w-full mx-auto"
+            className="space-y-3 dark:text-white "
           >
             <div>
               <label htmlFor="email" className="capitalize font-semibold">
