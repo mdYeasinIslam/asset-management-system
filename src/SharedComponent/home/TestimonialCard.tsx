@@ -12,11 +12,11 @@ export default function TestimonialCard({
 }) {
   return (
     <div className="relative w-[200px] md:w-[450px]   bg-white bg-[url(/cardBg.png)] bg-no-repeat bg-cover py-14 px-1 md:px-10 rounded-xl shadow-md">
-      <div className="absolute top-6 right-8">
+      <div className=" ">
         <img
-          src="/testimonial-coma.png"
+          src="/images/home/testimonial-coma.png"
           alt="quote"
-          className="w-10 h-10 object-cover"
+          className="absolute top-6 right-8 w-10 h-10 object-cover"
         />
       </div>
       <h3 className="text-xl font-bold text-[#2a0903]">{testimonial.name}</h3>
@@ -25,12 +25,11 @@ export default function TestimonialCard({
       <div className="text-[#ff5757] text-right">
         {"★★★★★".slice(0, testimonial.rating)}
       </div>
-      <div className="absolute left-0 md:-bottom-5 lg:-bottom-7 xl:-bottom-8">
+      <div className="">
         <img
           src={testimonial?.image}
           alt={testimonial?.name}
-         
-          className="w-20 h-20 md:w-14 md:h-14 object-cover lg:w-16 lg:h-16 xl:w-24  xl:h-24  rounded-full"
+          className="absolute left-0 md:-bottom-5 lg:-bottom-7 xl:-bottom-8 w-20 h-20 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-24  xl:h-24  rounded-full  object-cover"
         />
       </div>
     </div>
