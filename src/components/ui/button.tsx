@@ -13,19 +13,21 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-primary hover:text-white",
+          "border border-input bg-background hover:bg-slate-800  hover:text-white",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         action: " text-destructive-foreground hover:bg-gray-300",
-        dark:'bg-[#1F2937] text-white hover:bg-[#12325e] dark:bg-slate-700 dark:hover:bg-slate-900',
-        banner:'hover:bg-[#1F2937] text-white bg-[#12325e] dark:bg-slate-700 dark:hover:bg-slate-900'
+        dark: "bg-[#1F2937] text-white hover:bg-[#12325e] dark:bg-slate-700 dark:hover:bg-slate-900",
+        banner:
+          "hover:bg-[#1F2937] text-white bg-[#12325e] dark:bg-slate-700 dark:hover:bg-slate-900",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "md:h-14 h-10 rounded-md px-2 md:px-8",
         icon: "h-10 w-10",
       },
     },
@@ -34,7 +36,7 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,

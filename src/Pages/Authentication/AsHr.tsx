@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { useForm, SubmitHandler } from "react-hook-form"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useForm, SubmitHandler } from "react-hook-form";
 import {
   Select,
   SelectContent,
@@ -9,97 +9,100 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { useAuth } from "@/hook/useAuth"
-import toast from "react-hot-toast"
-import { useAxiosPublic } from "@/hook/useAxiosPublic"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
-import { useState } from "react"
-import Loader from "@/SharedComponent/Loader"
+} from "@/components/ui/select";
+import { useAuth } from "@/hook/useAuth";
+import toast from "react-hot-toast";
+import { useAxiosPublic } from "@/hook/useAxiosPublic";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Loader from "@/SharedComponent/Loader";
+import { IoMdEye } from "react-icons/io";
+import { IoEyeOff } from "react-icons/io5";
 
 type Inputs = {
-    exampleRequired: string
-    email: string 
-    password: string 
-  name: string 
-    img_url:string
-    companyName: string 
-    companyLogo: string
-    birth: string
-    package: string;
-
-}
-const img_hosting_key = '7489d1929f652c6b41444e884a6a6180'
-const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
+  exampleRequired: string;
+  email: string;
+  password: string;
+  name: string;
+  img_url: string;
+  companyName: string;
+  companyLogo: string;
+  birth: string;
+  package: string;
+};
+const img_hosting_key = "7489d1929f652c6b41444e884a6a6180";
+const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
 export const AsHr = () => {
-  const { signUpAuth, updateUserAuth } = useAuth()
-  const axiosPublic = useAxiosPublic()
-  const [loading,setLoading] =useState(false)
-  const { register, handleSubmit, setValue, formState: { errors }, } = useForm<Inputs>()
-  const navigate =useNavigate()
-    const onSubmit: SubmitHandler<Inputs> =async(data,e) => {
-      
-      try {
-        setLoading(true)
-        const name = data.name;
-        const email = data.email?.toLowerCase();
-        const password = data.password;
-        const birth = data.birth
-        const companyName = data.companyName;
-        const selectPackage = data.package  
-        const companyLogo = {image:data.companyLogo[0]}
-        const photoURL = { image: data.img_url[0] };
-        
+  const { signUpAuth, updateUserAuth } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const [loading, setLoading] = useState(false);
+    const [isShow, setIsShow] = useState(true);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const navigate = useNavigate();
+  const onSubmit: SubmitHandler<Inputs> = async (data, e) => {
+    try {
+      setLoading(true);
+      const name = data.name;
+      const email = data.email?.toLowerCase();
+      const password = data.password;
+      const birth = data.birth;
+      const companyName = data.companyName;
+      const selectPackage = data.package;
+      const companyLogo = { image: data.companyLogo[0] };
+      const photoURL = { image: data.img_url[0] };
+
       const [res, res2] = await Promise.all([
-        axios.post(img_hosting_api,companyLogo, {
-        headers: {
-          'content-type':'multipart/form-data'
-          }
+        axios.post(img_hosting_api, companyLogo, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
         }),
         axios.post(img_hosting_api, photoURL, {
-        headers: {
-          'Content-Type':'multipart/form-data'
-        }
-      })
-      ])
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }),
+      ]);
       const companyLogoURL = res.data?.data.display_url;
       const profilePhotoURL = res2.data?.data.display_url;
-   
-        const profile = { displayName: name, photoURL:profilePhotoURL }
-        const userInfo = {
-          HR_Name: name,
-           email,
-          HR_photo:profilePhotoURL,
-          date_of_birth: birth,
-          companyName, 
-          company_logo: companyLogoURL,
-          package: selectPackage,
-          role:'Admin'
+
+      const profile = { displayName: name, photoURL: profilePhotoURL };
+      const userInfo = {
+        HR_Name: name,
+        email,
+        HR_photo: profilePhotoURL,
+        date_of_birth: birth,
+        companyName,
+        company_logo: companyLogoURL,
+        package: selectPackage,
+        role: "Admin",
+      };
+      const signInOperation = await signUpAuth(email, password);
+      if (signInOperation) {
+        await updateUserAuth(profile);
+        const response = await axiosPublic.post("/users", userInfo);
+
+        if (response) {
+          navigate("/hr/hrHome");
+          setLoading(false);
+          toast.success("Your are successfully join as a HR manager");
+          e?.target.reset();
         }
-        const signInOperation= await signUpAuth(email, password)
-        if (signInOperation) {
-          await updateUserAuth(profile)
-          const response = await axiosPublic.post('/users', userInfo);
-          
-          if (response) {
-            navigate('/hr/hrHome')
-            setLoading(false)
-            toast.success('Your are successfully join as a HR manager')
-            e?.target.reset()
-          }
-        }
-       
-      } catch (error: any) {
-        setLoading(false)
-        console.log(error)
-        toast.error(error)
-        
       }
-      
-        
+    } catch (error: any) {
+      setLoading(false);
+      console.log(error);
+      toast.error(error);
     }
+  };
 
   return (
     <>
@@ -109,27 +112,38 @@ export const AsHr = () => {
         </div>
       )}
       <section
-        className={`pb-10 lg:pt-10  px-5 dark:text-white ${loading && "opacity-50"}`}
+        className={` bg-[#FBF9F5]  dark:text-white ${loading && "opacity-50"}`}
       >
-        <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5">
-          <figure className="flex-1 flex justify-center items-center  mt-10 lg:mt-0 ">
+        <div className="max-w-7xl mx-auto h-screen  grid grid-cols-1 lg:grid-cols-2 items-center justify-center ">
+          <figure className="  ">
             <img
-              src="/images/auth/asHrSignUp2.jpg"
-              alt=""
-              className="rounded-xl hidden lg:flex"
+              src="/images/auth/hr-signup.jpg"
+              alt="Hr sign up image"
+              className=" h-[700px] w-full  hidden lg:flex object-cover object-center rounded-md"
             />
-            <img
-              src="/defaultLogo2.png"
-              className="flex lg:hidden w-20 h-20 bg-white rounded-xl"
-              alt=""
-            />
+            <div className="flex flex-col items-center">
+              <img
+                src="/logo-icon.png"
+                className="flex lg:hidden w-20 h-full bg-white rounded-xl"
+                alt=""
+              />
+              <h1 className="text-xl italic font-semibold block  lg:hidden">
+                AssetPulse
+              </h1>
+            </div>
           </figure>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-3 px-4 max-w-xl mx-auto w-full"
+          >
             <h1 className="font-semibold text-4xl text-center font-serif">
               Create account as a HR Manager
             </h1>
-            <div className="flex flex-col gap-1 ">
-              <label htmlFor="name">Your Name :</label>
+            <div className="flex flex-col gap-3 ">
+              <label htmlFor="name" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Your Name :
+              </label>
               <Input
                 id="name"
                 {...register("name")}
@@ -138,12 +152,12 @@ export const AsHr = () => {
                 required
               />
             </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
+            {/* <div className="grid w-full max-w-sm items-center gap-1.5">
               <label htmlFor="picture1">Upload Your Photo:</label>
               <Input id="picture1" {...register("img_url")} type="file" />
-            </div>
+            </div> */}
 
-            <div className="flex flex-col gap-1 ">
+            {/* <div className="flex flex-col gap-1 ">
               <label htmlFor="date"> Date of birth :</label>
               <Input
                 id="date"
@@ -152,10 +166,13 @@ export const AsHr = () => {
                 placeholder="Your date of birth"
                 required
               />
-            </div>
+            </div> */}
 
             <div className="flex flex-col gap-1 ">
-              <label htmlFor="companyName"> Company Name :</label>
+              <label htmlFor="companyName" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Company Name :
+              </label>
               <Input
                 id="companyName"
                 {...register("companyName")}
@@ -166,12 +183,18 @@ export const AsHr = () => {
             </div>
 
             <div className="grid w-full max-w-sm items-center gap-1.5">
-              <label htmlFor="picture">Upload complany logo image:</label>
+              <label htmlFor="picture" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Upload complany logo image:
+              </label>
               <Input id="picture" {...register("companyLogo")} type="file" />
             </div>
 
             <div className="flex flex-col gap-1 ">
-              <label htmlFor="email"> Email address :</label>
+              <label htmlFor="email" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Email
+              </label>
               <Input
                 id="email"
                 {...register("email")}
@@ -181,14 +204,30 @@ export const AsHr = () => {
               />
             </div>
             <div className="flex flex-col gap-1 ">
-              <label htmlFor="password">Email Password:</label>
-              <Input
-                id="password"
-                {...register("password")}
-                type="password"
-                placeholder="Password"
-                required
-              />
+              <label htmlFor="password" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Password
+              </label>
+
+              <div className="relative">
+                <Input
+                  id="password"
+                  {...register("password")}
+                  type={isShow ? "password" : "text"}
+                  placeholder="Password"
+                  required
+                />
+                <div
+                  onClick={() => setIsShow(!isShow)}
+                  className="absolute right-5 top-[25%] cursor-pointer  "
+                >
+                  {isShow ? (
+                    <IoMdEye className="w-6 h-6" />
+                  ) : (
+                    <IoEyeOff className="w-6 h-6" />
+                  )}
+                </div>
+              </div>
             </div>
             <Select onValueChange={(value) => setValue("package", value)}>
               <SelectTrigger className="w-[180px]">
@@ -221,4 +260,4 @@ export const AsHr = () => {
       </section>
     </>
   );
-}
+};

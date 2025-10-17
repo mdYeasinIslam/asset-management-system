@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom'
 export const MainLayout = () => {
   return (
     <div>
-      <div className=" pb-16">
+      <div className=" ">
         <SecondNavbar />
       </div>
       <Outlet />

@@ -87,74 +87,88 @@ export const AsEmployee = () => {
           <Loader />
         </div>
       )}
-    <section className={`lg:h-screen py-10 px-5 dark:text-white ${loading &&'opacity-50' }`}>
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5">
-        <figure>
-          <img
-            src="/images/auth/authentication1.png"
-            alt=""
-            className="rounded-xl"
-          />
-        </figure>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-          <h1 className="font-medium text-2xl text-center font-serif">
-            Join or create account as an Employee
-          </h1>
-          <div className="flex flex-col gap-1 ">
-            <label htmlFor="name">Your Name :</label>
-            <Input
-              id="name"
-              {...register("name")}
-              type="text"
-              placeholder="Your full name"
-              required
+      <section
+        className={`lg:h-screen bg-[#FBF9F5] dark:text-white ${
+          loading && "opacity-50"
+        }`}
+      >
+        <div className="max-w-4xl xl:max-w-7xl mx-auto h-screen grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5">
+          <figure>
+            <img
+              src="/images/auth/employee-signup.jpg"
+              alt="side image"
+              className="w-full  hidden lg:flex h-[500px] xl:h-[600px] object-cover rounded-md"
             />
-          </div>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <label htmlFor="picture1">Upload Your Photo:</label>
-            <Input id="picture1" {...register("photoURL")} type="file" />
-          </div>
+            <div className="flex flex-col items-center">
+              <img
+                src="/logo-icon.png"
+                className="flex lg:hidden w-20 h-full bg-white rounded-xl"
+                alt="logo"
+              />
+              <h1 className="text-xl italic font-semibold block lg:hidden">
+                AssetPulse
+              </h1>
+            </div>
+          </figure>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+            <h1 className="font-medium text-2xl text-center font-serif">
+              Join or create account as an Employee
+            </h1>
+            <div className="flex flex-col gap-1 ">
+              <label htmlFor="name">Your Name :</label>
+              <Input
+                id="name"
+                {...register("name")}
+                type="text"
+                placeholder="Your full name"
+                required
+              />
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
+              <label htmlFor="picture1">Upload Your Photo:</label>
+              <Input id="picture1" {...register("photoURL")} type="file" />
+            </div>
 
-          <div className="flex flex-col gap-1 ">
-            <label htmlFor="date"> Date of birth :</label>
-            <Input
-              id="data"
-              {...register("birth")}
-              type="date"
-              placeholder="Your date of birth"
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-1 ">
-            <label htmlFor="email"> Email address :</label>
-            <Input
-              id="email"
-              {...register("email")}
-              type="email"
-              placeholder="Email"
-              required
-            />
-          </div>
-          <div className="flex flex-col gap-1 ">
-            <label htmlFor="password">Email Password:</label>
-            <Input
-              id="password"
-              {...register("password")}
-              type="password"
-              placeholder="Password"
-              required
-            />
-          </div>
+            <div className="flex flex-col gap-1 ">
+              <label htmlFor="date"> Date of birth :</label>
+              <Input
+                id="data"
+                {...register("birth")}
+                type="date"
+                placeholder="Your date of birth"
+                required
+              />
+            </div>
+            <div className="flex flex-col gap-1 ">
+              <label htmlFor="email"> Email address :</label>
+              <Input
+                id="email"
+                {...register("email")}
+                type="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div className="flex flex-col gap-1 ">
+              <label htmlFor="password">Email Password:</label>
+              <Input
+                id="password"
+                {...register("password")}
+                type="password"
+                placeholder="Password"
+                required
+              />
+            </div>
 
-          {/* errors will return when field validation fails  */}
-          {errors.exampleRequired && <span>This field is required</span>}
+            {/* errors will return when field validation fails  */}
+            {errors.exampleRequired && <span>This field is required</span>}
 
-          <Button variant="dark" className="w-full" type="submit">
-            Join as a Employee
-          </Button>
-        </form>
-      </div>
-    </section>
+            <Button variant="dark" className="w-full" type="submit">
+              Join as a Employee
+            </Button>
+          </form>
+        </div>
+      </section>
     </>
   );
 };
