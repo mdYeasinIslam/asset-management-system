@@ -141,7 +141,7 @@ export default function WhyChoose() {
           </p>
         </div>
         {/* Main Features Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid lg:grid-cols-3 gap-4 xl:gap-8 mb-16">
           {features.map((feature) => {
             const colors = getColorClasses(feature?.color);
             return (

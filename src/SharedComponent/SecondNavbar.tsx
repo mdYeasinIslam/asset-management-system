@@ -10,12 +10,12 @@ import toast from "react-hot-toast";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 
 export const SecondNavbar = () => {
-  const checkSignPath = useLocation()
+  const checkSignPath = useLocation();
   const hideNavbar =
     checkSignPath.pathname === "/signIn" ||
     checkSignPath.pathname === "/asEmployee" ||
     checkSignPath.pathname === "/asHr";
-  if (hideNavbar) return ;
+  if (hideNavbar) return;
   const { user, signOutAuth, dark, setDark } = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
@@ -31,7 +31,7 @@ export const SecondNavbar = () => {
       await signOutAuth();
       navigate("/");
       toast.success("You have successfully logged out");
-    } catch (e:any) {
+    } catch (e: any) {
       console.error(e);
       toast.error(e.message);
     }
@@ -63,7 +63,7 @@ export const SecondNavbar = () => {
   };
 
   // Determine Navigation Menu
-  const navItems = useMemo(() => { 
+  const navItems = useMemo(() => {
     if (!user) return paths.guest;
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
@@ -80,10 +80,10 @@ export const SecondNavbar = () => {
 
   return (
     <section className="pb-16">
-  
+      <div className="fixed z-10 w-full">
         <div
-          className={`container fixed z-10 w-full mx-auto flex justify-between items-center py-3 px-1 md:px-2 lg:px-4 ${
-            dark ? "bg-gray-800 text-white" : "bg-opacity-30 navbar-light"
+          className={`container  mx-auto flex justify-between items-center pt-3 px-1 md:px-2 lg:px-4 ${
+            dark ? "bg-gray-800 text-white" : "bg-opacity-30 navbar-light "
           }`}
         >
           {/* Logo & Menu Toggle */}
@@ -170,6 +170,7 @@ export const SecondNavbar = () => {
             )}
           </div>
         </div>
+      </div>
     </section>
   );
 };
