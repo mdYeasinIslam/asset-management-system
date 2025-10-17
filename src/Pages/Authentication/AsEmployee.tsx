@@ -7,6 +7,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
+import { IoMdEye } from "react-icons/io";
+import { IoEyeOff } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 type Inputs = {
@@ -28,7 +30,9 @@ export const AsEmployee = () => {
   } = useForm<Inputs>();
   const axiosPublic = useAxiosPublic();
   const { signUpAuth, updateUserAuth } = useAuth();
-  const [loading,setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
+      const [isShow, setIsShow] = useState(true);
+
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<Inputs> = async (data, e) => {
     try {
@@ -114,11 +118,14 @@ export const AsEmployee = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-3 max-w-xl mx-auto w-full px-5 md:px-0"
           >
-            <h1 className="font-medium text-2xl text-center font-serif">
-               Create account as an Employee
+            <h1 className="font-semibold text-4xl text-center font-serif">
+              Create account as an Employee
             </h1>
-            <div className="flex flex-col gap-1 ">
-              <label htmlFor="name">Your Name :</label>
+            <div className="flex flex-col  ">
+              <label htmlFor="name" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Your Name :
+              </label>
               <Input
                 id="name"
                 {...register("name")}
@@ -133,7 +140,10 @@ export const AsEmployee = () => {
             </div>
 
             <div className="flex flex-col gap-1 ">
-              <label htmlFor="date"> Date of birth :</label>
+              <label htmlFor="date" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Date of birth :
+              </label>
               <Input
                 id="data"
                 {...register("birth")}
@@ -143,7 +153,10 @@ export const AsEmployee = () => {
               />
             </div>
             <div className="flex flex-col gap-1 ">
-              <label htmlFor="email"> Email address :</label>
+              <label htmlFor="email" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Email
+              </label>
               <Input
                 id="email"
                 {...register("email")}
@@ -152,16 +165,32 @@ export const AsEmployee = () => {
                 required
               />
             </div>
-            <div className="flex flex-col gap-1 ">
-              <label htmlFor="password">Email Password:</label>
-              <Input
-                id="password"
-                {...register("password")}
-                type="password"
-                placeholder="Password"
-                required
-              />
-            </div>
+                 <div className="flex flex-col gap-1 ">
+                          <label htmlFor="password" className="capitalize font-semibold">
+                            <span className="text-red-800">*</span>
+                            Password
+                          </label>
+            
+                          <div className="relative">
+                            <Input
+                              id="password"
+                              {...register("password")}
+                              type={isShow ? "password" : "text"}
+                              placeholder="Password"
+                              required
+                            />
+                            <div
+                              onClick={() => setIsShow(!isShow)}
+                              className="absolute right-5 top-[25%] cursor-pointer  "
+                            >
+                              {!isShow ? (
+                                <IoMdEye className="w-6 h-6" />
+                              ) : (
+                                <IoEyeOff className="w-6 h-6" />
+                              )}
+                            </div>
+                          </div>
+                        </div>
 
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}

@@ -221,7 +221,7 @@ export const AsHr = () => {
                   onClick={() => setIsShow(!isShow)}
                   className="absolute right-5 top-[25%] cursor-pointer  "
                 >
-                  {isShow ? (
+                  {!isShow ? (
                     <IoMdEye className="w-6 h-6" />
                   ) : (
                     <IoEyeOff className="w-6 h-6" />
