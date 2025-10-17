@@ -84,9 +84,14 @@ export const SecondNavbar = () => {
           <button className="lg:hidden" onClick={() => setOpen(!open)}>
             {open ? <X /> : <AlignJustify />}
           </button>
-          <Link className="flex items-center gap-2" to={role ? (role === "Admin" ? "/hr/hrHome" : "/employee/eHome") : "/"}>
-            <img className="w-10 rounded-xl" src="/defaultLogo2.png" alt="Logo" />
-            <p className="font-medium text-xl ">AssetPulse</p>
+          <Link
+            className="flex items-center"
+            to={
+              role ? (role === "Admin" ? "/hr/hrHome" : "/employee/eHome") : "/"
+            }
+          >
+            <img className="w-14 h-full rounded-xl" src="/logo-icon.png" alt="Logo" />
+            <p className=" text-xl italic font-semibold">AssetPulse</p>
           </Link>
         </div>
 
@@ -103,45 +108,52 @@ export const SecondNavbar = () => {
             </NavLink>
           ))}
         </nav>
-          
+
         {/* Desktop Navigation */}
         <nav className=" hidden lg:flex text-[12px] xl:text-[15px] ">
           <ul className="w-full text-center flex lg:gap-2 xl:gap-4 items-center font-medium uppercase">
             {navItems.map(({ path, label }) => (
-              <NavLink key={path} className="px-2 py-1 rounded hover:bg-[#2a3341] hover:text-white hover:duration-500" to={path}>
+              <NavLink
+                key={path}
+                className="px-2 py-1 rounded hover:bg-[#2a3341] hover:text-white hover:duration-500"
+                to={path}
+              >
                 {label}
               </NavLink>
             ))}
           </ul>
-
         </nav>
-          {/* Dark Mode & User Actions */}
-          <div className="flex items-center gap-1 md:gap-2">
-            <button
-              onClick={() => setDark(!dark)}
-              className="p-2 rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
-            >
-              {dark ? <Sun className="w-5 h-5 text-black" /> : <Moon className="w-5 h-5 text-gray-800 dark:text-white" />}
-            </button>
-
-            {user?.email ? (
-              <>
-                <Link to="/profile">
-                  <Avatar>
-                    <AvatarImage src={userPhoto} alt={user?.email} />
-                    <AvatarFallback>CN</AvatarFallback>
-                  </Avatar>
-                </Link>
-                <Button onClick={signOut} variant="dark">
-                  Log out
-                </Button>
-              </>
+        {/* Dark Mode & User Actions */}
+        <div className="flex items-center gap-1 md:gap-2">
+          <button
+            onClick={() => setDark(!dark)}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-400 hover:bg-slate-400 transition-all"
+          >
+            {dark ? (
+              <Sun className="w-5 h-5 text-black" />
             ) : (
-              <Link to="/signIn">
-                <Button  variant="dark">Log In</Button>
-              </Link>
+              <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
             )}
-          </div>
+          </button>
+
+          {user?.email ? (
+            <>
+              <Link to="/profile">
+                <Avatar>
+                  <AvatarImage src={userPhoto} alt={user?.email} />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </Link>
+              <Button onClick={signOut} variant="dark">
+                Log out
+              </Button>
+            </>
+          ) : (
+            <Link to="/signIn">
+              <Button variant="dark">Log In</Button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

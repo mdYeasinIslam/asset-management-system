@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hook/useAuth";
 import { useIsAdmin } from "@/hook/useIsAdmin";
 import { useUsersData } from "@/hook/useUsersData";
@@ -60,7 +59,7 @@ export const Navbar = () => {
               >
                 <img
                   className="w-10 rounded-xl"
-                  src="/defaultLogo2.png"
+                  src="/logo-icon.png"
                   alt=""
                 />
                 <p className="font-medium text-xl w-full">AssetPulse</p>
