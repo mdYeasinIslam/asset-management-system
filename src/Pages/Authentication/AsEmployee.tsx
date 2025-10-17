@@ -110,9 +110,12 @@ export const AsEmployee = () => {
               </h1>
             </div>
           </figure>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-3 max-w-xl mx-auto w-full px-5 md:px-0"
+          >
             <h1 className="font-medium text-2xl text-center font-serif">
-              Join or create account as an Employee
+               Create account as an Employee
             </h1>
             <div className="flex flex-col gap-1 ">
               <label htmlFor="name">Your Name :</label>
