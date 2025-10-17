@@ -92,7 +92,7 @@ export const AsEmployee = () => {
         </div>
       )}
       <section
-        className={`lg:h-screen bg-[#FBF9F5] dark:text-white ${
+        className={`lg:h-screen bg-[#FBF9F5] dark:text-white  py-10 lg:py-0 ${
           loading && "opacity-50"
         }`}
       >
@@ -123,7 +123,7 @@ export const AsEmployee = () => {
             </h1>
             <p className="font-medium text-gray-700  pb-2">
               Create an account with just few clicks and avail exciting
-              features.
+              features!
             </p>
             <div className="flex flex-col  ">
               <label htmlFor="name" className="capitalize font-semibold">
@@ -199,7 +199,7 @@ export const AsEmployee = () => {
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}
 
-            <Button variant="dark" className="w-full" type="submit">
+            <Button variant="dark" size={"xl"} className="w-full font-semibold xl:text-lg" type="submit">
               Join as a Employee
             </Button>
           </form>

@@ -112,14 +112,16 @@ export const AsHr = () => {
         </div>
       )}
       <section
-        className={` bg-[#FBF9F5]  dark:text-white ${loading && "opacity-50"}`}
+        className={` bg-[#FBF9F5]  dark:text-white py-10 lg:py-0 ${
+          loading && "opacity-50"
+        }`}
       >
-        <div className="max-w-7xl mx-auto h-screen  grid grid-cols-1 lg:grid-cols-2 items-center justify-center ">
+        <div className="max-w-5xl xl:max-w-7xl mx-auto h-screen  grid grid-cols-1 lg:grid-cols-2 items-center justify-center ">
           <figure className="  ">
             <img
               src="/images/auth/hr-signup.jpg"
               alt="Hr sign up image"
-              className=" h-[700px] w-full  hidden lg:flex object-cover object-center rounded-md"
+              className="h-[600px] xl:h-[700px]  w-full  hidden lg:flex object-cover object-center xl:rounded-md"
             />
             <div className="flex flex-col items-center">
               <img
@@ -136,8 +138,8 @@ export const AsHr = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-3 px-4 max-w-xl mx-auto w-full"
           >
-            <h1 className="font-semibold text-4xl text-center font-serif">
-              Create account as HR Manager
+            <h1 className="font-semibold text-4xl ">
+              Create account (HR Manager)
             </h1>
             <div className="flex flex-col gap-3 ">
               <label htmlFor="name" className="capitalize font-semibold">
@@ -252,7 +254,7 @@ export const AsHr = () => {
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}
 
-            <Button variant="dark" className="w-full" type="submit">
+            <Button variant="dark" size={"xl"} className="w-full font-semibold" type="submit">
               Join as a Hr_manager
             </Button>
           </form>
