@@ -39,8 +39,10 @@ export const SignIn = () => {
   });
 
   const onSubmit: SubmitHandler<Inputs> = (data, e) => {
-    const email = data.email.toLowerCase();
-    const password = data.password;
+    const email = dummySignIn?.email
+      ? dummySignIn?.email
+      : data.email.toLowerCase();
+    const password =dummySignIn.password? dummySignIn?.password: data?.password;
     signInAuth(email, password)
       .then(async (res) => {
         const response = await axiosSecure.get(
@@ -113,12 +115,12 @@ export const SignIn = () => {
   };
   return (
     <section className=" bg-[#FBF9F5]">
-      <div className="max-w-6xl mx-auto  h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
+      <div className="max-w-4xl xl:max-w-6xl mx-auto  h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
         <div className="  flex justify-center  items-center   ">
           <img
             src="/images/auth/sign-in.jpg"
             alt="login img"
-            className=" h-[600px] hidden lg:block object-cover object-center brightness-75"
+            className=" h-[600px] hidden lg:block object-cover object-center brightness-75 rounded-md"
           />
           <div className="flex flex-col items-center">
             <img
@@ -131,27 +133,29 @@ export const SignIn = () => {
             </h1>
           </div>
         </div>
-        <div className=" max-w-xl  w-full mx-auto  space-y-3 md:flex flex-col px-3   lg:justify-center  h-full">
+        <div className=" max-w-xl  w-full mx-auto  space-y-3 flex flex-col    lg:justify-center  h-full px-5" >
           <div className="flex  items-center justify-center">
             <img
               src="/logo-icon.png"
-              className="lg:flex hidden w-20 h-full bg-white rounded-xl"
+              className="lg:flex hidden w-16 h-full bg-white rounded-xl"
               alt=""
             />
             <h1 className="text-xl italic font-semibold lg:block  hidden">
               AssetPulse
             </h1>
           </div>
-          <h1 className="dark:text-white  text-2xl md:text-4xl font-semibold font-serif">
+          <h1 className="dark:text-white  text-2xl md:text-4xl font-semibold ">
             Log in
           </h1>
-          <p className="">Welcome back! Please enter your details.</p>
-          <div className="max-w-xl w-full mx-auto flex items-center gap-2">
+          <p className="font-medium ">
+            Welcome back! Please enter your details.
+          </p>
+          <div className="max-w-3xl mx-auto flex items-center gap-5">
             <Button
               variant={"outline"}
               size={"xl"}
               onClick={google}
-              className="w-full bg-white text-black text-sm md:text-lg font-medium border border-[#EAEBEB] "
+              className="max-w-xl w-full bg-white text-black text-sm md:text-lg font-medium border border-[#EAEBEB] "
             >
               <FcGoogle className=" !w-8 !h-8 " /> <span> Google</span>{" "}
             </Button>
@@ -159,15 +163,20 @@ export const SignIn = () => {
               variant={"outline"}
               size={"xl"}
               onClick={google}
-              className="w-full bg-white text-black text-sm md:text-lg font-medium border border-[#EAEBEB] "
+              className="max-w-xl w-full bg-white text-black text-sm md:text-lg font-medium border border-[#EAEBEB] "
             >
               <FaFacebook className=" text-blue-600 !w-8 !h-8 " />{" "}
               <span> Facebook</span>{" "}
             </Button>
           </div>
+          <div className="flex justify-center">
+            
+            <span className="text-gray-700">or continue with</span>
+            
+          </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-3 dark:text-white "
+            className="space-y-3 dark:text-white"
           >
             <div>
               <label htmlFor="email" className="capitalize font-semibold">

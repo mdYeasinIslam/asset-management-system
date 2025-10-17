@@ -137,7 +137,7 @@ export const AsHr = () => {
             className="space-y-3 px-4 max-w-xl mx-auto w-full"
           >
             <h1 className="font-semibold text-4xl text-center font-serif">
-              Create account as a HR Manager
+              Create account as HR Manager
             </h1>
             <div className="flex flex-col gap-3 ">
               <label htmlFor="name" className="capitalize font-semibold">

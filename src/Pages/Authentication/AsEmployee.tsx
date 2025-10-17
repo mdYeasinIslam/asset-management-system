@@ -118,9 +118,13 @@ export const AsEmployee = () => {
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-3 max-w-xl mx-auto w-full px-5 md:px-0"
           >
-            <h1 className="font-semibold text-4xl text-center font-serif">
-              Create account as an Employee
+            <h1 className="font-semibold text-4xl  ">
+              Create account (Employee)
             </h1>
+            <p className="font-medium text-gray-700  pb-2">
+              Create an account with just few clicks and avail exciting
+              features.
+            </p>
             <div className="flex flex-col  ">
               <label htmlFor="name" className="capitalize font-semibold">
                 <span className="text-red-800">*</span>
@@ -165,32 +169,32 @@ export const AsEmployee = () => {
                 required
               />
             </div>
-                 <div className="flex flex-col gap-1 ">
-                          <label htmlFor="password" className="capitalize font-semibold">
-                            <span className="text-red-800">*</span>
-                            Password
-                          </label>
-            
-                          <div className="relative">
-                            <Input
-                              id="password"
-                              {...register("password")}
-                              type={isShow ? "password" : "text"}
-                              placeholder="Password"
-                              required
-                            />
-                            <div
-                              onClick={() => setIsShow(!isShow)}
-                              className="absolute right-5 top-[25%] cursor-pointer  "
-                            >
-                              {!isShow ? (
-                                <IoMdEye className="w-6 h-6" />
-                              ) : (
-                                <IoEyeOff className="w-6 h-6" />
-                              )}
-                            </div>
-                          </div>
-                        </div>
+            <div className="flex flex-col gap-1 ">
+              <label htmlFor="password" className="capitalize font-semibold">
+                <span className="text-red-800">*</span>
+                Password
+              </label>
+
+              <div className="relative">
+                <Input
+                  id="password"
+                  {...register("password")}
+                  type={isShow ? "password" : "text"}
+                  placeholder="Password"
+                  required
+                />
+                <div
+                  onClick={() => setIsShow(!isShow)}
+                  className="absolute right-5 top-[25%] cursor-pointer  "
+                >
+                  {!isShow ? (
+                    <IoMdEye className="w-6 h-6" />
+                  ) : (
+                    <IoEyeOff className="w-6 h-6" />
+                  )}
+                </div>
+              </div>
+            </div>
 
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}
