@@ -9,7 +9,7 @@ export const MainLayout = () => {
         <SecondNavbar />
       </div>
       <Outlet />
-    
+      
     </div>
-  )
+  );
 }

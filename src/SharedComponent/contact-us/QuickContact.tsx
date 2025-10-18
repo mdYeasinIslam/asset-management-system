@@ -3,13 +3,13 @@ import { Building2, Clock, Mail, Phone } from 'lucide-react';
 
 export default function QuickContact() {
   return (
-    <div className="bg-white">
+    <div className="bg-white py-20">
       <div className="container mx-auto dark:bg-[#2a3341]   rounded-2xl md:py-20 ">
         <h2 className="text-2xl md:text-5xl font-bold mb-6 text-[var(--color-primary-900)] dark:text-white uppercase text-center ">
          Quick Contact
         </h2>
-        <div className="flex justify-between  items-center gap-5">
-          <div className="flex flex-col items-center space-x-4 border rounded-xl py-3 w-full  h-full">
+        <div className="max-w-5xl xl:max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 px-5  justify-between  items- gap-5">
+          <div className=" flex flex-col items-start pl-5  border rounded-xl py-3 w-full  h-full">
             <div className="bg-lime-200 p-3  rounded-lg">
               <Building2 className="h-6 w-6 text-slate-700" />
             </div>
@@ -26,7 +26,7 @@ export default function QuickContact() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center space-x-4 border rounded-xl py-3 w-full  h-full">
+          <div className=" flex flex-col items-start pl-5 border rounded-xl py-3 w-full  h-full">
             <div className="bg-lime-200   p-3 rounded-lg">
               <Phone className="h-6 w-6 text-slate-700 " />
             </div>
@@ -43,7 +43,7 @@ export default function QuickContact() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center space-x-4 border rounded-xl py-3 w-full  h-full">
+          <div className=" flex flex-col items-start pl-5  border rounded-xl py-3 w-full  h-full">
             <div className="bg-lime-200 p-3 rounded-lg">
               <Mail className="h-6 w-6 text-slate-700 " />
             </div>
@@ -60,7 +60,7 @@ export default function QuickContact() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center space-x-4  border rounded-xl py-3 w-full  h-full">
+          <div className=" flex flex-col items-start pl-5   border rounded-xl py-3 w-full  h-full">
             <div className="bg-lime-200 p-3 rounded-lg">
               <Clock className="h-6 w-6 text-slate-700" />
             </div>

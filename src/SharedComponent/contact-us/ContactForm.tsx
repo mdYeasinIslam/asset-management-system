@@ -24,9 +24,9 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
 
   return (
     <section className={className}>
-      <div className="container mx-auto  px-2 md:px-0">
-        <div className="wrapper grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-0 xl:gap-8 h-full">
-          <div className="md:w-[80%] mx-auto h-full   content_wrapper  ">
+      <div className="max-w-7xl mx-auto  px-2 md:px-0">
+        <div className="wrapper grid grid-cols-1 lg:grid-cols-2 gap-5  h-full">
+          <div className="w-full  h-full   content_wrapper  ">
             <div className=" bg-white p-3 md:p-5 h-full space-y-5 xl:space-y-8">
               <h1 className="text-[#00442A] text-3xl ">Contact us</h1>
               <form onSubmit={handleSubmit} action="" className="flex flex-col gap-5">

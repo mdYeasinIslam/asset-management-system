@@ -14,46 +14,7 @@ export default function MapSection({ className }: IProps) {
   ];
   return (
     <section className={className}>
-      {/* <div className="container">
-        <div>
-          {' '}
-          <SectionIntro
-            titlePrefix="Who We Help"
-            title="Built for Everyone in the Hiring Ecosystem"
-            className="text-center mb-16 max-w-3xl mx-auto"
-          />
-        </div>
-        <div className="">
-          <div className=" flex flex-col items-center justify-center gap-12">
-            {address?.map((add, idx) => {
-              return (
-                <div key={idx}>
-                  <h3 className="text-xl font-medium text-[#00442A]">{add.title}</h3>
-                  <p className="text-sm ">{add.address}</p>
-                </div>
-              );
-            })}
-          </div>
-          <motion.div
-            className="image_wrapper md:px-14 lg:px-0 flex items-center "
-            initial={{ x: 60, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <Image
-              src="/images/formImg.png"
-              alt="Our Purpose"
-              layout="responsive"
-              width={500}
-              height={500}
-              className=" rounded-lg"
-            />
-          </motion.div>
-        </div>
-      </div> */}
-
-      <div className="container">
+      <div className="container mx-auto">
         <div>
           <SectionIntro
             titlePrefix="Who We Help"

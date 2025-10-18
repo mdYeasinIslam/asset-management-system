@@ -2,10 +2,11 @@ import HeroSectionContact from "@/SharedComponent/contact-us/HeroSectionContact"
 import QuickContact from "@/SharedComponent/contact-us/QuickContact";
 import ContactForm from "@/SharedComponent/contact-us/ContactForm";
 import MapSection from "@/SharedComponent/contact-us/MapSection";
+import Footer from "@/SharedComponent/Footer";
 
 export default function Contact() {
   return (
-    <div className=" px-1 min-h-screen dark:text-white dark:bg-[#2a3341]">
+    <div className="  min-h-screen dark:text-white dark:bg-[#2a3341]">
       {/* Hero Section */}
       <HeroSectionContact className="bg-[#F7FEE7] py-20" />
       {/* Main Content */}
@@ -17,12 +18,6 @@ export default function Contact() {
 
       {/* Map Section */}
       <MapSection className="bg-[#F7FEE7] py-20" />
-      {/* <div className="mt-12 bg-white rounded-2xl p-8 shadow-lg">
-          <h2 className="text-2xl font-bold mb-6 text-slate-900">Our Location</h2>
-          <div className="aspect-video rounded-lg overflow-hidden relative h-[400px]">
-            <img src="/placeholder.svg" alt="Office location map" className="w-full h-full object-cover" />
-          </div>
-        </div> */}
 
       {/* Department Cards */}
       {/* <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -61,6 +56,7 @@ export default function Contact() {
             </Button>
           </div>
         </div> */}
+      <Footer />
     </div>
   );
 }
