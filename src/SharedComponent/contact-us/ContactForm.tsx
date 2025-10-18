@@ -1,21 +1,35 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 interface IProps {
   className?: string;
 }
 
 const ContactForm: React.FC<IProps> = ({ className }) => {
+     const [formData, setFormData] = useState({
+       name: "",
+       email: "",
+       subject: "",
+       message: "",
+     });
+
+     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+       e.preventDefault();
+       toast.success("Your message is successfully send");
+       setFormData({ name: '', email: "", subject: "", message: "" });
+     };
+
   return (
     <section className={className}>
-      <div className="container px-2 md:px-0">
+      <div className="container mx-auto  px-2 md:px-0">
         <div className="wrapper grid grid-cols-1 lg:grid-cols-2 gap-5 md:gap-0 xl:gap-8 h-full">
           <div className="md:w-[80%] mx-auto h-full   content_wrapper  ">
             <div className=" bg-white p-3 md:p-5 h-full space-y-5 xl:space-y-8">
               <h1 className="text-[#00442A] text-3xl ">Contact us</h1>
-              <form action="" className="flex flex-col gap-5">
+              <form onSubmit={handleSubmit} action="" className="flex flex-col gap-5">
                 <div className="flex  gap-6">
                   <div className="w-full space-y-2 ">
                     <label
