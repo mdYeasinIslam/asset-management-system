@@ -214,7 +214,7 @@ export default function WhyChoose() {
         <div className="flex flex-col lg:flex-row justify-between  gap-5">
           <div className="bg-white rounded-2xl shadow-lg p-8 ">
             <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-              More Reasons to Shop With Us
+              More Reasons to join With Us
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
               {additionalFeatures.map((item, index) => (

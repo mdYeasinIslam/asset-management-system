@@ -1,3 +1,8 @@
+:root{
+  --color-primary-500: #00a264;
+    --color-primary-900: #00442a;
+}
+
 nav>ul>.active ,nav>.active{
 color: #ffffff;
  background-color: #1F2937;
