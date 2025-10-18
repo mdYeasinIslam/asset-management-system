@@ -1,16 +1,16 @@
 import { PackageType } from "@/Type/packageType";
-import React, { useState } from "react";
+import { useState } from "react";
 import { IoMdCheckmark } from "react-icons/io";
 interface PropType {
     plan: PackageType
-    idx:number
+    idx?:number
 }
-export default function PackageCard({ plan, idx }: PropType) {
-  const [activeCard, setActiveCard] = useState(2);
+export default function PackageCard({ plan }: PropType) {
+  const [activeCard] = useState(2);
   const { id, title, shortDescription, price, services, buttonText } = plan;
   return (
     <div
-      className={` rounded-xl p-2 xl:p-5 space-y-8 ${
+      className={`text-start rounded-xl p-2 xl:p-5 space-y-8 ${
         activeCard == id && "border-4 border-[var(--color-primary-500)]"
       }`}
     >
@@ -49,14 +49,14 @@ export default function PackageCard({ plan, idx }: PropType) {
         >
           <button className="">{buttonText}</button>
         </div>
-        <ul className=" space-y-1 flex flex-col gap-3.5">
+        <ul className=" space-y-1 flex flex-col lg:gap-3.5">
           {services?.map((service, idx) => (
             <li
               key={idx}
-              className="flex items-center gap-1.5 text-[#262626] text-sm"
+              className="flex lg:items-center gap-0.5 lg:gap-1.5 text-[#262626] text-sm"
             >
               <IoMdCheckmark className="text-xl" />
-              <span className="">{service}</span>
+              <span className="text-start">{service}</span>
             </li>
           ))}
         </ul>

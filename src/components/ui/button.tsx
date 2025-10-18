@@ -24,11 +24,15 @@ const buttonVariants = cva(
           "hover:bg-[#1F2937] text-white bg-[#12325e] dark:bg-slate-700 dark:hover:bg-slate-900",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        xl: "md:h-14 h-10 rounded-md px-4",
-        icon: "h-10 w-10",
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        xl: "h-14 rounded-md px-8 has-[>svg]:px-4",
+        responsive:
+          "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 md:h-10  md:px-6 has-[>svg]:md:px-4 lg:h-14  lg:px-8",
+        submit:
+          "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5 md:h-10  md:px-6 has-[>svg]:md:px-4 lg:h-12  lg:px-8",
+        icon: "size-9",
       },
     },
     defaultVariants: {

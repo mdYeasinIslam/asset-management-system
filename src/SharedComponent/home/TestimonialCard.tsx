@@ -29,7 +29,7 @@ export default function TestimonialCard({
       <img
         src={testimonial?.image}
         alt={testimonial?.name}
-        className="absolute left-0 -bottom-5 lg:-bottom-7 xl:-bottom-8 w-20 h-20 md:w-14 md:h-14 lg:w-16 lg:h-16 xl:w-24  xl:h-24  rounded-full  object-cover"
+        className="absolute  left-0 -bottom-5 lg:-bottom-7 xl:-bottom-8 w-24 h-24  md:w-24 md:h-24 rounded-xl  md:rounded-full  object-cover"
       />
     </div>
   );

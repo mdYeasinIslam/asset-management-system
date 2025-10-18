@@ -1,37 +1,36 @@
 import { useAuth } from "@/hook/useAuth";
-import { DisplayPackege } from "./DisplayPackege";
 import { PackageType } from "@/Type/packageType";
 import PackageCard from "./PackageCard";
 
-const packages = [
-  {
-    id: 1,
-    title: "Maximum 5 Employees",
-    price: "$5",
-    description:
-      "Ideal for small teams to manage and track their assets effectively.",
-  },
-  {
-    id: 2,
-    title: "Maximum 10 Employees",
-    price: "$8",
-    description:
-      "Perfect for growing teams with moderate asset management needs.",
-  },
-  {
-    id: 3,
-    title: "Maximum 20 Employees",
-    price: "$15",
-    description:
-      "Designed for larger teams requiring advanced asset tracking tools.",
-  },
-];
+// const packages = [
+//   {
+//     id: 1,
+//     title: "Maximum 5 Employees",
+//     price: "$5",
+//     description:
+//       "Ideal for small teams to manage and track their assets effectively.",
+//   },
+//   {
+//     id: 2,
+//     title: "Maximum 10 Employees",
+//     price: "$8",
+//     description:
+//       "Perfect for growing teams with moderate asset management needs.",
+//   },
+//   {
+//     id: 3,
+//     title: "Maximum 20 Employees",
+//     price: "$15",
+//     description:
+//       "Designed for larger teams requiring advanced asset tracking tools.",
+//   },
+// ];
 const flexiblePlans: PackageType[] = [
   {
     id: 1,
-    title: "Starter",
+    title: "Basic",
     shortDescription: "Perfect for individuals or small businesses",
-    price: "FREE",
+    price: 8.44,
     buttonText: "Get Started",
     services: [
       "Up to 50 Assets",
@@ -88,7 +87,7 @@ export const Packages = () => {
 
   return (
     <section
-      className={`py-16 px-6 md:px-12 lg:px-20 ${
+      className={`py-16 px-4 ${
         dark ? "bg-[#2a3341] text-white" : "bg-gray-100"
       }`}
     >
@@ -102,7 +101,7 @@ export const Packages = () => {
           Select a package that best suits the size of your team and start
           optimizing your asset management today.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 border-2">
+        <div className="grid grid-cols-1  md:grid-cols-3 gap-4 lg:gap-8 border-2">
           {/* {packages?.map((pkg) => (
             <DisplayPackege key={pkg.id} pkg={pkg} />
           ))} */}
