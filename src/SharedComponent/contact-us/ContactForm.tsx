@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import React, { FormEvent, useState } from "react";
@@ -9,18 +8,27 @@ interface IProps {
 }
 
 const ContactForm: React.FC<IProps> = ({ className }) => {
-     const [formData, setFormData] = useState({
-       name: "",
-       email: "",
-       subject: "",
-       message: "",
-     });
-     
-     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-       e.preventDefault();
-       toast.success("Your message is successfully send");
-       setFormData({ name: '', email: "", subject: "", message: "" });
-     };
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    toast.success(`Dear ${formData?.name}, Your message is successfully send`);
+  };
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
 
   return (
     <section className={className}>
@@ -29,7 +37,11 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
           <div className="w-full  h-full   content_wrapper  ">
             <div className=" bg-white p-3 md:p-5 h-full space-y-5 xl:space-y-8">
               <h1 className="text-[#00442A] text-3xl ">Contact us</h1>
-              <form onSubmit={handleSubmit} action="" className="flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit}
+                action=""
+                className="flex flex-col gap-5"
+              >
                 <div className="flex  gap-6">
                   <div className="w-full space-y-2 ">
                     <label
@@ -42,6 +54,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                       type="text"
                       id="name"
                       name="name"
+                      onChange={handleChange}
                       required
                       className="mt-1 block w-full p-2 rounded-md border border-black shadow-sm focus:border-black focus:ring-green-700"
                       placeholder="Your Name"
@@ -58,6 +71,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                       type="email"
                       id="email"
                       name="email"
+                      onChange={handleChange}
                       required
                       className="mt-1 block w-full p-2 border rounded-md border-black shadow-sm focus:border-black focus:ring-black"
                       placeholder="you@example.com"
@@ -74,6 +88,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                   <select
                     id="inquiryType"
                     name="inquiryType"
+                    onChange={handleChange}
                     required
                     className="mt-1 block w-full p-3 border rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700"
                     defaultValue=""
@@ -125,7 +140,6 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
             <img
               src="/images/contact/formImg.png"
               alt="Our Purpose"
-              
               className=" rounded-lg"
             />
           </motion.div>
