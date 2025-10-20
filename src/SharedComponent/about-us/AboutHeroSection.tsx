@@ -15,7 +15,7 @@ const AboutHeroSection = ({ className }: IProps) => {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-[var(--color-primary-900)] text-4xl xl:text-7xl font-bold \ ">
-              Let’s get in touch
+             Effortless Asset Management, At Your FingerTips
             </h1>
           </motion.div>
           <motion.div

@@ -244,7 +244,7 @@ export default function WhyChoose() {
                 Create account at first
               </button>
               <NavLink to={"/about"}>
-                <button className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+                <button className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:text-black transition-colors">
                   Learn More About Us
                 </button>
               </NavLink>
