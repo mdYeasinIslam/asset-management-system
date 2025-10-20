@@ -15,7 +15,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
        subject: "",
        message: "",
      });
-
+     
      const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
        e.preventDefault();
        toast.success("Your message is successfully send");

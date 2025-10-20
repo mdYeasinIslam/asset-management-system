@@ -52,11 +52,21 @@ export default function MapSection({ className }: IProps) {
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <img
+            {/* <img
               src="/images/contact/mapImage.png"
               alt="Our Purpose"
               className="w-full h-full rounded-lg object-cover"
-            />
+            /> */}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.903479731521!2d90.39149577509977!3d23.750876288751844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8952b7b46e9%3A0xb58e6572f4c7f1c7!2sDhaka!5e0!3m2!1sen!2sbd!4v1697986804285!5m2!1sen!2sbd"
+              width="100%"
+              height="100%"
+              lang=""
+              style={{ border: 0 ,objectFit:'cover',height:'100%',borderRadius:'10px'}}
+              // allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </motion.div>
         </div>
       </div>
