@@ -79,8 +79,8 @@ export const SecondNavbar = () => {
   }
 
   return (
-    <section className="pb-16">
-      <div className="fixed z-10 w-full">
+    <section className="pb-16 ">
+      <div className="fixed z-10 w-full bg-white">
         <div
           className={`container  mx-auto flex justify-between items-center pt-3 px-1 md:px-2 lg:px-4 ${
             dark ? "bg-gray-800 text-white" : "bg-opacity-30 navbar-light "

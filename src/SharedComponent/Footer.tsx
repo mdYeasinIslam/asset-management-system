@@ -6,8 +6,13 @@ const Footer = () => {
     <footer className="bg-gray-900 w-full  text-white py-8 pl-3 ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
         {/* About Section */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4">About Us</h3>
+        <div className="space-y-2">
+          <img
+            className="w-14 h-14 bg-transparent rounded-xl"
+            src="/logo-icon.png"
+            alt="Logo"
+          />
+          <h3 className="text-xl font-semibold mb-4">AssetPulse</h3>
           <p className="text-gray-400">
             We are a team dedicated to providing quality services and solutions
             to our clients. Contact us for more information.
@@ -61,21 +66,19 @@ const Footer = () => {
               href="https://www.facebook.com/mohammad.yeasin.895788/"
               className="flex items-center gap-1 text-gray-400 hover:text-white"
             >
-              <FaSquareFacebook className="w-10 h-10 "/>
+              <FaSquareFacebook className="w-10 h-10 " />
             </a>
             <a
               href="https://github.com/mdYeasinIslam"
               className="flex items-center gap-1 text-gray-400 hover:text-white"
             >
-              <FaGithub className="w-10 h-10 "/>
-            
+              <FaGithub className="w-10 h-10 " />
             </a>
             <a
               href="https://www.linkedin.com/in/mohammad-yeasin-islam"
               className="flex items-center gap-1 text-gray-400 hover:text-white"
             >
-              <FaLinkedin className="w-10 h-10 "/>
-              
+              <FaLinkedin className="w-10 h-10 " />
             </a>
           </div>
         </div>

@@ -1,8 +1,15 @@
+import AboutHeroSection from "@/SharedComponent/about-us/AboutHeroSection";
+import Footer from "@/SharedComponent/Footer";
+import Testimonials from "@/SharedComponent/home/Testimonial";
+import WhyChoose from "@/SharedComponent/home/WhyChoose";
+import HowItWorks from "@/SharedComponent/HowItWorks";
 
 const AboutPage = () => {
   return (
     <div className="dark:h-screen   dark:bg-[#2a3341]">
-      <div className="container mx-auto dark:text-white py-6 px-2 md:p-6">
+      <div className=" dark:text-white ">
+        {/* previous page design */}
+        {/* <div>
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
           About Asset Management System
         </h1>
@@ -42,6 +49,15 @@ const AboutPage = () => {
             />
           </div>
         </div>
+
+        </div> */}
+
+        {/* update design */}
+        <AboutHeroSection className="bg-[#F7FEE7] py-20" />
+        <WhyChoose />
+        <HowItWorks />
+        <Testimonials />
+        <Footer/>
       </div>
     </div>
   );
