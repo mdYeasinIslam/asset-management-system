@@ -50,7 +50,7 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
       email: user?.email,
       employeeId: user?._id
     }
-    const res = await axiosSecure.post('/hr/addEmployee',info)
+    const res = await axiosSecure.post('/admin/addEmployee',info)
    
     if (res.data?.status == false) {
       return toast.error(`${res.data?.message}`)
@@ -65,7 +65,7 @@ const DisplayEmployees = ({userInfo,isPending}:{userInfo:User[],isPending:boolea
    
     const actualEmployeeData = selectedData?.map(data => ({ ...data, hrName: hrData?.HR_Name, hrEmail: hrData?.email}))
     
-    const res = await axiosSecure.post('/hr/addEmployee/array', actualEmployeeData)
+    const res = await axiosSecure.post('/admin/addEmployee/array', actualEmployeeData)
    
     if (res.data?.acknowledged) {
     return  toast.success('Members are add to the team')

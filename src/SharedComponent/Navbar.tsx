@@ -52,7 +52,7 @@ export const Navbar = () => {
               <Link
                 to={`${
                   role !== undefined
-                    ? `${role == "Admin" ? "/hr/hrHome" : "/employee/eHome"}`
+                    ? `${role == "Admin" ? "/admin/hrHome" : "/employee/eHome"}`
                     : "/"
                 }`}
                 className="flex items-center gap-2"
@@ -130,41 +130,41 @@ export const Navbar = () => {
                     </>
                   ) : (
                     <>
-                      <NavLink className="px-2 py-1 rounded" to={"/hr/hrHome"}>
+                      <NavLink className="px-2 py-1 rounded" to={"/admin/hrHome"}>
                         {" "}
                         <li>HR Home</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/hr/assetList"}
+                        to={"/admin/assetList"}
                       >
                         {" "}
                         <li>Asset List</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/hr/addAsset"}
+                        to={"/admin/addAsset"}
                       >
                         {" "}
                         <li>Add Asset</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/hr/allRequest"}
+                        to={"/admin/allRequest"}
                       >
                         {" "}
                         <li>All Request</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/hr/employeeList"}
+                        to={"/admin/employeeList"}
                       >
                         {" "}
                         <li>My Employee List</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/hr/addEmployee"}
+                        to={"/admin/addEmployee"}
                       >
                         {" "}
                         <li>Add Employee </li>
@@ -297,42 +297,42 @@ export const Navbar = () => {
                   <>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/hr/hrHome"}
+                      to={"/admin/hrHome"}
                     >
                       {" "}
                       <li>HR_Home</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/hr/assetList"}
+                      to={"/admin/assetList"}
                     >
                       {" "}
                       <li>Asset List</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/hr/addAsset"}
+                      to={"/admin/addAsset"}
                     >
                       {" "}
                       <li>Add Asset</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/hr/allRequest"}
+                      to={"/admin/allRequest"}
                     >
                       {" "}
                       <li>All Request</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/hr/employeeList"}
+                      to={"/admin/employeeList"}
                     >
                       {" "}
                       <li>My Employee List</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/hr/addEmployee"}
+                      to={"/admin/addEmployee"}
                     >
                       {" "}
                       <li>Add Employee</li>

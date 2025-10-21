@@ -91,7 +91,7 @@ export const AsHr = () => {
         const response = await axiosPublic.post("/users", userInfo);
 
         if (response) {
-          navigate("/hr/hrHome");
+          navigate("/admin/hrHome");
           setLoading(false);
           toast.success("Your are successfully join as a HR manager");
           e?.target.reset();

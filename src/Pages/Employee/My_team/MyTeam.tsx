@@ -1,12 +1,13 @@
 import { useEmployeeList } from "@/hook/useEmployeeList";
 import { Skeleton } from "@/components/ui/skeleton";
 import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
+import SkeletonBar from "@/SharedComponent/Skeleton";
 
 export const MyTeam = () => {
   const [employeeData, isPending] = useEmployeeList();
 
   if (isPending) {
-    return <div>loading.......</div>;
+    return <SkeletonBar/>
   }
   return (
     <>

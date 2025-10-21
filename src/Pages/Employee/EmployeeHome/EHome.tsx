@@ -2,12 +2,12 @@ import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset";
 import { MonthlyRequests } from "./MonthlyRequests";
 import { MyPendingRequest } from "./MyPendingRequest";
 import { useAuth } from "@/hook/useAuth";
-import { Skeleton } from "@/components/ui/skeleton";
 import { DisplayPendingRequest } from "../../../SharedComponent/DisplayPendingRequest";
 import { AssetRequestType } from "@/Type/Types";
 import { CommonHeading } from "@/SharedComponent/CommonHeading";
 import { EventSecton } from "./EventSection/EventSection";
 import Calendar from "./EventSection/Calendar";
+import SkeletonBar from "@/SharedComponent/Skeleton";
 
 export const EHome = () => {
   const { user } = useAuth();
@@ -18,14 +18,7 @@ export const EHome = () => {
   );
  
   if (isPending) {
-    return (
-      <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-      </div>
-    );
+    return <SkeletonBar/>
   }
   const contentPending = (
     <div className="flex flex-col items-center">

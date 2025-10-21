@@ -2,23 +2,22 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hook/useAuth";
 import { useIsAdmin } from "@/hook/useIsAdmin";
 import { useUsersData } from "@/hook/useUsersData";
 import { AlignJustify, Moon, Sun, X, LogOut } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 
 export const DashboardSidebar = () => {
-  const { user, signOutAuth, dark, setDark } = useAuth();
+  const { user, signOutAuth, dark, setDark ,setAfterLogInPath, afterLogInPath } = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
   const navigate = useNavigate();
-
+  const location = useLocation()
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
 
@@ -50,32 +49,32 @@ export const DashboardSidebar = () => {
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [
-      { path: "/hr/hrHome", label: "Overview" },
-      { path: "/hr/assetList", label: "Asset List" },
-      { path: "/hr/addAsset", label: "Add Asset" },
-      { path: "/hr/allRequest", label: "All Requests" },
-      { path: "/hr/employeeList", label: "Employee List" },
-      { path: "/hr/addEmployee", label: "Add Employee" },
+      { path: "/admin", label: "Overview" },
+      { path: "/admin/assetList", label: "Asset List" },
+      { path: "/admin/addAsset", label: "Add Asset" },
+      { path: "/admin/allRequest", label: "All Requests" },
+      { path: "/admin/employeeList", label: "Employee List" },
+      { path: "/admin/addEmployee", label: "Add Employee" },
     ],
   };
 
   // Determine Navigation Menu
   const navItems = useMemo(() => {
     if (!user) return paths.guest;
+    const pathName = location.pathname;
+    setAfterLogInPath(pathName)
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
 
-  // if (isPending || isLoading) {
-  //   return (
-  //     <div className="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-2">
-  //       {[...Array(4)].map((_, i) => (
-  //         // <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
-  //         <Loader/>
-  //       ))}
-  //     </div>
-  //   );
-  // }
-
+  if (isPending || isLoading) {
+    return (
+      <div className="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-2">
+        {[...Array(4)].map((_, i) => (
+          <Loader key={i} />
+        ))}
+      </div>
+    );
+  }
   return (
     <>
       {/* Mobile Menu Toggle */}
@@ -107,7 +106,7 @@ export const DashboardSidebar = () => {
           <Link
             className="flex items-center gap-3"
             to={
-              role ? (role === "Admin" ? "/hr/hrHome" : "/employee/eHome") : "/"
+              role ? (role === "Admin" ? "/admin/hrHome" : "/employee/eHome") : "/"
             }
             onClick={() => setOpen(false)}
           >

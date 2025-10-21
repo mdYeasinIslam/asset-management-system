@@ -24,9 +24,9 @@ import {
 } from "@/components/ui/table"
 import { useState } from "react"
 import { useAllAssets } from "@/hook/useAllAssets"
-import { Skeleton } from "@/components/ui/skeleton"
 import ActionCell from "./ ActionCell"
 import { SelectTrigger,Select, SelectContent, SelectItem } from "@/components/ui/select"
+import SkeletonBar from "@/SharedComponent/Skeleton"
 
 
 export type AssetType = {
@@ -232,15 +232,7 @@ export function DisplayAssets() {
           <div className="rounded-md border">
         {
         isPending ?
-            <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
-                <Skeleton className="h-10 w-1/2 rounded-xl  bg-gray-700" />
-                <div className="space-y-2 w-full flex flex-col items-center">
-                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                    <Skeleton className="h-4 w-1/2 bg-gray-700" />
-                </div>
-          </div>
+           <SkeletonBar/>
          :
 
         <Table>

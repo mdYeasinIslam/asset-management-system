@@ -24,6 +24,7 @@ type Inputs = {
 
 }
 import moment from 'moment'
+import SkeletonBar from "@/SharedComponent/Skeleton"
 
 export const AddAsset = () => {
   const axiosSecure = useAxiosSecure()
@@ -70,7 +71,7 @@ export const AddAsset = () => {
       
     }
   if (isPending) {
-      return <div>loading.........</div>
+      return <SkeletonBar/>
     }
   return (
       <section className="py-10 px-5 dark:text-white h-full xl:h-screen ">

@@ -17,7 +17,14 @@ export const SecondNavbar = () => {
     checkSignPath.pathname === "/asEmployee" ||
     checkSignPath.pathname === "/asHr";
   if (hideNavbar) return;
-  const { user, signOutAuth, dark, setDark } = useAuth();
+  const {
+    user,
+    signOutAuth,
+    dark,
+    setDark,
+    setAfterLogInPath,
+    afterLogInPath,
+  } = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
@@ -25,7 +32,6 @@ export const SecondNavbar = () => {
 
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
-  console.log(user);
 
   // Sign Out Handler
   const signOut = async () => {
@@ -55,19 +61,20 @@ export const SecondNavbar = () => {
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [
-      { path: "/hr/hrHome", label: "Overview" },
-      { path: "/hr/assetList", label: "Asset List" },
-      { path: "/hr/addAsset", label: "Add Asset" },
-      { path: "/hr/allRequest", label: "All Requests" },
-      { path: "/hr/employeeList", label: "Employee List" },
-      { path: "/hr/addEmployee", label: "Add Employee" },
+      { path: "/admin", label: "Overview" },
+      { path: "/admin/assetList", label: "Asset List" },
+      { path: "/admin/addAsset", label: "Add Asset" },
+      { path: "/admin/allRequest", label: "All Requests" },
+      { path: "/admin/employeeList", label: "Employee List" },
+      { path: "/admin/addEmployee", label: "Add Employee" },
     ],
   };
 
   // Determine Navigation Menu
   const navItems = useMemo(() => {
     if (!user) return paths.guest;
-
+    const pathName = location.pathname;
+    console.log(pathName, role);
     // if (checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
     //   navigate(`/${role?.toLowerCase()}`);
     //   return 0;
@@ -81,12 +88,16 @@ export const SecondNavbar = () => {
       <div className="flex flex-col items-center justify-center gap-2 mt-10">
         {[...Array(4)].map((_, i) => (
           // <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
-          <Loader/>
+          <Loader />
         ))}
       </div>
     );
   }
-
+  if (checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
+    navigate(`/${role?.toLowerCase()}`);
+    return 0;
+  }
+  console.log(location.pathname);
   return (
     <section className="pb-16 ">
       <div className="fixed z-10 w-full bg-white">
@@ -105,7 +116,7 @@ export const SecondNavbar = () => {
               to={
                 role
                   ? role === "Admin"
-                    ? "/hr/hrHome"
+                    ? "/admin/hrHome"
                     : "/employee/eHome"
                   : "/"
               }

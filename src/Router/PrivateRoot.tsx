@@ -10,13 +10,6 @@ export const PrivateRoot = ({ children }: ChildrenType) => {
   if (loading) {
     return (
       <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
-        {/* <Skeleton className="h-10 w-2/3 rounded-xl  bg-gray-700" />
-        <div className="space-y-2 w-full flex flex-col items-center">
-          <Skeleton className="h-4 w-2/3 bg-gray-700" />
-          <Skeleton className="h-4 w-2/3 bg-gray-700" />
-          <Skeleton className="h-4 w-2/3 bg-gray-700" />
-          <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        </div> */}
         <Loader/>
       </div>
     );

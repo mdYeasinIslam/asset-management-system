@@ -38,7 +38,7 @@ const ErrorPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Link to={`${role !== undefined?`${role=='Admin'? '/hr/hrHome': '/employee/eHome'}`:'/'}`} >
+        <Link to={`${role !== undefined?`${role=='Admin'? '/admin/hrHome': '/employee/eHome'}`:'/'}`} >
         <Button 
           variant="dark" 
           color="primary" 

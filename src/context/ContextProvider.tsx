@@ -10,7 +10,7 @@ export const ContextProvider = ({ children }: ChildrenType) => {
     const [loading, setLoading] = useState(true)
     const [dark, setDark] = useState(false)
     const axiosPublic = useAxiosPublic();
-
+    const [afterLogInPath,setAfterLogInPath] = useState('')
     const signUpAuth = (email: string, password: string):Promise<UserCredential>=> {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -58,17 +58,19 @@ export const ContextProvider = ({ children }: ChildrenType) => {
     }, [])
     
     const info = {
-        user,
-        loading,
-        dark,
-        setDark,
-        setLoading,
-        signUpAuth,
-        signInAuth,
-        signOutAuth,
-        updateUserAuth,
-        googleAuth
-    }
+      user,
+      loading,
+      dark,
+      setDark,
+      setLoading,
+      signUpAuth,
+      signInAuth,
+      signOutAuth,
+      updateUserAuth,
+      googleAuth,
+        setAfterLogInPath,
+        afterLogInPath
+    };
   return (
       <AuthProvider.Provider value={info}>
           {children}

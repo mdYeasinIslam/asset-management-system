@@ -38,7 +38,7 @@ export const PackageChange = () => {
                 20 Members for $15
             </Button>
             <div className="flex w-full justify-between gap-2">
-                <Link to={`/hr/payment`} className="w-full">
+                <Link to={`/admin/payment`} className="w-full">
                     <Button 
                       onClick={() => handlePurchase(20)} 
                       className={`w-full bg-green-800 hover:bg-green-700 text-white  ${select =='20'&& "bg-secondary"}`}>
@@ -46,7 +46,7 @@ export const PackageChange = () => {
                   </Button>
                 </Link>
 
-              <Link to='/hr/addEmployee' className="w-full">
+              <Link to='/admin/addEmployee' className="w-full">
               <Button
                  className={`w-full bg-slate-500 hover:bg-slate-800 text-white `}>
                 Back

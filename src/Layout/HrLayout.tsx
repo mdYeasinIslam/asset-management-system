@@ -1,9 +1,7 @@
 import { DashboardSidebar } from "@/SharedComponent/DasboardEmployee";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 export const HrLayout = () => {
-    const checkSignPath = useLocation();
-    console.log(checkSignPath.pathname);
 
   return (
     <div className="grid lg:grid-cols-12 xl:grid-cols-12 lg:gap-5 xl:gap-10">

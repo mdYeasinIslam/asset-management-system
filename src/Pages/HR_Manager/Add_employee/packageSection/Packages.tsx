@@ -21,7 +21,7 @@ export const Packages = () => {
             <div className="mb-4">
               <p className="text-gray-600 dark:text-white">Employee Count: <span className="font-bold">{selectedPackge?.split(' ')[0]}</span></p>
             </div>
-            <Link to={`/hr/addEmployee/packageChange/${10}`}>
+            <Link to={`/admin/addEmployee/packageChange/${10}`}>
                 <Button
                 className="w-full bg-blue-500 hover:bg-blue-600 text-white">
                 Increase Limit

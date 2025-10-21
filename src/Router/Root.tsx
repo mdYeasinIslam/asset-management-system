@@ -102,7 +102,7 @@ import ErrorPage from "@/SharedComponent/ErrorPage"
        ],
      },
      {
-       path: "/hr",
+       path: "/admin",
        element: (
          <PrivateRoot>
            <HrLayout />
@@ -111,42 +111,42 @@ import ErrorPage from "@/SharedComponent/ErrorPage"
        errorElement: <ErrorPage />,
        children: [
          {
-           path: "/hr",
+           path: "/admin",
            element: <HrHome />,
          },
          {
-           path: "/hr/hrHome",
+           path: "/admin/hrHome",
            element: <HrHome />,
          },
 
          {
-           path: "/hr/assetList",
+           path: "/admin/assetList",
            element: <HrAssetList />,
          },
          {
-           path: "/hr/addAsset",
+           path: "/admin/addAsset",
            element: <AddAsset />,
          },
 
          {
-           path: "/hr/employeeList",
+           path: "/admin/employeeList",
            element: <EmployeeList />,
          },
 
          {
-           path: "/hr/allRequest",
+           path: "/admin/allRequest",
            element: <AllRequest />,
          },
          {
-           path: "/hr/addEmployee",
+           path: "/admin/addEmployee",
            element: <AddEmployee />,
          },
          {
-           path: "/hr/addEmployee/packageChange/:id",
+           path: "/admin/addEmployee/packageChange/:id",
            element: <PackageChange />,
          },
          {
-           path: "/hr/payment",
+           path: "/admin/payment",
            element: <Payment />,
          },
        ],

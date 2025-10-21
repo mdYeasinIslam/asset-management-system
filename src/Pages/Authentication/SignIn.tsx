@@ -29,7 +29,7 @@ export const SignIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.pathname || "/";
-  const fromHr = location.state?.pathNanme || "/hr/hrHome";
+  const fromHr = location.state?.pathNanme || "/admin/hrHome";
   const fromEmployee = location.state?.pathNanme || "/employee/eHome";
   const [isShow, setIsShow] = useState(true);
   const [dummySignIn, setDummySignIn] = useState({

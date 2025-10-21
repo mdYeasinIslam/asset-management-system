@@ -9,7 +9,7 @@ export const DeleteEmployee = ({ row }: { row: any }) => {
     
     const handleDelete = async (id: string) => {
         
-        const res =await axiosSecure.delete(`/hr/addEmployee/${id}`)
+        const res =await axiosSecure.delete(`/admin/addEmployee/${id}`)
         
         if (res.data?.acknowledged) {
             toast.success('Employee is successfully deleted')
