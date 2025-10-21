@@ -9,6 +9,7 @@ import PieChart from "./HomeSections/PieChart";
 import { EventSecton } from "../Employee/EmployeeHome/EventSection/EventSection";
 import NoticeSection from "./HomeSections/NoticeSection";
 import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
+import Loader from "@/SharedComponent/Loader";
 
 export const HrHome = () => {
   const [requestedAssets, isPending] = useAllRequestedAsset();
@@ -20,10 +21,11 @@ export const HrHome = () => {
   if (isPending || isLoading) {
     return (
       <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
+        {/* <Skeleton className="h-4 w-2/3 bg-gray-700" />
         <Skeleton className="h-4 w-2/3 bg-gray-700" />
         <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
-        <Skeleton className="h-4 w-2/3 bg-gray-700" />
+        <Skeleton className="h-4 w-2/3 bg-gray-700" /> */}
+        <Loader/>
       </div>
     );
   }

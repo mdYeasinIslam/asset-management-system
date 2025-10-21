@@ -10,6 +10,7 @@ import { AlignJustify, Moon, Sun, X, LogOut } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 export const DashboardSidebar = () => {
   const { user, signOutAuth, dark, setDark } = useAuth();
@@ -43,13 +44,13 @@ export const DashboardSidebar = () => {
       { path: "/asHr", label: "Join as HR Manager" },
     ],
     employee: [
-      { path: "/employee/eHome", label: "Employee Home" },
+      { path: "/employee/eHome", label: "Overview" },
       { path: "/employee/myAssets", label: "My Assets" },
       { path: "/employee/myTeam", label: "My Team" },
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [
-      { path: "/hr/hrHome", label: "HR Home" },
+      { path: "/hr/hrHome", label: "Overview" },
       { path: "/hr/assetList", label: "Asset List" },
       { path: "/hr/addAsset", label: "Add Asset" },
       { path: "/hr/allRequest", label: "All Requests" },
@@ -64,15 +65,16 @@ export const DashboardSidebar = () => {
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
 
-  if (isPending || isLoading) {
-    return (
-      <div className="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-2">
-        {[...Array(4)].map((_, i) => (
-          <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
-        ))}
-      </div>
-    );
-  }
+  // if (isPending || isLoading) {
+  //   return (
+  //     <div className="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-2">
+  //       {[...Array(4)].map((_, i) => (
+  //         // <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
+  //         <Loader/>
+  //       ))}
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

@@ -8,6 +8,7 @@ import { AlignJustify, Moon, Sun, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 export const SecondNavbar = () => {
   const checkSignPath = useLocation();
@@ -24,6 +25,7 @@ export const SecondNavbar = () => {
 
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
+  console.log(user);
 
   // Sign Out Handler
   const signOut = async () => {
@@ -47,13 +49,13 @@ export const SecondNavbar = () => {
       { path: "/asHr", label: "Join as HR Manager" },
     ],
     employee: [
-      { path: "/employee/eHome", label: "Employee Home" },
+      { path: "/employee/eHome", label: "Overview" },
       { path: "/employee/myAssets", label: "My Assets" },
       { path: "/employee/myTeam", label: "My Team" },
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [
-      { path: "/hr/hrHome", label: "HR Home" },
+      { path: "/hr/hrHome", label: "Overview" },
       { path: "/hr/assetList", label: "Asset List" },
       { path: "/hr/addAsset", label: "Add Asset" },
       { path: "/hr/allRequest", label: "All Requests" },
@@ -65,6 +67,12 @@ export const SecondNavbar = () => {
   // Determine Navigation Menu
   const navItems = useMemo(() => {
     if (!user) return paths.guest;
+
+    // if (checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
+    //   navigate(`/${role?.toLowerCase()}`);
+    //   return 0;
+    // }
+
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
 
@@ -72,7 +80,8 @@ export const SecondNavbar = () => {
     return (
       <div className="flex flex-col items-center justify-center gap-2 mt-10">
         {[...Array(4)].map((_, i) => (
-          <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
+          // <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
+          <Loader/>
         ))}
       </div>
     );
@@ -117,7 +126,7 @@ export const SecondNavbar = () => {
             }`}
             onClick={() => setOpen(false)}
           >
-            {navItems.map(({ path, label }) => (
+            {navItems?.map(({ path, label }) => (
               <NavLink key={path} className="px-4 py-2" to={path}>
                 {label}
               </NavLink>

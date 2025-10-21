@@ -16,7 +16,7 @@ export const EHome = () => {
   const pendingRequest = requestedAssets.filter(
     (asset: AssetRequestType) => asset.status.toLowerCase() == "pending"
   );
-
+ 
   if (isPending) {
     return (
       <div className=" flex flex-col items-center justify-center gap-4 space-y-5 mt-10">
