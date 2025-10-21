@@ -8,6 +8,7 @@ import { CommonHeading } from "@/SharedComponent/CommonHeading";
 import { EventSecton } from "./EventSection/EventSection";
 import Calendar from "./EventSection/Calendar";
 import SkeletonBar from "@/SharedComponent/Skeleton";
+import { TotalRequests } from "./TotalRequest";
 
 export const EHome = () => {
   const { user } = useAuth();
@@ -42,10 +43,11 @@ export const EHome = () => {
       </p>
     </div>
   );
-
+ 
   return (
     <div className="  space-y-10 mt-10 dark:text-white">
       <div className=" flex gap-2 items-center justify-center ">
+        <TotalRequests requestedAssets={requestedAssets} />
         <MyPendingRequest requestedAssets={requestedAssets} />
         <MonthlyRequests requestedAssets={requestedAssets} />
       </div>

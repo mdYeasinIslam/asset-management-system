@@ -1,25 +1,25 @@
-import { MapPin, FileText, CreditCard } from "lucide-react";
+import { FileText, CreditCard } from "lucide-react";
+import { FaRegQuestionCircle } from "react-icons/fa";
 
 const steps = [
-    {
-        icon: <MapPin className="w-8 h-8 text-orange-600" />,
-        bg: "bg-orange-100",
-        title: "Choose Your Destination",
-        desc: "Select the country you wish to apply to.",
-    },
-    {
-        icon: <FileText className="w-8 h-8 text-blue-600" />,
-        bg: "bg-blue-100",
-        title: "Fill Out Application",
-        desc: "Enter your personal information and upload required documents.",
-    },
-    {
-        icon: <CreditCard className="w-8 h-8 text-green-600" />,
-        bg: "bg-green-100",
-        title: "Confirm & Pay",
-        desc:
-            "Submit the form and follow offline payment instructions via bank or Cashplus.",
-    },
+  {
+    icon: <FaRegQuestionCircle className="w-8 h-8 text-orange-600" />,
+    bg: "bg-orange-100",
+    title: "Join as per your position",
+    desc: "Create account according to your purpose.",
+  },
+  {
+    icon: <FileText className="w-8 h-8 text-blue-600" />,
+    bg: "bg-blue-100",
+    title: "Choose a package",
+    desc: "Get your package as per your need.",
+  },
+  {
+    icon: <CreditCard className="w-8 h-8 text-green-600" />,
+    bg: "bg-green-100",
+    title: "Confirm & Pay",
+    desc: "Submit the form and follow offline payment instructions via bank or Cashplus.",
+  },
 ];
 
 export default function HowItWorks() {
