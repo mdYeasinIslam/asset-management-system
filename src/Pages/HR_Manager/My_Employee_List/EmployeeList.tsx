@@ -5,7 +5,7 @@ import SkeletonBar from "@/SharedComponent/Skeleton"
 
 export const EmployeeList = () => {
   const [employeeData,isPending] = useEmployeeList()
-  
+  console.log(employeeData);
   if (isPending) {
     return  <SkeletonBar/>
   }

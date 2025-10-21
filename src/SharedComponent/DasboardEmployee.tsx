@@ -10,14 +10,15 @@ import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
+import SkeletonBar from "./Skeleton";
 
 export const DashboardSidebar = () => {
-  const { user, signOutAuth, dark, setDark ,setAfterLogInPath, afterLogInPath } = useAuth();
+  const { user, signOutAuth, dark, setDark ,setAfterLogInPath} = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
   const navigate = useNavigate();
-  const location = useLocation()
+  const location = useLocation();
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
 
@@ -61,19 +62,12 @@ export const DashboardSidebar = () => {
   // Determine Navigation Menu
   const navItems = useMemo(() => {
     if (!user) return paths.guest;
-    const pathName = location.pathname;
-    setAfterLogInPath(pathName)
+
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
 
   if (isPending || isLoading) {
-    return (
-      <div className="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col items-center justify-center gap-2">
-        {[...Array(4)].map((_, i) => (
-          <Loader key={i} />
-        ))}
-      </div>
-    );
+    return <SkeletonBar/>;
   }
   return (
     <>

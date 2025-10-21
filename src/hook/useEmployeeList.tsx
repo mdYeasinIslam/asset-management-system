@@ -9,10 +9,8 @@ export const useEmployeeList = () => {
         queryKey: ['assets', user?.email],
         enabled: !!user?.email && !!localStorage.getItem('token'),
            queryFn: async () => {
-             const res = await axiosSecure.get(`/admin/addEmployee`)
+             const res = await axiosSecure.get(`/hr/addEmployee`)
             return res.data  
-               
-          
         },
     })  
     return [employeeData,isPending,refetch]

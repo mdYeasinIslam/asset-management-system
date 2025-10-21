@@ -1,6 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hook/useAuth";
 import { useIsAdmin } from "@/hook/useIsAdmin";
 import { useUsersData } from "@/hook/useUsersData";
@@ -16,15 +15,9 @@ export const SecondNavbar = () => {
     checkSignPath.pathname === "/signIn" ||
     checkSignPath.pathname === "/asEmployee" ||
     checkSignPath.pathname === "/asHr";
+  
   if (hideNavbar) return;
-  const {
-    user,
-    signOutAuth,
-    dark,
-    setDark,
-    setAfterLogInPath,
-    afterLogInPath,
-  } = useAuth();
+  const { user, signOutAuth, dark, setDark } = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
@@ -75,29 +68,24 @@ export const SecondNavbar = () => {
     if (!user) return paths.guest;
     const pathName = location.pathname;
     console.log(pathName, role);
-    // if (checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
-    //   navigate(`/${role?.toLowerCase()}`);
-    //   return 0;
-    // }
 
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
 
   if (isPending || isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center gap-2 mt-10">
-        {[...Array(4)].map((_, i) => (
-          // <Skeleton key={i} className="h-4 w-2/3 bg-gray-700" />
-          <Loader />
-        ))}
+      <div className="flex h-screen flex-col items-center justify-center gap-2 mt-10">
+
+          <Loader/>
+       
       </div>
     );
   }
-  if (checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
-    navigate(`/${role?.toLowerCase()}`);
-    return 0;
+  if (user?.email && checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
+ 
+  return navigate(`/${role?.toLowerCase()}`);
+     
   }
-  console.log(location.pathname);
   return (
     <section className="pb-16 ">
       <div className="fixed z-10 w-full bg-white">

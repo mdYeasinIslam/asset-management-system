@@ -17,6 +17,7 @@ const ActionCell = ({ row }: { row: any }) => {
   const axiosSecure = useAxiosSecure();
   const [, isPending, refetch] = useAllAssets();
   const [open, setOpen] = useState(false);
+  
   const handleDelete = async (id: any) => {
     toast(
       () => (
@@ -27,10 +28,11 @@ const ActionCell = ({ row }: { row: any }) => {
               onClick={async () => {
                 const response = await axiosSecure.delete(`/assets/${id}`);
 
-                if (response.data?.acknowledged) {
+                if (response?.data?.acknowledged) {
                   toast.success("The user is deleted");
                   toast.dismiss();
                   refetch();
+                  return
                 }
               }}
             >
