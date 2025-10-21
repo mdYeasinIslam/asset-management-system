@@ -46,7 +46,7 @@ export const EHome = () => {
  
   return (
     <div className="  space-y-10 mt-10 dark:text-white">
-      <div className=" flex gap-2 items-center justify-center ">
+      <div className=" flex gap-2 items-center justify-between ">
         <TotalRequests requestedAssets={requestedAssets} />
         <MyPendingRequest requestedAssets={requestedAssets} />
         <MonthlyRequests requestedAssets={requestedAssets} />

@@ -1,0 +1,19 @@
+!important
+
+** For Employee **
+1. an employee should create account under a company. (may be company will give an ID or something else and employee use it during create his account)
+
+2. add a field  for company ID or Name
+
+** for admin **
+1. remove unnecessary feild like (HR photo )
+
+**others**
+1. create one "sign up" page where will have two way to create account:
+    => for company
+    => for employee
+2. create accounts pages will have multiple steps: 
+    like--- first step/layout will have name + photo
+    second will have email and password 
+    **implement this way**
+3. make dashboards UI more unique and attractive

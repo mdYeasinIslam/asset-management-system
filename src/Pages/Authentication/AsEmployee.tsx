@@ -119,7 +119,7 @@ export const AsEmployee = () => {
             className="space-y-3 max-w-xl mx-auto w-full px-5 md:px-0"
           >
             <h1 className="font-semibold text-4xl  ">
-              Create account (Employee)
+              Create account (For Employee)
             </h1>
             <p className="font-medium text-gray-700  pb-2">
               Create an account with just few clicks and avail exciting

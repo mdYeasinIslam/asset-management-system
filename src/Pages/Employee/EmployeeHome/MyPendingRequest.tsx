@@ -6,7 +6,7 @@ export const MyPendingRequest = ({ requestedAssets }: { requestedAssets: AssetRe
     
     const pendingRequest = requestedAssets.filter((asset)=>asset.status.toLowerCase()=='pending')
   return (
-    <Card className="bg-gray-100 dark:bg-slate-700 p-1 text-center md:p-2 rounded-xl duration-500 transition-transform hover:scale-95  shadow-md hover:shadow-lg  ">
+    <Card className= "w-full bg-gray-100 dark:bg-slate-700 p-1 text-center md:p-2 rounded-xl duration-500 transition-transform hover:scale-95  shadow-md hover:shadow-lg  ">
         <CardHeader>
             <CardTitle className="text-2xl w-full font-semibold text-gray-800 dark:text-white ">
               Pending Requests :
