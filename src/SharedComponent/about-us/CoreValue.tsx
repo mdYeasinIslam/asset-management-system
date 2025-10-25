@@ -31,7 +31,7 @@ const containerVariants = {
     transition: {
       staggerChildren: 0.2,
       delayChildren: 0.3,
-    },
+    }
   },
 };
 const itemVariants = {

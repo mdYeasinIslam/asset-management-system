@@ -1,5 +1,7 @@
 import { useAuth } from "@/hook/useAuth";
 import CoreValue from "@/SharedComponent/about-us/CoreValue";
+import MissionVission from "@/SharedComponent/about-us/MissionVission";
+import Stats from "@/SharedComponent/about-us/Stats";
 
 const About = () => {
     const {dark} = useAuth()
@@ -33,7 +35,9 @@ const About = () => {
           />
         </div>
       </div> */}
-      <CoreValue/>
+      <Stats />
+      <MissionVission/>
+      <CoreValue />
     </section>
   );
 };
