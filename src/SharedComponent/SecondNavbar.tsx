@@ -44,8 +44,8 @@ export const SecondNavbar = () => {
       { path: "/", label: "Home" },
       { path: "/about", label: "About" },
       { path: "/contact", label: "Contact" },
-      { path: "/asEmployee", label: "Join as Employee" },
-      { path: "/asHr", label: "Join as HR Manager" },
+      { path: "/asEmployee", label: "As Employee" },
+      { path: "/asHr", label: "For Company" },
     ],
     employee: [
       { path: "/employee/eHome", label: "Overview" },
@@ -84,10 +84,10 @@ export const SecondNavbar = () => {
     return <></>;
   }
   return (
-    <section className="pb-16 ">
-      <div className="fixed z-10 w-full bg-white">
+    <section className="bg-gradient-to-b from-slate-900 to-slate-800 pb-20 text-white ">
+      <div className="fixed z-10 w-full">
         <div
-          className={`container  mx-auto flex justify-between items-center pt-3 px-1 md:px-2 lg:px-4 ${
+          className={`container  mx-auto flex justify-between items-center pt-3 px-1 md:px-2 lg:px-4 bg-gradient-to-b from-slate-900 to-slate-800 ${
             dark ? "bg-gray-800 text-white" : "bg-opacity-30 navbar-light "
           }`}
         >
@@ -108,7 +108,7 @@ export const SecondNavbar = () => {
             >
               <img
                 className="w-14 h-full rounded-xl"
-                src="/logo-icon.png"
+                src="/site-logo.png"
                 alt="Logo"
               />
               <p className=" text-xl italic font-semibold">AssetPulse</p>
