@@ -84,10 +84,10 @@ export const SecondNavbar = () => {
     return <></>;
   }
   return (
-    <section className="bg-gradient-to-b from-slate-900 to-slate-800 pb-20 text-white ">
+    <section className=" bg-gradient-to-b from-slate-900 to-slate-800  text-white ">
       <div className="fixed z-10 w-full">
         <div
-          className={`container  mx-auto flex justify-between items-center pt-3 px-1 md:px-2 lg:px-4 bg-gradient-to-b from-slate-900 to-slate-800 ${
+          className={` py-3 flex justify-between items-center px-1 md:px-2 lg:px-4 bg-gradient-to-b from-slate-900 to-slate-800 ${
             dark ? "bg-gray-800 text-white" : "bg-opacity-30 navbar-light "
           }`}
         >

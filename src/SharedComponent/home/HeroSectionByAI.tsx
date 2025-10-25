@@ -64,7 +64,8 @@ export default function HeroSectionByAI() {
   };
 
   return (
-    <section className="relative z-0  bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden py-20">
+      <section className="relative  
+     z-0  bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden py-20">
       <div className="container mx-auto px-6">
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -109,7 +110,7 @@ export default function HeroSectionByAI() {
         <div className="absolute inset-0 bg-[url(/images/Banner/banner1.jpg)] opacity-30 pointer-events-none bg-no-repeat bg-cover bg-center" />
 
         {/* Content */}
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto 2xl:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 ">
             {/* Left Side - Content */}
             <motion.div
@@ -125,7 +126,7 @@ export default function HeroSectionByAI() {
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-4 py-2 backdrop-blur-sm">
+                <div className="flex items-center space-x-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full px-4 py-2 backdrop-blur-sm relative top-3">
                   <motion.div
                     className="w-2 h-2 bg-green-400 rounded-full"
                     animate={{ scale: [1, 1.2, 1] }}
@@ -247,7 +248,7 @@ export default function HeroSectionByAI() {
 
             {/* Right Side - Image with Motion Effects */}
             <motion.div
-              className="relative  flex  justify-center"
+              className="hidden relative  lg:flex  justify-center"
               onMouseMove={handleMouseMove}
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -256,8 +257,8 @@ export default function HeroSectionByAI() {
               {/* Floating Cards Background */}
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Card 1 - Top Left */}
-                <motion.div
-                  className="absolute w-64 h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-2xl p-6 backdrop-blur-sm"
+                {/* <motion.div
+                  className=" absolute  w-64 h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-2xl p-6 backdrop-blur-sm"
                   animate={{
                     y: [0, 10, 0],
                     rotate: [0, 5, 0],
@@ -268,7 +269,7 @@ export default function HeroSectionByAI() {
                     ease: "easeInOut",
                   }}
                   style={{
-                    top: "-10%",
+                    top: "1%",
                     left: "-10%",
                   }}
                 >
@@ -282,7 +283,7 @@ export default function HeroSectionByAI() {
                     24,583
                   </div>
                   <div className="text-xs text-slate-300">+2.5% this week</div>
-                </motion.div>
+                </motion.div> */}
 
                 {/* Card 2 - Top Right */}
                 <motion.div
@@ -330,7 +331,7 @@ export default function HeroSectionByAI() {
                     delay: 1,
                   }}
                   style={{
-                    bottom: "0%",
+                    bottom: "6%",
                     left: "5%",
                   }}
                 >
