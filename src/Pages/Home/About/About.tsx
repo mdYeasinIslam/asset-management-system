@@ -1,10 +1,11 @@
 import { useAuth } from "@/hook/useAuth";
+import CoreValue from "@/SharedComponent/about-us/CoreValue";
 
 const About = () => {
     const {dark} = useAuth()
   return (
-    <section className={`py-16 px-6 md:px-12 lg:px-20  ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-5 lg:gap-10 items-center text-center md:text-left">
+    <section className={`  ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
+      {/* <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-5 lg:gap-10 items-center text-center md:text-left">
      
         <div>
           <h2 className="text-3xl lg:text-4xl font-bold  mb-6">
@@ -31,7 +32,8 @@ const About = () => {
             className="rounded-lg shadow-lg w-full  lg:w-3/4"
           />
         </div>
-      </div>
+      </div> */}
+      <CoreValue/>
     </section>
   );
 };

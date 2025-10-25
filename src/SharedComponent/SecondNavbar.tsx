@@ -15,7 +15,7 @@ export const SecondNavbar = () => {
     checkSignPath.pathname === "/signIn" ||
     checkSignPath.pathname === "/asEmployee" ||
     checkSignPath.pathname === "/asHr";
-  
+
   if (hideNavbar) return;
   const { user, signOutAuth, dark, setDark } = useAuth();
   const [open, setOpen] = useState(false);
@@ -75,16 +75,13 @@ export const SecondNavbar = () => {
   if (isPending || isLoading) {
     return (
       <div className="flex h-screen flex-col items-center justify-center gap-2 mt-10">
-
-          <Loader/>
-       
+        <Loader />
       </div>
     );
   }
   if (user?.email && checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
- 
-  return navigate(`/${role?.toLowerCase()}`);
-     
+    navigate(`/${role?.toLowerCase()}`);
+    return <></>;
   }
   return (
     <section className="pb-16 ">

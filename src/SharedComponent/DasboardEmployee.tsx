@@ -8,17 +8,15 @@ import { useUsersData } from "@/hook/useUsersData";
 import { AlignJustify, Moon, Sun, X, LogOut } from "lucide-react";
 import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import Loader from "./Loader";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import SkeletonBar from "./Skeleton";
 
 export const DashboardSidebar = () => {
-  const { user, signOutAuth, dark, setDark ,setAfterLogInPath} = useAuth();
+  const { user, signOutAuth, dark, setDark} = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
   const navigate = useNavigate();
-  const location = useLocation();
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
 

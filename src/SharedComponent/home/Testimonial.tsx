@@ -75,7 +75,10 @@ const Testimonials = () => {
   const handleNext = () => {
     setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
   };
-
+  if (currentIndex === 6) {
+    handleNext()
+    handlePrev()
+  }
   return (
     <section className="bg-color py-16 px-5 xl:px-0">
       <div className="max-w-[1440px] w-full mx-auto">

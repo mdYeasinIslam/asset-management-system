@@ -1,6 +1,6 @@
 
 // import { Navbar } from "@/SharedComponent/Navbar"
-import { SecondNavbar } from "@/SharedComponent/SecondNavbar"
+import { SecondNavbar } from '@/SharedComponent/SecondNavbar';
 import { Outlet } from 'react-router-dom'
 export const MainLayout = () => {
   return (
