@@ -8,7 +8,7 @@ import { useAxiosPublic } from "@/hook/useAxiosPublic"
 export const ContextProvider = ({ children }: ChildrenType) => {
     const [user, setUser] = useState<User | null | undefined>(null)
     const [loading, setLoading] = useState(true)
-    const [dark, setDark] = useState(false)
+    const [dark, setDark] = useState(true)
     const axiosPublic = useAxiosPublic();
     const [afterLogInPath,setAfterLogInPath] = useState('')
     const signUpAuth = (email: string, password: string):Promise<UserCredential>=> {

@@ -30,10 +30,10 @@ const itemVariants = {
 
 export default function Stats() {
   return (
-    <div className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <div className="bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <motion.section
         /* Stats Section */
-        className="py-16  bg-slate-800/50 backdrop-blur-sm border-y border-slate-700"
+        className="py-16   dark:bg-slate-800/50 backdrop-blur-sm border-y border-slate-700"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -65,10 +65,10 @@ export default function Stats() {
                       <Icon className="w-7 h-7 text-white" />
                     </motion.div>
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  <div className="text-3xl md:text-4xl font-bold dark:text-white mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-slate-400 text-sm">{stat.label}</div>
+                  <div className="dark:text-slate-400 text-sm">{stat.label}</div>
                 </motion.div>
               );
             })}

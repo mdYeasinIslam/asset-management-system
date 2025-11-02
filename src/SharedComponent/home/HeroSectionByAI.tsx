@@ -115,8 +115,8 @@ export default function HeroSectionByAI() {
             {/* Left Side - Content */}
             <motion.div
               className="space-y-8"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               {/* Badge : trusted by 10,000+ */}
@@ -250,8 +250,8 @@ export default function HeroSectionByAI() {
             <motion.div
               className="hidden relative  lg:flex  justify-center"
               onMouseMove={handleMouseMove}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               {/* Floating Cards Background */}

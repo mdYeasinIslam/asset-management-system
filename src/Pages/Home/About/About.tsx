@@ -6,7 +6,7 @@ import Stats from "@/SharedComponent/about-us/Stats";
 const About = () => {
     const {dark} = useAuth()
   return (
-    <section className={`  ${dark ?'bg-[#2a3341] text-white':'bg-gray-100'}`}>
+    <section className={`  `}>
       {/* <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-5 lg:gap-10 items-center text-center md:text-left">
      
         <div>

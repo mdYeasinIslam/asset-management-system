@@ -11,9 +11,10 @@ export const Home = () => {
       {/* <BannerContent /> */}
       <HeroSectionByAI />
       <About />
-      <HowItWorks/>
+      <WhyChooseUsNew />
       <Packages />
-      <WhyChooseUsNew/>
+      <HowItWorks/>
+      
       {/* <WhyChoose/> */}
       {/* <WhyCooseUs/> */}
       {/* <Testimonials /> */}

@@ -4,7 +4,7 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 const steps = [
   {
     icon: <FaRegQuestionCircle className="w-8 h-8 text-orange-600" />,
-    bg: "bg-orange-100",
+    bg: "bg-orange-100", 
     title: "Join as per your position",
     desc: "Create account according to your purpose.",
   },
@@ -24,7 +24,7 @@ const steps = [
 
 export default function HowItWorks() {
     return (
-      <section className="py-16 px-4 bg-gray-50 dark:bg-[#2a3341]">
+      <section className="py-16 px-4 dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 ">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center dark:text-white text-blue-600 mb-16">
             How It Works
@@ -33,7 +33,7 @@ export default function HowItWorks() {
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-white  dark:bg-[#1b2330] rounded-2xl py-5 px-1 xl:p-8 shadow-sm border border-gray-100 text-center"
+                className="bg-white  dark:bg-slate-800 rounded-2xl py-5 px-1 xl:p-8 shadow-sm border border-gray-100 text-center"
               >
                 <div
                   className={`w-16 h-16 ${step.bg} rounded-full flex items-center justify-center mx-auto mb-6`}

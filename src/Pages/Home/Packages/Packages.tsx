@@ -87,8 +87,10 @@ export const Packages = () => {
 
   return (
     <section
-      className={`py-16 px-4 ${
-        dark ? "bg-[#2a3341] text-white" : "bg-gray-100"
+      className={`py-16 px-4  ${
+        dark
+          ? "bg-[#2a3341] text-white bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"
+          : "bg-gray-100"
       }`}
     >
       <div className="container mx-auto text-center">
@@ -101,7 +103,7 @@ export const Packages = () => {
           Select a package that best suits the size of your team and start
           optimizing your asset management today.
         </p>
-        <div className="grid grid-cols-1  md:grid-cols-3 gap-4 lg:gap-8 border-2">
+        <div className="grid grid-cols-1  md:grid-cols-3 gap-4 lg:gap-8 border-2 border-gray-400">
           {/* {packages?.map((pkg) => (
             <DisplayPackege key={pkg.id} pkg={pkg} />
           ))} */}
