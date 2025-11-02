@@ -1,10 +1,8 @@
-import { useAuth } from "@/hook/useAuth";
 import CoreValue from "@/SharedComponent/about-us/CoreValue";
 import MissionVission from "@/SharedComponent/about-us/MissionVission";
 import Stats from "@/SharedComponent/about-us/Stats";
 
 const About = () => {
-    const {dark} = useAuth()
   return (
     <section className={`  `}>
       {/* <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-5 lg:gap-10 items-center text-center md:text-left">

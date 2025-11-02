@@ -46,7 +46,7 @@ const itemVariants = {
 
 export default function CoreValue() {
   return (
-    <section className="py-24  bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <section className="py-24   dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-2">
       {/* Values Section */}
       <div className="container mx-auto px-6">
         <motion.div
@@ -56,10 +56,10 @@ export default function CoreValue() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold dark:text-white mb-4">
             Our Core Values
           </h2>
-          <p className="text-slate-300 text-xl max-w-2xl mx-auto">
+          <p className="text-slate-800 text-lg dark:text-slate-300  max-w-2xl mx-auto">
             The principles that guide everything we do
           </p>
         </motion.div>
@@ -77,8 +77,8 @@ export default function CoreValue() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="text-center group"
-                whileHover={{ scale: 1.05 }}
+                className="text-center group border-r-2 border-l-2 border-b-2 rounded-b-md p-2"
+                whileHover={{ scale: 1.05 ,animationDuration:'1'}}
               >
                 <motion.div
                   className="inline-block mb-6"
@@ -90,10 +90,10 @@ export default function CoreValue() {
                   </div>
                 </motion.div>
 
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold dark:text-white mb-3 ">
                   {value.title}
                 </h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <p className="text-slate-800 dark:text-slate-300 text-sm leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
