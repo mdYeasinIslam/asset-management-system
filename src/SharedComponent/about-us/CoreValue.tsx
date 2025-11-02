@@ -46,7 +46,7 @@ const itemVariants = {
 
 export default function CoreValue() {
   return (
-    <section className="py-24   dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-2">
+    <section className="py-24   dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 border-2 ">
       {/* Values Section */}
       <div className="container mx-auto px-6">
         <motion.div

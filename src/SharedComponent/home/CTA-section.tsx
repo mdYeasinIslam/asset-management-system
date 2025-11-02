@@ -1,7 +1,7 @@
 import {motion} from 'framer-motion'
 export default function CTA() {
   return (
-    <section className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <section className="dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       {/* CTA Section */}
       <motion.div
         className="py-24 relative overflow-hidden"
@@ -20,10 +20,10 @@ export default function CTA() {
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6">
               Ready to Transform Your Assets?
             </h2>
-            <p className="text-xl text-slate-300 mb-8">
+            <p className="text-xl text-slate-800 dark:text-slate-300 mb-8">
               Join thousands of organizations already benefiting from
               intelligent asset management
             </p>
@@ -43,7 +43,7 @@ export default function CTA() {
                 Start Free Trial
               </motion.button>
               <motion.button
-                className="px-8 py-4 border-2 border-white/20 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-sm"
+                className="px-8 py-4 border-2 border-black dark:border-white/20 text-black dark:text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-sm"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

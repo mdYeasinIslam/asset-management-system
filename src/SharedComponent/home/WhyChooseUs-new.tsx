@@ -53,7 +53,7 @@ const itemVariants = {
   },
 };
     return (
-      <section className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+      <section className="bg-white dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
         <div className="py-24 ">
           <div className="container mx-auto px-6">
             <motion.div
@@ -63,10 +63,10 @@ const itemVariants = {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4">
                 Why Choose Us
               </h2>
-              <p className="text-slate-300 text-xl max-w-2xl mx-auto">
+              <p className="text-slate-800 dark:text-slate-300 text-lg max-w-2xl mx-auto">
                 Experience the future of asset management with features designed
                 for your success
               </p>
@@ -92,7 +92,7 @@ const itemVariants = {
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300" />
 
-                    <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300">
+                    <div className="relative bg-[#FBF4FB] dark:bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300">
                       <motion.div
                         className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6`}
                         whileHover={{ rotate: 360, scale: 1.1 }}
@@ -101,10 +101,10 @@ const itemVariants = {
                         <Icon className="w-6 h-6 text-white" />
                       </motion.div>
 
-                      <h3 className="text-xl font-bold text-white mb-3">
+                      <h3 className="text-xl font-bold text-black dark:text-white mb-3">
                         {feature.title}
                       </h3>
-                      <p className="text-slate-300 text-sm leading-relaxed">
+                      <p className="text-slate-800 dark:text-slate-300 text-sm leading-relaxed">
                         {feature.description}
                       </p>
 

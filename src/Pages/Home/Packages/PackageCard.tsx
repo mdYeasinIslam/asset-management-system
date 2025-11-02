@@ -14,7 +14,8 @@ export default function PackageCard({ plan }: PropType) {
   return (
     <div
       className={`text-start rounded-xl p-2 xl:p-5 space-y-8  ${
-        activeCard == id && "border-4 border-[var(--color-primary-500)]"
+        activeCard == id &&
+        "border-4 border-[var(--color-primary-500)] dark:border-blue-800"
       }`}
     >
       <header className="space-y-4">
@@ -23,13 +24,13 @@ export default function PackageCard({ plan }: PropType) {
           <h1
             className={`text-xl md:text-2xl lg:text-3xl font-semibold ${
               activeCard == id
-                ? "text-[var(--color-primary-500)]"
+                ? "text-[var(--color-primary-500)] dark:text-sky-500"
                 : `${dark ? "text-white" : " text-[#101828]"}`
             } ${id == 3 && "text-[var(--color-primary-900)]"}`}
           >
             {title}
           </h1>
-          <p className={`${dark ? "text-white" : "text-[#525252]"}`}>
+          <p className={`${dark ? "text-white " : "text-[#525252]"}`}>
             {shortDescription}
           </p>
         </div>
@@ -37,7 +38,7 @@ export default function PackageCard({ plan }: PropType) {
         <p
           className={`text-5xl lg:text-6xl font-medium ${
             activeCard == id
-              ? "text-[var(--color-primary-500)]"
+              ? "text-[var(--color-primary-500)] dark:text-sky-500"
               : `${dark ? "text-white" : " text-[#101828]"}`
           } ${id == 3 && "text-[var(--color-primary-900)]"}`}
         >
@@ -45,12 +46,13 @@ export default function PackageCard({ plan }: PropType) {
         </p>
       </header>
       <div className="space-y-10">
-        <Link to={'/signIn'}
-          className={`block border-2  py-2 lg:py-4 rounded-xl text-center text-lg font-medium  cursor-pointer ${
+        <Link
+          to={"/signIn"}
+          className={`block border-2  py-2 lg:py-4 rounded-xl text-center text-lg font-medium  cursor-pointer hover:scale-105 duration-500 ${
             activeCard == id
-              ? "border-none  bg-black text-white"
-              : `border-[var(--color-primary-500)]  ${
-                  dark ? "text-white" : " text-[var(--color-primary-900)]"
+              ? "border-none  bg-black dark:bg-sky-300 dark:text-black text-white"
+              : `border-[var(--color-primary-500)] dark:border-sky-500 ${
+                  dark ? "text-white" : " text-[var(--color-primary-900)] "
                 }`
           }`}
         >

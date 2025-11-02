@@ -30,7 +30,7 @@ const itemVariants = {
 
 export default function Stats() {
   return (
-    <div className="bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className=" dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <motion.section
         /* Stats Section */
         className="py-16   dark:bg-slate-800/50 backdrop-blur-sm border-y border-slate-700"
