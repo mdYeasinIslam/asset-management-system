@@ -9,7 +9,7 @@ const AboutPage = () => {
     <div className="dark:h-screen   dark:bg-[#2a3341]">
       <div className=" dark:text-white ">
         {/* previous page design */}
-        {/* <div>
+        {/* <div> 
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-4">
           About Asset Management System
         </h1>
@@ -53,11 +53,11 @@ const AboutPage = () => {
         </div> */}
 
         {/* update design */}
-        <AboutHeroSection className="bg-[#F7FEE7] py-20" />
+        <AboutHeroSection className="bg-[#F7FEE7] dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900  pb-10 pt-32 lg:pb-20 " />
         <WhyChoose />
         <HowItWorks />
         <Testimonials />
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
