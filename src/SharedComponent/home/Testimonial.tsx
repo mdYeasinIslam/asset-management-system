@@ -80,9 +80,9 @@ const Testimonials = () => {
     handlePrev()
   }
   return (
-    <section className="bg-color py-16 px-5 xl:px-0">
+    <section className="bg-color dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 py-16 px-5 xl:px-0">
       <div className="max-w-[1440px] w-full mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold text-center text-[#2a0901] pt-10 mb-16   font-laila">
+        <h2 className="text-4xl md:text-5xl font-bold text-center  dark:text-white text-[#2a0901] pt-10 mb-16   font-laila">
           Testimonials
         </h2>
         <div className="relative overflow-hidden">

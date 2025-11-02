@@ -33,7 +33,7 @@ export default function HowItWorks() {
             {steps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-white  dark:bg-slate-800 rounded-2xl py-5 px-1 xl:p-8 shadow-sm border border-gray-100 text-center"
+                className="bg-white  dark:bg-slate-900 rounded-2xl py-5 px-1 xl:p-8 shadow-xl  border border-gray-100 text-center"
               >
                 <div
                   className={`w-16 h-16 ${step.bg} rounded-full flex items-center justify-center mx-auto mb-6`}

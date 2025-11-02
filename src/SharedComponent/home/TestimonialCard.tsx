@@ -10,7 +10,7 @@ export default function TestimonialCard({
   };
 }) {
   return (
-    <div className="relative w-[300px] md:w-[450px]   bg-white bg-[url(/cardBg.png)] bg-no-repeat bg-cover px-4 md:px-10 rounded-xl shadow-md flex flex-col justify-start pt-10 h-[90%] gap-4 ">
+    <div className="relative w-[300px] md:w-[450px] dark:bg-slate-800  bg-white bg-[url(/cardBg.png)] bg-no-repeat bg-cover px-4 md:px-10 rounded-xl shadow-md flex flex-col justify-start pt-10 h-[90%] gap-4 ">
       <div className=" ">
         <img
           src="/images/home/testimonial-coma.png"
@@ -19,11 +19,11 @@ export default function TestimonialCard({
         />
       </div>
       <div>
-        <h3 className="text-xl font-bold text-[#2a0903]">{testimonial.name}</h3>
-        <p className="text-gray-600 ">{testimonial?.role}</p>
+        <h3 className="text-xl font-bold dark:text-white text-[#2a0903]">{testimonial.name}</h3>
+        <p className="dark:text-gray-300 text-gray-600 ">{testimonial?.role}</p>
       </div>
-      <p className="text-gray-800 ">"{testimonial?.text}"</p>
-      <div className="text-[#ff5757] text-right">
+      <p className="dark:text-gray-100text-gray-800 ">"{testimonial?.text}"</p>
+      <div className="dark:text-yellow-400 text-[#ff5757] text-right">
         {"★★★★★".slice(0, testimonial.rating)}
       </div>
       <img

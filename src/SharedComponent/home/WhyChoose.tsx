@@ -6,7 +6,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaLock } from "react-icons/fa6";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { MdOutlineFileUpload } from "react-icons/md";
-import {  NavLink } from "react-router-dom";
+import {  Link, NavLink } from "react-router-dom";
 
 const features = [
   {
@@ -130,7 +130,7 @@ export default function WhyChoose() {
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto md:px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold dark:text-white text-gray-900 mb-4">
@@ -214,9 +214,9 @@ export default function WhyChoose() {
         </div>
 
         {/* Additional Features */}
-        <div className="flex flex-col lg:flex-row justify-between  gap-5">
-          <div className="bg-white  dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 rounded-2xl shadow-lg p-8 ">
-            <h3 className="text-2xl font-bold dark:text-white text-gray-900 text-center mb-8">
+        <div className="flex flex-col lg:flex-row justify-between  gap-5 ">
+          <div className="  dark:bg-gradient-to-b dark:from-slate-900 dark dark:to-slate-900 md:rounded-2xl shadow-lg p-8  dark:border ">
+            <h3 className="text-2xl font-bold   text-center   mb-8">
               More Reasons to join With Us
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
@@ -225,32 +225,34 @@ export default function WhyChoose() {
                   <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-100 transition-colors">
                     <item.icon className="w-6 h-6 text-gray-600 group-hover:text-blue-600 transition-colors" />
                   </div>
-                  <h4 className="font-semibold dark:text-white text-gray-900 mb-2">
+                  <h4 className="font-semibold  mb-2">
                     {item.title}
                   </h4>
-                  <p className="dark:text-gray-300 text-gray-600 text-sm">{item.description}</p>
+                  <p className="dark:text-gray-300 text-gray-600 text-sm">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
           {/* CTA Section */}
-          <div className="text-center mt-12">
-            <h3 className="text-2xl font-bold dark:text-white text-gray-900 mb-4">
+          <div className="text-center mt-12 px-1">
+            <h3 className="text-2xl font-bold  mb-4">
               Ready to Experience the Difference?
             </h3>
-            <p className="dark:text-gray-300 text-gray-600 mb-8">
+            <p className=" mb-8">
               Join millions of satisfied customers who trust ShopStack for their
               shopping needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <div className="flex flex-row gap-4 justify-center">
+              <button className="bg-blue-600 text-white px-2 md:px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                 Create account at first
               </button>
-              <NavLink to={"/about"}>
-                <button className="bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:text-black transition-colors">
+              <button className="bg-white text-gray-900 px-2 md:px-8 py-4 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:text-black transition-colors">
+                <Link to={"/about"} className={`w-full`}>
                   Learn More About Us
-                </button>
-              </NavLink>
+                </Link>
+              </button>
             </div>
           </div>
         </div>
