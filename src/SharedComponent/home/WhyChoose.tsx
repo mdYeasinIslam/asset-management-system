@@ -98,15 +98,16 @@ export default function WhyChoose() {
           bgLight: "bg-blue-50",
           text: "text-blue-600",
           border: "border-blue-200",
-          gradient: "from-blue-400 to-blue-600",
+          gradient: "from-blue-400 to-blue-600 ",
         };
       case "green":
         return {
-          bg: "bg-green-500",
-          bgLight: "bg-green-50",
-          text: "text-green-600",
-          border: "border-green-200",
-          gradient: "from-green-400 to-green-600",
+          bg: "bg-sky-500",
+          bgLight: "bg-sky-100",
+          text: "text-sky-400",
+          border: "border-sky-800",
+          gradient:
+            " from-sky-400 to-sky-600",
         };
       case "purple":
         return {
@@ -128,14 +129,14 @@ export default function WhyChoose() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl lg:text-5xl font-bold dark:text-white text-gray-900 mb-4">
             Why Chosse Us
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Manage assets faster with real-time inventory, role-based access,
             and audit-ready reports.
           </p>
@@ -147,7 +148,7 @@ export default function WhyChoose() {
             return (
               <div
                 key={feature.id}
-                className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border ${colors.border} hover:scale-105`}
+                className={`group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border bg-gradient-to-r   dark:from-slate-900 dark:to-slate-900 ${colors.border} hover:scale-105`}
               >
                 {/* Background Gradient */}
                 <div
@@ -163,7 +164,7 @@ export default function WhyChoose() {
                       <feature.icon className={`w-8 h-8 ${colors.text}`} />
                     </div>
                     <div className="text-right">
-                      <div className={`text-2xl font-bold ${colors.text}`}>
+                      <div className={`text-2xl font-bold  ${colors.text}`}>
                         {feature.stats}
                       </div>
                       <div className="text-sm text-gray-500">Average</div>
@@ -171,10 +172,10 @@ export default function WhyChoose() {
                   </div>
 
                   {/* Title and Description */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-2xl font-bold dark:text-white text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="dark:text-gray-400 text-gray-600 leading-relaxed mb-6">
                     {feature.description}
                   </p>
 
@@ -185,7 +186,9 @@ export default function WhyChoose() {
                         <BiCheckCircle
                           className={`w-5 h-5 ${colors.text} mr-3 flex-shrink-0`}
                         />
-                        <span className="text-gray-700 text-sm">{benefit}</span>
+                        <span className="dark:text-gray-300 text-gray-700 text-sm">
+                          {benefit}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -212,8 +215,8 @@ export default function WhyChoose() {
 
         {/* Additional Features */}
         <div className="flex flex-col lg:flex-row justify-between  gap-5">
-          <div className="bg-white rounded-2xl shadow-lg p-8 ">
-            <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
+          <div className="bg-white  dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 rounded-2xl shadow-lg p-8 ">
+            <h3 className="text-2xl font-bold dark:text-white text-gray-900 text-center mb-8">
               More Reasons to join With Us
             </h3>
             <div className="grid md:grid-cols-3 gap-8">
@@ -222,20 +225,20 @@ export default function WhyChoose() {
                   <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-100 transition-colors">
                     <item.icon className="w-6 h-6 text-gray-600 group-hover:text-blue-600 transition-colors" />
                   </div>
-                  <h4 className="font-semibold text-gray-900 mb-2">
+                  <h4 className="font-semibold dark:text-white text-gray-900 mb-2">
                     {item.title}
                   </h4>
-                  <p className="text-gray-600 text-sm">{item.description}</p>
+                  <p className="dark:text-gray-300 text-gray-600 text-sm">{item.description}</p>
                 </div>
               ))}
             </div>
           </div>
           {/* CTA Section */}
           <div className="text-center mt-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            <h3 className="text-2xl font-bold dark:text-white text-gray-900 mb-4">
               Ready to Experience the Difference?
             </h3>
-            <p className="text-gray-600 mb-8">
+            <p className="dark:text-gray-300 text-gray-600 mb-8">
               Join millions of satisfied customers who trust ShopStack for their
               shopping needs.
             </p>
