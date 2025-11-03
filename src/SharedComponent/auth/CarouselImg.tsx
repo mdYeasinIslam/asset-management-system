@@ -11,23 +11,23 @@ import { useRef } from "react";
 const imgBox = [
   {
     id: 1,
-    img: "https://img.freepik.com/free-photo/sign-up-form-button-graphic-concept_53876-123684.jpg?semt=ais_hybrid&w=740&q=80",
+    img: "https://i.ibb.co.com/W48BLvVh/sign-up-form-button-graphic-concept-53876-123684.jpg",
   },
   {
     id: 2,
-    img: "https://www.shutterstock.com/image-photo/document-management-system-concept-online-600nw-2314112797.jpg",
+    img: "https://i.ibb.co.com/0jH2dFR3/document-management-system-concept-online-600nw-2314112797.jpg",
   },
   {
     id: 3,
-    img: "https://img.freepik.com/premium-photo/user-typing-login-passwordhand-man-use-mobile-phone-log-enter-login-passwordsign-pageuser-profileinformation-privacyinternetphoto-cyber-protection-technology-concept_28974-583.jpg?semt=ais_hybrid&w=740&q=80",
+    img: "https://i.ibb.co.com/M5SHd6QK/user-typing-login-passwordhand-man-use-mobile-phone-log-enter-login-passwordsign-pageuser-profileinf.jpg",
   },
   {
     id: 4,
-    img: "https://images.pexels.com/photos/8428076/pexels-photo-8428076.jpeg?cs=srgb&dl=pexels-kampus-8428076.jpg&fm=jpg",
+    img: "https://i.ibb.co.com/n8tfQfYG/pexels-photo-8428076-jpeg-cs-srgb-dl-pexels-kampus-8428076.jpg",
   },
   {
     id: 5,
-    img: "https://img.freepik.com/premium-photo/cybersecurity-concept-user-typing-login-password-smartphone-data-security-encryption-secure-access-user-personal-data_568137-2778.jpg?semt=ais_hybrid&w=740&q=80",
+    img: "https://i.ibb.co.com/7d4SnVd8/cybersecurity-concept-user-typing-login-password-smartphone-data-security-encryption-secure-access-u.jpg",
   },
 ];
 export function CarouselImg() {
