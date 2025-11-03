@@ -24,7 +24,7 @@ const steps = [
 
 export default function HowItWorks() {
     return (
-      <section className="py-16 px-4 dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 ">
+      <section className="py-16 px-4 bg-white dark:bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 ">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center dark:text-white text-blue-600 mb-16">
             How It Works

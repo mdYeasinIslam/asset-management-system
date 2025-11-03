@@ -129,7 +129,7 @@ export default function WhyChoose() {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <section className="py-20 bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <div className="container mx-auto md:px-6">
         {/* Section Header */}
         <div className="text-center mb-12">

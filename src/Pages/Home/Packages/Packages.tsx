@@ -90,7 +90,7 @@ export const Packages = () => {
       className={`py-16 px-4  ${
         dark
           ? "bg-[#2a3341] text-white bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"
-          : "bg-gray-100"
+          : "bg-white"
       }`}
     >
       <div className="container mx-auto text-center">
