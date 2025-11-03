@@ -6,15 +6,14 @@ import Footer from "@/SharedComponent/Footer";
 
 export default function Contact() {
   return (
-    <div className="  min-h-screen dark:text-white dark:bg-[#2a3341]">
+    <div className=" ">
       {/* Hero Section */}
-      <HeroSectionContact className="bg-[#F7FEE7] py-20" />
-      {/* Main Content */}
+      <HeroSectionContact className="bg-[#F7FEE7] dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900  pb-10 pt-32 lg:pb-20" />
 
       {/* Contact Information */}
       <QuickContact />
       {/* Contact Form */}
-      <ContactForm className="bg-[#F7FEE7] py-20" />
+      <ContactForm className="bg-[#F7FEE7] dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900  pb-10 pt-32 lg:pb-20" />
 
       {/* Map Section */}
       <MapSection className="bg-[#F7FEE7] py-20" />

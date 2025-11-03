@@ -6,7 +6,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaLock } from "react-icons/fa6";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { MdOutlineFileUpload } from "react-icons/md";
-import {  Link, NavLink } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 const features = [
   {

@@ -22,6 +22,7 @@ export const SecondNavbar = () => {
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
   const navigate = useNavigate();
+    const pathName = location.pathname;
 
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
@@ -84,12 +85,14 @@ export const SecondNavbar = () => {
     return <></>;
   }
   return (
-    <section className=" bg-gradient-to-b from-slate-900 to-slate-800  text-white ">
-      <div className="fixed z-10 w-full">
+    <section className=" ">
+      <div className="fixed z-10 w-full ">
         <div
-          className={` py-3 flex justify-between items-center px-1 md:px-2 lg:px-4 bg-gradient-to-b from-slate-900 to-slate-800 ${
-            dark ? "bg-gray-800 text-white" : "bg-opacity-30 navbar-light "
-          }`}
+          className={`flex justify-between items-center bg-[#F7FEE7] py-3  px-1 md:px-2 lg:px-4 ${
+            pathName === "/"
+              ? "bg-gradient-to-b [&_.active]:text-white text-white from-slate-900 to-slate-800"
+              : "dark:bg-gradient-to-b from-slate-900 to-slate-800"
+          }   text-black font-semibold [&_.active]:text-black dark:text-white `}
         >
           {/* Logo & Menu Toggle */}
           <div className=" flex items-center gap-2">

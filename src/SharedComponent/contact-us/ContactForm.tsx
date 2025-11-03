@@ -35,18 +35,20 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
       <div className="max-w-7xl mx-auto  px-2 md:px-0">
         <div className="wrapper grid grid-cols-1 lg:grid-cols-2 gap-5  h-full">
           <div className="w-full  h-full   content_wrapper  ">
-            <div className=" bg-white p-3 md:p-5 h-full space-y-5 xl:space-y-8">
-              <h1 className="text-[#00442A] text-3xl ">Contact us</h1>
+            <div className=" bg-white dark:bg-slate-800 p-3 md:p-5 h-full space-y-5 xl:space-y-8 rounded-xl">
+              <h1 className="text-[#00442A] dark:text-white text-3xl ">
+                Send your message
+              </h1>
               <form
                 onSubmit={handleSubmit}
                 action=""
                 className="flex flex-col gap-5"
               >
-                <div className="flex  gap-6">
+                <div className="flex  gap-6 ">
                   <div className="w-full space-y-2 ">
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700 dark:text-white"
                     >
                       Name
                     </label>
@@ -63,7 +65,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                   <div className="w-full space-y-2 ">
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700"
+                      className="block text-sm font-medium text-gray-700 dark:text-white"
                     >
                       Email
                     </label>
@@ -81,7 +83,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                 <div className="w-full space-y-2 ">
                   <label
                     htmlFor="inquiryType"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-gray-700 dark:text-white"
                   >
                     Inquiry Type
                   </label>
@@ -105,7 +107,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                 <div className="w-full space-y-2 ">
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm font-medium text-gray-700 dark:text-white"
                   >
                     Message
                   </label>
@@ -140,7 +142,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
             <img
               src="/images/contact/formImg.png"
               alt="Our Purpose"
-              className=" rounded-lg"
+              className="w-full h-full rounded-lg"
             />
           </motion.div>
         </div>

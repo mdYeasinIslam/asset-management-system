@@ -53,7 +53,7 @@ const AboutHeroSection = ({ className }: IProps) => {
             <img
               src="/images/about/about.jpg"
               alt="about image"
-              className="w-full h-full rounded-xl"
+              className="w-full h-full rounded-xl brightness-75"
             />
           </motion.div>
         </div>

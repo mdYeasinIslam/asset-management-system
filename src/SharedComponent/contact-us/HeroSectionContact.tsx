@@ -1,4 +1,4 @@
-
+import { useAuth } from "@/hook/useAuth";
 import { motion } from "framer-motion";
 import { BsLinkedin } from "react-icons/bs";
 import { FaFacebook, FaGithub } from "react-icons/fa6";
@@ -7,50 +7,59 @@ interface IProps {
   className?: string;
 }
 
+const socialMedia = [
+  {
+    id: 1,
+    icon: <BsLinkedin className="h-8 w-8 text-blue-600 dark:text-blue-500" />,
+    url: "https://www.linkedin.com/in/mohammad-yeasin-islam",
+  },
+  {
+    id: 2,
+    icon: <FaGithub className="h-8 w-8 text-black dark:text-white" />,
+    url: "https://github.com/mdYeasinIslam",
+  },
+
+  {
+    id: 3,
+    icon: <FaFacebook className="h-8 w-8 text-blue-600" />,
+    url: "https://www.facebook.com/profile.php?id=100011183114419",
+  },
+];
+
 const HeroSectionContact = ({ className }: IProps) => {
+  const dark = useAuth();
   return (
     <section className={className}>
       <div className="container  mx-auto">
-        <div className=" grid grid-cols-1 lg:grid-cols-3 gap-8 items-start lg:items-center">
+        <div className="flex justify-center items-center text-center">
           <motion.div
-            className="content_wrapper text-center lg:text-start"
+            className="content_wrapper text-center"
             initial={{ x: -60, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-[var(--color-primary-900)] text-4xl xl:text-7xl font-bold md:pl-20 !m-0  ">
+            <h1 className="text-[var(--color-primary-900)] dark:text-gray-100 text-4xl xl:text-7xl font-bold md:pl-20 !m-0  ">
               Let’s get in touch
             </h1>
-            <div className=" dark:bg-[#1f2835] rounded-2xl py-8  md:pl-20">
+            <div className="flex justify-center items-center rounded-2xl py-8  md:pl-20 ">
               <h2 className="text-xl mb-0 font-bold  text-slate-900 dark:text-white ">
-                Connect With Us
+                Connect with us ---------
               </h2>
-              <div className="flex justify-center lg:justify-normal gap-4">
-                <a
-                  href="https://www.linkedin.com/in/mohammad-yeasin-islam/"
-                  target="_blank"
-                  className="bg-white p-2 "
-                >
-                  <BsLinkedin className="h-8 w-8 text-blue-600" />
-                </a>
-                <a
-                  href="https://github.com/mdYeasinIslam"
-                  target="_blank"
-                  className="bg-white p-2 "
-                >
-                  <FaGithub className="h-8 w-8 text-black" />
-                </a>
-                <a
-                  href="https://www.facebook.com/profile.php?id=100011183114419"
-                  target="_blank"
-                  className="bg-white p-2 "
-                >
-                  <FaFacebook className="h-8 w-8 text-blue-600" />
-                </a>
+              <div className="flex justify-center gap-4">
+                {socialMedia?.map((icon) => (
+                  <a
+                    key={icon.id}
+                    href={icon.url}
+                    target="_blank"
+                    className={`${dark ? "" : "bg-white"} p-2 `}
+                  >
+                    {icon.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </motion.div>
-          <motion.div
+          {/* <motion.div
             className="col-span-2 hidden lg:block image_wrapper "
             initial={{ x: -60, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -64,7 +73,7 @@ const HeroSectionContact = ({ className }: IProps) => {
                 service provider.
               </p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
