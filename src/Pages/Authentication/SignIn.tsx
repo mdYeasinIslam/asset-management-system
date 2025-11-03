@@ -114,11 +114,12 @@ export const SignIn = () => {
       });
   };
   return (
-    <section className=" bg-[#FBF9F5]">
+    <section className=" bg-[#FBF9F5] text-black">
       <div className="max-w-4xl xl:max-w-6xl mx-auto  h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
         <div className="  flex justify-center  items-center   ">
           <img
-            src="/images/auth/sign-in.jpg"
+            // src="/images/auth/sign-in.jpg"
+            src="https://img.freepik.com/free-photo/member-log-membership-username-password-concept_53876-101284.jpg?semt=ais_hybrid&w=740&q=80"
             alt="login img"
             className=" h-[600px] hidden lg:block object-cover object-center brightness-75 rounded-md"
           />
@@ -133,7 +134,7 @@ export const SignIn = () => {
             </h1>
           </div>
         </div>
-        <div className=" max-w-xl  w-full mx-auto  space-y-3 flex flex-col    lg:justify-center  h-full px-5" >
+        <div className=" max-w-xl  w-full mx-auto  space-y-3 flex flex-col    lg:justify-center  h-full px-5">
           <div className="flex  items-center justify-center">
             <img
               src="/logo-icon.png"
@@ -170,13 +171,11 @@ export const SignIn = () => {
             </Button>
           </div>
           <div className="flex justify-center">
-            
             <span className="text-gray-700">or continue with</span>
-            
           </div>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-3 dark:text-white"
+            className="space-y-3 dark:text-black"
           >
             <div>
               <label htmlFor="email" className="capitalize font-semibold">

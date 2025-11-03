@@ -1,12 +1,13 @@
 !important
 
 ** For Employee **
-1. an employee should create account under a company. (may be company will give an ID or something else and employee use it during create his account)
+1. an employee should create account under a company. (may be company will give an ID (company unique id) and employee use it during create his account). By this complay will recognize their employee
 
 2. add a field  for company ID or Name
 
 ** for admin **
-1. remove unnecessary feild like (HR photo )
+1. remove unnecessary feild like (HR photo ) **done**
+2. each company will have a uniqe id( may be taxId or brand name like this)
 
 **others**
 1. create one "sign up" page where will have two way to create account:

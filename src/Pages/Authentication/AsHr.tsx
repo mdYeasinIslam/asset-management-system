@@ -19,6 +19,7 @@ import { useState } from "react";
 import Loader from "@/SharedComponent/Loader";
 import { IoMdEye } from "react-icons/io";
 import { IoEyeOff } from "react-icons/io5";
+import { CarouselImg } from "@/SharedComponent/auth/CarouselImg";
 
 type Inputs = {
   exampleRequired: string;
@@ -57,29 +58,30 @@ export const AsHr = () => {
       const companyName = data.companyName;
       const selectPackage = data.package;
       const companyLogo = { image: data.companyLogo[0] };
-      const photoURL = { image: data.img_url[0] };
+      // const photoURL = { image: data.img_url[0] };
 
-      const [res, res2] = await Promise.all([
+      const [res] = await Promise.all([
         axios.post(img_hosting_api, companyLogo, {
           headers: {
             "content-type": "multipart/form-data",
           },
         }),
-        axios.post(img_hosting_api, photoURL, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }),
+        // axios.post(img_hosting_api, photoURL, {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // }),
       ]);
       const companyLogoURL = res.data?.data.display_url;
-      const profilePhotoURL = res2.data?.data.display_url;
+      // const profilePhotoURL = res2.data?.data.display_url;
 
-      const profile = { displayName: name, photoURL: profilePhotoURL };
+      // const profile = { displayName: name, photoURL: profilePhotoURL };
+      const profile = { displayName: name };
       const userInfo = {
-        HR_Name: name,
+        // HR_Name: name,
         email,
-        HR_photo: profilePhotoURL,
-        date_of_birth: birth,
+        // HR_photo: profilePhotoURL,
+        // date_of_birth: birth,
         companyName,
         company_logo: companyLogoURL,
         package: selectPackage,
@@ -112,17 +114,18 @@ export const AsHr = () => {
         </div>
       )}
       <section
-        className={` bg-[#FBF9F5]  dark:text-white py-10 lg:py-0 ${
+        className={` bg-[#FBF9F5] text-black py-10 lg:py-0 ${
           loading && "opacity-50"
         }`}
       >
         <div className="max-w-5xl xl:max-w-7xl mx-auto h-screen  grid grid-cols-1 lg:grid-cols-2 items-center justify-center ">
           <figure className="  ">
-            <img
+            {/* <img
               src="/images/auth/hr-signup.jpg"
               alt="Hr sign up image"
               className="h-[600px] xl:h-[700px]  w-full  hidden lg:flex object-cover object-center xl:rounded-md"
-            />
+            /> */}
+            <CarouselImg/>
             <div className="flex flex-col items-center">
               <img
                 src="/logo-icon.png"
@@ -141,7 +144,7 @@ export const AsHr = () => {
             <h1 className="font-semibold text-4xl ">
               Create account (For Company)
             </h1>
-            <div className="flex flex-col gap-3 ">
+            {/* <div className="flex flex-col gap-3 ">
               <label htmlFor="name" className="capitalize font-semibold">
                 <span className="text-red-800">*</span>
                 Your Name :
@@ -153,7 +156,7 @@ export const AsHr = () => {
                 placeholder="Your full name"
                 required
               />
-            </div>
+            </div> */}
             {/* <div className="grid w-full max-w-sm items-center gap-1.5">
               <label htmlFor="picture1">Upload Your Photo:</label>
               <Input id="picture1" {...register("img_url")} type="file" />
@@ -232,7 +235,7 @@ export const AsHr = () => {
               </div>
             </div>
             <Select onValueChange={(value) => setValue("package", value)}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] bg-white">
                 <SelectValue placeholder="Get package" />
               </SelectTrigger>
               <SelectContent {...register("package")}>
@@ -254,8 +257,8 @@ export const AsHr = () => {
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}
 
-            <Button variant="dark" size={"xl"} className="w-full font-semibold" type="submit">
-              Join as a Hr_manager
+            <Button variant="dark" size={"xl"} className="w-full font-semibold text-lg" type="submit">
+              Create profile
             </Button>
           </form>
         </div>
