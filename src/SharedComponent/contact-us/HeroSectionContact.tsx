@@ -38,11 +38,11 @@ const HeroSectionContact = ({ className }: IProps) => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-[var(--color-primary-900)] dark:text-gray-100 text-4xl xl:text-7xl font-bold md:pl-20 !m-0  ">
+            <h1 className="text-[var(--color-primary-900)] dark:text-gray-100 text-4xl  md:text-6xl xl:text-7xl font-bold md:pl-20 !m-0  ">
               Let’s get in touch
             </h1>
-            <div className="flex justify-center items-center rounded-2xl py-8  md:pl-20 ">
-              <h2 className="text-xl mb-0 font-bold  text-slate-900 dark:text-white ">
+            <div className="flex flex-col md:flex-row justify-center items-center rounded-2xl pt-8  md:pl-20 ">
+              <h2 className="text-xl font-bold  text-slate-900 dark:text-white ">
                 Connect with us ---------
               </h2>
               <div className="flex justify-center gap-4">

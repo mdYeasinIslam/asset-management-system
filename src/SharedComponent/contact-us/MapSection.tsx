@@ -14,12 +14,12 @@ export default function MapSection({ className }: IProps) {
   ];
   return (
     <section className={className}>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-1 md:px-5 xl:px-0">
         <div>
           <SectionIntro
             titlePrefix="Who We Help"
             title="Built for Everyone in the Hiring Ecosystem"
-            className="text-center mb-16 max-w-md xl:max-w-xl mx-auto"
+            className="text-center mb-16 max-w-md xl:max-w-xl mx-auto darktext-white "
           />
         </div>
         <div className="wrapper max-w-7xl mx-auto  grid grid-cols-1 lg:grid-cols-2  gap-y-10 lg:gap-y-0">
@@ -33,10 +33,10 @@ export default function MapSection({ className }: IProps) {
                       idx == 0 && "border-l-2 border-[#9AE600]"
                     } space-y-2 md:space-y-3 xl:space-y-4`}
                   >
-                    <h3 className="text-xl md:text-2xl font-medium text-[#00442A]">
+                    <h3 className="text-xl md:text-2xl font-medium dark:text-sky-100 text-[#00442A]">
                       {add.title}
                     </h3>
-                    <p className="text-sm md:text-lg text-[#344054] ">
+                    <p className="text-sm md:text-lg dark:text-gray-300 text-[#344054] ">
                       {add.address}
                     </p>
                   </div>
@@ -46,7 +46,7 @@ export default function MapSection({ className }: IProps) {
           </div>
           {/* image section */}
           <motion.div
-            className="w-full h-full image_wrapper  "
+            className="w-full h-80 md:h-96  image_wrapper  "
             initial={{ x: 60, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.4 }}
@@ -62,7 +62,12 @@ export default function MapSection({ className }: IProps) {
               width="100%"
               height="100%"
               lang=""
-              style={{ border: 0 ,objectFit:'cover',height:'100%',borderRadius:'10px'}}
+              style={{
+                border: 0,
+                objectFit: "cover",
+                height: "100%",
+                borderRadius: "10px",
+              }}
               // allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

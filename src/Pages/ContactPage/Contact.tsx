@@ -8,15 +8,15 @@ export default function Contact() {
   return (
     <div className=" ">
       {/* Hero Section */}
-      <HeroSectionContact className="bg-[#F7FEE7] dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900  pb-10 pt-32 lg:pb-20" />
+      <HeroSectionContact className="bg-[#F7FEE7] dark:bg-slate-900  py-20 md:py-36" />
 
       {/* Contact Information */}
       <QuickContact />
       {/* Contact Form */}
-      <ContactForm className="bg-[#F7FEE7] dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900  pb-10 pt-32 lg:pb-20" />
+      <ContactForm className="bg-[#F7FEE7] dark:bg-slate-900  pb-10 pt-32 lg:pb-20" />
 
       {/* Map Section */}
-      <MapSection className="bg-[#F7FEE7] py-20" />
+      <MapSection className="bg-[#F7FEE7] dark:bg-gradient-to-r dark:from-slate-800  dark:to-slate-900  pb-10 pt-32 lg:pb-20" />
 
       {/* Department Cards */}
       {/* <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">

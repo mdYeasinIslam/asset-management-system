@@ -35,7 +35,7 @@ const SectionIntro = ({
           {titlePrefix && (
             <Badge
               className={cn(
-                "intro_title_prefix text-base font-semibold bg-[linear-gradient(180deg,_#D8F999_0%,_rgba(251,_249,_245,_0)_89.77%)] text-[var(--color-primary-900)] rounded-4xl bg-transparent px-4 py-2",
+                "intro_title_prefix text-base font-semibold bg-[linear-gradient(180deg,_#D8F999_0%,_rgba(251,_249,_245,_0)_89.77%)] dark:bg-[linear-gradient(180deg,_black_0%,_rgba(251,_249,_245,_0)_89.77%)] text-[var(--color-primary-900)] dark:text-white rounded-full bg-transparent px-4 py-2",
                 titlePrefixClassName
               )}
             >
@@ -44,7 +44,7 @@ const SectionIntro = ({
           )}
           <span
             className={cn(
-              "intro_title block text-3xl md:text-4xl xl:text-5xl font-semibold text-[var(--color-primary-900)]",
+              "intro_title block text-3xl md:text-4xl xl:text-5xl font-semibold text-[var(--color-primary-900)] dark:text-slate-100",
               titleClassName
             )}
           >

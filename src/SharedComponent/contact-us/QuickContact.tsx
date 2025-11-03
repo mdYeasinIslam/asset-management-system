@@ -32,14 +32,14 @@ const addresses = [
 ];
 export default function QuickContact() {
   return (
-    <div className="bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:via-slate-800 dark:to-slate-900  pb-10 pt-32 lg:pb-20">
-      <div className="container mx-auto dark:bg-[#2a3341]   rounded-2xl md:py-20 ">
-        <h2 className="text-2xl md:text-5xl font-bold mb-6 text-[var(--color-primary-900)] dark:text-white uppercase text-center ">
+    <div className="bg-white dark:bg-gradient-to-r dark:from-slate-800  dark:to-slate-900  py-16  lg:py-24">
+      <div className="container mx-auto ">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 text-[var(--color-primary-900)] dark:text-white uppercase text-center ">
           Quick Contact
         </h2>
-        <div className="max-w-5xl xl:max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 px-5  justify-between  items- gap-5">
+        <div className="max-w-5xl xl:max-w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 px-5  justify-between  gap-5">
           {addresses?.map((address) => (
-            <div key={address.id} className=" flex flex-col items-start pl-5  border rounded-xl py-3 w-full  h-full">
+            <div key={address.id} className=" flex flex-col items-start pl-2 md:pl-5  border rounded-xl py-3 w-full  h-full space-y-2">
               <div className="bg-lime-200 p-3  rounded-lg">
                 {address.icon}
               </div>

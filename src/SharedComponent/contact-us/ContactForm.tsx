@@ -32,7 +32,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
 
   return (
     <section className={className}>
-      <div className="max-w-7xl mx-auto  px-2 md:px-0">
+      <div className="max-w-7xl mx-auto  px-2 xl:px-0">
         <div className="wrapper grid grid-cols-1 lg:grid-cols-2 gap-5  h-full">
           <div className="w-full  h-full   content_wrapper  ">
             <div className=" bg-white dark:bg-slate-800 p-3 md:p-5 h-full space-y-5 xl:space-y-8 rounded-xl">
@@ -58,7 +58,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                       name="name"
                       onChange={handleChange}
                       required
-                      className="mt-1 block w-full p-2 rounded-md border border-black shadow-sm focus:border-black focus:ring-green-700"
+                      className="mt-1 block w-full p-2 rounded-md border border-black shadow-sm focus:border-black dark:bg-slate-900 dark:text-white focus:ring-green-700"
                       placeholder="Your Name"
                     />
                   </div>
@@ -75,7 +75,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                       name="email"
                       onChange={handleChange}
                       required
-                      className="mt-1 block w-full p-2 border rounded-md border-black shadow-sm focus:border-black focus:ring-black"
+                      className="mt-1 block w-full p-2 border rounded-md border-black shadow-sm focus:border-black dark:bg-slate-900 dark:text-white focus:ring-black"
                       placeholder="you@example.com"
                     />
                   </div>
@@ -92,7 +92,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                     name="inquiryType"
                     onChange={handleChange}
                     required
-                    className="mt-1 block w-full p-3 border rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700"
+                    className="mt-1 block w-full p-3 border rounded-md border-gray-300 shadow-sm focus:border-green-700 dark:bg-slate-900 dark:text-white focus:ring-green-700"
                     defaultValue=""
                   >
                     <option value="" disabled>
@@ -116,7 +116,7 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
                     name="message"
                     rows={4}
                     required
-                    className="mt-1 block w-full p-2 border rounded-md border-gray-300 shadow-sm focus:border-green-700 focus:ring-green-700"
+                    className="mt-1 block w-full p-2 border rounded-md border-gray-300 shadow-sm focus:border-green-700  focus:ring-green-700 dark:bg-slate-900 dark:text-white"
                     placeholder="Type your message here..."
                   />
                 </div>
@@ -134,15 +134,15 @@ const ContactForm: React.FC<IProps> = ({ className }) => {
           {/* image section */}
           <motion.div
             className="image_wrapper  lg:px-0 flex items-center "
-            initial={{ x: 60, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            // initial={{ x: 60, opacity: 0 }}
+            // whileInView={{ x: 0, opacity: 1 }}
+            // viewport={{ once: true, amount: 0.4 }}
+            // transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <img
               src="/images/contact/formImg.png"
               alt="Our Purpose"
-              className="w-full h-full rounded-lg"
+              className="w-full h-full rounded-lg brightness-75"
             />
           </motion.div>
         </div>
