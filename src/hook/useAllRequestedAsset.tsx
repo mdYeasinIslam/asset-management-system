@@ -3,7 +3,7 @@ import { useAxiosSecure } from "./useAxiosSecure"
 
 export const useAllRequestedAsset = (email?: string) => {
     const axiosSecure = useAxiosSecure()
-    const { data:requestedAssets=[],isPending,refetch } = useQuery({
+    const { data:requestedAssets=[],isPending,refetch ,isLoading} = useQuery({
         queryKey: ['requestedAssets'],
         queryFn: async () => {
             try {
@@ -21,5 +21,5 @@ export const useAllRequestedAsset = (email?: string) => {
            
         }
     })
-  return [requestedAssets,isPending,refetch]
+  return [requestedAssets,isPending,refetch,isLoading]
 }
