@@ -4,12 +4,19 @@ import { AssetRequestType } from "@/Type/Types";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = ({ requestedAssets }: { requestedAssets: AssetRequestType[] }) => {
-  
+const PieChart = ({
+  requestedAssets,
+}: {
+  requestedAssets: AssetRequestType[];
+}) => {
   // Calculate counts of returnable and non-returnable items
-  const returnableCount = requestedAssets.filter(item => item.assetStatus === "Returnable").length;
-  const nonReturnableCount = requestedAssets.filter(item => item.assetStatus === "Non-returnable").length;
-  
+  const returnableCount = requestedAssets.filter(
+    (item) => item.assetStatus === "Returnable"
+  ).length;
+  const nonReturnableCount = requestedAssets.filter(
+    (item) => item.assetStatus === "Non-returnable"
+  ).length;
+
   // Chart data
   const chartData = {
     labels: ["Returnable", "Non-returnable"],
@@ -43,8 +50,10 @@ const PieChart = ({ requestedAssets }: { requestedAssets: AssetRequestType[] }) 
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <h2 className="text-xl font-bold text-center mb-4">Returnable vs Non-returnable Items</h2>
+    <div className="max-w-md mx-auto ">
+      <h2 className="text-xl font-bold text-center mb-4">
+        Returnable vs Non-returnable Items
+      </h2>
       <Pie data={chartData} options={options} />
     </div>
   );

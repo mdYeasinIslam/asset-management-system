@@ -5,9 +5,15 @@
 
 2. add a field  for company ID or Name
 
-** for admin **
+** for admin sign up**
 1. remove unnecessary feild like (HR photo ) **done**
 2. each company will have a uniqe id( may be taxId or brand name like this)
+
+
+**Admin panel**
+1. remove unnecessary field from add-asset form and api request,
+2. add necessary assets field.
+
 
 **others**
 1. create one "sign up" page where will have two way to create account:

@@ -5,10 +5,10 @@ import { useAuth } from "@/hook/useAuth";
 import { DisplayPendingRequest } from "../../../SharedComponent/DisplayPendingRequest";
 import { AssetRequestType } from "@/Type/Types";
 import { CommonHeading } from "@/SharedComponent/CommonHeading";
-import { EventSecton } from "./EventSection/EventSection";
 import Calendar from "./EventSection/Calendar";
 import SkeletonBar from "@/SharedComponent/Skeleton";
 import { TotalRequests } from "./TotalRequest";
+import EventSection from "./EventSection/EventSection";
 
 export const EHome = () => {
   const { user } = useAuth();
@@ -68,7 +68,7 @@ export const EHome = () => {
         </div>
       </div>
       <div className="grid xl:grid-cols-2 gap-2">
-        <EventSecton />
+        <EventSection />
         <Calendar />
       </div>
       {/* <Footer /> */}

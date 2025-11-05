@@ -15,15 +15,15 @@ import { AllRequest } from "@/Pages/HR_Manager/All_Request/AllRequest"
 import { HrAssetList } from "@/Pages/HR_Manager/HR_Asset_List/HrAssetList"
 import { HrHome } from "@/Pages/HR_Manager/HrHome"
 
-import { createBrowserRouter } from "react-router-dom"
-import { PrivateRoot } from "./PrivateRoot"
-import ProfilePage from "@/SharedComponent/Profile"
+import AboutPage from "@/Pages/AboutPage/AboutPage"
+import Contact from "@/Pages/ContactPage/Contact"
 import { PackageChange } from "@/Pages/HR_Manager/Add_employee/packageSection/PackageChange"
 import { EmployeeList } from "@/Pages/HR_Manager/My_Employee_List/EmployeeList"
 import { Payment } from "@/Pages/HR_Manager/PaymentMethod/Payment"
-import AboutPage from "@/Pages/AboutPage/AboutPage"
-import Contact from "@/Pages/ContactPage/Contact"
 import ErrorPage from "@/SharedComponent/ErrorPage"
+import ProfilePage from "@/SharedComponent/Profile"
+import { createBrowserRouter } from "react-router-dom"
+import { PrivateRoot } from "./PrivateRoot"
 
    export const routes = createBrowserRouter([
      {
@@ -58,14 +58,14 @@ import ErrorPage from "@/SharedComponent/ErrorPage"
            path: "/signIn",
            element: <SignIn />,
          },
-        //  {
-        //    path: "/profile",
-        //    element: (
-        //      <PrivateRoot>
-        //        <ProfilePage />
-        //      </PrivateRoot>
-        //    ),
-        //  },
+         //  {
+         //    path: "/profile",
+         //    element: (
+         //      <PrivateRoot>
+         //        <ProfilePage />
+         //      </PrivateRoot>
+         //    ),
+         //  },
        ],
      },
      {
@@ -115,7 +115,7 @@ import ErrorPage from "@/SharedComponent/ErrorPage"
            element: <HrHome />,
          },
          {
-           path: "/admin/hrHome",
+           path: "/admin/dashboard",
            element: <HrHome />,
          },
 
@@ -158,6 +158,6 @@ import ErrorPage from "@/SharedComponent/ErrorPage"
            <ProfilePage />
          </PrivateRoot>
        ),
-     }
+     },
    ]);
   

@@ -5,14 +5,14 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hook/useAuth";
 import { useIsAdmin } from "@/hook/useIsAdmin";
 import { useUsersData } from "@/hook/useUsersData";
-import { AlignJustify, Moon, Sun, X, LogOut } from "lucide-react";
-import { useMemo, useState } from "react";
+import { AlignJustify, X, LogOut } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import SkeletonBar from "./Skeleton";
 
 export const DashboardSidebar = () => {
-  const { user, signOutAuth, dark, setDark} = useAuth();
+  const { user, signOutAuth, dark, setDark } = useAuth();
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const [isAdmin, , isLoading] = useIsAdmin();
@@ -20,6 +20,8 @@ export const DashboardSidebar = () => {
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
 
+  // set theme light mode as default
+  useEffect(() => setDark(false), []);
   // Sign Out Handler
   const signOut = async () => {
     try {
@@ -34,13 +36,7 @@ export const DashboardSidebar = () => {
 
   // Navigation Paths
   const paths = {
-    guest: [
-      { path: "/", label: "Home" },
-      { path: "/about", label: "About" },
-      { path: "/contact", label: "Contact" },
-      { path: "/asEmployee", label: "Join as Employee" },
-      { path: "/asHr", label: "Join as HR Manager" },
-    ],
+    guest: [{ path: "/", label: "Home" }],
     employee: [
       { path: "/employee/eHome", label: "Overview" },
       { path: "/employee/myAssets", label: "My Assets" },
@@ -48,7 +44,7 @@ export const DashboardSidebar = () => {
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [
-      { path: "/admin", label: "Overview" },
+      { path: "/admin/dashboard", label: "Overview" },
       { path: "/admin/assetList", label: "Asset List" },
       { path: "/admin/addAsset", label: "Add Asset" },
       { path: "/admin/allRequest", label: "All Requests" },
@@ -65,7 +61,7 @@ export const DashboardSidebar = () => {
   }, [user, isAdmin]);
 
   if (isPending || isLoading) {
-    return <SkeletonBar/>;
+    return <SkeletonBar />;
   }
   return (
     <>
@@ -88,17 +84,21 @@ export const DashboardSidebar = () => {
       {/* Sidebar */}
       <div
         className={`fixed left-0 top-0 h-full w-64 ${
-          dark ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+          dark ? "bg-slate-800 text-white" : "bg-white text-gray-800"
         } border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 z-40 ${
           open ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
         {/* Logo Section */}
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="p-6 border-b border-slate-200 dark:border-gray-700">
           <Link
             className="flex items-center gap-3"
             to={
-              role ? (role === "Admin" ? "/admin/hrHome" : "/employee/eHome") : "/"
+              role
+                ? role === "Admin"
+                  ? "/admin/hrHome"
+                  : "/employee/eHome"
+                : "/"
             }
             onClick={() => setOpen(false)}
           >
@@ -120,14 +120,8 @@ export const DashboardSidebar = () => {
                   to={path}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                      isActive
-                        ? dark
-                          ? "bg-gray-700 text-white"
-                          : "bg-gray-100 text-gray-900"
-                        : dark
-                        ? "text-gray-300 hover:bg-gray-700 hover:text-white"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    `block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200  ${
+                      isActive ? "bg-gray-200 text-black" : ""
                     }`
                   }
                 >
@@ -141,7 +135,7 @@ export const DashboardSidebar = () => {
         {/* Bottom Section - User & Settings */}
         <div className="p-4 border-t border-gray-200 dark:border-gray-700 space-y-4">
           {/* Dark Mode Toggle */}
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <span className="text-sm font-medium">Dark Mode</span>
             <button
               onClick={() => setDark(!dark)}
@@ -153,7 +147,7 @@ export const DashboardSidebar = () => {
                 <Moon className="w-4 h-4" />
               )}
             </button>
-          </div>
+          </div> */}
 
           {/* User Section */}
           {user?.email ? (

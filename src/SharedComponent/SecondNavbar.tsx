@@ -120,7 +120,7 @@ export const SecondNavbar = () => {
 
           {/* Mobile Menu */}
           <nav
-            className={`absolute lg:hidden w-[70vw] h-[80vh] flex flex-col bg-white dark:bg-[#1F2937] pt-3  duration-1000 ${
+            className={`absolute lg:hidden w-[70vw] h-[80vh] flex flex-col bg-white dark:bg-[#1F2937]   pt-3  duration-1000 ${
               open ? "left-0 top-12" : "-left-[800px] top-12"
             }`}
             onClick={() => setOpen(false)}
@@ -133,7 +133,7 @@ export const SecondNavbar = () => {
           </nav>
 
           {/* Desktop Navigation */}
-          <nav className=" hidden lg:flex text-[12px] xl:text-[15px] ">
+          <nav className="hidden lg:flex text-[12px] xl:text-[15px] ">
             <ul className="w-full text-center flex lg:gap-2 xl:gap-4 items-center font-medium uppercase">
               {navItems.map(({ path, label }) => (
                 <NavLink

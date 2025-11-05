@@ -5,10 +5,10 @@ import { useAllAssets } from "@/hook/useAllAssets";
 import { LimitedStockItem } from "./HomeSections/LimitedStockItem";
 import { TopRequests } from "./HomeSections/TopRequests";
 import PieChart from "./HomeSections/PieChart";
-import { EventSecton } from "../Employee/EmployeeHome/EventSection/EventSection";
 import NoticeSection from "./HomeSections/NoticeSection";
-import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
 import SkeletonBar from "@/SharedComponent/Skeleton";
+import StatsSection from "./HomeSections/StatsSection";
+import EventSection from "../Employee/EmployeeHome/EventSection/EventSection";
 
 export const HrHome = () => {
   const [requestedAssets, isPending] = useAllRequestedAsset();
@@ -20,15 +20,15 @@ export const HrHome = () => {
   if (isPending || isLoading) {
     return (<SkeletonBar/>);
   }
-  // console.log(assetsData);
   return (
-    <div className=" pt-10 space-y-16 dark:text-white">
-      <HrPagesHeading page="Asset Overview" />
+    <div className=" py-8 bg-white dark:text-white space-y-10 px-10">
+      {/* <HrPagesHeading page="Overview : " /> */}
+      <StatsSection />
       <PendingSection pendingRequest={pendingRequest} />
       {assetsData?.length > 0&& <LimitedStockItem assetData={assetsData} />}
       <TopRequests requestedAssets={requestedAssets} />
       <PieChart requestedAssets={requestedAssets} />
-      <EventSecton />
+      <EventSection />
       <NoticeSection />
       {/* <Footer /> */}
     </div>

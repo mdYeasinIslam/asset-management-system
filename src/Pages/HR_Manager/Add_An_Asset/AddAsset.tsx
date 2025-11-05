@@ -100,7 +100,7 @@ export const AddAsset = () => {
                         placeholder="Quantity"
                         required />
                  </div>
-                 <div className="md:flex gap-2">
+                 <div className="md:flex gap-2"> 
                       <Select onValueChange={(value) => setValue('productType', value)} >
                             <SelectTrigger className="w-[280px] h-[50px] text-lg">
                                 <SelectValue placeholder="Select a type" />

@@ -1,4 +1,4 @@
-import { User, UserCredential } from "firebase/auth"
+import { User, UserCredential } from "firebase/auth";
 export type ContextType = {
   user: User | null | undefined;
   loading: boolean;
@@ -14,31 +14,31 @@ export type ContextType = {
   afterLogInPath: string;
 };
 export type ChildrenType = {
-      children : JSX.Element
-}
+  children: JSX.Element;
+};
 
 export type UserTypeForDashboard = {
-      _id: string,
-      name: string
-      role:string
-      email:string
-}
+  _id: string;
+  name: string;
+  role: string;
+  email: string;
+};
 
 export type AssetType = {
-      _id:string
-       name:string,
-          type:string,
-          quantity :number,
-          hr_name:string,
-          hr_email:string,
-          companyName:string,
-          companyLogo:string,
-          date:string,
-          status:string
-}
+  _id: string;
+  name: string;
+  type: string;
+  quantity: number;
+  hr_name: string;
+  hr_email: string;
+  companyName: string;
+  companyLogo: string;
+  date: string;
+  status: string;
+};
 export type AssetRequestType = {
-_id:string
-      assetId: string;
+  _id: string;
+  assetId: string;
   assetName: string;
   assetStatus: string;
   assetType: string;
@@ -52,16 +52,18 @@ _id:string
   requesterRole: string;
   status: string;
   updateDate: string;
-}
+};
 
 export type HrDataType = {
-HR_Name:string
-HR_photo:string
-companyName:string
-company_logo: string
-date_of_birth:string
-email: string
-package: string
-role:string
-_id:string
-}
+  HR_Name: string;
+  HR_photo: string;
+  companyName: string;
+  company_logo: string;
+  date_of_birth: string;
+  email: string;
+  package: string;
+  role: string;
+  _id: string;
+};
+
+

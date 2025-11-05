@@ -7,7 +7,7 @@ import WhyChooseUsNew from "@/SharedComponent/home/WhyChooseUs-new"
 import CTA from "@/SharedComponent/home/CTA-section"
 export const Home = () => {
   return (
-    <div className="">
+    <div>
       {/* <BannerContent /> */}
       <HeroSectionByAI />
       <About />
