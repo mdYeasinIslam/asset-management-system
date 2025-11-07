@@ -10,7 +10,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { IoMdEye } from "react-icons/io";
 import { IoEyeOff } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 type Inputs = {
   exampleRequired: string;
@@ -104,7 +104,7 @@ export const AsEmployee = () => {
               alt="side image"
               className="w-full  hidden lg:flex h-[500px] xl:h-[600px] object-cover rounded-md"
             /> */}
-            <CarouselImg/>
+            <CarouselImg />
             <div className="flex flex-col items-center">
               <img
                 src="/logo-icon.png"
@@ -211,6 +211,15 @@ export const AsEmployee = () => {
             >
               Create profile
             </Button>
+            <div className="text-black flex gap-1">
+              <h1>Already have an account. </h1>
+              <Link
+                to={"/signIn"}
+                className="hover:underline hover:text-sky-600"
+              >
+                Please log in..
+              </Link>
+            </div>
           </form>
         </div>
       </section>

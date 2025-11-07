@@ -35,7 +35,6 @@ export default function StatsSection({ pendingRequest }: IProp) {
   //  const totalApproved = requestedAssets?.filter(
   //   (data: AssetRequestType) => data.status == "approved"
   // );
-console.log(requestedAssets);
   const typeWiseAssets = Object.entries(
     assetsData.reduce((acc: any, item: AssetType) => {
       const type = item.type;

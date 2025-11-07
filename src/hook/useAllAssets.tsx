@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { useAxiosSecure } from "./useAxiosSecure"
 import { useAuth } from "./useAuth"
-import { AssetType } from "@/Type/Types"
+// import { AssetType } from "@/Type/Types"
  
 export const useAllAssets = (value?: string) => {
     const axiosSecure = useAxiosSecure()

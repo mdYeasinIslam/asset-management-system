@@ -14,7 +14,7 @@ import { useAuth } from "@/hook/useAuth";
 import toast from "react-hot-toast";
 import { useAxiosPublic } from "@/hook/useAxiosPublic";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Loader from "@/SharedComponent/Loader";
 import { IoMdEye } from "react-icons/io";
@@ -39,7 +39,7 @@ export const AsHr = () => {
   const { signUpAuth, updateUserAuth } = useAuth();
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
-    const [isShow, setIsShow] = useState(true);
+  const [isShow, setIsShow] = useState(true);
 
   const {
     register,
@@ -54,7 +54,7 @@ export const AsHr = () => {
       const name = data.name;
       const email = data.email?.toLowerCase();
       const password = data.password;
-      const birth = data.birth;
+      // const birth = data.birth;
       const companyName = data.companyName;
       const selectPackage = data.package;
       const companyLogo = { image: data.companyLogo[0] };
@@ -125,7 +125,7 @@ export const AsHr = () => {
               alt="Hr sign up image"
               className="h-[600px] xl:h-[700px]  w-full  hidden lg:flex object-cover object-center xl:rounded-md"
             /> */}
-            <CarouselImg/>
+            <CarouselImg />
             <div className="flex flex-col items-center">
               <img
                 src="/logo-icon.png"
@@ -257,9 +257,23 @@ export const AsHr = () => {
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}
 
-            <Button variant="dark" size={"xl"} className="w-full font-semibold text-lg" type="submit">
+            <Button
+              variant="dark"
+              size={"xl"}
+              className="w-full font-semibold text-lg"
+              type="submit"
+            >
               Create profile
             </Button>
+          <div className="text-black flex gap-1">
+            <h1>Already have an account. </h1>
+            <Link
+              to={"/signIn"}
+              className="hover:underline hover:text-sky-600"
+            >
+             Please log in..
+            </Link>
+          </div>
           </form>
         </div>
       </section>

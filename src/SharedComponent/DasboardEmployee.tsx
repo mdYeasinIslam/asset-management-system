@@ -61,7 +61,7 @@ export const DashboardSidebar = () => {
   }, [user, isAdmin]);
 
   if (isPending || isLoading) {
-    return <SkeletonBar />;
+    return <SkeletonBar />
   }
   return (
     <>

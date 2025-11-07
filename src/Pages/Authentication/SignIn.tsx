@@ -4,7 +4,7 @@ import { useAuth } from "@/hook/useAuth";
 import { useAxiosSecure } from "@/hook/useAxiosSecure";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -42,7 +42,9 @@ export const SignIn = () => {
     const email = dummySignIn?.email
       ? dummySignIn?.email
       : data.email.toLowerCase();
-    const password =dummySignIn.password? dummySignIn?.password: data?.password;
+    const password = dummySignIn.password
+      ? dummySignIn?.password
+      : data?.password;
     signInAuth(email, password)
       .then(async (res) => {
         const response = await axiosSecure.get(
@@ -151,7 +153,7 @@ export const SignIn = () => {
           <p className="font-medium ">
             Welcome back! Please enter your details.
           </p>
-          <div className="max-w-3xl mx-auto flex items-center gap-5">
+          <div className="w-full mx-auto flex items-center gap-5">
             <Button
               variant={"outline"}
               size={"xl"}
@@ -221,6 +223,7 @@ export const SignIn = () => {
               <div className="flex items-center gap-3">
                 <Checkbox
                   id="signInAsHr"
+                  className=" data-[state=checked]:text-white  data-[state=checked]:bg-secondary"
                   checked={dummySignIn.signInAs === "hr"}
                   onClick={() =>
                     setDummySignIn((prev) =>
@@ -239,6 +242,7 @@ export const SignIn = () => {
               <div className="flex items-center gap-3">
                 <Checkbox
                   id="signInAsEmployee"
+                  className=" data-[state=checked]:text-white  data-[state=checked]:bg-secondary"
                   checked={dummySignIn.signInAs === "employee"}
                   onClick={() =>
                     setDummySignIn((prev) =>
@@ -267,7 +271,20 @@ export const SignIn = () => {
               Log In
             </Button>
           </form>
-
+          <div className="text-black">
+            <h1>Don't have any account? Create your own ----</h1>
+            <div className="flex gap-3">
+              <Link
+                to={"/asEmployee"}
+                className="hover:underline hover:text-sky-600"
+              >
+                1. As Employee
+              </Link>
+              <Link to={"/asHr"} className="hover:underline hover:text-sky-600">
+                2. For your company
+              </Link>
+            </div>
+          </div>
           {/* <button
             onClick={google}
             className="w-full bg-[#1F2937] text-white font-medium flex justify-center items-center  rounded-md py-1 "

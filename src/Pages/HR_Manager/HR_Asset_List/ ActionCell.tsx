@@ -57,7 +57,7 @@ const ActionCell = ({ row }: { row: any }) => {
     <div className="text-right">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="h-8 w-8 p-0 ">
+          <Button variant="ghost" className="h-8 w-8 p-0 hover:bg-slate-300">
             <span className="sr-only">Open menu</span>
             <MoreHorizontal />
           </Button>
