@@ -120,8 +120,8 @@ export const DashboardSidebar = () => {
                   to={path}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `block px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200  ${
-                      isActive ? "bg-gray-200 text-black" : ""
+                    `block px-4 py-3 rounded-md text-sm font-medium transition-colors duration-200  ${
+                      isActive ? "bg-[#2563EB] text-white" : ""
                     }`
                   }
                 >
@@ -175,9 +175,8 @@ export const DashboardSidebar = () => {
               </Link>
               <Button
                 onClick={signOut}
-                variant="outline"
                 size="sm"
-                className="w-full justify-start gap-2 bg-transparent"
+                className="w-full hover:bg-[#2563EB] text-[#2563EB]   border border-[#2563EB]  hover:text-white justify-start gap-2 bg-transparent rounded-sm"
               >
                 <LogOut className="w-4 h-4" />
                 Log out

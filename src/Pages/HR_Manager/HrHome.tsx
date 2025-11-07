@@ -1,5 +1,5 @@
 import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset";
-import { AssetRequestType, HrDataType } from "@/Type/Types";
+import { AssetRequestType } from "@/Type/Types";
 import { PendingSection } from "./HomeSections/PendingSection";
 import { useAllAssets } from "@/hook/useAllAssets";
 import { LimitedStockItem } from "./HomeSections/LimitedStockItem";

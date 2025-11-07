@@ -4,7 +4,7 @@ import { useEmployeeList } from "@/hook/useEmployeeList";
 import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import SkeletonBar from "@/SharedComponent/Skeleton";
 import { AssetRequestType, AssetType } from "@/Type/Types";
-import { FaArrowRightLong, FaArrowTrendUp } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { IoMdStopwatch } from "react-icons/io";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -87,15 +87,15 @@ console.log(typeWiseApprovedAsset)
                   ? "0" + assetsData.length
                   : assetsData?.length}
               </h4>
-              <div className="flex items-center gap-1">
+              {/* <div className="flex items-center gap-1">
                 <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
                 <p className="text-[#16A34A]">+12.5%</p>
                 <p className="text-[#6B7280]">vs last period</p>
-              </div>
+              </div> */}
             </div>
 
             {/* stat list */}
-            <div className="border-t border-[#E5E7EB]  space-y-3 ">
+            <div className="border-t border-[#E5E7EB]  space-y-3 pt-2">
               <div className="flex justify-between">
                 <p className="text-[#4B5563]">Total asset type</p>
                 <div className="flex items-center gap-2">
@@ -130,11 +130,11 @@ console.log(typeWiseApprovedAsset)
                   ? "0" + pendingRequest.length
                   : pendingRequest?.length}
               </h4>
-              <div className="flex items-center gap-1">
+              {/* <div className="flex items-center gap-1">
                 <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
                 <p className="text-[#16A34A]">+12.5%</p>
                 <p className="text-[#6B7280]">vs last period</p>
-              </div>
+              </div> */}
             </div>
 
             {/* stat list */}
@@ -173,11 +173,11 @@ console.log(typeWiseApprovedAsset)
                   ? "0" + totalApproved.length
                   : totalApproved?.length}
               </h4>
-              <div className="flex items-center gap-1">
+              {/* <div className="flex items-center gap-1">
                 <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
                 <p className="text-[#16A34A]">+12.5%</p>
                 <p className="text-[#6B7280]">vs last period</p>
-              </div>
+              </div> */}
             </div>
 
             {/* stat list */}
@@ -216,11 +216,11 @@ console.log(typeWiseApprovedAsset)
                   ? "0" + employeeData.length
                   : employeeData?.length}
               </h4>
-              <div className="flex items-center gap-1">
+              {/* <div className="flex items-center gap-1">
                 <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
                 <p className="text-[#16A34A]">+12.5%</p>
                 <p className="text-[#6B7280]">vs last period</p>
-              </div>
+              </div> */}
             </div>
 
             {/* stat list */}
