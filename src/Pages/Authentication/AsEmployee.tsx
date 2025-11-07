@@ -141,9 +141,14 @@ export const AsEmployee = () => {
               />
             </div>
             <div className="flex justify-between items-center gap-5">
-              <div className="grid w-full lg:max-w-sm gap-1.5">
+              <div className="grid w-full lg:max-w-sm gap-1.5 !text-black">
                 <label htmlFor="picture1">Upload Your Photo:</label>
-                <Input id="picture1" {...register("photoURL")} type="file" />
+                <Input
+                  id="picture1"
+                  {...register("photoURL")}
+                  type="file"
+                  className="file:text-black"
+                />
               </div>
 
               <div className="w-full flex flex-col gap-1 ">
@@ -204,7 +209,7 @@ export const AsEmployee = () => {
             {errors.exampleRequired && <span>This field is required</span>}
 
             <Button
-              variant="dark"
+              variant="outline"
               size={"lg"}
               className="w-full hover:bg-[#2563EB] bg-white hover:text-white text-black hove:text-white border border-[#2563EB] font-semibold text-lg"
               type="submit"
@@ -215,7 +220,7 @@ export const AsEmployee = () => {
               <h1>Already have an account. </h1>
               <Link
                 to={"/signIn"}
-                className="hover:underline hover:text-sky-600"
+                className="hover:underline hover:text-sky-600 underline"
               >
                 Please log in..
               </Link>

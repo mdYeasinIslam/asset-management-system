@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { TopRequestDisplay } from "./TopRequestDisplay";
 import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import { CgArrowTopRightR } from "react-icons/cg";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const TopRequests = ({
   requestedAssets,
@@ -22,7 +24,6 @@ export const TopRequests = ({
     const duplicateItems = requestedAssets?.filter(
       (item) => grouped[item.assetId] > 1
     );
-
     // Remove duplicates, keep only one item per assetId
     const uniqueDuplicateItems: any = Object.values(
       duplicateItems?.reduce((acc: any, item) => {
@@ -32,6 +33,7 @@ export const TopRequests = ({
         return acc;
       }, {})
     );
+
     setDuplicates(uniqueDuplicateItems);
   }, []);
   // const contentPending = (
@@ -50,13 +52,26 @@ export const TopRequests = ({
           icon={<CgArrowTopRightR className="w-7 h-7 text-blue-700" />}
         />
         <div
-          className={`grid grid-cols-1 md:grid-cols-2  gap-2 ${
-            duplicates?.length > 2 && "lg:grid-cols-3 xl:grid-cols-4"
+          className={`grid grid-cols-1  md:grid-cols-2  gap-2 ${
+            duplicates?.length == 2 && "lg:grid-cols-2"
+          } ${duplicates?.length == 3 && "lg:grid-cols-3"} ${
+            duplicates?.length >= 4 && "lg:grid-cols-4"
           }`}
         >
           {duplicates.map((asset) => (
             <TopRequestDisplay key={asset?._id} asset={asset} />
           ))}
+        </div>
+        <div className="w-full flex justify-center">
+          <Link to={"/admin/allRequest"}>
+            <Button
+              type="button"
+              variant={"outline"}
+              className="hover:bg-[#2563EB] border-2 border-[#2563EB]"
+            >
+              View More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

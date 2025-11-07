@@ -190,9 +190,9 @@ export const AsHr = () => {
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <label htmlFor="picture" className="capitalize font-semibold">
                 <span className="text-red-800">*</span>
-                Upload complany logo image:
+                Upload company logo image:
               </label>
-              <Input id="picture" {...register("companyLogo")} type="file" />
+              <Input id="picture" {...register("companyLogo")} type="file" className="file:text-black" />
             </div>
 
             <div className="flex flex-col gap-1 ">
@@ -267,7 +267,7 @@ export const AsHr = () => {
             {errors.exampleRequired && <span>This field is required</span>}
 
             <Button
-              variant="dark"
+              variant="outline"
               size={"lg"}
               className="w-full hover:bg-[#2563EB] bg-white hover:text-white text-black hove:text-white border border-[#2563EB] font-semibold text-lg"
               type="submit"

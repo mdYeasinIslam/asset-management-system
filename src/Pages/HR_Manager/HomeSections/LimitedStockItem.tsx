@@ -1,11 +1,13 @@
 import { AssetType } from "@/Type/Types";
 import { LimitedItemDisplay } from "./LimitedItemDisplay";
 import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
-import { AiOutlineStock } from "react-icons/ai";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { IoIosTrendingDown } from "react-icons/io";
 
 const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
   const limitedItems = assetData
-    ?.filter((asset) => asset.quantity <5)
+    ?.filter((asset) => asset.quantity <5 && asset.quantity >0)
     .sort((a, b) => a.quantity - b.quantity);
   // const contentPending = (
   //   <div className="flex flex-col items-center">
@@ -24,12 +26,12 @@ const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
         {/* <CommonHeading content={contentPending} /> */}
         <SectionHeader
           title="Limited Stock Asset Items"
-          icon={<AiOutlineStock className="w-7 h-7 text-blue-700" />}
+          icon={<IoIosTrendingDown className="w-7 h-7 text-red-500" />}
         />
         <div
-          className={`grid grid-cols-1 ${
-            limitedItems?.length >4 ? " md:grid-cols-3 2xl:grid-cols-4" : "md:grid-cols-3"
-          }  gap-5 `}
+          className={`grid grid-cols-1 md:grid-cols-2  gap-5  ${
+            limitedItems?.length == 2 && "lg:grid-cols-2"
+          } ${limitedItems?.length >= 3 && "lg:grid-cols-3"}  `}
         >
           {limitedItems.length > 0 &&
             limitedItems
@@ -37,6 +39,17 @@ const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
               ?.map((asset) => (
                 <LimitedItemDisplay key={asset._id} asset={asset} />
               ))}
+        </div>
+        <div className="w-full flex justify-center">
+          <Link to={"/admin/assetList"}>
+            <Button
+              type="button"
+              variant={"outline"}
+              className="hover:bg-[#2563EB] border-2 border-[#2563EB]"
+            >
+              View More
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

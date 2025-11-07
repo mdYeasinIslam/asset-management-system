@@ -9,6 +9,8 @@ import SkeletonBar from "@/SharedComponent/Skeleton";
 import StatsSection from "./HomeSections/StatsSection";
 import EventSection from "../Employee/EmployeeHome/EventSection/EventSection";
 import LimitedStockItem from "./HomeSections/LimitedStockItem";
+import OutOfStock from "./HomeSections/OutOfStock";
+import AssetUsageBarChart from "./HomeSections/AssetUsageBarChart";
 
 export const HrHome = () => {
   const [requestedAssets, isPending] = useAllRequestedAsset();
@@ -26,8 +28,12 @@ export const HrHome = () => {
       <StatsSection pendingRequest={pendingRequest} />
       <PendingSection pendingRequest={pendingRequest} />
       {assetsData?.length > 0 && <LimitedStockItem assetData={assetsData} />}
+      <OutOfStock assetData={assetsData} />
       <TopRequests requestedAssets={requestedAssets} />
-      <PieChart requestedAssets={requestedAssets} />
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        <PieChart requestedAssets={requestedAssets} />
+        <AssetUsageBarChart assetsData={assetsData} />
+      </div>
       <EventSection />
       <NoticeSection />
       {/* <Footer /> */}
