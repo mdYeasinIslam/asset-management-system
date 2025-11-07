@@ -20,16 +20,20 @@ const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
   // );
   return (
     <section>
-      <div className="space-y-5 w-full bg-white p-6 " >
+      <div className="space-y-5 w-full bg-white p-6 ">
         {/* <CommonHeading content={contentPending} /> */}
         <SectionHeader
           title="Limited Stock Asset Items"
           icon={<AiOutlineStock className="w-7 h-7 text-blue-700" />}
         />
-        <div className={`grid grid-cols-3 gap-5 `}>
-          {limitedItems &&
+        <div
+          className={`grid grid-cols-1 ${
+            limitedItems?.length >4 ? " md:grid-cols-3 2xl:grid-cols-4" : "md:grid-cols-3"
+          }  gap-5 `}
+        >
+          {limitedItems.length > 0 &&
             limitedItems
-              .slice(0, 3)
+              .slice(0, 6)
               ?.map((asset) => (
                 <LimitedItemDisplay key={asset._id} asset={asset} />
               ))}

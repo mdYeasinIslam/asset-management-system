@@ -46,7 +46,7 @@ export const TopRequests = ({
       <div className="space-y-5 ">
         {/* <CommonHeading content={contentPending} /> */}
         <SectionHeader
-          title="Most Request"
+          title="Top Requested Assets"
           icon={<CgArrowTopRightR className="w-7 h-7 text-blue-700" />}
         />
         <div

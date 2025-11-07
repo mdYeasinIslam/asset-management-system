@@ -6,7 +6,7 @@ export const DisplayPendingRequest = ({
   request: AssetRequestType;
 }) => {
   return (
-    <div className="bg-white border border-[#EFF6FF] dark:bg-slate-700 dark:text-white shadow-md rounded-lg p-4 flex flex-col">
+    <div className="bg-[#EFF6FF] border border-[#BFDBFE] dark:bg-slate-700 dark:text-white  rounded-lg p-4 flex flex-col">
       <div className="flex items-center space-x-4 mb-4">
         <img
           src={request.company_logo}
@@ -39,7 +39,12 @@ export const DisplayPendingRequest = ({
         </p>
         <p className="text-sm flex justify-between text-slate-700 font-medium  dark:text-gray-200">
           <span className="font-bold">Notes:</span>
-          <button title={request.notes} className="border border-blue-400 rounded-xl px-2 text-blue-500 hover:underline hover:text-blue-700 hover:border-blue-700">Touch me</button>
+          <button
+            title={request.notes}
+            className="border border-blue-400 rounded-xl px-2 text-blue-500 hover:underline hover:text-blue-700 hover:border-blue-700"
+          >
+            Touch me
+          </button>
         </p>
       </div>
       {/* <div className="mt-4">

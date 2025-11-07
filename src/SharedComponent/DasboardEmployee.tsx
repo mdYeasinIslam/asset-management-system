@@ -64,17 +64,17 @@ export const DashboardSidebar = () => {
     return <SkeletonBar />
   }
   return (
-    <aside className=" lg:fixed lg:h-screen lg:w-[23%] xl:w-[15%] ">
+    <aside className="relative lg:fixed lg:h-screen lg:w-[23%] xl:w-[15%] ">
       {/* Mobile Menu Toggle */}
-      <div className="lg:hidden fixed  top-4 left-4 z-50">
+      <div className="  absolute top-4 right-4 z-50">
         <button
           onClick={() => setOpen(!open)}
-          className={`p-2 rounded-lg ${
-            dark ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+          className={`lg:hidden p-1 rounded-sm ${
+            dark ? "bg-gray-800 text-white" : "hover:bg-sky-100  text-black"
           } shadow-lg border`}
         >
           {open ? (
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 text-white md:text-black md hover:text-black" />
           ) : (
             <AlignJustify className="w-5 h-5" />
           )}
@@ -83,7 +83,7 @@ export const DashboardSidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed lg:static  h-full   ${
+        className={`fixed lg:static h-full   ${
           dark ? "bg-slate-800 text-white" : "bg-white text-gray-800"
         } border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 z-40 ${
           open ? "translate-x-0" : "-translate-x-full"
@@ -92,7 +92,7 @@ export const DashboardSidebar = () => {
         {/* Logo Section */}
         <div className="p-6 border-b border-slate-200 dark:border-gray-700">
           <Link
-            className="flex items-center gap-3"
+            className="flex flex-col items-center gap-3"
             to={
               role
                 ? role === "Admin"
@@ -103,11 +103,11 @@ export const DashboardSidebar = () => {
             onClick={() => setOpen(false)}
           >
             <img
-              className="w-10 rounded-xl"
+              className="w-7 h-7 rounded-xl"
               src="/defaultLogo2.png"
               alt="Logo"
             />
-            <p className="font-semibold text-xl">AssetPulse</p>
+            <p className="font-semibold text-lg">AssetPulse</p>
           </Link>
         </div>
 

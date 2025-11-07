@@ -66,13 +66,10 @@ export const SecondNavbar = () => {
 
   // Determine Navigation Menu
   const navItems = useMemo(() => {
-    if (!user) return paths.guest;
-    const pathName = location.pathname;
-    
+    if (!user) return paths.guest;    
     return isAdmin ? paths.admin : paths.employee;
   }, [user, isAdmin]);
   
-  console.log(pathName);
   if (isPending || isLoading) {
     return (
       <div className="flex h-screen flex-col items-center justify-center gap-2 mt-10">

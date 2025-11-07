@@ -2,7 +2,7 @@ import { AssetType } from "@/Type/Types";
 
 export const LimitedItemDisplay = ({ asset }: { asset: AssetType }) => {
   return (
-    <div className=" bg-sky-50 dark:bg-slate-900 shadow-md rounded-lg p-4">
+    <div className=" bg-[#EFF6FF] dark:bg-slate-900  rounded-lg p-4 border border-[#BFDBFE]">
       <div className=" flex flex-col">
         <div className="flex items-center space-x-4 mb-4">
           <img
@@ -23,7 +23,8 @@ export const LimitedItemDisplay = ({ asset }: { asset: AssetType }) => {
             <span className="font-medium text-gray-700">{asset?.status}</span>
           </p>
           <p className="text-sm  dark:text-gray-200 flex justify-between">
-            <span className="font-bold">Type:</span> <span className="font-medium text-gray-700">{asset?.type}</span>
+            <span className="font-bold">Type:</span>{" "}
+            <span className="font-medium text-gray-700">{asset?.type}</span>
           </p>
           <p className="text-sm  dark:text-gray-200 flex justify-between">
             <span className="font-bold">Quantity:</span>

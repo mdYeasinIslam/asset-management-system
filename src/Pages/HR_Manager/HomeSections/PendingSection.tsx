@@ -22,7 +22,7 @@ export const PendingSection = ({
   //   </div>
   // );
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 bg-white p-6">
       {/* <CommonHeading content={contentPending} /> */}
       <SectionHeader
         title=" Pending Asset Requests"

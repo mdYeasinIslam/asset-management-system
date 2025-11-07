@@ -21,7 +21,7 @@ export const HrHome = () => {
     return <SkeletonBar />;
   }
   return (
-    <div className=" lg:py-8 bg-[#F4F8FD] dark:text-white space-y-16 px-3 lg:px-0 lg:pr-5">
+    <div className=" lg:py-8 bg-[#F4F8FD] dark:text-white space-y-10 pr-0 lg:pr-5">
       {/* <HrPagesHeading page="Overview : " /> */}
       <StatsSection pendingRequest={pendingRequest} />
       <PendingSection pendingRequest={pendingRequest} />
