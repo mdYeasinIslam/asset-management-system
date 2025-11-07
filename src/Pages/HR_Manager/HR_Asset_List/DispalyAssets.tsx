@@ -105,7 +105,7 @@ export function DisplayAssets() {
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
+    // getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
@@ -149,7 +149,7 @@ export function DisplayAssets() {
     return <SkeletonBar/>
   }
   return (
-    <div className=" dark:text-white  w-full">
+    <div className=" dark:text-white   w-full">
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
         <Input
           placeholder="Search by name..."

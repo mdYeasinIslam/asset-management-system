@@ -6,14 +6,13 @@ export const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
   const limitedItems = assetData
     ?.filter((asset) => asset.quantity < 10)
     .sort((a, b) => a.quantity - b.quantity);
-
   const contentPending = (
     <div className="flex flex-col items-center">
       <h1 className="text-2xl uppercase font-medium leading-tight">
         Limited Stock Asset Items
       </h1>
       <p className="text-gray-800">
-        Find assets as your choice and neccesity. And use them carefully ,may be
+        Find assets as your choice and neccessity. And use them carefully ,may be
         you need to return it to the company.
       </p>
     </div>
@@ -26,7 +25,7 @@ export const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
           assetData.length > 2 && "lg:grid-cols-3 xl:grid-cols-4"
         }`}
       >
-        {limitedItems?.map((asset) => (
+        {limitedItems && limitedItems?.map((asset) => (
           <LimitedItemDisplay key={asset._id} asset={asset} />
         ))}
       </div>

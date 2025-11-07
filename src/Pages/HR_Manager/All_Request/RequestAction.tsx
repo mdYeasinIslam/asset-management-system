@@ -37,32 +37,42 @@ export const RequestAction = ({row}:{row:any}) => {
       refetch()
     }
   }
+
+  const handleDelete = async() => {
+    const res = await axiosSecure.delete(
+      `/employee/assetRequest/${row.original?._id}`
+    );
+    console.log(res)
+    if (res.data?.update.acknowledged) {
+      toast.success(`Request is ${res.data?.value}`);
+      refetch();
+    }
+  }
   if (isPending) {
     return <div>loading.............</div>
   }
   return (
     <div className="text-right">
-       <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-          <Button variant="action"  disabled={disable=='rejected' && true}>
-          <GitPullRequestClosed className="text-black dark:text-white"/>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="action" >
+            <GitPullRequestClosed className="text-black dark:text-white" />
           </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" >
-        <DropdownMenuLabel>Request Status</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-            onClick={()=>handleAction('approved')}
-        >
-          Approved
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-             onClick={()=>handleAction('rejected')}
-        >
-          Rejected
-        </DropdownMenuCheckboxItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <DropdownMenuLabel>Request Status</DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuCheckboxItem onClick={() => handleAction("approved")}>
+            Approved
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem onClick={() => handleAction("rejected")}>
+            Rejected
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem  color="red" onClick={handleDelete} className="hover:bg-red-600!">
+            Delete
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
-  )
+  );
 }

@@ -10,9 +10,8 @@ export const EmployeeList = () => {
     return  <SkeletonBar/>
   }
   return (
-    <div className="py-10 h-full lg:h-[100vh]">
-      
+    <div className="py-10 h-full lg:h-[100vh] bg-[#F4F8FD]">
       <EmployeeListDisplay employeeInfo={employeeData} isPending={isPending} />
     </div>
-  )
+  );
 }

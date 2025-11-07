@@ -39,14 +39,21 @@ export const CheckoutForm = () => {
         }
     }
   return (
-      <div>
-          <form onSubmit={handleSubmit}>
-              <PaymentElement />
-              <div className="pb-10 pt-5 text-center" >    
-              <Button variant="outline" className="w-full"  type="submit" disabled={!stripe || !elements}>Pay</Button>
-              </div>
-              {errorMessage && <div>{errorMessage}</div>}
-          </form>
+    <div className="bg-[#F4F8FD]">
+      <form onSubmit={handleSubmit}>
+        <PaymentElement />
+        <div className="pb-10 pt-5 text-center">
+          <Button
+            variant="outline"
+            className="w-full"
+            type="submit"
+            disabled={!stripe || !elements}
+          >
+            Pay
+          </Button>
+        </div>
+        {errorMessage && <div>{errorMessage}</div>}
+      </form>
     </div>
-  )
+  );
 }

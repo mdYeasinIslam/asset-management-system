@@ -145,7 +145,7 @@ export const SignIn = () => {
               AssetPulse
             </h1>
           </div>
-          <h1 className="dark:text-white  text-2xl md:text-4xl font-semibold ">
+          <h1 className="dark:text-black  text-2xl md:text-4xl font-semibold ">
             Log in
           </h1>
           <p className="font-medium ">

@@ -17,13 +17,12 @@ const options :StripeElementsOptionsMode = {
   },
 };
   return (
-      <div className='my-10 container mx-auto'>
-         
-          <div>
-              <Elements stripe={stripePromise} options={options}>
-                  <CheckoutForm/>
-              </Elements>
-          </div>
+    <div className="my-10 container mx-auto bg-[#F4F8FD]">
+      <div>
+        <Elements stripe={stripePromise} options={options}>
+          <CheckoutForm />
+        </Elements>
+      </div>
     </div>
-  )
+  );
 }
