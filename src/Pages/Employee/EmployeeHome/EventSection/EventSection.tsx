@@ -1,4 +1,5 @@
-import { CommonHeading } from "@/SharedComponent/CommonHeading";
+import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
+import { MdEventAvailable } from "react-icons/md";
 
 interface Event {
   id: string;
@@ -39,24 +40,28 @@ const events: Event[] = [
   },
 ];
  const EventSection = () => {
-  const contentEvent = (
-    <div className="flex flex-col items-center ">
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 dark:text-white">
-        Upcoming Events
-      </h1>
-    </div>
-  );
+  // const contentEvent = (
+  //   <div className="flex flex-col items-center ">
+  //     <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 dark:text-white">
+  //       Upcoming Events
+  //     </h1>
+  //   </div>
+  // );
   return (
-    <section className="  dark:bg-slate-700  rounded-xl py-5 ">
-      <CommonHeading content={contentEvent} />
-      <div className="container mx-auto px-4">
+    <section className="  dark:bg-slate-700  rounded-lg shadow-md p-6 space-y-4 bg-white  ">
+      {/* <CommonHeading content={contentEvent} /> */}
+      <SectionHeader
+        title="Upcoming Events"
+        icon={<MdEventAvailable className="w-5 h-5" />}
+      />
+      <div className="container mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
           {events.map((event) => (
             <div
               key={event.id}
-              className="bg-white dark:bg-slate-900 shadow-lg rounded-lg overflow-hidden"
+              className="bg-[#EFF6FF] dark:bg-slate-900 shadow-lg rounded-lg overflow-hidden"
             >
-              <div className="p-4 border-b">
+              <div className="p-4 border-b-2 border-slate-300">
                 <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
                   {event.title}
                 </h2>

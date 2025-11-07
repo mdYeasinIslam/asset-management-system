@@ -203,10 +203,10 @@ export default function StatsSection({ pendingRequest }: IProp) {
           </div>
           {/* All Employee stats */}
 
-          <div className="w-full bg-[#FEF2F2] border border-[#BFDBFE] rounded-lg p-5 ">
+          <div className="w-full bg-[#FEF2F2] border border-[#FECACA] rounded-lg p-5 ">
             <div className="pb-4">
               <div className="flex items-center gap-1">
-                <GrUserWorker className="w-5 h-5 text-[#2563EB] " />
+                <GrUserWorker className="w-5 h-5 text-[#e28c8c] " />
                 <h2 className="text-lg font-semibold text-[#4B5563]">
                   Total Employee
                 </h2>
