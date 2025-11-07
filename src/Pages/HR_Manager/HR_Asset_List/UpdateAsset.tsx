@@ -124,7 +124,7 @@ const UpdateAsset = ({ assetInfo, setOpen, refetch }: Prop) => {
           <div className="md:flex gap-2">
             <Select onValueChange={(value) => setValue("productType", value)}>
               <SelectTrigger className="h-[50px] text-lg">
-                <SelectValue placeholder={assetInfo?.type} />
+                <SelectValue placeholder={assetInfo?.type} className="border !border-blue-600 focus:ring-0  focus:ring-blue-500"/>
               </SelectTrigger>
               <SelectContent {...register("productType")} className="w-[300px]">
                 <SelectGroup>
@@ -133,25 +133,25 @@ const UpdateAsset = ({ assetInfo, setOpen, refetch }: Prop) => {
                   </SelectLabel>
                   <SelectItem
                     value="Electronics"
-                    className="h-[50px] text-lg px-4 "
+                    className="h-[50px] text-lg px-6 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
                   >
                     Electronics
                   </SelectItem>
                   <SelectItem
                     value="Furniture"
-                    className="h-[50px] text-lg px-4"
+                    className="h-[50px] text-lg px-6 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
                   >
                     Furniture
                   </SelectItem>
                   <SelectItem
                     value="Stationery"
-                    className="h-[50px] text-lg px-4"
+                    className="h-[50px] text-lg px-6 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
                   >
                     Stationery
                   </SelectItem>
                   <SelectItem
                     value="Software"
-                    className="h-[50px] text-lg px-4"
+                    className="h-[50px] text-lg px-6 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
                   >
                     Software
                   </SelectItem>
@@ -172,13 +172,13 @@ const UpdateAsset = ({ assetInfo, setOpen, refetch }: Prop) => {
                   </SelectLabel>
                   <SelectItem
                     value="Returnable"
-                    className="h-[50px] text-lg px-4 "
+                    className="h-[50px] text-lg px-6 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white "
                   >
                     Returnable
                   </SelectItem>
                   <SelectItem
                     value="Non-returnable"
-                    className="h-[50px] text-lg px-4"
+                    className="h-[50px] text-lg px-6 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
                   >
                     Non returnable
                   </SelectItem>
@@ -189,12 +189,17 @@ const UpdateAsset = ({ assetInfo, setOpen, refetch }: Prop) => {
 
           {errors.exampleRequired && <span>This field is required</span>}
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <Button
+              type="submit"
+              className="bg-white text-black hover:text-white border border-blue-500 hover:bg-[var(--bg-primary-color)]"
+            >
+              Save changes
+            </Button>
             <DialogClose asChild>
               <Button
                 onClick={() => setOpen(false)}
                 type="button"
-                className="bg-gray-500"
+                className="bg-black text-white hover:bg-[var(--bg-primary-color)]"
               >
                 {" "}
                 Close{" "}

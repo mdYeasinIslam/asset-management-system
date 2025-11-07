@@ -150,7 +150,7 @@ export function DisplayAssets() {
     return <SkeletonBar />;
   }
   return (
-    <div className="bg-white dark:text-white   w-full py-20">
+    <div className="bg-white dark:text-white   w-full">
       <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
         <Input
           placeholder="Search by name..."
@@ -166,13 +166,13 @@ export function DisplayAssets() {
               onValueChange={(value) => handleFilterChange(value)}
               // value={selectedType ??''}
             >
-              <SelectTrigger className="max-w-xs">
+              <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
                 <span>{selectedType || "Filter by Type"}</span>
               </SelectTrigger>
               <SelectContent>
                 {types.map((type, idx) => (
                   <SelectItem
-                    className="bg-white hover:bg-primary hover:text-white"
+                    className="bg-white hover:bg-[#2563EB] hover:text-white"
                     key={idx}
                     value={type}
                   >
@@ -182,7 +182,7 @@ export function DisplayAssets() {
                 {selectedType && (
                   <Button
                     onClick={clearFilter}
-                    className="bg-white text-black hover:bg-primary hover:text-white w-full"
+                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
                   >
                     Show all
                   </Button>
@@ -196,20 +196,20 @@ export function DisplayAssets() {
               onValueChange={(value) => handleFilterChange(value)}
               // value={selectedType ??''}
             >
-              <SelectTrigger className="max-w-lg md:max-w-xs">
-                <span> Filter by Stock</span>
+              <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
+                <span>Filter by Stock</span>
               </SelectTrigger>
               <SelectContent>
                 <div className="flex flex-col gap-2">
                   <Button
                     onClick={() => handleQuantityFilter("available")}
-                    className="bg-white text-black hover:bg-primary hover:text-white w-full"
+                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
                   >
                     Available
                   </Button>
                   <Button
                     onClick={() => handleQuantityFilter("outOfStock")}
-                    className="bg-white text-black hover:bg-primary hover:text-white w-full"
+                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
                   >
                     Out of stock
                   </Button>
@@ -217,7 +217,7 @@ export function DisplayAssets() {
                     onClick={() =>
                       table.getColumn("quantity")?.setFilterValue("")
                     }
-                    className="bg-white text-black hover:bg-primary hover:text-white w-full"
+                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
                   >
                     Show all
                   </Button>
@@ -228,22 +228,22 @@ export function DisplayAssets() {
           {/* -----------sorting by quantity---------------------------- */}
           <div>
             <Select onValueChange={(value) => handleFilterChange(value)}>
-              <SelectTrigger className="max-w-xs">
-                <span> "Sorting"</span>
+              <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
+                <span> Sorting</span>
               </SelectTrigger>
               <SelectContent>
                 <div className="flex flex-col gap-2">
                   <Button
                     onClick={() => handleSort("asc")}
                     variant="outline"
-                    className="capitalize"
+                    className="capitalize hover:bg-[#2563EB]"
                   >
                     Sort by Quantity (Ascending)
                   </Button>
                   <Button
                     onClick={() => handleSort("desc")}
                     variant="outline"
-                    className="capitalize"
+                    className="capitalize hover:bg-[#2563EB]"
                   >
                     Sort by Quantity (Descending)
                   </Button>

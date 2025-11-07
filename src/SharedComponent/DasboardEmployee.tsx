@@ -45,8 +45,8 @@ export const DashboardSidebar = () => {
     ],
     admin: [
       { path: "/admin/dashboard", label: "Overview" },
-      { path: "/admin/assetList", label: "Asset List" },
       { path: "/admin/addAsset", label: "Add Asset" },
+      { path: "/admin/assetList", label: "Asset List" },
       { path: "/admin/allRequest", label: "All Requests" },
       { path: "/admin/employeeList", label: "Employee List" },
       { path: "/admin/addEmployee", label: "Add Employee" },
@@ -96,7 +96,7 @@ export const DashboardSidebar = () => {
             to={
               role
                 ? role === "Admin"
-                  ? "/admin/hrHome"
+                  ? "/admin/dashboard"
                   : "/employee/eHome"
                 : "/"
             }

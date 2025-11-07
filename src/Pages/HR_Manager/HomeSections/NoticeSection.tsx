@@ -1,4 +1,8 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
+import { IoNotifications } from "react-icons/io5";
+import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 
 interface Notice {
   id: number;
@@ -31,33 +35,73 @@ const notices: Notice[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 60, damping: 12 },
+  },
+};
+
 const NoticeSection: React.FC = () => {
   return (
-    <div className=" dark:bg-slate-700 p-6 rounded-lg shadow-md max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4 text-center">
-        Company Notices
-      </h2>
+    <motion.div
+      className="bg-white dark:bg-slate-700 p-5 rounded-lg space-y-5 shadow-sm"
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
+      <SectionHeader
+        title="Notices for this month"
+        icon={<IoNotifications className="w-5 h-5 text-blue-500" />}
+      />
+
       {notices.length === 0 ? (
-        <p className="text-gray-600 dark:text-white text-center">No notices to display.</p>
+        <motion.p
+          className="text-gray-600 dark:text-white text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
+          No notices to display.
+        </motion.p>
       ) : (
-        <ul className="space-y-4">
+        <motion.ul
+          className="space-y-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {notices.map((notice) => (
-            <li
+            <motion.li
               key={notice.id}
-              className="bg-white dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-gray-200"
+              variants={cardVariants}
+              whileHover={{ scale: 1.02 }}
+              className="bg-white dark:bg-slate-900 p-4 rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 transition-transform"
             >
               <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
                 {notice.title}
               </h3>
-              <p className="text-gray-600 dark:text-white mt-1">{notice.description}</p>
-              <p className="text-sm text-gray-500 dark:text-white mt-2">
+              <p className="text-gray-600 dark:text-gray-300 mt-1">
+                {notice.description}
+              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
                 Posted on: {new Date(notice.date).toLocaleDateString()}
               </p>
-            </li>
+            </motion.li>
           ))}
-        </ul>
+        </motion.ul>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -62,12 +62,12 @@ const ActionCell = ({ row }: { row: any }) => {
             <MoreHorizontal />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
+        <DropdownMenuContent align="end" className="bg-white">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <div className="flex flex-col gap-1 ">
             <Button
               onClick={() => handleDelete(row.original._id)}
-              className="font-medium hover:bg-[#1F2937] hover:text-white"
+              className="font-medium hover:bg-[var(--bg-primary-color)] hover:text-white"
               variant={"outline"}
             >
               <span className="hover:text-white">Delete</span>{" "}
@@ -78,7 +78,7 @@ const ActionCell = ({ row }: { row: any }) => {
                 <Button
                   onClick={() => modalOpen(true)}
                   variant="outline"
-                  className="hover:bg-[#1F2937] hover:text-white"
+                  className="hover:bg-[var(--bg-primary-color)] hover:text-white"
                 >
                   <span>Update</span> <PencilLine className="text-primary" />
                 </Button>

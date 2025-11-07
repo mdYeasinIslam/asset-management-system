@@ -23,6 +23,8 @@
     --input: 220 13% 91%;
     --ring: 300 100% 31%;
     --radius: 0.75rem;
+
+    --bg-primary-color:#2563EB
   }
 
   .dark {

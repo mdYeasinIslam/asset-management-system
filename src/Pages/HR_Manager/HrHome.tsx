@@ -11,6 +11,7 @@ import EventSection from "../Employee/EmployeeHome/EventSection/EventSection";
 import LimitedStockItem from "./HomeSections/LimitedStockItem";
 import OutOfStock from "./HomeSections/OutOfStock";
 import AssetUsageBarChart from "./HomeSections/AssetUsageBarChart";
+import CompanyFooter from "@/SharedComponent/dashboard/CompanyFooter";
 
 export const HrHome = () => {
   const [requestedAssets, isPending] = useAllRequestedAsset();
@@ -37,6 +38,8 @@ export const HrHome = () => {
       </div>
       <EventSection />
       <NoticeSection />
+
+      <CompanyFooter/>
       {/* <Footer /> */}
     </div>
   );
