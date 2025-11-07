@@ -3,9 +3,9 @@ import { LimitedItemDisplay } from "./LimitedItemDisplay";
 import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import { AiOutlineStock } from "react-icons/ai";
 
-const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
+const HugeStock = ({ assetData }: { assetData: AssetType[] }) => {
   const limitedItems = assetData
-    ?.filter((asset) => asset.quantity <5)
+    ?.filter((asset) => asset.quantity < 10)
     .sort((a, b) => a.quantity - b.quantity);
   // const contentPending = (
   //   <div className="flex flex-col items-center">
@@ -19,23 +19,23 @@ const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
   //   </div>
   // );
   return (
-    <section>
-      <div className="space-y-5 w-full bg-white p-6 " >
-        {/* <CommonHeading content={contentPending} /> */}
-        <SectionHeader
-          title="Limited Stock Asset Items"
-          icon={<AiOutlineStock className="w-7 h-7 text-blue-700" />}
-        />
-        <div className={`grid grid-cols-3 gap-5 `}>
-          {limitedItems &&
-            limitedItems
-              .slice(0, 3)
-              ?.map((asset) => (
-                <LimitedItemDisplay key={asset._id} asset={asset} />
-              ))}
-        </div>
+    <div className="space-y-5">
+      {/* <CommonHeading content={contentPending} /> */}
+      <SectionHeader
+        title="Limited Stock Asset Items"
+        icon={<AiOutlineStock className="w-7 h-7 text-blue-700" />}
+      />
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2  gap-2 ${
+          assetData.length > 2 && "lg:grid-cols-3 xl:grid-cols-4"
+        }`}
+      >
+        {limitedItems &&
+          limitedItems?.map((asset) => (
+            <LimitedItemDisplay key={asset._id} asset={asset} />
+          ))}
       </div>
-    </section>
+    </div>
   );
 };
-export default LimitedStockItem;
+export default HugeStock;

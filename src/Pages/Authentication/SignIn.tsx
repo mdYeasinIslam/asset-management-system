@@ -136,7 +136,7 @@ export const SignIn = () => {
             </h1>
           </div>
         </div>
-        <div className=" max-w-xl  w-full mx-auto  space-y-3 flex flex-col    lg:justify-center  h-full px-5">
+        <div className=" max-w-xl  w-full mx-auto  space-y-3 flex flex-col    lg:justify-center  h-full px-5 gap-3">
           <div className="flex  items-center justify-center">
             <img
               src="/logo-icon.png"
@@ -147,18 +147,20 @@ export const SignIn = () => {
               AssetPulse
             </h1>
           </div>
-          <h1 className="dark:text-black  text-2xl md:text-4xl font-semibold ">
-            Log in
-          </h1>
-          <p className="font-medium ">
-            Welcome back! Please enter your details.
-          </p>
+          <div>
+            <h1 className="dark:text-black  text-2xl md:text-4xl font-semibold mb-0!">
+              Log in
+            </h1>
+            <p className="font-medium !mt-0">
+              Welcome back! Please enter your details.
+            </p>
+          </div>
           <div className="w-full mx-auto flex items-center gap-5">
             <Button
               variant={"outline"}
               size={"xl"}
               onClick={google}
-              className="max-w-xl w-full bg-white text-black text-sm md:text-lg font-medium border border-[#EAEBEB] "
+              className="max-w-xl w-full bg-white hover:bg-blue-100 hover:text-black text-black text-sm md:text-lg font-medium border border-black hover:border-[#2563EB]"
             >
               <FcGoogle className=" !w-8 !h-8 " /> <span> Google</span>{" "}
             </Button>
@@ -166,7 +168,7 @@ export const SignIn = () => {
               variant={"outline"}
               size={"xl"}
               onClick={google}
-              className="max-w-xl w-full bg-white text-black text-sm md:text-lg font-medium border border-[#EAEBEB] "
+              className="max-w-xl w-full bg-white hover:bg-blue-100 hover:text-black  text-black text-sm md:text-lg font-medium border border-black hover:border-[#2563EB] "
             >
               <FaFacebook className=" text-blue-600 !w-8 !h-8 " />{" "}
               <span> Facebook</span>{" "}
@@ -219,7 +221,7 @@ export const SignIn = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               <div className="flex items-center gap-3">
                 <Checkbox
                   id="signInAsHr"
@@ -237,7 +239,9 @@ export const SignIn = () => {
                     )
                   }
                 />
-                <Label htmlFor="signInAsHr">Sign in as Hr</Label>
+                <Label htmlFor="signInAsHr" className="cursor-pointer">
+                  Sign in as Hr
+                </Label>
               </div>
               <div className="flex items-center gap-3">
                 <Checkbox
@@ -256,16 +260,18 @@ export const SignIn = () => {
                     )
                   }
                 />
-                <Label htmlFor="signInAsEmployee">Sign in as Employee</Label>
+                <Label htmlFor="signInAsEmployee" className="cursor-pointer">
+                  Sign in as Employee
+                </Label>
               </div>
             </div>
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}
 
             <Button
-              size={"xl"}
+              size="lg"
               variant="outline"
-              className="w-full bg-black text-white font-semibold text-lg"
+              className="w-full hover:bg-[#2563EB] bg-white text-black hove:text-white border border-[#2563EB] font-semibold text-lg"
               type="submit"
             >
               Log In

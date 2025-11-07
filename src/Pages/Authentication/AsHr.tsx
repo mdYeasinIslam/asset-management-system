@@ -238,17 +238,26 @@ export const AsHr = () => {
               <SelectTrigger className="w-[180px] bg-white">
                 <SelectValue placeholder="Get package" />
               </SelectTrigger>
-              <SelectContent {...register("package")}>
+              <SelectContent {...register("package")} className="bg-white">
                 <SelectGroup>
                   <SelectLabel>Get package</SelectLabel>
-                  <SelectItem value="5_members for $5">
-                    5 Members for $5
+                  <SelectItem
+                    value="5_members for $5"
+                    className="hover:bg-blue-600 hover:text-white cursor-pointer"
+                  >
+                    5 Members for <span className="font-medium">$5</span>
                   </SelectItem>
-                  <SelectItem value="10_members for $5">
-                    10 Members for $8
+                  <SelectItem
+                    value="10_members for $5"
+                    className="hover:bg-blue-600 hover:text-white cursor-pointer"
+                  >
+                    10 Members for <span className="font-medium">$8</span>
                   </SelectItem>
-                  <SelectItem value="20_members for $5">
-                    20 Members for $15
+                  <SelectItem
+                    value="20_members for $5"
+                    className="hover:bg-blue-600 hover:text-white cursor-pointer"
+                  >
+                    20 Members for <span className="font-medium">$15</span>
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
@@ -259,21 +268,21 @@ export const AsHr = () => {
 
             <Button
               variant="dark"
-              size={"xl"}
-              className="w-full font-semibold text-lg"
+              size={"lg"}
+              className="w-full hover:bg-[#2563EB] bg-white hover:text-white text-black hove:text-white border border-[#2563EB] font-semibold text-lg"
               type="submit"
             >
               Create profile
             </Button>
-          <div className="text-black flex gap-1">
-            <h1>Already have an account. </h1>
-            <Link
-              to={"/signIn"}
-              className="hover:underline hover:text-sky-600"
-            >
-             Please log in..
-            </Link>
-          </div>
+            <div className="text-black flex gap-1">
+              <h1>Already have an account. </h1>
+              <Link
+                to={"/signIn"}
+                className="hover:underline hover:text-sky-600"
+              >
+                Please log in..
+              </Link>
+            </div>
           </form>
         </div>
       </section>

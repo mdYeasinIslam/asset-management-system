@@ -64,9 +64,9 @@ export const DashboardSidebar = () => {
     return <SkeletonBar />
   }
   return (
-    <>
+    <aside className=" lg:fixed lg:h-screen lg:w-[23%] xl:w-[15%] ">
       {/* Mobile Menu Toggle */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
+      <div className="lg:hidden fixed  top-4 left-4 z-50">
         <button
           onClick={() => setOpen(!open)}
           className={`p-2 rounded-lg ${
@@ -83,7 +83,7 @@ export const DashboardSidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed left-0 top-0 h-full w-64 ${
+        className={`fixed lg:static  h-full   ${
           dark ? "bg-slate-800 text-white" : "bg-white text-gray-800"
         } border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 z-40 ${
           open ? "translate-x-0" : "-translate-x-full"
@@ -121,7 +121,9 @@ export const DashboardSidebar = () => {
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     `block px-4 py-3 rounded-md text-sm font-medium transition-colors duration-200  ${
-                      isActive ? "bg-[#2563EB] text-white" : ""
+                      isActive
+                        ? "bg-[#2563EB] text-white"
+                        : "hover:bg-slate-300 "
                     }`
                   }
                 >
@@ -197,6 +199,6 @@ export const DashboardSidebar = () => {
           onClick={() => setOpen(false)}
         />
       )}
-    </>
+    </aside>
   );
 };

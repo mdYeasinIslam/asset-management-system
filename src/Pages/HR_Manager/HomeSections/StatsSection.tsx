@@ -61,13 +61,13 @@ export default function StatsSection({ pendingRequest }: IProp) {
       return acc;
     }, {})
   ).map(([type, value]) => ({ type, value }));
-console.log(typeWiseApprovedAsset)
+
   if (isPending || isLoading) {
     return <SkeletonBar />;
   }
   return (
-    <section className="py-10">
-      <div className="container mx-auto rounded-lg shadow-md p-6 space-y-4 bg-white ">
+    <section className="">
+      <div className=" rounded-lg shadow-md p-6 space-y-4 bg-white ">
         <SectionHeader
           title="Assets Lifecycle Analytics"
           icon={<IoDocumentTextOutline className="w-5 h-5" />}

@@ -2,20 +2,17 @@ import { useAllRequestedAsset } from "@/hook/useAllRequestedAsset";
 import { AssetRequestType } from "@/Type/Types";
 import { PendingSection } from "./HomeSections/PendingSection";
 import { useAllAssets } from "@/hook/useAllAssets";
-import { LimitedStockItem } from "./HomeSections/LimitedStockItem";
 import { TopRequests } from "./HomeSections/TopRequests";
 import PieChart from "./HomeSections/PieChart";
 import NoticeSection from "./HomeSections/NoticeSection";
 import SkeletonBar from "@/SharedComponent/Skeleton";
 import StatsSection from "./HomeSections/StatsSection";
 import EventSection from "../Employee/EmployeeHome/EventSection/EventSection";
-import { useUsersData } from "@/hook/useUsersData";
+import LimitedStockItem from "./HomeSections/LimitedStockItem";
 
 export const HrHome = () => {
   const [requestedAssets, isPending] = useAllRequestedAsset();
   const [assetsData, , , isLoading] = useAllAssets();
-  const [usersData] = useUsersData();
-  console.log(usersData);
   const pendingRequest = requestedAssets?.filter(
     (asset: AssetRequestType) => asset.status == "pending"
   ) as AssetRequestType[];
@@ -24,7 +21,7 @@ export const HrHome = () => {
     return <SkeletonBar />;
   }
   return (
-    <div className=" py-8 bg-[#F4F8FD] dark:text-white space-y-10 px-5">
+    <div className=" lg:py-8 bg-[#F4F8FD] dark:text-white space-y-16 px-3 lg:px-0 lg:pr-5">
       {/* <HrPagesHeading page="Overview : " /> */}
       <StatsSection pendingRequest={pendingRequest} />
       <PendingSection pendingRequest={pendingRequest} />

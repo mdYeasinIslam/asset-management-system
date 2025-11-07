@@ -205,8 +205,8 @@ export const AsEmployee = () => {
 
             <Button
               variant="dark"
-              size={"xl"}
-              className="w-full font-semibold xl:text-lg"
+              size={"lg"}
+              className="w-full hover:bg-[#2563EB] bg-white hover:text-white text-black hove:text-white border border-[#2563EB] font-semibold text-lg"
               type="submit"
             >
               Create profile
