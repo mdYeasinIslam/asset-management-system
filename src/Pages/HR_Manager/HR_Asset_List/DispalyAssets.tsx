@@ -151,14 +151,14 @@ export function DisplayAssets() {
   }
   return (
     <div className="bg-white dark:text-white   w-full">
-      <div className="flex flex-col lg:flex-row  items-center py-4 gap-3">
+      <div className=" flex flex-col lg:flex-row  md:items-center py-4 gap-3">
         <Input
           placeholder="Search by name..."
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("name")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="md:max-w-sm"
         />
         <div className="flex gap-4">
           <div>
@@ -311,7 +311,7 @@ export function DisplayAssets() {
               </TableBody>
             </Table>
             {/* Pagination Controls */}
-            <div className="flex flex-col sm:flex-row items-center justify-between py-4 px-3 gap-3">
+            <div className="flex flex-row  items-center justify-between py-4 px-3 gap-3">
               {/* Left side: Prev/Next */}
               <div className="flex items-center gap-2">
                 <Button

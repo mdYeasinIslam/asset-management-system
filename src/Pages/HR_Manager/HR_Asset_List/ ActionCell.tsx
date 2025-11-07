@@ -32,13 +32,21 @@ const ActionCell = ({ row }: { row: any }) => {
                   toast.success("The user is deleted");
                   toast.dismiss();
                   refetch();
-                  return
+                  return;
                 }
               }}
+              variant={"outline"}
+              className="border border-blue-500 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
             >
               Yes
             </Button>
-            <Button onClick={() => toast.dismiss()}>No</Button>
+            <Button
+              onClick={() => toast.dismiss()}
+              variant={"outline"}
+              className="border border-blue-500 hover:bg-[var(--bg-primary-color)] cursor-pointer hover:text-white"
+            >
+              No
+            </Button>
           </div>
         </div>
       ),

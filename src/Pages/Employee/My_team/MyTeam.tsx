@@ -11,7 +11,7 @@ export const MyTeam = () => {
   }
   return (
     <>
-      <HrPagesHeading page="Team List" />
+      <HrPagesHeading title="Team List" />
       <div className="max-w-5xl mx-auto py-10 dark:text-white h-full lg:h-[100vh]">
         <table className="min-w-full table-auto border-collapse border border-gray-300 shadow-md rounded-md">
           <thead>

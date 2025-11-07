@@ -9,13 +9,13 @@ export default function HrPagesHeading({ title }: { title: string }) {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="relative flex items-center gap-2 pb-2"
     >
-      <HiOutlineSparkles className="text-blue-500 w-6 h-6" />
-      <h1 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-black to-slate-600 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-500">
+      <HiOutlineSparkles className=" w-6 h-6" />
+      <h1 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-black to-slate-800 bg-clip-text text-transparent dark:from-blue-400 dark:to-purple-500">
         {title}
       </h1>
 
       {/* Underline accent */}
-      <span className="absolute bottom-0 left-8 w-20 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></span>
+      {/* <span className="absolute bottom-0 left-8 w-20 h-[2px] bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></span> */}
     </motion.div>
   );
 }

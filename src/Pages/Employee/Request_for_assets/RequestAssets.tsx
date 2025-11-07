@@ -67,7 +67,7 @@ export const RequestAssets = () => {
   );
   return (
     <section className="container mx-auto space-y-10 py-10 dark:text-white">
-      <HrPagesHeading page="Request for Asset :" />
+      <HrPagesHeading title="Request for Asset :" />
       <CommonHeading content={content} />
       <div className="flex flex-col md:flex-row gap-2">
         {/* search section */}
