@@ -16,6 +16,7 @@ import moment from "moment";
 import SkeletonBar from "@/SharedComponent/Skeleton";
 import { Input } from "@/components/ui/input";
 import { CarouselImgForAddAsset } from "./CarouselImgForAddAsset";
+import axios from "axios";
 
 type Inputs = {
   productName: string;
@@ -27,8 +28,10 @@ type Inputs = {
   purchaseDate?: string;
   purchaseCost?: number;
   vendor?: string;
-  assetImage?: string;
+  assetImage: string;
 };
+const img_hosting_key = "7489d1929f652c6b41444e884a6a6180";
+const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
 export const AddAsset = () => {
   const axiosSecure = useAxiosSecure();
@@ -37,7 +40,6 @@ export const AddAsset = () => {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = async (data, e) => {
@@ -46,18 +48,33 @@ export const AddAsset = () => {
       const type = data.productType;
       const status = data.productStatus;
       const quantity = data.quantity;
-      const assetImage = data.assetImage;
       const serialNumber = data?.serialNumber;
       const hr_name = usersData?.userInfo[0].HR_Name;
       const companyName = usersData?.userInfo[0]?.companyName;
       const hr_email = usersData?.userInfo[0]?.email;
       const companyLogo = usersData?.userInfo[0]?.company_logo;
       const currentDate = moment().format("DD-MM-YYYY");
-
+const assetImg = { image: data.assetImage[0] };
+      const [res] = await Promise.all([
+        axios.post(img_hosting_api, assetImg, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }),
+        // axios.post(img_hosting_api, photoURL, {
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        // }),
+      ]);
+      const assetImageUrl = res.data?.data.display_url;
+      console.log(assetImageUrl);
       const product = {
         name,
         type,
         quantity,
+        assetImageUrl,
+        serialNumber,
         hr_name,
         hr_email,
         companyName,
@@ -66,12 +83,12 @@ export const AddAsset = () => {
         status,
       };
 
-      const res = await axiosSecure.post("/assets", product);
+      const response = await axiosSecure.post("/assets", product);
 
-      if (res.data.message) {
-        return toast.error(res.data.message);
+      if (response.data.message) {
+        return toast.error(response.data.message);
       }
-      if (res.data?.acknowledged) {
+      if (response.data?.acknowledged) {
         toast.success("✅ Asset successfully saved to the database!");
         e?.target?.reset();
       }
@@ -83,8 +100,8 @@ export const AddAsset = () => {
   if (isPending) return <SkeletonBar />;
 
   return (
-    <section className="py-12  bg-[#F9FBFD] dark:bg-[#111827] dark:text-white min-h-screen">
-      <div className="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-10 items-center">
+    <section className="py-12 pr-5 bg-[#F9FBFD] dark:bg-[#111827] dark:text-white min-h-screen">
+      <div className="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-5 items-center">
         {/* Illustration */}
         {/* <figure className="flex justify-center">
           <img
@@ -93,7 +110,7 @@ export const AddAsset = () => {
             className="rounded-2xl shadow-lg w-4/5"
           />
         </figure> */}
-<CarouselImgForAddAsset/>
+        <CarouselImgForAddAsset />
         {/* Form */}
         <form
           onSubmit={handleSubmit(onSubmit)}

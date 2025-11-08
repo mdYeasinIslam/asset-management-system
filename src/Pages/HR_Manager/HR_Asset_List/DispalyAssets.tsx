@@ -32,6 +32,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import SkeletonBar from "@/SharedComponent/Skeleton";
+import { MdImageNotSupported } from "react-icons/md";
 
 export type AssetType = {
   _id: string;
@@ -42,6 +43,28 @@ export type AssetType = {
 };
 
 export const columns: ColumnDef<AssetType>[] = [
+  {
+    accessorKey: "assetImageUrl",
+    header: "Asset Image",
+    cell: ({ row }) => (
+      <div className="w-12 h-12 ">
+        {row.getValue("assetImageUrl") ? (
+          <img
+            src={row.getValue("assetImageUrl")}
+            alt="asset image"
+            className="w-full h-full rounded-full "
+          />
+        ) : (
+          <div
+            title="Image is not available"
+            className="bg-gray-200 flex items-center justify-center rounded-full h-full w-full  p-1"
+          >
+            <MdImageNotSupported className="h-6 w-6 " />
+          </div>
+        )}
+      </div>
+    ),
+  },
   {
     accessorKey: "name",
     header: "Asset Name",

@@ -1,4 +1,5 @@
 import { AssetRequestType } from "@/Type/Types";
+import { MdImageNotSupported } from "react-icons/md";
 
 export const DisplayPendingRequest = ({
   request,
@@ -8,11 +9,20 @@ export const DisplayPendingRequest = ({
   return (
     <div className="bg-[#EFF6FF] border border-[#BFDBFE] dark:bg-slate-700 dark:text-white  rounded-lg p-4 flex flex-col">
       <div className="flex items-center space-x-4 mb-4">
-        <img
-          src={request.company_logo}
-          alt={`${request.companyName} Logo`}
-          className="w-12 h-12 rounded-full bg-black"
-        />
+        {request?.company_logo ? (
+          <img
+            src={request.company_logo}
+            alt={`${request.companyName} Logo`}
+            className="w-12 h-12 rounded-full bg-black"
+          />
+        ) : (
+          <div
+            title="Image is not available"
+            className="bg-gray-200 flex items-center justify-center rounded-full h-12 w-12  p-1"
+          >
+            <MdImageNotSupported className="h-6 w-6 " />
+          </div>
+        )}
         <div>
           <h2 className="text-lg font-semibold">{request.assetName}</h2>
           <p className="text-sm text-gray-600 dark:text-gray-200">

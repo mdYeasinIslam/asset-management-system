@@ -35,6 +35,7 @@ export type AssetType = {
   companyLogo: string;
   date: string;
   status: string;
+  assetImageUrl:string
 };
 export type AssetRequestType = {
   _id: string;
@@ -52,6 +53,7 @@ export type AssetRequestType = {
   requesterRole: string;
   status: string;
   updateDate: string;
+  assetImageUrl:string
 };
 
 export type HrDataType = {
