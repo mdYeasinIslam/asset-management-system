@@ -60,8 +60,9 @@ export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
 
       toast.error(response.data?.message);
     }
-    if (response.data?.acknowledged) {
+    if (response.data?.acknowledged ==true) {
       toast.success("your request for this asset is send to the HR");
+      setOpen(false);
     }
   };
   if (isPending) {

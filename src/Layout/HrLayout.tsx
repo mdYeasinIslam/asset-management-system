@@ -5,7 +5,7 @@ export const HrLayout = () => {
 
   return (
     <div className="grid lg:grid-cols-12  bg-[#F4F8FD]">
-      <div className="pb-16  lg:col-span-3 xl:col-span-2">
+      <div className="  lg:col-span-3 xl:col-span-2">
         {/* <SecondNavbar /> */}
         <DashboardSidebar />
       </div>

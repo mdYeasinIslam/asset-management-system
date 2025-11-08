@@ -12,7 +12,7 @@ export const useUsersData = () => {
     isLoading: isPending,
     refetch,
   } = useQuery({
-    queryKey: ["usersData", user?.email],
+    queryKey: ["usersData", user?.email,user],
     enabled: !!user?.email && !!localStorage.getItem("token"),
     queryFn: async () => {
       const res = await axiosSecure.get(`/users?email=${user?.email}`);

@@ -64,9 +64,9 @@ export const DashboardSidebar = () => {
     return <SkeletonBar />
   }
   return (
-    <aside className="relative lg:fixed lg:h-screen lg:w-[23%] xl:w-[15%] ">
+    <aside className=" lg:fixed lg:h-screen lg:w-[23%] xl:w-[15%] ">
       {/* Mobile Menu Toggle */}
-      <div className="  absolute top-4 right-4 z-50">
+      <div className=" w-full flex justify-end right-5 absolute top-4  z-50">
         <button
           onClick={() => setOpen(!open)}
           className={`lg:hidden p-1 rounded-sm ${

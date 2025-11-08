@@ -151,105 +151,123 @@ export function DisplayAssets() {
   }
   return (
     <div className="bg-white dark:text-white   w-full">
-      <div className=" flex flex-col lg:flex-row  md:items-center py-4 gap-3">
-        <Input
-          placeholder="Search by name..."
-          value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("name")?.setFilterValue(event.target.value)
-          }
-          className="md:max-w-sm"
-        />
-        <div className="flex gap-4">
-          <div>
-            <Select
-              onValueChange={(value) => handleFilterChange(value)}
-              // value={selectedType ??''}
-            >
-              <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
-                <span>{selectedType || "Filter by Type"}</span>
-              </SelectTrigger>
-              <SelectContent>
-                {types.map((type, idx) => (
-                  <SelectItem
-                    className="bg-white hover:bg-[#2563EB] hover:text-white"
-                    key={idx}
-                    value={type}
-                  >
-                    {type}
-                  </SelectItem>
-                ))}
-                {selectedType && (
-                  <Button
-                    onClick={clearFilter}
-                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
-                  >
-                    Show all
-                  </Button>
-                )}
-              </SelectContent>
-            </Select>
-          </div>
-          {/* --------------------filter by stock------------------------- */}
-          <div>
-            <Select
-              onValueChange={(value) => handleFilterChange(value)}
-              // value={selectedType ??''}
-            >
-              <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
-                <span>Filter by Stock</span>
-              </SelectTrigger>
-              <SelectContent>
-                <div className="flex flex-col gap-2">
-                  <Button
-                    onClick={() => handleQuantityFilter("available")}
-                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
-                  >
-                    Available
-                  </Button>
-                  <Button
-                    onClick={() => handleQuantityFilter("outOfStock")}
-                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
-                  >
-                    Out of stock
-                  </Button>
-                  <Button
-                    onClick={() =>
-                      table.getColumn("quantity")?.setFilterValue("")
-                    }
-                    className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
-                  >
-                    Show all
-                  </Button>
-                </div>
-              </SelectContent>
-            </Select>
-          </div>
-          {/* -----------sorting by quantity---------------------------- */}
-          <div>
-            <Select onValueChange={(value) => handleFilterChange(value)}>
-              <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
-                <span> Sorting</span>
-              </SelectTrigger>
-              <SelectContent>
-                <div className="flex flex-col gap-2">
-                  <Button
-                    onClick={() => handleSort("asc")}
-                    variant="outline"
-                    className="capitalize hover:bg-[#2563EB]"
-                  >
-                    Sort by Quantity (Ascending)
-                  </Button>
-                  <Button
-                    onClick={() => handleSort("desc")}
-                    variant="outline"
-                    className="capitalize hover:bg-[#2563EB]"
-                  >
-                    Sort by Quantity (Descending)
-                  </Button>
-                </div>
-              </SelectContent>
-            </Select>
+      <div className="flex flex-wrap md:flex-nowrap md:gap-5  justify-between items-center">
+        {/* Right side: page size selector */}
+        <div className="w-full flex items-center gap-3">
+          <select
+            className="border border-[#2563EB] rounded-md px-4 py-2.5 text-sm bg-white  hover:text-black font-medium dark:bg-neutral-900 dark:text-white"
+            value={table.getState().pagination.pageSize}
+            onChange={(e) => {
+              table.setPageSize(Number(e.target.value));
+            }}
+          >
+            {[5, 10, 20, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+          <Input
+            placeholder="Search by name..."
+            value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
+            onChange={(event) =>
+              table.getColumn("name")?.setFilterValue(event.target.value)
+            }
+            className="md:max-w-sm border border-[#2563EB]"
+          />
+        </div>
+        <div className="w-full flex flex-col lg:flex-row  md:items-center py-4 gap-3">
+          <div className="w-full flex md:justify-end gap-4">
+            <div>
+              <Select
+                onValueChange={(value) => handleFilterChange(value)}
+                // value={selectedType ??''}
+              >
+                <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
+                  <span>{selectedType || "Filter by Type"}</span>
+                </SelectTrigger>
+                <SelectContent>
+                  {types.map((type, idx) => (
+                    <SelectItem
+                      className="bg-white hover:bg-[#2563EB] hover:text-white"
+                      key={idx}
+                      value={type}
+                    >
+                      {type}
+                    </SelectItem>
+                  ))}
+                  {selectedType && (
+                    <Button
+                      onClick={clearFilter}
+                      className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
+                    >
+                      Show all
+                    </Button>
+                  )}
+                </SelectContent>
+              </Select>
+            </div>
+            {/* --------------------filter by stock------------------------- */}
+            <div>
+              <Select
+                onValueChange={(value) => handleFilterChange(value)}
+                // value={selectedType ??''}
+              >
+                <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
+                  <span>Filter by Stock</span>
+                </SelectTrigger>
+                <SelectContent>
+                  <div className="flex flex-col gap-2">
+                    <Button
+                      onClick={() => handleQuantityFilter("available")}
+                      className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
+                    >
+                      Available
+                    </Button>
+                    <Button
+                      onClick={() => handleQuantityFilter("outOfStock")}
+                      className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
+                    >
+                      Out of stock
+                    </Button>
+                    <Button
+                      onClick={() =>
+                        table.getColumn("quantity")?.setFilterValue("")
+                      }
+                      className="bg-white text-black hover:bg-[#2563EB] hover:text-white w-full"
+                    >
+                      Show all
+                    </Button>
+                  </div>
+                </SelectContent>
+              </Select>
+            </div>
+            {/* -----------sorting by quantity---------------------------- */}
+            <div>
+              <Select onValueChange={(value) => handleFilterChange(value)}>
+                <SelectTrigger className="max-w-xs bg-white focus:ring-0 focus:ring-blue-600">
+                  <span> Sorting</span>
+                </SelectTrigger>
+                <SelectContent>
+                  <div className="flex flex-col gap-2">
+                    <Button
+                      onClick={() => handleSort("asc")}
+                      variant="outline"
+                      className="capitalize hover:bg-[#2563EB]"
+                    >
+                      Sort by Quantity (Ascending)
+                    </Button>
+                    <Button
+                      onClick={() => handleSort("desc")}
+                      variant="outline"
+                      className="capitalize hover:bg-[#2563EB]"
+                    >
+                      Sort by Quantity (Descending)
+                    </Button>
+                  </div>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
       </div>
@@ -340,21 +358,6 @@ export function DisplayAssets() {
                   {table.getPageCount()}
                 </strong>
               </div>
-
-              {/* Right side: page size selector */}
-              <select
-                className="border rounded-md px-2 py-1 text-sm dark:bg-neutral-900 dark:text-white"
-                value={table.getState().pagination.pageSize}
-                onChange={(e) => {
-                  table.setPageSize(Number(e.target.value));
-                }}
-              >
-                {[5, 10, 20, 50].map((pageSize) => (
-                  <option key={pageSize} value={pageSize}>
-                    Show {pageSize}
-                  </option>
-                ))}
-              </select>
             </div>
           </>
         )}

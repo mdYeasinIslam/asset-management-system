@@ -5,8 +5,6 @@ import { useAxiosSecure } from "@/hook/useAxiosSecure";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook } from "react-icons/fa6";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
@@ -24,7 +22,7 @@ export const SignIn = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const { signInAuth, googleAuth } = useAuth();
+  const { signInAuth } = useAuth();
   const axiosSecure = useAxiosSecure();
   const location = useLocation();
   const navigate = useNavigate();
@@ -50,7 +48,7 @@ export const SignIn = () => {
         const response = await axiosSecure.get(
           `/users?email=${res.user?.email}`
         );
-        console.log(response);
+        // console.log(response);
         toast.success(
           `${res.user.displayName}- You are successfully Join as ${response.data?.role}`
         );
@@ -84,37 +82,37 @@ export const SignIn = () => {
   // if (redirect) {
   //   window.location.reload();
   //   }
-  const google = async () => {
-    googleAuth()
-      .then(async (res) => {
-        // const response = await axiosSecure.get(`/users?email=${res?.user?.email}`)
-        toast.success(
-          `${res.user.displayName}- You are successfully Join as normal user.If your want to be a proper user, please register as Employee or HR_manager`
-        );
-        return navigate("/employee/eHome");
-        // if (response?.data?.role == 'Employee') {
-        //   if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-        //     return navigate('/employee/eHome')
-        //   }
-        //   else {
-        //     return navigate(from,{replace:true})
-        //   }
-        // }
-        // if (response?.data?.role == 'Admin' ) {
-        //   if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
-        //     return navigate('/hr/hrHome')
-        //   }
-        //   return navigate(from,{replace:true})
-        // }
-        // else {
-        //   navigate(from, {replace:true})
-        // }
-      })
-      .catch((e) => {
-        console.log(e);
-        toast.error(e.message);
-      });
-  };
+  // const google = async () => {
+  //   googleAuth()
+  //     .then(async (res) => {
+  //       // const response = await axiosSecure.get(`/users?email=${res?.user?.email}`)
+  //       toast.success(
+  //         `${res.user.displayName}- You are successfully Join as normal user.If your want to be a proper user, please register as Employee or HR_manager`
+  //       );
+  //       return navigate("/employee/eHome");
+  //       // if (response?.data?.role == 'Employee') {
+  //       //   if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+  //       //     return navigate('/employee/eHome')
+  //       //   }
+  //       //   else {
+  //       //     return navigate(from,{replace:true})
+  //       //   }
+  //       // }
+  //       // if (response?.data?.role == 'Admin' ) {
+  //       //   if (from == '/' || from == '/signIn' || from =='/asEmployee' || from == 'asHr') {
+  //       //     return navigate('/hr/hrHome')
+  //       //   }
+  //       //   return navigate(from,{replace:true})
+  //       // }
+  //       // else {
+  //       //   navigate(from, {replace:true})
+  //       // }
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //       toast.error(e.message);
+  //     });
+  // };
   return (
     <section className=" bg-[#FBF9F5] text-black">
       <div className="max-w-4xl xl:max-w-6xl mx-auto  h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
@@ -155,7 +153,7 @@ export const SignIn = () => {
               Welcome back! Please enter your details.
             </p>
           </div>
-          <div className="w-full mx-auto flex items-center gap-5">
+          {/* <div className="w-full mx-auto flex items-center gap-5">
             <Button
               variant={"outline"}
               size={"xl"}
@@ -176,7 +174,7 @@ export const SignIn = () => {
           </div>
           <div className="flex justify-center">
             <span className="text-gray-700">or continue with</span>
-          </div>
+          </div> */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-3 dark:text-black"

@@ -10,7 +10,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable, 
+  useReactTable,
 } from "@tanstack/react-table";
 import { Input } from "@/components/ui/input";
 import {
@@ -27,6 +27,8 @@ import { Badge } from "@/components/ui/badge";
 import { RequestAction } from "./RequestAction";
 import SkeletonBar from "@/SharedComponent/Skeleton";
 import { Button } from "@/components/ui/button";
+import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
+import { GoGitPullRequestDraft } from "react-icons/go";
 
 export type AssetRequestType = {
   assetName: string;
@@ -55,9 +57,7 @@ export const columns: ColumnDef<AssetRequestType>[] = [
   {
     accessorKey: "requesterEmail",
     header: "Requester Email",
-    cell: ({ row }) => (
-      <div className="">{row.getValue("requesterEmail")}</div>
-    ),
+    cell: ({ row }) => <div className="">{row.getValue("requesterEmail")}</div>,
   },
   {
     accessorKey: "requesterName",
@@ -119,131 +119,136 @@ export function AllRequest() {
   });
 
   return (
-    <div className="container mx-auto w-full bg-[#F4F8FD] dark:text-white min-h-screen px-1">
-      {/* Search input */}
-      <div className="flex flex-col lg:flex-row  py-4 gap-3">
-        <Input
-          placeholder="Search by asset name..."
-          value={
-            (table.getColumn("assetName")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("assetName")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-      </div>
+    <div className="relative bg-[#F4F8FD] pt-5 pb-10 pr-0 lg:pr-5 space-y-5">
+      <HrPagesHeading
+        title="Assets Request"
+        icon={<GoGitPullRequestDraft className="w-5 h-5 " />}
+      />
+      <div className="  w-full bg-[#F4F8FD] dark:text-white min-h-screen px-1">
+        {/* Search input */}
+        <div className="flex flex-col lg:flex-row  py-4 gap-3">
+          <Input
+            placeholder="Search by asset name..."
+            value={
+              (table.getColumn("assetName")?.getFilterValue() as string) ?? ""
+            }
+            onChange={(event) =>
+              table.getColumn("assetName")?.setFilterValue(event.target.value)
+            }
+            className="max-w-sm border  border-[#2563EB]"
+          />
+          {/* Right side: page size selector */}
+          <select
+            className="border rounded-md px-2 py-1 text-sm bg-white  border-[#2563EB]  font-semibold dark:bg-neutral-900 dark:text-white cursor-pointer "
+            value={table.getState().pagination.pageSize}
+            onChange={(e) => {
+              table.setPageSize(Number(e.target.value));
+            }}
+          >
+            {[5, 10, 20, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Table */}
-      <div className="rounded-md border">
-        {isPending ? (
-          <SkeletonBar />
-        ) : (
-          <>
-            <div className="">
-              <Table>
-                <TableHeader className="sticky top-0 bg-white dark:bg-neutral-900 z-10">
-                  {table.getHeaderGroups().map((headerGroup) => (
-                    <TableRow key={headerGroup.id}>
-                      {headerGroup.headers.map((header) => (
-                        <TableHead
-                          key={header.id}
-                          className="text-black dark:text-white font-medium text-sm md:text-sm"
-                        >
-                          {header.isPlaceholder
-                            ? null
-                            : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
-                        </TableHead>
-                      ))}
-                    </TableRow>
-                  ))}
-                </TableHeader>
-
-                <TableBody>
-                  {table.getRowModel().rows?.length ? (
-                    table.getRowModel().rows.map((row) => (
-                      <TableRow
-                        key={row.id}
-                        className="hover:bg-gray-50 dark:hover:bg-neutral-800 transition"
-                      >
-                        {row.getVisibleCells().map((cell) => (
-                          <TableCell
-                            key={cell.id}
-                            className="text-xs md:text-sm py-3"
+        {/* Table */}
+        <div className="rounded-md border">
+          {isPending ? (
+            <SkeletonBar />
+          ) : (
+            <>
+              <div className="">
+                <Table>
+                  <TableHeader className="sticky top-0 bg-white dark:bg-neutral-900 z-10">
+                    {table.getHeaderGroups().map((headerGroup) => (
+                      <TableRow key={headerGroup.id}>
+                        {headerGroup.headers.map((header) => (
+                          <TableHead
+                            key={header.id}
+                            className="text-black dark:text-white font-medium text-sm md:text-sm"
                           >
-                            {flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext()
-                            )}
-                          </TableCell>
+                            {header.isPlaceholder
+                              ? null
+                              : flexRender(
+                                  header.column.columnDef.header,
+                                  header.getContext()
+                                )}
+                          </TableHead>
                         ))}
                       </TableRow>
-                    ))
-                  ) : (
-                    <TableRow>
-                      <TableCell
-                        colSpan={columns.length}
-                        className="h-24 text-center"
-                      >
-                        No results found.
-                      </TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </div>
+                    ))}
+                  </TableHeader>
 
-            {/* Pagination Controls */}
-            <div className="flex flex-col sm:flex-row items-center justify-between py-4 px-3 gap-3">
-              {/* Left side: Prev/Next */}
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => table.previousPage()}
-                  disabled={!table.getCanPreviousPage()}
-                >
-                  Previous
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => table.nextPage()}
-                  disabled={!table.getCanNextPage()}
-                >
-                  Next
-                </Button>
+                  <TableBody>
+                    {table.getRowModel().rows?.length ? (
+                      table.getRowModel().rows.map((row) => (
+                        <TableRow
+                          key={row.id}
+                          className="hover:bg-gray-50 dark:hover:bg-neutral-800 transition"
+                        >
+                          {row.getVisibleCells().map((cell) => (
+                            <TableCell
+                              key={cell.id}
+                              className="text-xs md:text-sm py-3"
+                            >
+                              {flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )}
+                            </TableCell>
+                          ))}
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell
+                          colSpan={columns.length}
+                          className="h-24 text-center"
+                        >
+                          No results found.
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
               </div>
 
-              {/* Middle: Page info */}
-              <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                Page{" "}
-                <strong>
-                  {table.getState().pagination.pageIndex + 1} of{" "}
-                  {table.getPageCount()}
-                </strong>
-              </div>
-
-              {/* Right side: page size selector */}
-              <select
-                className="border rounded-md px-2 py-1 text-sm dark:bg-neutral-900 dark:text-white"
-                value={table.getState().pagination.pageSize}
-                onChange={(e) => {
-                  table.setPageSize(Number(e.target.value));
-                }}
+              {/* Pagination Controls */}
+            </>
+          )}
+          <div className="flex flex-col sm:flex-row items-center justify-between py-4 px-3 gap-3">
+            {/* Left side: Prev/Next */}
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => table.previousPage()}
+                disabled={!table.getCanPreviousPage()}
               >
-                {[5, 10, 20, 50].map((pageSize) => (
-                  <option key={pageSize} value={pageSize}>
-                    Show {pageSize}
-                  </option>
-                ))}
-              </select>
+                Previous
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => table.nextPage()}
+                disabled={!table.getCanNextPage()}
+              >
+                Next
+              </Button>
             </div>
-          </>
-        )}
+
+            {/* Middle: Page info */}
+            <div className="text-sm text-gray-600 dark:text-gray-400 text-center">
+              Page{" "}
+              <strong>
+                {table.getState().pagination.pageIndex + 1} of{" "}
+                {table.getPageCount()}
+              </strong>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

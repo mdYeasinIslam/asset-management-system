@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { useAxiosSecure } from "@/hook/useAxiosSecure";
 import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
 import SkeletonBar from "@/SharedComponent/Skeleton";
+import { GoGitPullRequestDraft } from "react-icons/go";
 
 export const RequestAssets = () => {
   const axiosSecure = useAxiosSecure();
@@ -67,7 +68,7 @@ export const RequestAssets = () => {
   );
   return (
     <section className="container mx-auto space-y-10 py-10 dark:text-white">
-      <HrPagesHeading title="Request for Asset :" />
+      <HrPagesHeading title="Request for Asset :" icon={<GoGitPullRequestDraft className="w-5 h-5 " />} />
       <CommonHeading content={content} />
       <div className="flex flex-col md:flex-row gap-2">
         {/* search section */}
