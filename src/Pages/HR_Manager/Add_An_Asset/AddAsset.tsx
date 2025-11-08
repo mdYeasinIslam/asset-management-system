@@ -83,7 +83,7 @@ export const AddAsset = () => {
   if (isPending) return <SkeletonBar />;
 
   return (
-    <section className="py-12 md:px-6 bg-[#F9FBFD] dark:bg-[#111827] dark:text-white min-h-screen">
+    <section className="py-12  bg-[#F9FBFD] dark:bg-[#111827] dark:text-white min-h-screen">
       <div className="container mx-auto grid grid-cols-1 xl:grid-cols-2 gap-10 items-center">
         {/* Illustration */}
         {/* <figure className="flex justify-center">
