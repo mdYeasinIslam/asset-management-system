@@ -24,3 +24,8 @@
     second will have email and password 
     **implement this way**
 3. make dashboards UI more unique and attractive
+
+
+
+**employee list page: add a button for giving permission to access the asset on employee dashboard**
+**employee will see assets if a company add him and will see only company created assets**

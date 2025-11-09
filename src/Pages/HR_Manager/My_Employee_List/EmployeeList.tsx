@@ -10,6 +10,7 @@ export const EmployeeList = () => {
   if (isPending) {
     return  <SkeletonBar/>
   }
+  // console.log(employeeData)
   return (
     <div className="py-10 h-full lg:h-[100vh] bg-[#F4F8FD]  ">
       <HrPagesHeading title={"Employees List"} icon={<HiUsers className="w-7 h-7 " />} />

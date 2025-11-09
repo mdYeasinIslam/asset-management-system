@@ -56,7 +56,7 @@ export type AssetRequestType = {
   assetImageUrl:string
 };
 
-export type HrDataType = {
+export interface HrDataType extends UserTypeForDashboard {
   HR_Name: string;
   HR_photo: string;
   companyName: string;
@@ -68,4 +68,11 @@ export type HrDataType = {
   _id: string;
 };
 
-
+export interface EmployeeType {
+  exampleRequired: string;
+  email: string;
+  password: string;
+  name: string;
+  birth: string;
+  photoURL: string;
+};

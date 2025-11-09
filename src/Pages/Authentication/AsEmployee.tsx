@@ -4,7 +4,9 @@ import { useAuth } from "@/hook/useAuth";
 import { useAxiosPublic } from "@/hook/useAxiosPublic";
 import { CarouselImg } from "@/SharedComponent/auth/CarouselImg";
 import Loader from "@/SharedComponent/Loader";
+import { EmployeeType } from "@/Type/Types";
 import axios from "axios";
+import { User } from "firebase/auth";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,60 +14,78 @@ import { IoMdEye } from "react-icons/io";
 import { IoEyeOff } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 
-type Inputs = {
-  exampleRequired: string;
-  email: string;
-  password: string;
-  name: string;
-  birth: string;
-  photoURL: string;
-};
+
 const img_hosting_key = "7489d1929f652c6b41444e884a6a6180";
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
 export const AsEmployee = () => {
   const {
     register,
-    handleSubmit,
+    handleSubmit, 
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<EmployeeType>();
   const axiosPublic = useAxiosPublic();
   const { signUpAuth, updateUserAuth } = useAuth();
   const [loading, setLoading] = useState(false);
   const [isShow, setIsShow] = useState(true);
 
   const navigate = useNavigate();
-  const onSubmit: SubmitHandler<Inputs> = async (data, e) => {
+  const onSubmit: SubmitHandler<EmployeeType> = async (data, e) => {
     try {
       setLoading(true);
+
       const name = data.name;
       const email = data.email.toLowerCase();
       const password = data.password;
       const birth = data.birth;
-      // const photoURL = { image: data.photoURL[0] };
-
-      const photoURL = new FormData();
-      photoURL.append("image", data.photoURL[0]);
-      // console.log(photoURLData)
-      const res = await axios.post(img_hosting_api, photoURL, {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      });
-      console.log(res);
+      const photoURL = { image: data.photoURL[0] };
+      const [res] = await Promise.all([
+        axios.post(img_hosting_api, photoURL, {
+          headers: {
+            "content-type": "multipart/form-data",
+          },
+        }),
+      ]);
+      const employeePhotoUrl = res.data?.data.display_url;
       const profile = {
         displayName: name,
-        photoURL: res.data.data?.display_url,
-        // photoURL: photoURLData
+        photoURL: employeePhotoUrl,
       };
       const userInfo = {
         Employee_Name: name,
         email,
+        password,
         // Employee_photo:photoURLData,
-        Employee_photo: res.data?.data?.display_url,
+        Employee_photo: employeePhotoUrl,
         date_of_birth: birth,
         role: "Employee",
+        canRequestForAsset: false,
+        requestForAsset: "No",
       };
+
+      const response = await axiosPublic.get("/users");
+      const allUsers = response?.data?.result || [];
+
+      // find matching email
+      const foundUser = allUsers?.find(
+        (user: User) => user.email?.toLowerCase() === email.toLowerCase()
+      );
+      if (!foundUser) {
+        console.log(foundUser);
+        const response = await axiosPublic.post("/users", userInfo);
+        if (response) {
+          toast.success("Your are successfully join as a Employee");
+          navigate("/employee/eHome");
+          setLoading(false);
+
+          e?.target.reset();
+        }
+      } else {
+        console.log(foundUser);
+        setLoading(false);
+        toast.error("you already have an account");
+      }
+
       const signInOperation = await signUpAuth(email, password);
       console.log(signInOperation);
       if (signInOperation) {

@@ -25,17 +25,18 @@ type Prop = {
 export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
   const [usersData, isPending] = useUsersData();
   const axiosSecure = useAxiosSecure();
+  const havePermission = usersData?.userInfo[0]?.canRequestForAsset;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const notes = data.notes;
     const currentDate = moment().format("DD-MM-YYYY");
     const Info = usersData?.userInfo;
-
+    const havePermission = usersData?.userInfo[0]?.canRequestForAsset;
     const requestInfo = {
       requesterName: Info[0]?.Employee_Name,
       requesterEmail: Info[0]?.email,
@@ -49,20 +50,24 @@ export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
       notes,
       status: "pending",
     };
+    if (havePermission) {
+      const response = await axiosSecure.post(
+        `/employee/assetRequest?email=${Info[0]?.email}`,
+        requestInfo
+      );
 
-    const response = await axiosSecure.post(
-      `/employee/assetRequest?email=${Info[0]?.email}`,
-      requestInfo
-    );
+      if (response.data?.success == false) {
+        setOpen(false);
 
-    if (response.data?.success == false) {
-      setOpen(false);
-
-      toast.error(response.data?.message);
-    }
-    if (response.data?.acknowledged ==true) {
-      toast.success("your request for this asset is send to the HR");
-      setOpen(false);
+        toast.error(response.data?.message);
+      }
+      if (response.data?.acknowledged == true) {
+        toast.success("your request for this asset is send to the HR");
+        setOpen(false);
+      }
+    } else {
+      toast.error("Sorry, you don't have any permission to request!");
+      return;
     }
   };
   if (isPending) {
@@ -89,7 +94,9 @@ export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
 
           {errors.exampleRequired && <span>This field is required</span>}
           <DialogFooter>
-            <Button type="submit">Request for asset</Button>
+            <Button type="submit" disabled={havePermission ? true : false}>
+              Request for asset
+            </Button>
             <DialogClose asChild>
               <Button type="button" className="bg-gray-500">
                 Close

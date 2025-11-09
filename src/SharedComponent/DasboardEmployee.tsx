@@ -28,9 +28,11 @@ export const DashboardSidebar = () => {
       await signOutAuth();
       navigate("/");
       toast.success("You have successfully logged out");
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e);
-      toast.error(e.message);
+      const message =
+        e instanceof Error ? e.message : typeof e === "string" ? e : "An unexpected error occurred";
+      toast.error(message);
     }
   };
 
@@ -40,7 +42,7 @@ export const DashboardSidebar = () => {
     employee: [
       { path: "/employee/eHome", label: "Overview" },
       { path: "/employee/myAssets", label: "My Assets" },
-      { path: "/employee/myTeam", label: "My Team" },
+      // { path: "/employee/myTeam", label: "My Team" },
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [

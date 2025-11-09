@@ -148,7 +148,6 @@ const DisplayEmployees = ({
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
   });
-
   // ✅ Loading state
   if (isPending) {
     return (

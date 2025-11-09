@@ -6,7 +6,6 @@ import { AsHr } from "@/Pages/Authentication/AsHr"
 import { SignIn } from "@/Pages/Authentication/SignIn"
 import { EHome } from "@/Pages/Employee/EmployeeHome/EHome"
 import { MyAssets } from "@/Pages/Employee/My_Assets/MyAssets"
-import { MyTeam } from "@/Pages/Employee/My_team/MyTeam"
 import { RequestAssets } from "@/Pages/Employee/Request_for_assets/RequestAssets"
 import { Home } from "@/Pages/Home/Home"
 import { AddAsset } from "@/Pages/HR_Manager/Add_An_Asset/AddAsset"
@@ -91,10 +90,10 @@ import { PrivateRoot } from "./PrivateRoot"
            element: <MyAssets />,
          },
 
-         {
-           path: "/employee/myTeam",
-           element: <MyTeam />,
-         },
+        //  {
+        //    path: "/employee/myTeam",
+        //    element: <MyTeam />,
+        //  },
          {
            path: "/employee/requestForAsset",
            element: <RequestAssets />,

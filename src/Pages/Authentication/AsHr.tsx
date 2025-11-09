@@ -1,15 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm, SubmitHandler } from "react-hook-form";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { useAuth } from "@/hook/useAuth";
 import toast from "react-hot-toast";
 import { useAxiosPublic } from "@/hook/useAxiosPublic";
@@ -20,6 +12,7 @@ import Loader from "@/SharedComponent/Loader";
 import { IoMdEye } from "react-icons/io";
 import { IoEyeOff } from "react-icons/io5";
 import { CarouselImg } from "@/SharedComponent/auth/CarouselImg";
+import { User } from "firebase/auth";
 
 type Inputs = {
   exampleRequired: string;
@@ -30,7 +23,9 @@ type Inputs = {
   companyName: string;
   companyLogo: string;
   birth: string;
-  package: string;
+  package?: string;
+  brandName: string;
+  phoneNumber: number;
 };
 const img_hosting_key = "7489d1929f652c6b41444e884a6a6180";
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
@@ -44,7 +39,7 @@ export const AsHr = () => {
   const {
     register,
     handleSubmit,
-    setValue,
+    // setValue,
     formState: { errors },
   } = useForm<Inputs>();
   const navigate = useNavigate();
@@ -56,7 +51,9 @@ export const AsHr = () => {
       const password = data.password;
       // const birth = data.birth;
       const companyName = data.companyName;
-      const selectPackage = data.package;
+      const brandName = data.brandName;
+      const phoneNumber = data.phoneNumber;
+      // const selectPackage = data.package;
       const companyLogo = { image: data.companyLogo[0] };
       // const photoURL = { image: data.img_url[0] };
 
@@ -73,9 +70,6 @@ export const AsHr = () => {
         // }),
       ]);
       const companyLogoURL = res.data?.data.display_url;
-      // const profilePhotoURL = res2.data?.data.display_url;
-
-      // const profile = { displayName: name, photoURL: profilePhotoURL };
       const profile = { displayName: name };
       const userInfo = {
         // HR_Name: name,
@@ -83,10 +77,37 @@ export const AsHr = () => {
         // HR_photo: profilePhotoURL,
         // date_of_birth: birth,
         companyName,
+        brandName,
         company_logo: companyLogoURL,
-        package: selectPackage,
+        phoneNumber,
+        // package: selectPackage,
         role: "Admin",
       };
+
+      // const profilePhotoURL = res2.data?.data.display_url;
+      const response = await axiosPublic.get("/users");
+      const allUsers = response?.data?.result || [];
+
+      // find matching email
+      const foundUser = allUsers?.find(
+        (user: User) => user.email?.toLowerCase() === email.toLowerCase()
+      );
+      if (!foundUser) {
+        console.log(foundUser);
+        const response = await axiosPublic.post("/users", userInfo);
+        if (response) {
+          toast.success("Your are successfully created your account");
+          navigate("/admin/dashboard");
+          setLoading(false);
+
+          e?.target.reset();
+        }
+      } else {
+        console.log(foundUser);
+        toast.error("you already have an account");
+      }
+      // const profile = { displayName: name, photoURL: profilePhotoURL };
+
       const signInOperation = await signUpAuth(email, password);
       if (signInOperation) {
         await updateUserAuth(profile);
@@ -98,11 +119,12 @@ export const AsHr = () => {
           toast.success("Your are successfully join as a HR manager");
           e?.target.reset();
         }
-      }
-    } catch (error: any) {
+      } 
+    } catch (error: unknown) {
       setLoading(false);
       console.log(error);
-      toast.error(error);
+      const errMsg = error instanceof Error ? error.message : String(error);
+      toast.error(errMsg);
     }
   };
 
@@ -156,13 +178,13 @@ export const AsHr = () => {
                 placeholder="Your full name"
                 required
               />
-            </div> */}
-            {/* <div className="grid w-full max-w-sm items-center gap-1.5">
+            </div>
+            <div className="grid w-full max-w-sm items-center gap-1.5">
               <label htmlFor="picture1">Upload Your Photo:</label>
               <Input id="picture1" {...register("img_url")} type="file" />
-            </div> */}
+            </div>
 
-            {/* <div className="flex flex-col gap-1 ">
+            <div className="flex flex-col gap-1 ">
               <label htmlFor="date"> Date of birth :</label>
               <Input
                 id="date"
@@ -173,28 +195,58 @@ export const AsHr = () => {
               />
             </div> */}
 
-            <div className="flex flex-col gap-1 ">
-              <label htmlFor="companyName" className="capitalize font-semibold">
-                <span className="text-red-800">*</span>
-                Company Name :
-              </label>
-              <Input
-                id="companyName"
-                {...register("companyName")}
-                type="text"
-                placeholder="Your company name"
-                required
-              />
+            <div className="flex items-center gap-5">
+              <div className=" w-full flex flex-col gap-1 ">
+                <label
+                  htmlFor="companyName"
+                  className="capitalize font-semibold"
+                >
+                  <span className="text-red-800">*</span>
+                  Company Name :
+                </label>
+                <Input
+                  id="companyName"
+                  {...register("companyName")}
+                  type="text"
+                  placeholder="Your company name"
+                  required
+                />
+              </div>
+              <div className="w-full flex flex-col gap-1 ">
+                <label htmlFor="brandName" className="capitalize font-semibold">
+                  Brand Name
+                </label>
+                <Input
+                  id="brandName"
+                  {...register("brandName")}
+                  type="text"
+                  placeholder="Brand Name"
+                />
+              </div>
             </div>
-
-            <div className="grid w-full max-w-sm items-center gap-1.5">
+            <div className="grid w-full items-center gap-1.5">
               <label htmlFor="picture" className="capitalize font-semibold">
                 <span className="text-red-800">*</span>
                 Upload company logo image:
               </label>
-              <Input id="picture" {...register("companyLogo")} type="file" className="file:text-black" />
+              <Input
+                id="picture"
+                {...register("companyLogo")}
+                type="file"
+                className="file:text-black"
+              />
             </div>
-
+            <div className="w-full flex flex-col gap-1 ">
+              <label htmlFor="phoneNumber" className="capitalize font-semibold">
+                Phone Number
+              </label>
+              <Input
+                id="phoneNumber"
+                {...register("phoneNumber")}
+                type="number"
+                placeholder="Phone Number"
+              />
+            </div>
             <div className="flex flex-col gap-1 ">
               <label htmlFor="email" className="capitalize font-semibold">
                 <span className="text-red-800">*</span>
@@ -234,7 +286,7 @@ export const AsHr = () => {
                 </div>
               </div>
             </div>
-            <Select onValueChange={(value) => setValue("package", value)}>
+            {/* <Select onValueChange={(value) => setValue("package", value)}>
               <SelectTrigger className="w-[180px] bg-white">
                 <SelectValue placeholder="Get package" />
               </SelectTrigger>
@@ -261,7 +313,7 @@ export const AsHr = () => {
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
-            </Select>
+            </Select> */}
 
             {/* errors will return when field validation fails  */}
             {errors.exampleRequired && <span>This field is required</span>}

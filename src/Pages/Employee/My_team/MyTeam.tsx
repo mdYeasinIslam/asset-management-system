@@ -3,9 +3,22 @@ import { Skeleton } from "@/components/ui/skeleton";
 import HrPagesHeading from "@/SharedComponent/HrPagesHeading";
 import SkeletonBar from "@/SharedComponent/Skeleton";
 
+export interface Employee {
+  _id: string;
+  employeeId: string;
+  Employee_Name: string;
+  Employee_photo: string;
+  email: string;
+  role: string;
+  havePermission: boolean;
+  companyId: string;
+  companyName: string;
+  hrName: string;
+  hrEmail: string;
+}
 export const MyTeam = () => {
   const [employeeData, isPending] = useEmployeeList();
-
+console.log(employeeData)
   if (isPending) {
     return <SkeletonBar/>
   }
@@ -34,7 +47,7 @@ export const MyTeam = () => {
               </div>
             ) : (
               <>
-                {employeeData?.map((user: any) => (
+                {employeeData?.map((user: Employee) => (
                   <tr
                     key={user._id}
                     className="border-b border-gray-200 hover:bg-gray-50"

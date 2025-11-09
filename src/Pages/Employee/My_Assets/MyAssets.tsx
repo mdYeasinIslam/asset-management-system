@@ -13,7 +13,7 @@ export const MyAssets = () => {
   }
   return (
     <div className="h-screen">
-      <HrPagesHeading title="My Assets"/>
+      <HrPagesHeading title="My Assets" />
       <DisplayEmployeeAssets />
     </div>
   )

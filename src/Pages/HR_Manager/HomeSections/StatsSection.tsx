@@ -46,7 +46,7 @@ export default function StatsSection({ pendingRequest }: IProp) {
     requestedAssets.reduce((acc: any, item: AssetRequestType) => {
       const type = item.assetType;
       acc[type] = (acc[type] || 0) + 1;
-      return acc;
+      return acc; 
     }, {})
   ).map(([type, value]) => ({ type, value }));
 

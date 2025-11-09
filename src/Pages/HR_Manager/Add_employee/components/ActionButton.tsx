@@ -1,9 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { useAxiosSecure } from "@/hook/useAxiosSecure";
+import { useAxiosPublic } from "@/hook/useAxiosPublic";
 import { useUsersData } from "@/hook/useUsersData";
 import { HrDataType } from "@/Type/Types";
+import { Row } from "@tanstack/react-table";
 import toast from "react-hot-toast";
 import { AiFillDelete } from "react-icons/ai";
+// import admin from "firebase-admin";
+
 interface User {
   _id: string;
   Employee_Name: string;
@@ -12,23 +15,39 @@ interface User {
   email: string;
   role: string;
 }
-export default function ActionButton({ row }: { row: any }) {
+// if (!admin.apps.length) {
+//   admin.initializeApp({
+//     credential: admin.credential.cert({
+//       projectId: process.env.FIREBASE_PROJECT_ID,
+//       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+//       privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+//     }),
+//   });
+// }
+
+// const uid = "USER_UID_TO_DELETE";
+
+export default function ActionButton({ row }: { row: Row<User> }) {
   const [usersData, , refetch] = useUsersData();
-  const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosPublic();
   const hrData = usersData?.userInfo[0] as HrDataType;
   // ✅ Single employee add
   const handleSingleEmployee = async (user?: User) => {
+    const havePermission = true;
     const info = {
       hrName: hrData?.HR_Name,
+      companyName: hrData?.companyName,
+      companyId: hrData?._id,
       hrEmail: hrData?.email,
       Employee_Name: user?.Employee_Name,
       Employee_photo: user?.Employee_photo,
       role: user?.role,
       email: user?.email,
       employeeId: user?._id,
+      havePermission,
     };
-    const res = await axiosSecure.post("/hr/addEmployee", info);
 
+    const res = await axiosSecure.post("/hr/addEmployee", info);
     if (res.data?.status == false) {
       return toast.error(`${res.data?.message}`);
     }
@@ -47,15 +66,29 @@ export default function ActionButton({ row }: { row: any }) {
             <Button
               onClick={async () => {
                 try {
-                    const response = await axiosSecure.delete(`/user/${id}`);
+                  const response = await axiosSecure.delete(`/user/${id}`);
                   if (response?.data?.acknowledged) {
-                    toast.success("user data successfully deleted!");
+                    // admin
+                    //   .auth()
+                    //   .deleteUser(id)
+                    //   .then(() => {
+                    //     console.log("Successfully deleted user:", id);
+                    //     toast.success("user data successfully deleted!");
+                    //     toast.dismiss(toastId);
+                    //   })
+                    //   .catch((error) => {
+                    //     console.error("Error deleting user:", error);
+                    //   });
+                        toast.success("user data successfully deleted!");
+
                     toast.dismiss(toastId);
+
                     refetch();
                     return;
                   }
-                } catch (error) {
-                  toast.error(" Failed to delete user.");
+                } catch (error: unknown) {
+                  console.log(error);
+                  toast.error('Failed to delete user');
                 }
               }}
               variant="outline"

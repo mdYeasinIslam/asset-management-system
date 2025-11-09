@@ -5,7 +5,7 @@ export default function HrPagesHeading({
   icon,
 }: {
   title: string;
-  icon: JSX.Element;
+  icon?: JSX.Element;
 }) {
   return (
     <motion.div

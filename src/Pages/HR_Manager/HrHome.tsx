@@ -27,7 +27,7 @@ export const HrHome = () => {
     <div className=" lg:py-8 bg-[#F4F8FD] dark:text-white space-y-10 pr-0 lg:pr-5">
       {/* <HrPagesHeading page="Overview : " /> */}
       <StatsSection pendingRequest={pendingRequest} />
-      
+       
       <PendingSection pendingRequest={pendingRequest} />
       {assetsData?.length > 0 && <LimitedStockItem assetData={assetsData} />}
       <OutOfStock assetData={assetsData} />

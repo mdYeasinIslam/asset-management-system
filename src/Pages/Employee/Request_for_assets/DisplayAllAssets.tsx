@@ -11,13 +11,18 @@ import { AssetType } from "@/Type/Types";
 import { Dialog, DialogTrigger } from "@radix-ui/react-dialog";
 import { RequestModal } from "./RequestModal";
 import { useState } from "react";
+import { useUsersData } from "@/hook/useUsersData";
 type Prop = {
   assets: AssetType;
 };
 
 export const DisplayAllAssets = ({ assets }: Prop) => {
-    const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
+  const [usersData, isPending] = useUsersData();
+  const havePermission = usersData?.userInfo[0]?.canRequestForAsset;
+  if (isPending) {
+  return <div>...</div>
+}
   return (
     <Card className="">
       <CardHeader>
@@ -41,7 +46,7 @@ export const DisplayAllAssets = ({ assets }: Prop) => {
               className=""
               size="sm"
               variant="outline"
-              disabled={assets?.quantity == 0 && true}
+              disabled={havePermission && assets?.quantity > 0 ? false : true}
             >
               Request for asset
             </Button>
