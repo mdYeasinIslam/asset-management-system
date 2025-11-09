@@ -64,8 +64,10 @@ export default function HeroSectionByAI() {
   };
 
   return (
-      <section className="relative  
-     z-0  bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden py-20">
+    <section
+      className="relative  
+     z-0  bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden py-20"
+    >
       <div className="container mx-auto px-6">
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -202,13 +204,20 @@ export default function HeroSectionByAI() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
               >
-                <motion.button
-                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <a
+                  href={
+                    "https://gamma.app/docs/Asset-Management-System-j5hnxj1ih6ja7bl?mode=doc"
+                  }
+                  
                 >
-                  Start Free Trial
-                </motion.button>
+                  <motion.button
+                    className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Start Free Trial
+                  </motion.button>
+                </a>
 
                 <motion.button
                   className="px-8 py-4 border-2 border-blue-500/30 text-white rounded-lg font-bold text-lg hover:border-blue-500 hover:bg-blue-500/10 transition-all flex items-center justify-center group"
