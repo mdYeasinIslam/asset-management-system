@@ -1,6 +1,5 @@
 import Footer from "@/SharedComponent/Footer"
 import About from "./About/About"
-import { Packages } from "./Packages/Packages"
 import HowItWorks from "@/SharedComponent/HowItWorks"
 import HeroSectionByAI from "@/SharedComponent/home/HeroSectionByAI"
 import WhyChooseUsNew from "@/SharedComponent/home/WhyChooseUs-new"
@@ -29,7 +28,7 @@ export const Home = () => {
       <HeroSectionByAI />
       <About />
       <WhyChooseUsNew />
-      <Packages />
+      {/* <Packages /> */}
       <HowItWorks/>
       
       {/* <WhyChoose/> */}

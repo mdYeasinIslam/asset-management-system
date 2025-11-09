@@ -15,7 +15,6 @@ export const SecondNavbar = () => {
     checkSignPath.pathname === "/signIn" ||
     checkSignPath.pathname === "/asEmployee" ||
     checkSignPath.pathname === "/asHr";
-
   if (hideNavbar) return;
   const { user, signOutAuth, dark, setDark } = useAuth();
   const [open, setOpen] = useState(false);
@@ -51,7 +50,7 @@ export const SecondNavbar = () => {
     employee: [
       { path: "/employee/eHome", label: "Overview" },
       { path: "/employee/myAssets", label: "My Assets" },
-      { path: "/employee/myTeam", label: "My Team" },
+      // { path: "/employee/myTeam", label: "My Team" },
       { path: "/employee/requestForAsset", label: "Request for Asset" },
     ],
     admin: [
@@ -77,6 +76,7 @@ export const SecondNavbar = () => {
       </div>
     );
   }
+  console.log(user)
   if (user?.email && checkSignPath.pathname !== `/${role?.toLowerCase()}`) {
     navigate(`/${role?.toLowerCase()}`);
     return <></>;
