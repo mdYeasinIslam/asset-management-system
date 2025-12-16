@@ -1,3 +1,4 @@
+import Paths from "@/base/constant/Paths";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useState } from "react";
@@ -38,7 +39,7 @@ export const PackageChange = () => {
                 20 Members for $15
             </Button>
             <div className="flex w-full justify-between gap-2">
-                <Link to={`/admin/payment`} className="w-full">
+                <Link to={Paths.admin.payment} className="w-full">
                     <Button 
                       onClick={() => handlePurchase(20)} 
                       className={`w-full bg-green-800 hover:bg-green-700 text-white  ${select =='20'&& "bg-secondary"}`}>
@@ -46,7 +47,7 @@ export const PackageChange = () => {
                   </Button>
                 </Link>
 
-              <Link to='/admin/addEmployee' className="w-full">
+              <Link to={Paths.admin.addEmployee} className="w-full">
               <Button
                  className={`w-full bg-slate-500 hover:bg-slate-800 text-white `}>
                 Back

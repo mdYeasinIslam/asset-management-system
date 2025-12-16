@@ -4,6 +4,7 @@ import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import { IoMdStopwatch } from "react-icons/io";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import Paths from "@/base/constant/Paths";
 
 export const PendingSection = ({
   pendingRequest,
@@ -28,7 +29,7 @@ export const PendingSection = ({
         ))}
       </div>
       <div className="w-full flex justify-center">
-        <Link to={"/admin/allRequest"}>
+        <Link to={Paths.admin.allRequest}>
           <Button
             type="button"
             variant={"outline"}

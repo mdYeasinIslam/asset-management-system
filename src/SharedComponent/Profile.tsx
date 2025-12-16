@@ -15,6 +15,7 @@ import { Label } from '@/components/ui/label';
 import { FormEvent } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import Paths from '@/base/constant/Paths';
 const ProfilePage = () => {
   const { user,updateUserAuth,setLoading} = useAuth()
 const name = user?.displayName as string |undefined
@@ -28,8 +29,8 @@ const name = user?.displayName as string |undefined
     updateUserAuth(profile)
       .then(() => {
         setLoading(false)
-        toast.success('Updation successfull')
-        navigate('/profile')
+        toast.success('Update successfully')
+        navigate(Paths.profile)
       })
       .catch(e => toast.error(e.message))
     

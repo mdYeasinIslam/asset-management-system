@@ -10,6 +10,7 @@ import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import SkeletonBar from "./Skeleton";
+import Paths from "@/base/constant/Paths";
 
 export const DashboardSidebar = () => {
   const { user, signOutAuth, dark, setDark } = useAuth();
@@ -19,51 +20,53 @@ export const DashboardSidebar = () => {
   const navigate = useNavigate();
   const role = usersData?.role;
   const userPhoto = user?.photoURL as string | undefined;
-
   // set theme light mode as default
   useEffect(() => setDark(false), []);
   // Sign Out Handler
   const signOut = async () => {
     try {
       await signOutAuth();
-      navigate("/");
+      navigate(Paths.auth.signIn);
       toast.success("You have successfully logged out");
     } catch (e: unknown) {
       console.error(e);
       const message =
-        e instanceof Error ? e.message : typeof e === "string" ? e : "An unexpected error occurred";
+        e instanceof Error
+          ? e.message
+          : typeof e === "string"
+          ? e
+          : "An unexpected error occurred";
       toast.error(message);
     }
   };
-
+console.log(Paths.root)
   // Navigation Paths
   const paths = {
-    guest: [{ path: "/", label: "Home" }],
+    guest: [{ path: Paths.root, label: "Home" }],
     employee: [
-      { path: "/employee/eHome", label: "Overview" },
-      { path: "/employee/myAssets", label: "My Assets" },
+      { path: Paths.employee.overView, label: "Overview" },
+      { path: Paths.employee.myAssets, label: "My Assets" },
       // { path: "/employee/myTeam", label: "My Team" },
-      { path: "/employee/requestForAsset", label: "Request for Asset" },
+      { path: Paths.employee.requestForAsset, label: "Request for Asset" },
     ],
     admin: [
-      { path: "/admin/dashboard", label: "Overview" },
-      { path: "/admin/addAsset", label: "Add Asset" },
-      { path: "/admin/assetList", label: "Asset List" },
-      { path: "/admin/allRequest", label: "All Requests" },
-      { path: "/admin/employeeList", label: "Employee List" },
-      { path: "/admin/addEmployee", label: "Add Employee" },
+      { path: Paths.admin.overView, label: "Overview" },
+      { path: Paths.admin.addAsset, label: "Add Asset" },
+      { path: Paths.admin.assetList, label: "Asset List" },
+      { path: Paths.admin.allRequest, label: "All Requests" },
+      { path: Paths.admin.employeeList, label: "Employee List" },
+      { path: Paths.admin.addEmployee, label: "Add Employee" },
     ],
   };
-
   // Determine Navigation Menu
   const navItems = useMemo(() => {
-    if (!user) return paths.guest;
+    if (!user || !user?.email) return paths.guest;
 
-    return isAdmin ? paths.admin : paths.employee;
+    return isAdmin ? paths?.admin : paths?.employee;
   }, [user, isAdmin]);
 
   if (isPending || isLoading) {
-    return <SkeletonBar />
+    return <SkeletonBar />;
   }
   return (
     <aside className=" lg:fixed lg:h-screen lg:w-[23%] xl:w-[15%] ">
@@ -82,14 +85,11 @@ export const DashboardSidebar = () => {
           )}
         </button>
       </div>
-
       {/* Sidebar */}
       <div
-        className={`fixed lg:static h-full   ${
+        className={`fixed lg:static h-full flex flex-col max-lg:w-1/2   border-r border-gray-200 dark:border-gray-700  transition-transform duration-300 z-40  ${
           dark ? "bg-slate-800 text-white" : "bg-white text-gray-800"
-        } border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 z-40 ${
-          open ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0`}
+        }  ${open ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         {/* Logo Section */}
         <div className="p-6 border-b border-slate-200 dark:border-gray-700">
@@ -98,9 +98,9 @@ export const DashboardSidebar = () => {
             to={
               role
                 ? role === "Admin"
-                  ? "/admin/dashboard"
-                  : "/employee/eHome"
-                : "/"
+                  ? Paths.admin.dashboard
+                  : Paths.employee.eHome
+                : Paths.root
             }
             onClick={() => setOpen(false)}
           >
@@ -116,7 +116,7 @@ export const DashboardSidebar = () => {
         {/* Navigation Menu */}
         <nav className="flex-1 py-6 px-4 overflow-y-auto">
           <ul className="space-y-2">
-            {navItems.map(({ path, label }) => (
+            {navItems?.map(({ path, label }) => (
               <li key={path}>
                 <NavLink
                   to={path}
@@ -157,7 +157,7 @@ export const DashboardSidebar = () => {
           {user?.email ? (
             <div className="space-y-3">
               <Link
-                to="/profile"
+                to={Paths.profile}
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
@@ -187,7 +187,7 @@ export const DashboardSidebar = () => {
               </Button>
             </div>
           ) : (
-            <Link to="/signIn" onClick={() => setOpen(false)}>
+            <Link to={Paths.auth.signIn} onClick={() => setOpen(false)}>
               <Button className="w-full">Log In</Button>
             </Link>
           )}

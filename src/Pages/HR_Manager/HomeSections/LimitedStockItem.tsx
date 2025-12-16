@@ -4,6 +4,7 @@ import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { IoIosTrendingDown } from "react-icons/io";
+import Paths from "@/base/constant/Paths";
 
 const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
   const limitedItems = assetData
@@ -41,7 +42,7 @@ const LimitedStockItem = ({ assetData }: { assetData: AssetType[] }) => {
               ))}
         </div>
         <div className="w-full flex justify-center">
-          <Link to={"/admin/assetList"}>
+          <Link to={Paths.admin.assetList}>
             <Button
               type="button"
               variant={"outline"}

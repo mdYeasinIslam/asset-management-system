@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { FaFacebook, FaGithub } from "react-icons/fa6";
 import { BsLinkedin } from "react-icons/bs";
 import { useAuth } from "@/hook/useAuth";
+import Paths from "@/base/constant/Paths";
 const paths = [
-  { path: "/", label: "Home" },
-  { path: "/about", label: "About" },
-  { path: "/contact", label: "Contact" },
-  { path: "/asEmployee", label: "As Employee" },
-  { path: "/asHr", label: "For Company" },
+  { path: Paths.root, label: "Home" },
+  { path: Paths.public.about, label: "About" },
+  { path: Paths.public.contact, label: "Contact" },
+  { path: Paths.auth.asEmployee, label: "As Employee" },
+  { path: Paths.auth.asHr , label: "For Company" },
 ];
 const socialMedia = [
   {

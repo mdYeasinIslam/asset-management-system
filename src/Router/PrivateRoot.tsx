@@ -3,6 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { ChildrenType } from "../Type/Types";
 import { useAuth } from "@/hook/useAuth";
 import Loader from "@/SharedComponent/Loader";
+import Paths from "@/base/constant/Paths";
 
 export const PrivateRoot = ({ children }: ChildrenType) => {
   const { user, loading } = useAuth();
@@ -18,6 +19,6 @@ export const PrivateRoot = ({ children }: ChildrenType) => {
     return children;
   }
   return (
-    <Navigate to={"/signIn"} state={{ pathname: location.pathname }} replace />
+    <Navigate to={Paths.auth.signIn} state={{ pathname: location.pathname }} replace />
   );
 };

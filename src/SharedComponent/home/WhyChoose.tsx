@@ -1,5 +1,6 @@
 "use client";
 
+import Paths from "@/base/constant/Paths";
 import { BiCheckCircle, BiCreditCard } from "react-icons/bi";
 import { BsClock } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
@@ -249,7 +250,7 @@ export default function WhyChoose() {
                 Create account at first
               </button>
               <button className="bg-white text-gray-900 px-2 md:px-8 py-4 rounded-lg font-semibold border-2 border-gray-200 hover:border-blue-300 hover:bg-blue-50 hover:text-black transition-colors">
-                <Link to={"/about"} className={`w-full`}>
+                <Link to={Paths.public.about} className={`w-full`}>
                   Learn More About Us
                 </Link>
               </button>

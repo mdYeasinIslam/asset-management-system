@@ -5,6 +5,7 @@ import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import { CgArrowTopRightR } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import Paths from "@/base/constant/Paths";
 
 export const TopRequests = ({
   requestedAssets,
@@ -63,7 +64,7 @@ export const TopRequests = ({
           ))}
         </div>
         <div className="w-full flex justify-center">
-          <Link to={"/admin/allRequest"}>
+          <Link to={Paths.admin.allRequest}>
             <Button
               type="button"
               variant={"outline"}

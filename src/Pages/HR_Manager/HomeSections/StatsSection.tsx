@@ -10,6 +10,7 @@ import { IoDocumentTextOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { GrUserWorker } from "react-icons/gr";
 import { IoMdCheckboxOutline } from "react-icons/io";
+import Paths from "@/base/constant/Paths";
 
 interface IProp {
   typeWiseAssets?: {
@@ -101,7 +102,7 @@ export default function StatsSection({ pendingRequest }: IProp) {
               </div>
               <div className=" text-[#1677FF] text-sm hover:underline">
                 <Link
-                  to={"/admin/assetList"}
+                  to={Paths.admin.assetList}
                   className="flex items-center gap-1"
                 >
                   <button> View details </button>
@@ -139,7 +140,7 @@ export default function StatsSection({ pendingRequest }: IProp) {
               </div>
               <div className=" text-[#1677FF] text-sm hover:underline">
                 <Link
-                  to={"/admin/allRequest"}
+                  to={Paths.admin.allRequest}
                   className="flex items-center gap-1"
                 >
                   <button> View details </button>
@@ -182,7 +183,7 @@ export default function StatsSection({ pendingRequest }: IProp) {
               </div>
               <div className=" text-[#1677FF] text-sm hover:underline">
                 <Link
-                  to={"/admin/allRequest"}
+                  to={Paths.admin.allRequest}
                   className="flex items-center gap-1"
                 >
                   <button> View details </button>
@@ -220,7 +221,7 @@ export default function StatsSection({ pendingRequest }: IProp) {
               </div>
               <div className=" text-[#1677FF] text-sm hover:underline">
                 <Link
-                  to={"/admin/employeeList"}
+                  to={Paths.admin.employeeList}
                   className="flex items-center gap-1"
                 >
                   <button> View details </button>

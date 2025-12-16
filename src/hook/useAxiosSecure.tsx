@@ -1,6 +1,7 @@
 import axios from "axios"
 import { Navigate } from "react-router-dom"
 import { useAuth } from "./useAuth"
+import Paths from "@/base/constant/Paths";
 
  const axiosSecure = axios.create({
    baseURL: "https://assetpulseserver.vercel.app",
@@ -25,7 +26,7 @@ export const useAxiosSecure = () => {
     if (status === 401 || status === 403) {
       console.log(error)
       await signOutAuth()
-      return <Navigate to={'/signIn'}/>
+      return <Navigate to={Paths.auth.signIn}/>
     }
     return Promise.reject(error)
   })

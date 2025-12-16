@@ -8,13 +8,14 @@ import { useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
+import Paths from "@/base/constant/Paths";
 
 export const SecondNavbar = () => {
   const checkSignPath = useLocation();
   const hideNavbar =
-    checkSignPath.pathname === "/signIn" ||
-    checkSignPath.pathname === "/asEmployee" ||
-    checkSignPath.pathname === "/asHr";
+    checkSignPath.pathname === Paths.auth.signIn ||
+    checkSignPath.pathname === Paths.auth.asEmployee ||
+    checkSignPath.pathname === Paths.auth.asHr;
   if (hideNavbar) return;
   const { user, signOutAuth, dark, setDark } = useAuth();
   const [open, setOpen] = useState(false);
@@ -30,7 +31,7 @@ export const SecondNavbar = () => {
   const signOut = async () => {
     try {
       await signOutAuth();
-      navigate("/");
+      navigate(Paths.root);
       toast.success("You have successfully logged out");
     } catch (e: any) {
       console.error(e);
@@ -41,25 +42,25 @@ export const SecondNavbar = () => {
   // Navigation Paths
   const paths = {
     guest: [
-      { path: "/", label: "Home" },
-      { path: "/about", label: "About" },
-      { path: "/contact", label: "Contact" },
-      { path: "/asEmployee", label: "As Employee" },
-      { path: "/asHr", label: "For Company" },
+      { path: Paths.root, label: "Home" },
+      { path: Paths.public.about, label: "About" },
+      { path: Paths.public.contact, label: "Contact" },
+      { path: Paths.auth.asEmployee, label: "As Employee" },
+      { path: Paths.auth.asHr, label: "For Company" },
     ],
     employee: [
-      { path: "/employee/eHome", label: "Overview" },
-      { path: "/employee/myAssets", label: "My Assets" },
+      { path: Paths.employee.overView, label: "Overview" },
+      { path: Paths.employee.myAssets, label: "My Assets" },
       // { path: "/employee/myTeam", label: "My Team" },
-      { path: "/employee/requestForAsset", label: "Request for Asset" },
+      { path: Paths.employee.requestForAsset, label: "Request for Asset" },
     ],
     admin: [
-      { path: "/admin", label: "Overview" },
-      { path: "/admin/assetList", label: "Asset List" },
-      { path: "/admin/addAsset", label: "Add Asset" },
-      { path: "/admin/allRequest", label: "All Requests" },
-      { path: "/admin/employeeList", label: "Employee List" },
-      { path: "/admin/addEmployee", label: "Add Employee" },
+      { path: Paths.admin.overView, label: "Overview" },
+      { path: Paths.admin.assetList, label: "Asset List" },
+      { path: Paths.admin.addAsset, label: "Add Asset" },
+      { path: Paths.admin.allRequest, label: "All Requests" },
+      { path: Paths.admin.employeeList, label: "Employee List" },
+      { path: Paths.admin.addEmployee, label: "Add Employee" },
     ],
   };
 
@@ -86,7 +87,7 @@ export const SecondNavbar = () => {
       <div className="fixed z-10 w-full ">
         <div
           className={`flex justify-between items-center bg-[#F7FEE7] py-3  px-1 md:px-2 lg:px-4 ${
-            pathName === "/"
+            pathName === Paths.root
               ? "bg-gradient-to-b [&_.active]:text-white text-white from-slate-900 to-slate-800"
               : "dark:bg-gradient-to-b from-slate-900 to-slate-800"
           }   text-black font-semibold [&_.active]:text-black dark:text-white `}
@@ -101,9 +102,9 @@ export const SecondNavbar = () => {
               to={
                 role
                   ? role === "Admin"
-                    ? "/admin/hrHome"
-                    : "/employee/eHome"
-                  : "/"
+                    ? Paths.admin.dashboard
+                    : Paths.employee.eHome
+                  :Paths.root
               }
             >
               <img
@@ -158,7 +159,7 @@ export const SecondNavbar = () => {
 
             {user?.email ? (
               <>
-                <Link to="/profile">
+                <Link to={Paths.profile}>
                   <Avatar>
                     <AvatarImage src={userPhoto} alt={user?.email} />
                     <AvatarFallback>CN</AvatarFallback>
@@ -169,7 +170,7 @@ export const SecondNavbar = () => {
                 </Button>
               </>
             ) : (
-              <Link to="/signIn">
+              <Link to={Paths.auth.signIn}>
                 <Button variant="dark">Log In</Button>
               </Link>
             )}

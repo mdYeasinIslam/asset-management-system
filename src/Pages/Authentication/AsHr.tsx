@@ -13,6 +13,7 @@ import { IoMdEye } from "react-icons/io";
 import { IoEyeOff } from "react-icons/io5";
 import { CarouselImg } from "@/SharedComponent/auth/CarouselImg";
 import { User } from "firebase/auth";
+import Paths from "@/base/constant/Paths";
 
 type Inputs = {
   exampleRequired: string;
@@ -97,7 +98,7 @@ export const AsHr = () => {
         const response = await axiosPublic.post("/users", userInfo);
         if (response) {
           toast.success("Your are successfully created your account");
-          navigate("/admin/dashboard");
+          navigate(Paths.admin.dashboard);
           setLoading(false);
 
           e?.target.reset();
@@ -114,7 +115,8 @@ export const AsHr = () => {
         const response = await axiosPublic.post("/users", userInfo);
 
         if (response) {
-          navigate("/admin/hrHome");
+          // navigate("/admin/hrHome");
+          navigate(Paths.admin.dashboard);
           setLoading(false);
           toast.success("Your are successfully join as a HR manager");
           e?.target.reset();
@@ -329,7 +331,7 @@ export const AsHr = () => {
             <div className="text-black flex gap-1">
               <h1>Already have an account. </h1>
               <Link
-                to={"/signIn"}
+                to={Paths.auth.signIn}
                 className="hover:underline hover:text-sky-600"
               >
                 Please log in..
