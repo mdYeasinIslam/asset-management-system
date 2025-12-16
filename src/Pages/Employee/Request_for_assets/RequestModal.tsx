@@ -94,7 +94,9 @@ export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
 
           {errors.exampleRequired && <span>This field is required</span>}
           <DialogFooter>
-            <Button type="submit" disabled={havePermission ? true : false}>
+            <Button type="submit"
+              // disabled={havePermission ? true : false}
+            >
               Request for asset
             </Button>
             <DialogClose asChild>

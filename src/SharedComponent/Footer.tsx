@@ -33,10 +33,10 @@ const Footer = () => {
     <footer className="dark:bg-gradient-to-b from-slate-900  to-slate-900  w-full  text-black dark:text-white py-8 pl-3 ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
         {/* About Section */}
-        <div className="space-y-2">
+        <div>
           <img
             className="w-14 h-14 bg-transparent rounded-xl"
-            src="/logo-icon.png"
+            src="/site-logo.png"
             alt="Logo"
           />
           <h3 className="text-xl font-semibold mb-4">AssetPulse</h3>
@@ -66,8 +66,12 @@ const Footer = () => {
         {/* Contact Section */}
         <div>
           <h3 className="text-xl font-semibold mb-4">Contact</h3>
-          <p className= "text-slae-800 dark:text-gray-400">Email: hyeasinislam@gamil.com</p>
-          <p className= "text-slae-800 dark:text-gray-400">Phone: 01764078605</p>
+          <p className="text-slate-800 dark:text-gray-400">
+            Email: hyeasinislam@gamil.com
+          </p>
+          <p className="text-slate-800 dark:text-gray-400">
+            Phone: 01764078605
+          </p>
           <div className="flex md:justify-between lg:justify-start gap-10 lg:gap-5 mt-4">
             {socialMedia?.map((icon) => (
               <a

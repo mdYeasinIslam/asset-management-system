@@ -46,7 +46,7 @@ export const DisplayAllAssets = ({ assets }: Prop) => {
               className=""
               size="sm"
               variant="outline"
-              disabled={havePermission && assets?.quantity > 0 ? false : true}
+              // disabled={havePermission && assets?.quantity > 0 ? false : true}
             >
               Request for asset
             </Button>
