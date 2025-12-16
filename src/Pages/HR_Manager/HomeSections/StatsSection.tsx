@@ -87,11 +87,6 @@ export default function StatsSection({ pendingRequest }: IProp) {
                   ? "0" + assetsData.length
                   : assetsData?.length}
               </h4>
-              {/* <div className="flex items-center gap-1">
-                <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
-                <p className="text-[#16A34A]">+12.5%</p>
-                <p className="text-[#6B7280]">vs last period</p>
-              </div> */}
             </div>
 
             {/* stat list */}
@@ -115,8 +110,8 @@ export default function StatsSection({ pendingRequest }: IProp) {
               </div>
             </div>
           </div>
-          {/* Pending asset request stats */}
 
+          {/* Pending asset request stats */}
           <div className="w-full bg-[#FEFCE8] border border-[#BFDBFE] rounded-lg p-5 ">
             <div className="pb-4">
               <div className="flex items-center gap-1">
@@ -130,11 +125,6 @@ export default function StatsSection({ pendingRequest }: IProp) {
                   ? "0" + pendingRequest.length
                   : pendingRequest?.length}
               </h4>
-              {/* <div className="flex items-center gap-1">
-                <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
-                <p className="text-[#16A34A]">+12.5%</p>
-                <p className="text-[#6B7280]">vs last period</p>
-              </div> */}
             </div>
 
             {/* stat list */}
@@ -201,8 +191,8 @@ export default function StatsSection({ pendingRequest }: IProp) {
               </div>
             </div>
           </div>
-          {/* All Employee stats */}
 
+          {/* All Employee stats */}
           <div className="w-full bg-[#FEF2F2] border border-[#FECACA] rounded-lg p-5 ">
             <div className="pb-4">
               <div className="flex items-center gap-1">
@@ -216,11 +206,6 @@ export default function StatsSection({ pendingRequest }: IProp) {
                   ? "0" + employeeData.length
                   : employeeData?.length}
               </h4>
-              {/* <div className="flex items-center gap-1">
-                <FaArrowTrendUp className="w-4 h-4 text-[#16A34A]" />
-                <p className="text-[#16A34A]">+12.5%</p>
-                <p className="text-[#6B7280]">vs last period</p>
-              </div> */}
             </div>
 
             {/* stat list */}

@@ -20,6 +20,7 @@ export const DisplayAllAssets = ({ assets }: Prop) => {
   const [open, setOpen] = useState(false);
   const [usersData, isPending] = useUsersData();
   const havePermission = usersData?.userInfo[0]?.canRequestForAsset;
+  console.log(havePermission)
   if (isPending) {
   return <div>...</div>
 }
