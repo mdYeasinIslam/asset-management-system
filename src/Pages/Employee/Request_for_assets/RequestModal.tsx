@@ -26,7 +26,7 @@ export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
   const [usersData, isPending] = useUsersData();
   const axiosSecure = useAxiosSecure();
   const havePermission = usersData?.userInfo[0]?.canRequestForAsset;
-
+  console.log(havePermission);
   const {
     register,
     handleSubmit,
@@ -94,7 +94,8 @@ export const RequestModal = ({ assetInfo, setOpen }: Prop) => {
 
           {errors.exampleRequired && <span>This field is required</span>}
           <DialogFooter>
-            <Button type="submit"
+            <Button
+              type="submit"
               // disabled={havePermission ? true : false}
             >
               Request for asset

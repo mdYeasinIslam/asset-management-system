@@ -10,20 +10,8 @@ export const PendingSection = ({
 }: {
   pendingRequest: AssetRequestType[];
 }) => {
-  // const contentPending = (
-  //   <div className="flex flex-col items-center ">
-  //     <h1 className="text-2xl uppercase font-medium leading-tight">
-  //       Pending Asset Requests
-  //     </h1>
-  //     <p className="text-gray-800 w-1/2 text-center">
-  //       Find assets as your choice and neccesity. And use them carefully ,may be
-  //       you need to return it to the company.
-  //     </p>
-  //   </div>
-  // );
   return (
     <div className="space-y-5 bg-white p-6">
-      {/* <CommonHeading content={contentPending} /> */}
       <SectionHeader
         title=" Pending Asset Requests"
         icon={<IoMdStopwatch className="w-5 h-5 text-blue-500 " />}
