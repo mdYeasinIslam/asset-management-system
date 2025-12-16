@@ -1,3 +1,4 @@
+import Paths from "@/base/constant/Paths";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 interface IProps {
@@ -27,7 +28,7 @@ const AboutHeroSection = ({ className }: IProps) => {
               control and maximize productivity. */}
             </p>
             <div>
-              <Link to={"/signIn"}>
+              <Link to={Paths.auth.signIn}>
                 {/* <button className="bg-blue-600 text-white px-8 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
                   Join with us
                 </button> */}

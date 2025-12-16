@@ -14,6 +14,7 @@ import { useUsersData } from "@/hook/useUsersData";
 import { useAxiosPublic } from "@/hook/useAxiosPublic";
 import { User } from "firebase/auth";
 import Loader from "@/SharedComponent/Loader";
+import Paths from "@/base/constant/Paths";
 
 type Inputs = {
   exampleRequired: string;
@@ -35,9 +36,9 @@ export const SignIn = () => {
   const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.pathname || "/";
-  const fromHr = location.state?.pathName || "/admin/dashboard";
-  const fromEmployee = location.state?.pathName || "/employee/eHome";
+  const from = location.state?.pathname || Paths.root;
+  const fromHr = location.state?.pathName || Paths.admin.dashboard;
+  const fromEmployee = location.state?.pathName || Paths.employee.eHome;
   const [isShow, setIsShow] = useState(true);
   const [error, setError] = useState("");
   console.log(usersData);
@@ -329,13 +330,13 @@ export const SignIn = () => {
               <h1>Don't have any account? Create your own ----</h1>
               <div className="flex gap-3">
                 <Link
-                  to={"/asEmployee"}
+                  to={Paths.auth.asEmployee}
                   className="hover:underline hover:text-sky-600"
                 >
                   1. As Employee
                 </Link>
                 <Link
-                  to={"/asHr"}
+                  to={Paths.auth.asHr}
                   className="hover:underline hover:text-sky-600"
                 >
                   2. For your company

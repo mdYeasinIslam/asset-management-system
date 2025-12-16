@@ -1,3 +1,4 @@
+import Paths from "@/base/constant/Paths";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hook/useAuth";
@@ -75,7 +76,7 @@ export const AsEmployee = () => {
         const response = await axiosPublic.post("/users", userInfo);
         if (response) {
           toast.success("Your are successfully join as a Employee");
-          navigate("/employee/eHome");
+          navigate(Paths.employee.eHome);
           setLoading(false);
 
           e?.target.reset();
@@ -93,7 +94,7 @@ export const AsEmployee = () => {
         const response = await axiosPublic.post("/users", userInfo);
         if (response) {
           toast.success("Your are successfully join as a Employee");
-          navigate("/employee/eHome");
+          navigate(Paths.employee.eHome);
           setLoading(false);
 
           e?.target.reset();
@@ -239,7 +240,7 @@ export const AsEmployee = () => {
             <div className="text-black flex gap-1">
               <h1>Already have an account. </h1>
               <Link
-                to={"/signIn"}
+                to={Paths.auth.signIn}
                 className="hover:underline hover:text-sky-600 underline"
               >
                 Please log in..

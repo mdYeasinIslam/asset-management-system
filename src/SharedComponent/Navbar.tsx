@@ -8,6 +8,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
+import Paths from "@/base/constant/Paths";
 
 export const Navbar = () => {
   const { user, signOutAuth, dark, setDark } = useAuth();
@@ -21,8 +22,8 @@ export const Navbar = () => {
   const signOut = () => {
     signOutAuth()
       .then(() => {
-        navigate("/");
-        toast.success("Your are successfully loged out");
+        navigate(Paths.root);
+        toast.success("Your are successfully logged out");
       })
       .catch((e) => {
         console.log(e);
@@ -52,16 +53,16 @@ export const Navbar = () => {
               <Link
                 to={`${
                   role !== undefined
-                    ? `${role == "Admin" ? "/admin/hrHome" : "/employee/eHome"}`
-                    : "/"
+                    ? `${
+                        role == "Admin"
+                          ? Paths.admin.dashboard
+                          : Paths.employee.eHome
+                      }`
+                    : Paths.root
                 }`}
                 className="flex items-center gap-2"
               >
-                <img
-                  className="w-10 rounded-xl"
-                  src="/logo-icon.png"
-                  alt=""
-                />
+                <img className="w-10 rounded-xl" src="/logo-icon.png" alt="" />
                 <p className="font-medium text-xl w-full">AssetPulse</p>
               </Link>
             </div>
@@ -74,23 +75,32 @@ export const Navbar = () => {
             >
               {!user ? (
                 <>
-                  <NavLink className="px-2 py-1 rounded" to={"/"}>
+                  <NavLink className="px-2 py-1 rounded" to={Paths.root}>
                     {" "}
                     <li>Home</li>
                   </NavLink>
-                  <NavLink className="px-2 py-1 rounded" to={"/about"}>
+                  <NavLink
+                    className="px-2 py-1 rounded"
+                    to={Paths.public.about}
+                  >
                     {" "}
                     <li>About</li>
                   </NavLink>
-                  <NavLink className="px-2 py-1 rounded" to={"/contact"}>
+                  <NavLink
+                    className="px-2 py-1 rounded"
+                    to={Paths.public.contact}
+                  >
                     {" "}
                     <li>Contact</li>
                   </NavLink>
-                  <NavLink className="px-2 py-1 rounded" to={"/asEmployee"}>
+                  <NavLink
+                    className="px-2 py-1 rounded"
+                    to={Paths.auth.asEmployee}
+                  >
                     {" "}
                     <li>Join as Employee</li>
                   </NavLink>
-                  <NavLink className="px-2 py-1 rounded" to={"/asHr"}>
+                  <NavLink className="px-2 py-1 rounded" to={Paths.auth.asHr}>
                     {" "}
                     <li>Join as HR_Manager</li>
                   </NavLink>
@@ -101,14 +111,14 @@ export const Navbar = () => {
                     <>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/employee/eHome"}
+                        to={Paths.employee.eHome}
                       >
                         {" "}
                         <li>Employee Home</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/employee/myAssets"}
+                        to={Paths.employee.myAssets}
                       >
                         {" "}
                         <li>My Assets</li>
@@ -122,7 +132,7 @@ export const Navbar = () => {
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/employee/requestForAsset"}
+                        to={Paths.employee.requestForAsset}
                       >
                         {" "}
                         <li>Request for an Asset</li>
@@ -130,41 +140,44 @@ export const Navbar = () => {
                     </>
                   ) : (
                     <>
-                      <NavLink className="px-2 py-1 rounded" to={"/admin/hrHome"}>
+                      <NavLink
+                        className="px-2 py-1 rounded"
+                        to={"/admin/hrHome"}
+                      >
                         {" "}
                         <li>HR Home</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/admin/assetList"}
+                        to={Paths.admin.assetList}
                       >
                         {" "}
                         <li>Asset List</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/admin/addAsset"}
+                        to={Paths.admin.addAsset}
                       >
                         {" "}
                         <li>Add Asset</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/admin/allRequest"}
+                        to={Paths.admin.allRequest}
                       >
                         {" "}
                         <li>All Request</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/admin/employeeList"}
+                        to={Paths.admin.employeeList}
                       >
                         {" "}
                         <li>My Employee List</li>
                       </NavLink>
                       <NavLink
                         className="px-2 py-1 rounded"
-                        to={"/admin/addEmployee"}
+                        to={Paths.admin.addEmployee}
                       >
                         {" "}
                         <li>Add Employee </li>
@@ -188,7 +201,7 @@ export const Navbar = () => {
                       <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
                     )}
                   </button>
-                  <Link className="px-2 py-1 rounded-sm" to={"/profile"}>
+                  <Link className="px-2 py-1 rounded-sm" to={Paths.profile}>
                     <Avatar>
                       <AvatarImage src={userPhoto} alt={user?.email} />
                       <AvatarFallback>CN</AvatarFallback>
@@ -210,7 +223,7 @@ export const Navbar = () => {
                       <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
                     )}
                   </button>
-                  <Link className="rounded-full" to={"/signIn"}>
+                  <Link className="rounded-full" to={Paths.auth.signIn}>
                     <Button className=" " variant="dark">
                       Log In
                     </Button>
@@ -229,32 +242,35 @@ export const Navbar = () => {
               <>
                 <NavLink
                   className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                  to={"/"}
+                  to={Paths.root}
                 >
                   {" "}
                   <li>Home</li>
                 </NavLink>
                 <NavLink
                   className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                  to={"/about"}
+                  to={Paths.public.about}
                 >
                   {" "}
                   <li>About</li>
                 </NavLink>
-                <NavLink className="px-2 py-1 rounded" to={"/contact"}>
+                <NavLink
+                  className="px-2 py-1 rounded"
+                  to={Paths.public.contact}
+                >
                   {" "}
                   <li>Contact</li>
                 </NavLink>
                 <NavLink
                   className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                  to={"/asEmployee"}
+                  to={Paths.auth.asEmployee}
                 >
                   {" "}
                   <li>Join as Employee</li>
                 </NavLink>
                 <NavLink
                   className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                  to={"/asHr"}
+                  to={Paths.auth.asHr}
                 >
                   {" "}
                   <li>Join as HR_Manager</li>
@@ -266,14 +282,14 @@ export const Navbar = () => {
                   <>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/employee/eHome"}
+                      to={Paths.employee.eHome}
                     >
                       {" "}
                       <li>Employee Home</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/employee/myAssets"}
+                      to={Paths.employee.myAssets}
                     >
                       {" "}
                       <li>My Assets</li>
@@ -287,7 +303,7 @@ export const Navbar = () => {
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/employee/requestForAsset"}
+                      to={Paths.employee.requestForAsset}
                     >
                       {" "}
                       <li>Request for an Asset</li>
@@ -297,42 +313,42 @@ export const Navbar = () => {
                   <>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/admin/hrHome"}
+                      to={Paths.admin.dashboard}
                     >
                       {" "}
                       <li>HR_Home</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/admin/assetList"}
+                      to={Paths.admin.assetList}
                     >
                       {" "}
                       <li>Asset List</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/admin/addAsset"}
+                      to={Paths.admin.addAsset}
                     >
                       {" "}
                       <li>Add Asset</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/admin/allRequest"}
+                      to={Paths.admin.allRequest}
                     >
                       {" "}
                       <li>All Request</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/admin/employeeList"}
+                      to={Paths.admin.employeeList}
                     >
                       {" "}
                       <li>My Employee List</li>
                     </NavLink>
                     <NavLink
                       className="px-2 md:px-0.5 lg:px-2 py-1 rounded"
-                      to={"/admin/addEmployee"}
+                      to={Paths.admin.addEmployee}
                     >
                       {" "}
                       <li>Add Employee</li>
@@ -356,7 +372,7 @@ export const Navbar = () => {
                     <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
                   )}
                 </button>
-                <Link className="px-2 py-1 rounded-sm" to={"/profile"}>
+                <Link className="px-2 py-1 rounded-sm" to={Paths.profile}>
                   <Avatar>
                     <AvatarImage
                       title={user?.email}
@@ -383,7 +399,7 @@ export const Navbar = () => {
                     <Moon className="w-5 h-5 text-gray-800 dark:text-white" />
                   )}
                 </button>
-                <NavLink className="rounded-full" to={"/signIn"}>
+                <NavLink className="rounded-full" to={Paths.auth.signIn}>
                   <Button className=" " variant="dark">
                     Log In
                   </Button>

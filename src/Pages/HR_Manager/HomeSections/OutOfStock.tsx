@@ -4,6 +4,7 @@ import SectionHeader from "@/SharedComponent/dashboard/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { BsCartXFill } from "react-icons/bs";
+import Paths from "@/base/constant/Paths";
 
 const OutOfStock = ({ assetData }: { assetData: AssetType[] }) => {
   const outOfStock = assetData
@@ -31,7 +32,7 @@ const OutOfStock = ({ assetData }: { assetData: AssetType[] }) => {
           ))}
       </div>
       <div className="w-full flex justify-center">
-        <Link to={"/admin/assetList"} hidden={!outOfStock.length}>
+        <Link to={Paths.admin.assetList} hidden={!outOfStock.length}>
           <Button
             type="button"
             variant={"outline"}

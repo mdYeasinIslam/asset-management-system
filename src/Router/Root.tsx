@@ -23,38 +23,39 @@ import ErrorPage from "@/SharedComponent/ErrorPage"
 import ProfilePage from "@/SharedComponent/Profile"
 import { createBrowserRouter } from "react-router-dom"
 import { PrivateRoot } from "./PrivateRoot"
+import Paths from "@/base/constant/Paths"
 
    export const routes = createBrowserRouter([
      {
-       path: "/",
+       path: Paths.root,
        element: <MainLayout />,
        errorElement: <ErrorPage />,
        children: [
          {
-           path: "/",
+           path: Paths.root,
            element: <Home />,
          },
 
          {
-           path: "/about",
+           path: Paths.public.about,
            element: <AboutPage />,
          },
          {
-           path: "/contact",
+           path: Paths.public.contact,
            element: <Contact />,
          },
 
          {
-           path: "/asEmployee",
+           path: Paths.auth.asEmployee,
            element: <AsEmployee />,
          },
          {
-           path: "/asHr",
+           path: Paths.auth.asHr,
            element: <AsHr />,
          },
 
          {
-           path: "/signIn",
+           path: Paths.auth.signIn,
            element: <SignIn />,
          },
          //  {
@@ -68,7 +69,7 @@ import { PrivateRoot } from "./PrivateRoot"
        ],
      },
      {
-       path: "/employee",
+       path: Paths.employee.overView,
        element: (
          <PrivateRoot>
            <EmployeeLayout />
@@ -77,31 +78,31 @@ import { PrivateRoot } from "./PrivateRoot"
        errorElement: <ErrorPage />,
        children: [
          {
-           path: "/employee",
+           path: Paths.employee.overView,
            element: <EHome />,
          },
 
          {
-           path: "/employee/eHome",
+           path: `${Paths.employee.overView}/eHome`,
            element: <EHome />,
          },
          {
-           path: "/employee/myAssets",
+           path: Paths.employee.myAssets,
            element: <MyAssets />,
          },
 
-        //  {
-        //    path: "/employee/myTeam",
-        //    element: <MyTeam />,
-        //  },
+         //  {
+         //    path: "/employee/myTeam",
+         //    element: <MyTeam />,
+         //  },
          {
-           path: "/employee/requestForAsset",
+           path: Paths.employee.requestForAsset,
            element: <RequestAssets />,
          },
        ],
      },
      {
-       path: "/admin",
+       path: Paths.admin.overView,
        element: (
          <PrivateRoot>
            <HrLayout />
@@ -110,48 +111,48 @@ import { PrivateRoot } from "./PrivateRoot"
        errorElement: <ErrorPage />,
        children: [
          {
-           path: "/admin",
+           path: Paths.admin.overView,
            element: <HrHome />,
          },
          {
-           path: "/admin/dashboard",
+           path: `${Paths.admin.overView}/dashboard`,
            element: <HrHome />,
          },
 
          {
-           path: "/admin/assetList",
+           path: Paths.admin.assetList,
            element: <HrAssetList />,
          },
          {
-           path: "/admin/addAsset",
+           path: Paths.admin.addAsset,
            element: <AddAsset />,
          },
 
          {
-           path: "/admin/employeeList",
+           path: Paths.admin.employeeList,
            element: <EmployeeList />,
          },
 
          {
-           path: "/admin/allRequest",
+           path: Paths.admin.allRequest,
            element: <AllRequest />,
          },
          {
-           path: "/admin/addEmployee",
+           path: Paths.admin.addEmployee,
            element: <AddEmployee />,
          },
          {
-           path: "/admin/addEmployee/packageChange/:id",
+           path: Paths.admin.packageChange,
            element: <PackageChange />,
          },
          {
-           path: "/admin/payment",
+           path: Paths.admin.payment,
            element: <Payment />,
          },
        ],
      },
      {
-       path: "/profile",
+       path: Paths.profile,
        element: (
          <PrivateRoot>
            <ProfilePage />

@@ -26,7 +26,7 @@ export const DashboardSidebar = () => {
   const signOut = async () => {
     try {
       await signOutAuth();
-      navigate("/signIn");
+      navigate(Paths.auth.signIn);
       toast.success("You have successfully logged out");
     } catch (e: unknown) {
       console.error(e);
@@ -98,9 +98,9 @@ console.log(Paths.root)
             to={
               role
                 ? role === "Admin"
-                  ? "/admin/dashboard"
-                  : "/employee/eHome"
-                : "/"
+                  ? Paths.admin.dashboard
+                  : Paths.employee.eHome
+                : Paths.root
             }
             onClick={() => setOpen(false)}
           >
@@ -157,7 +157,7 @@ console.log(Paths.root)
           {user?.email ? (
             <div className="space-y-3">
               <Link
-                to="/profile"
+                to={Paths.profile}
                 onClick={() => setOpen(false)}
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               >
@@ -187,7 +187,7 @@ console.log(Paths.root)
               </Button>
             </div>
           ) : (
-            <Link to="/signIn" onClick={() => setOpen(false)}>
+            <Link to={Paths.auth.signIn} onClick={() => setOpen(false)}>
               <Button className="w-full">Log In</Button>
             </Link>
           )}

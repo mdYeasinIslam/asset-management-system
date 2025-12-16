@@ -1,3 +1,4 @@
+import Paths from "@/base/constant/Paths";
 import { useAuth } from "@/hook/useAuth";
 import { PackageType } from "@/Type/packageType";
 import { useState } from "react";
@@ -47,7 +48,7 @@ export default function PackageCard({ plan }: PropType) {
       </header>
       <div className="space-y-10">
         <Link
-          to={"/signIn"}
+          to={Paths.auth.signIn}
           className={`block border-2  py-2 lg:py-4 rounded-xl text-center text-lg font-medium  cursor-pointer hover:scale-105 duration-500 ${
             activeCard == id
               ? "border-none  bg-black dark:bg-sky-300 dark:text-black text-white"

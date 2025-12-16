@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import "./swiperStyle.css";
+import Paths from "@/base/constant/Paths";
  
 const BannerContent = () => {
      const progressCircle = useRef<SVGSVGElement>(null);
@@ -60,7 +61,7 @@ const BannerContent = () => {
                 Monitor, organize, and optimize all your assets in one intuitive
                 platform.
               </p>
-              <Link to="/asHr">
+              <Link to={Paths.auth.asHr}>
                 <Button className="w-full md:w-auto text-xl" variant="banner">
                   Join as HR Manager
                 </Button>
@@ -91,7 +92,7 @@ const BannerContent = () => {
                 Take control of your assets with our user-friendly platform.
                 Track, manage, and analyze your resources effortlessly.
               </p>
-              <Link to="/asEmployee">
+              <Link to={Paths.auth.asEmployee}>
                 <Button className="w-full md:w-auto text-xl" variant="banner">
                   Join as Employee
                 </Button>

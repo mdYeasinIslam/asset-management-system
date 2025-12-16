@@ -4,6 +4,7 @@
     status: number
     statusText: string
 }
+import Paths from "@/base/constant/Paths";
 import { Button } from "@/components/ui/button";
 import { useUsersData } from "@/hook/useUsersData";
 import { motion } from "framer-motion";
@@ -38,7 +39,7 @@ const ErrorPage = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <Link to={`${role !== undefined?`${role=='Admin'? '/admin/hrHome': '/employee/eHome'}`:'/'}`} >
+        <Link to={`${role !== undefined?`${role=='Admin'? Paths.admin.dashboard: Paths.employee.eHome}`:Paths.root}`} >
         <Button 
           variant="dark" 
           color="primary" 
