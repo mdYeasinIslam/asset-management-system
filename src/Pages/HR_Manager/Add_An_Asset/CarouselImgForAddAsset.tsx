@@ -32,7 +32,7 @@ const imgBox = [
 export function CarouselImgForAddAsset() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: false }));
   return (
-    <Carousel plugins={[plugin.current]} className="w-full">
+    <Carousel plugins={[plugin.current]}  className="w-full">
       <CarouselContent>
         {imgBox?.map((content, index) => (
           <CarouselItem key={index}>
@@ -40,7 +40,7 @@ export function CarouselImgForAddAsset() {
               <img
                 src={content.img}
                 alt="side image"
-                className={`w-full brightness-75 hidden lg:flex h-full ${
+                className={`w-full h-full lg:block brightness-75 hidden  ${
                   index !== 1 && "object-cover"
                 }  object-center rounded-md`}
               />
