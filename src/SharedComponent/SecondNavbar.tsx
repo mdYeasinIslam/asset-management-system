@@ -45,8 +45,8 @@ export const SecondNavbar = () => {
       { path: Paths.root, label: "Home" },
       { path: Paths.public.about, label: "About" },
       { path: Paths.public.contact, label: "Contact" },
-      { path: Paths.auth.asEmployee, label: "As Employee" },
-      { path: Paths.auth.asHr, label: "For Company" },
+      // { path: Paths.auth.asEmployee, label: "As Employee" },
+      // { path: Paths.auth.asHr, label: "For Company" },
     ],
     employee: [
       { path: Paths.employee.overView, label: "Overview" },
@@ -170,9 +170,15 @@ export const SecondNavbar = () => {
                 </Button>
               </>
             ) : (
+                <>
               <Link to={Paths.auth.signIn}>
                 <Button variant="dark">Log In</Button>
-              </Link>
+                  </Link>
+                  <Link to={'/signUp'}>
+                <Button variant="dark">Sign Up</Button>
+                </Link>
+                </>
+                
             )}
           </div>
         </div>
