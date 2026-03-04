@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { IoMdEye } from "react-icons/io";
 import { IoEyeOff } from "react-icons/io5";
-import { useUsersData } from "@/hook/useUsersData";
+// import { useUsersData } from "@/hook/useUsersData";
 import { useAxiosPublic } from "@/hook/useAxiosPublic";
 import { User } from "firebase/auth";
 import Loader from "@/SharedComponent/Loader";
@@ -28,7 +28,7 @@ export const SignIn = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const [usersData] = useUsersData();
+  // const [usersData] = useUsersData();
   const [loading, setLoading] = useState(false);
 
   const { signInAuth } = useAuth();
@@ -41,7 +41,6 @@ export const SignIn = () => {
   const fromEmployee = location.state?.pathName || Paths.employee.eHome;
   const [isShow, setIsShow] = useState(true);
   const [error, setError] = useState("");
-  console.log(usersData);
   const [dummySignIn, setDummySignIn] = useState({
     email: "",
     password: "",
@@ -156,7 +155,7 @@ export const SignIn = () => {
   return (
     <div className="relative">
       {loading && (
-        <div className="absolute w-full !bg-gray-500 top-0   ">
+        <div className="absolute w-full !bg-gray-500 top-0">
           <Loader />
         </div>
       )}

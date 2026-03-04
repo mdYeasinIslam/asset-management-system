@@ -14,6 +14,7 @@ export const SecondNavbar = () => {
   const checkSignPath = useLocation();
   const hideNavbar =
     checkSignPath.pathname === Paths.auth.signIn ||
+    checkSignPath.pathname === Paths.auth.signUp ||
     checkSignPath.pathname === Paths.auth.asEmployee ||
     checkSignPath.pathname === Paths.auth.asHr;
   if (hideNavbar) return;
@@ -174,7 +175,7 @@ export const SecondNavbar = () => {
               <Link to={Paths.auth.signIn}>
                 <Button variant="dark">Log In</Button>
                   </Link>
-                  <Link to={'/signUp'}>
+                  <Link to={Paths.auth.signUp}>
                 <Button variant="dark">Sign Up</Button>
                 </Link>
                 </>
