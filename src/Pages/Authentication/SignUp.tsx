@@ -17,7 +17,7 @@ const Signup = () => {
   }, []);
 
   // Update URL when step changes
-  const handleStepChange = (newStep: "select" | "hr" | "employee") => {
+  const handleSignUpSteps = (newStep: "select" | "hr" | "employee") => {
     setStep(newStep);
     if (newStep === "select") {
       window.history.pushState({}, "", window.location.pathname);
@@ -31,7 +31,7 @@ const Signup = () => {
   };
 
   const handleBack = () => {
-    handleStepChange("select");
+    handleSignUpSteps("select");
     console.log(window.location.pathname);
   };
 
@@ -66,7 +66,7 @@ const Signup = () => {
   }
 
   return (
-    <section className="min-h-screen bg-[#FBF9F5] flex items-center justify-center px-4 py-10">
+    <section className="relative min-h-screen bg-[#FBF9F5] flex items-center justify-center px-4 py-10">
       <div className="max-w-4xl w-full">
         <div>
           <Link
@@ -76,54 +76,49 @@ const Signup = () => {
             <ChevronLeft className="w-5 h-5" />
             Back
           </Link>
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-semibold mb-3">Sign Up</h1>
+          <div className="text-center mb-4 md:mb-12">
+            <h1 className="text-4xl font-semibold md:mb-3">Sign Up</h1>
             <p className="text-gray-600 text-lg">
               Choose your role to get started
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* As HR Card */}
-          <div
-            onClick={() => handleStepChange("hr")}
-            className="cursor-pointer border-2 border-transparent rounded-xl p-8 bg-white hover:shadow-lg hover:border-blue-500 transition duration-300"
-          >
-            <div className="mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <ChevronRight className="w-6 h-6 text-blue-600" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+          {[
+            {
+              role: "hr" as const,
+              title: "As HR / Company",
+              desc: "Create an account to manage employees and company assets.",
+              color: "blue",
+            },
+            {
+              role: "employee" as const,
+              title: "As Employee",
+              desc: "Join your company and request or track assets.",
+              color: "green",
+            },
+          ]?.map(({ role, title, desc, color }) => (
+            <div
+              key={role}
+              onClick={() => handleSignUpSteps(role)}
+              className="flex flex-col justify-between border-2 border-transparent rounded-xl  bg-white hover:shadow-lg max-md:border-blue-500 hover:border-blue-500 transition duration-300 cursor-pointer p-4 md:p-8"
+            >
+              <div className="w-12 h-auto rounded-lg flex md:items-center mb-2 md:mb-4">
+                <ChevronRight className={`w-6 h-6 text-${color}-600`} />
               </div>
-            </div>
-            <h2 className="text-2xl font-semibold mb-3">As HR / Company</h2>
-            <p className="text-gray-600 mb-6">
-              Create an account to manage employees and company assets.
-            </p>
-            <button className="flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition">
-              Get Started
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* As Employee Card */}
-          <div
-            onClick={() => handleStepChange("employee")}
-            className="cursor-pointer border-2 border-transparent rounded-xl p-8 bg-white hover:shadow-lg hover:border-blue-500 transition duration-300"
-          >
-            <div className="mb-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <ChevronRight className="w-6 h-6 text-green-600" />
+              <div>
+                <h2 className="text-2xl font-semibold mb-1 lg:mb-3">{title}</h2>
+                <p className="text-gray-600 mb-2 lg:mb-4">{desc}</p>
               </div>
+              <button
+                className={`flex items-center gap-2 text-${color}-600 font-medium hover:text-${color}-700 transition`}
+              >
+                Get Started
+                <ChevronRight className="w-4 h-4" />
+              </button>
             </div>
-            <h2 className="text-2xl font-semibold mb-3">As Employee</h2>
-            <p className="text-gray-600 mb-6">
-              Join your company and request or track assets.
-            </p>
-            <button className="flex items-center gap-2 text-green-600 font-medium hover:text-green-700 transition">
-              Get Started
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+          ))}
         </div>
       </div>
     </section>

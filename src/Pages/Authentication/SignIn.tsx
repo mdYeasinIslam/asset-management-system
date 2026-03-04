@@ -15,6 +15,7 @@ import { useAxiosPublic } from "@/hook/useAxiosPublic";
 import { User } from "firebase/auth";
 import Loader from "@/SharedComponent/Loader";
 import Paths from "@/base/constant/Paths";
+import { ChevronLeft } from "lucide-react";
 
 type Inputs = {
   exampleRequired: string;
@@ -63,7 +64,7 @@ export const SignIn = () => {
 
       // find matching email
       const foundUser = allUsers.find(
-        (user: User) => user.email?.toLowerCase() === email.toLowerCase()
+        (user: User) => user.email?.toLowerCase() === email.toLowerCase(),
       );
       console.log(foundUser);
       if (foundUser) {
@@ -75,13 +76,13 @@ export const SignIn = () => {
       signInAuth(email, password)
         .then(async (res) => {
           const response = await axiosSecure.get(
-            `/users?email=${res.user?.email}`
+            `/users?email=${res.user?.email}`,
           );
           console.log(response);
           // console.log(response);
           setLoading(false);
           toast.success(
-            `${res.user.displayName}- You are successfully Join as ${response.data?.role}`
+            `${res.user.displayName}- You are successfully Join as ${response.data?.role}`,
           );
           e?.target.reset();
           if (response?.data?.role == "Employee") {
@@ -104,7 +105,6 @@ export const SignIn = () => {
           // }
         })
         .catch((e) => {
-
           setLoading(false);
           console.log(e);
           toast.error(e.message);
@@ -159,7 +159,16 @@ export const SignIn = () => {
           <Loader />
         </div>
       )}
-      <section className={`bg-[#FBF9F5] text-black ${loading && '!opacity-50 '}`}>
+      <section
+        className={`bg-[#FBF9F5] text-black ${loading && "!opacity-50 "}`}
+      >
+        <Link
+          to={"/"}
+          className="absolute top-4 left-4 z-10 flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-black hover:bg-gray-100 rounded-lg transition"
+        >
+          <ChevronLeft className="w-5 h-5" />
+          Back
+        </Link>
         <div className="max-w-4xl xl:max-w-6xl mx-auto  h-screen grid grid-cols-1 lg:grid-cols-2 items-center">
           <div className="  flex justify-center  items-center   ">
             <img
@@ -278,7 +287,7 @@ export const SignIn = () => {
                               email: "yeasin@gmail.com",
                               password: "aassdd",
                               signInAs: "hr",
-                            }
+                            },
                       )
                     }
                   />
@@ -299,7 +308,7 @@ export const SignIn = () => {
                               email: "hasan@gmail.com",
                               password: "aassdd",
                               signInAs: "employee",
-                            }
+                            },
                       )
                     }
                   />
@@ -326,8 +335,16 @@ export const SignIn = () => {
               )}
             </form>
             <div className="text-black">
-              <h1>Don't have any account? Create your own ----</h1>
-              <div className="flex gap-3">
+              <div>
+                Don't have any account?{" "}
+                <Link
+                  to={Paths.auth.signUp}
+                  className="hover:underline hover:text-sky-600"
+                >
+                  Please Register your account
+                </Link>
+              </div>
+              {/* <div className="flex gap-3">
                 <Link
                   to={Paths.auth.asEmployee}
                   className="hover:underline hover:text-sky-600"
@@ -340,7 +357,7 @@ export const SignIn = () => {
                 >
                   2. For your company
                 </Link>
-              </div>
+              </div> */}
             </div>
             {/* <button
             onClick={google}
