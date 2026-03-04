@@ -5,7 +5,8 @@ const Paths = {
     contact: "/contact",
   },
   auth: {
-    signIn: "/signIn",
+    signIn: "/sign-in",
+    signUp: "/sign-up",
     asEmployee: "/asEmployee",
     asHr: "/asHr",
   },
