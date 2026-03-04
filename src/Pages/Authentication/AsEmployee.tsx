@@ -172,7 +172,7 @@ export const AsEmployee = () => {
                 />
               </div>
 
-              <div className="w-full flex flex-col gap-1 ">
+              <div className="flex flex-col gap-1 ">
                 <label htmlFor="date" className="capitalize font-semibold">
                   <span className="text-red-800">*</span>
                   Date of birth :

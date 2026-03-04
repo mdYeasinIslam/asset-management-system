@@ -24,6 +24,7 @@ import ProfilePage from "@/SharedComponent/Profile"
 import { createBrowserRouter } from "react-router-dom"
 import { PrivateRoot } from "./PrivateRoot"
 import Paths from "@/base/constant/Paths"
+import Signup from "@/Pages/Authentication/SignUp"
 
    export const routes = createBrowserRouter([
      {
@@ -58,6 +59,11 @@ import Paths from "@/base/constant/Paths"
            path: Paths.auth.signIn,
            element: <SignIn />,
          },
+          {
+           path: Paths.auth.signUp,
+           element: <Signup />,
+         },
+         
          //  {
          //    path: "/profile",
          //    element: (
