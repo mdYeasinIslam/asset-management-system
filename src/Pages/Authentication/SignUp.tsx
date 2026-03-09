@@ -90,29 +90,27 @@ const Signup = () => {
               role: "hr" as const,
               title: "As HR / Company",
               desc: "Create an account to manage employees and company assets.",
-              color: "blue",
             },
             {
               role: "employee" as const,
               title: "As Employee",
               desc: "Join your company and request or track assets.",
-              color: "green",
             },
-          ]?.map(({ role, title, desc, color }) => (
+          ]?.map(({ role, title, desc }) => (
             <div
               key={role}
               onClick={() => handleSignUpSteps(role)}
-              className="flex flex-col justify-between border-2 border-transparent rounded-xl  bg-white hover:shadow-lg max-md:border-blue-500 hover:border-blue-500 transition duration-300 cursor-pointer p-4 md:p-8"
+              className="flex flex-col justify-between border-2 border-blue-200 rounded-xl  bg-white hover:shadow-lg max-md:border-blue-500 hover:border-blue-500 transition duration-300 cursor-pointer p-4 md:p-8"
             >
               <div className="w-12 h-auto rounded-lg flex md:items-center mb-2 md:mb-4">
-                <ChevronRight className={`w-6 h-6 text-${color}-600`} />
+                <ChevronRight className={`w-6 h-6 text-blue-600`} />
               </div>
               <div>
                 <h2 className="text-2xl font-semibold mb-1 lg:mb-3">{title}</h2>
                 <p className="text-gray-600 mb-2 lg:mb-4">{desc}</p>
               </div>
               <button
-                className={`flex items-center gap-2 text-${color}-600 font-medium hover:text-${color}-700 transition`}
+                className={`flex items-center gap-2 text-blue-600 font-medium hover:text-blue-700 transition`}
               >
                 Get Started
                 <ChevronRight className="w-4 h-4" />

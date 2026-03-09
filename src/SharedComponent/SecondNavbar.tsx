@@ -109,7 +109,7 @@ export const SecondNavbar = () => {
               }
             >
               <img
-                className="w-10 md:w-14 h-auto rounded-xl"
+                className="w-10 md:w-12 h-auto rounded-xl"
                 src="/site-logo.png"
                 alt="Logo"
               />

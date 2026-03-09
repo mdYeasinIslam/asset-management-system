@@ -67,23 +67,23 @@ export default function HeroSectionByAI() {
     <section
       className="relative  
      z-0  bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden py-20"
-    >
+     >
       <div className="container mx-auto px-6">
         {/* Animated Background Orbs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <motion.div
-            className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
+          {/* <motion.div
+            className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 "
             animate={{
               y: [0, 100, 0],
-              x: [0, 50, 0],
+              x: [0, 0, 0],
             }}
             transition={{
               duration: 15,
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
-          />
-          <motion.div
+          /> */}
+          {/* <motion.div
             className="absolute top-1/3 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20"
             animate={{
               y: [100, 0, 100],
@@ -94,8 +94,8 @@ export default function HeroSectionByAI() {
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
-          />
-          <motion.div
+          /> */}
+          {/* <motion.div
             className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"
             animate={{
               y: [0, -50, 0],
@@ -105,7 +105,7 @@ export default function HeroSectionByAI() {
               repeat: Number.POSITIVE_INFINITY,
               ease: "easeInOut",
             }}
-          />
+          /> */}
         </div>
 
         {/* Grid Background */}
@@ -211,7 +211,7 @@ export default function HeroSectionByAI() {
                   
                 >
                   <motion.button
-                    className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all"
+                    className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-bold text-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
